@@ -37,14 +37,15 @@
                 </div>
 
                 <div class="sidebar-actions">
-                    <a href="mailto:contact@marcvelasquez.dev" class="btn btn-primary">
+                    <a href="mailto:velasquezmarcvictor@gmail.com" class="btn btn-primary">
                         <i data-lucide="mail"></i> Contact Me
                     </a>
                     <button class="btn btn-secondary"
-                        onclick="window.open('https://www.linkedin.com/in/mrcvctr-vel', '_blank')">
+                        onclick="window.open('https://www.linkedin.com/in/mrcvctr-vel/', '_blank')">
                         <i data-lucide="linkedin"></i>
                     </button>
-                    <button class="btn btn-secondary" onclick="window.open('https://github.com', '_blank')">
+                    <button class="btn btn-secondary"
+                        onclick="window.open('https://github.com/marccodesstuff', '_blank')">
                         <i data-lucide="github"></i>
                     </button>
                 </div>
@@ -66,8 +67,8 @@
         <main class="main-content">
             <div class="bento-grid">
 
-                <!-- 1. Experience Card (Large) -->
-                <div class="card card-experience" data-col="2" data-row="2">
+                <!-- 1. Experience Card -->
+                <div class="card card-experience" data-col="1" data-row="2">
                     <div class="card-content">
                         <div class="card-header">
                             <div class="icon-box icon-purple">
@@ -81,13 +82,26 @@
                                 <div class="exp-role">Freelance App Developer</div>
                                 <div class="exp-detail">Deployed web apps on AWS & Azure</div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Education Card -->
+                <div class="card card-education" data-col="1" data-row="2">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="icon-box icon-cyan">
+                                <i data-lucide="graduation-cap"></i>
+                            </div>
+                            <h3>Education</h3>
+                        </div>
+                        <div class="experience-list">
                             <div class="exp-item">
                                 <div class="exp-time">2022 - Present</div>
                                 <div class="exp-role">CS Student @ AUF</div>
                                 <div class="exp-detail">Specializing in Data Science</div>
                             </div>
                         </div>
-                        <div class="card-decoration decoration-wave"></div>
                     </div>
                 </div>
 
@@ -107,7 +121,7 @@
 
                             <div class="mini-project-list">
                                 <div class="mini-p-item">
-                                    <span class="dot dot-purple"></span> AI Director
+                                    <span class="dot dot-purple"></span> AI Simulation Director
                                 </div>
                                 <div class="mini-p-item">
                                     <span class="dot dot-red"></span> MRI Detection
@@ -201,7 +215,9 @@
                 <!-- 7. Awards (Small) -->
                 <div class="card card-awards" data-col="1" data-row="1">
                     <div class="card-content centered-content">
-                        <div class="award-cup">🏆</div>
+                        <div class="icon-box icon-red">
+                            <i data-lucide="trophy"></i>
+                        </div>
                         <div class="award-text">
                             <strong>2nd Runner Up</strong>
                             <span>AI Hack GDG-HAU</span>
@@ -257,7 +273,7 @@
                             <i data-lucide="arrow-right"></i>
                         </div>
                     </div>
-                    <a href="mailto:contact@marcvelasquez.dev" class="card-link-overlay"></a>
+                    <a href="mailto:velasquezmarcvictor@gmail.com" class="card-link-overlay"></a>
                 </div>
 
                 <!-- 11. Download Resume (Small - Functional) -->
@@ -305,14 +321,15 @@
 
             <div class="projects-grid">
                 <!-- Project 1 -->
-                <div class="modal-project-card">
+                <div class="modal-project-card" onclick="showWipModal()" style="cursor: pointer;">
                     <div class="mp-header">
                         <div class="icon-box icon-blue">
                             <i data-lucide="brain-circuit"></i>
                         </div>
-                        <h3>AI Director System</h3>
+                        <h3>AI Simulation Director System</h3>
                     </div>
-                    <p class="mp-desc">Unreal Engine 5 AI Director using diffusion models & LLMs to create dynamic,
+                    <p class="mp-desc">Unreal Engine 5 AI Simulation Director using diffusion models & LLMs to create
+                        dynamic,
                         adaptive gameplay experiences.</p>
                     <div class="tech-stack">
                         <span>UE5</span>
@@ -362,6 +379,17 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- WIP MODAL -->
+    <div id="wipModal" class="wip-modal-overlay">
+        <div class="wip-modal-content">
+            <div class="wip-icon">
+                <i data-lucide="construction"></i>
+            </div>
+            <h3>Work in Progress</h3>
+            <p>This project is still being developed.</p>
         </div>
     </div>
 

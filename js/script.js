@@ -83,7 +83,7 @@ function initFunctionalCards() {
     const emailCard = document.getElementById('copyEmailCard');
     if (emailCard) {
         emailCard.addEventListener('click', () => {
-            const email = 'contact@marcvelasquez.dev';
+            const email = 'velasquezmarcvictor@gmail.com';
             navigator.clipboard.writeText(email).then(() => {
                 const statusSpan = document.getElementById('emailStatus');
                 const originalText = statusSpan.textContent;
@@ -173,5 +173,33 @@ document.addEventListener('keydown', (e) => {
         if (modal && modal.classList.contains('active')) {
             closeProjectsModal();
         }
+        const wipModal = document.getElementById('wipModal');
+        if (wipModal && wipModal.classList.contains('active')) {
+            closeWipModal();
+        }
     }
 });
+
+/**
+ * WIP Modal - Shows "Work in Progress" message and auto-closes after 3 seconds
+ */
+function showWipModal() {
+    const modal = document.getElementById('wipModal');
+    if (modal) {
+        modal.classList.add('active');
+        // Reinitialize icons for the modal content
+        lucide.createIcons();
+
+        // Auto-close after 3 seconds
+        setTimeout(() => {
+            closeWipModal();
+        }, 3000);
+    }
+}
+
+function closeWipModal() {
+    const modal = document.getElementById('wipModal');
+    if (modal) {
+        modal.classList.remove('active');
+    }
+}
