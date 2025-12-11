@@ -106,12 +106,8 @@ body {
     height: 100%;
     border-radius: 0;
     background: var(--color-blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: white;
+    object-fit: cover;
+    display: block;
     border: var(--border-black);
     box-shadow: var(--shadow-brutal);
 }
