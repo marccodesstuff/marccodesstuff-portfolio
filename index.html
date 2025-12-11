@@ -109,11 +109,11 @@
                 <div class="card card-projects-main" data-col="2" data-row="2" onclick="openProjectsModal()"
                     style="cursor: pointer;">
                     <div class="card-content">
+                        <div class="see-more-hint">See More <i data-lucide="arrow-right"></i></div>
                         <div class="card-header">
                             <div class="icon-box icon-blue">
                                 <i data-lucide="folder-open-dot"></i>
                             </div>
-                            <div class="project-count-badge">3 Projects</div>
                         </div>
                         <div class="projects-preview">
                             <h3>Selected Works</h3>
@@ -190,8 +190,10 @@
                 </div>
 
                 <!-- 6. Certifications (Medium - Vertical) -->
-                <div class="card card-certs" data-col="1" data-row="2">
+                <div class="card card-certs" data-col="1" data-row="2" onclick="openCertsModal()"
+                    style="cursor: pointer;">
                     <div class="card-content">
+                        <div class="see-more-hint">See More <i data-lucide="arrow-right"></i></div>
                         <div class="card-header-centered">
                             <div class="icon-box icon-yellow">
                                 <i data-lucide="award"></i>
@@ -199,14 +201,11 @@
                             <h3>Certified</h3>
                         </div>
                         <div class="cert-grid">
-                            <div class="cert-item" title="Azure AI Fundamentals">
-                                <span>Azure AI</span>
+                            <div class="cert-item" title="Microsoft Azure Certifications">
+                                <span>Azure</span>
                             </div>
-                            <div class="cert-item" title="Azure Data Fundamentals">
-                                <span>Azure Data</span>
-                            </div>
-                            <div class="cert-item" title="Oracle Cloud Infrastructure">
-                                <span>Oracle Cloud</span>
+                            <div class="cert-item" title="Oracle Cloud Certifications">
+                                <span>Oracle</span>
                             </div>
                         </div>
                     </div>
@@ -229,6 +228,7 @@
                 <div class="card card-github" data-col="2" data-row="1"
                     onclick="window.open('https://github.com/marccodesstuff', '_blank')" style="cursor: pointer;">
                     <div class="card-content">
+                        <div class="see-more-hint">See More <i data-lucide="arrow-right"></i></div>
                         <div class="github-header">
                             <div class="icon-box icon-gray">
                                 <i data-lucide="github"></i>
@@ -377,6 +377,39 @@
                         <span>PostgreSQL</span>
                         <span>Tailwind</span>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CERTIFICATIONS MODAL -->
+    <div id="certsModal" class="modal-overlay" onclick="closeCertsModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeCertsModal()">
+                <i data-lucide="x"></i>
+            </button>
+
+            <div class="modal-header">
+                <h2>Certifications</h2>
+                <p>Industry-recognized credentials in Cloud and AI.</p>
+            </div>
+
+            <div class="certs-list-container">
+                <div class="cert-provider-group">
+                    <h3><i data-lucide="award"></i> Microsoft</h3>
+                    <ul>
+                        <li>Microsoft Certified: Azure Fundamentals</li>
+                        <li>Microsoft Certified: Azure AI Fundamentals</li>
+                        <li>Microsoft Certified: Azure Data Fundamentals</li>
+                    </ul>
+                </div>
+
+                <div class="cert-provider-group">
+                    <h3><i data-lucide="award"></i> Oracle</h3>
+                    <ul>
+                        <li>Oracle Cloud Infrastructure 2025 AI Foundations Associate</li>
+                        <li>Oracle Cloud Infrastructure 2025 Certified Generative AI Professional</li>
+                    </ul>
                 </div>
             </div>
         </div>

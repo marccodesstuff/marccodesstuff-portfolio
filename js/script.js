@@ -18,7 +18,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize GitHub Stats
     initGitHubStats();
+
+    // Initialize Availability Status (based on Manila time)
+    checkAvailability();
 });
+
+/**
+ * Check Availability based on Time (PHST: UTC+8)
+ * Active hours: 8:00 AM - 10:00 PM
+ */
+function checkAvailability() {
+    const statusDot = document.querySelector('.status-dot');
+    const statusContainer = document.querySelector('.status-badge');
+
+    if (!statusDot) return;
+
+    // Get current time in Manila
+    const manilaTime = new Date().toLocaleString("en-US", { timeZone: "Asia/Manila" });
+    const currentHour = new Date(manilaTime).getHours();
+
+    // Check if between 8 AM (8) and 10 PM (22)
+    const isActive = currentHour >= 8 && currentHour < 22;
+
+    if (isActive) {
+        statusDot.classList.remove('offline');
+        statusContainer.setAttribute('title', 'Active Now (Manila Time)');
+    } else {
+        statusDot.classList.add('offline');
+        statusContainer.setAttribute('title', 'Away / Sleeping (Manila Time)');
+    }
+}
 
 /**
  * Animate cards as they scroll into view
@@ -177,8 +206,35 @@ document.addEventListener('keydown', (e) => {
         if (wipModal && wipModal.classList.contains('active')) {
             closeWipModal();
         }
+        const certsModal = document.getElementById('certsModal');
+        if (certsModal && certsModal.classList.contains('active')) {
+            closeCertsModal();
+        }
     }
 });
+
+/**
+ * Certifications Modal Interactions
+ */
+function openCertsModal() {
+    const modal = document.getElementById('certsModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        lucide.createIcons();
+    }
+}
+
+function closeCertsModal(event) {
+    const modal = document.getElementById('certsModal');
+    if (modal) {
+        if (event && event.target !== modal && !event.target.classList.contains('modal-close') && !event.target.closest('.modal-close')) {
+            return;
+        }
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
 
 /**
  * WIP Modal - Shows "Work in Progress" message and auto-closes after 3 seconds
