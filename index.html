@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marc Velasquez | Developer Portfolio</title>
+    <meta name="description"
+        content="Portfolio of Marc Velasquez - Computer Science student specializing in Data Science, AI, and Cloud Computing.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="layout-container">
+
+        <!-- SIDEBAR: Profile Information -->
+        <aside class="sidebar">
+            <div class="profile-container">
+                <div class="profile-avatar-container">
+                    <div class="profile-avatar">MV</div>
+                    <div class="status-badge" title="Available for hire">
+                        <span class="status-dot"></span>
+                    </div>
+                </div>
+
+                <div class="profile-info">
+                    <h1>Marc Velasquez</h1>
+                    <h2 class="role-text">CS Student • Data Science</h2>
+                    <p class="bio-text">Building the future with AI & Cloud. Passionate about solving real-world
+                        problems through code.</p>
+                </div>
+
+                <div class="sidebar-actions">
+                    <a href="mailto:contact@marcvelasquez.dev" class="btn btn-primary">
+                        <i data-lucide="mail"></i> Contact Me
+                    </a>
+                    <button class="btn btn-secondary"
+                        onclick="window.open('https://www.linkedin.com/in/mrcvctr-vel', '_blank')">
+                        <i data-lucide="linkedin"></i>
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.open('https://github.com', '_blank')">
+                        <i data-lucide="github"></i>
+                    </button>
+                </div>
+
+                <div class="sidebar-footer">
+                    <div class="footer-item">
+                        <span class="footer-label">Location</span>
+                        <span class="footer-value">Philippines</span>
+                    </div>
+                    <div class="footer-item">
+                        <span class="footer-label">Experience</span>
+                        <span class="footer-value">2+ Years</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN: Bento Grid -->
+        <main class="main-content">
+            <div class="bento-grid">
+
+                <!-- 1. Experience Card (Large) -->
+                <div class="card card-experience" data-col="2" data-row="2">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="icon-box icon-purple">
+                                <i data-lucide="briefcase"></i>
+                            </div>
+                            <h3>Experience</h3>
+                        </div>
+                        <div class="experience-list">
+                            <div class="exp-item">
+                                <div class="exp-time">Jan 2023 - Present</div>
+                                <div class="exp-role">Freelance App Developer</div>
+                                <div class="exp-detail">Deployed web apps on AWS & Azure</div>
+                            </div>
+                            <div class="exp-item">
+                                <div class="exp-time">2022 - Present</div>
+                                <div class="exp-role">CS Student @ AUF</div>
+                                <div class="exp-detail">Specializing in Data Science</div>
+                            </div>
+                        </div>
+                        <div class="card-decoration decoration-wave"></div>
+                    </div>
+                </div>
+
+                <!-- 2. Projects (Merged - 2x2) -->
+                <div class="card card-projects-main" data-col="2" data-row="2" onclick="openProjectsModal()"
+                    style="cursor: pointer;">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="icon-box icon-blue">
+                                <i data-lucide="folder-open-dot"></i>
+                            </div>
+                            <div class="project-count-badge">3 Projects</div>
+                        </div>
+                        <div class="projects-preview">
+                            <h3>Selected Works</h3>
+                            <p class="projects-subtext">AI Systems, Computer Vision, and Web Applications.</p>
+
+                            <div class="mini-project-list">
+                                <div class="mini-p-item">
+                                    <span class="dot dot-purple"></span> AI Director
+                                </div>
+                                <div class="mini-p-item">
+                                    <span class="dot dot-red"></span> MRI Detection
+                                </div>
+                                <div class="mini-p-item">
+                                    <span class="dot dot-cyan"></span> Water Mangement
+                                </div>
+                            </div>
+                        </div>
+                        <div class="click-hint">
+                            <span>View All Projects</span>
+                            <i data-lucide="arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Tech Stack (Wide) -->
+                <div class="card card-stack" data-col="2" data-row="1">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <div class="icon-box icon-orange">
+                                <i data-lucide="layers"></i>
+                            </div>
+                            <h3>Tech Stack</h3>
+                        </div>
+                        <div class="stack-scroller">
+                            <div class="stack-track">
+                                <!-- Original Set -->
+                                <i class="devicon-python-plain colored" title="Python"></i>
+                                <i class="devicon-cplusplus-plain colored" title="C++"></i>
+                                <i class="devicon-csharp-plain colored" title="C#"></i>
+                                <i class="devicon-java-plain colored" title="Java"></i>
+                                <i class="devicon-rust-original colored" title="Rust"></i>
+                                <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+                                <i class="devicon-go-original-wordmark colored" title="Go"></i>
+                                <i class="devicon-react-original colored" title="React"></i>
+                                <i class="devicon-nextjs-plain" title="Next.js"></i>
+                                <i class="devicon-flutter-plain colored" title="Flutter"></i>
+                                <i class="devicon-pytorch-original colored" title="PyTorch"></i>
+                                <i class="devicon-tensorflow-original colored" title="TensorFlow"></i>
+                                <i class="devicon-azure-plain colored" title="Azure"></i>
+                                <i class="devicon-amazonwebservices-plain-wordmark colored" title="AWS"></i>
+                                <i class="devicon-git-plain colored" title="Git"></i>
+                                <i class="devicon-postgresql-plain colored" title="PostgreSQL"></i>
+
+                                <!-- Duplicate Set for Smooth Infinity Scroll -->
+                                <i class="devicon-python-plain colored" title="Python"></i>
+                                <i class="devicon-cplusplus-plain colored" title="C++"></i>
+                                <i class="devicon-csharp-plain colored" title="C#"></i>
+                                <i class="devicon-java-plain colored" title="Java"></i>
+                                <i class="devicon-rust-original colored" title="Rust"></i>
+                                <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+                                <i class="devicon-go-original-wordmark colored" title="Go"></i>
+                                <i class="devicon-react-original colored" title="React"></i>
+                                <i class="devicon-nextjs-plain" title="Next.js"></i>
+                                <i class="devicon-flutter-plain colored" title="Flutter"></i>
+                                <i class="devicon-pytorch-original colored" title="PyTorch"></i>
+                                <i class="devicon-tensorflow-original colored" title="TensorFlow"></i>
+                                <i class="devicon-azure-plain colored" title="Azure"></i>
+                                <i class="devicon-amazonwebservices-plain-wordmark colored" title="AWS"></i>
+                                <i class="devicon-git-plain colored" title="Git"></i>
+                                <i class="devicon-postgresql-plain colored" title="PostgreSQL"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Certifications (Medium - Vertical) -->
+                <div class="card card-certs" data-col="1" data-row="2">
+                    <div class="card-content">
+                        <div class="card-header-centered">
+                            <div class="icon-box icon-yellow">
+                                <i data-lucide="award"></i>
+                            </div>
+                            <h3>Certified</h3>
+                        </div>
+                        <div class="cert-grid">
+                            <div class="cert-item" title="Azure AI Fundamentals">
+                                <span>Azure AI</span>
+                            </div>
+                            <div class="cert-item" title="Azure Data Fundamentals">
+                                <span>Azure Data</span>
+                            </div>
+                            <div class="cert-item" title="Oracle Cloud Infrastructure">
+                                <span>Oracle Cloud</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Awards (Small) -->
+                <div class="card card-awards" data-col="1" data-row="1">
+                    <div class="card-content centered-content">
+                        <div class="award-cup">🏆</div>
+                        <div class="award-text">
+                            <strong>2nd Runner Up</strong>
+                            <span>AI Hack GDG-HAU</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Github Stats (Wide) -->
+                <div class="card card-github" data-col="2" data-row="1"
+                    onclick="window.open('https://github.com/marccodesstuff', '_blank')" style="cursor: pointer;">
+                    <div class="card-content">
+                        <div class="github-header">
+                            <div class="icon-box icon-gray">
+                                <i data-lucide="github"></i>
+                            </div>
+                            <div class="github-stats">
+                                <div class="stat">
+                                    <span class="val" id="gh-repos">--</span>
+                                    <span class="lbl">Repos</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="val" id="gh-followers">--</span>
+                                    <span class="lbl">Followers</span>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="https://ghchart.rshah.org/marccodesstuff" alt="Github Chart" class="gh-chart"
+                            onerror="this.style.display='none'">
+                    </div>
+                </div>
+
+                <!-- 9. Music / Focus (Small) -->
+                <div class="card card-music" data-col="1" data-row="1">
+                    <div class="card-content centered-content">
+                        <div class="music-bars">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                        <span class="music-label">Coding Focus</span>
+                    </div>
+                </div>
+
+                <!-- 10. Contact/CTA (Wide) -->
+                <div class="card card-cta" data-col="2" data-row="1">
+                    <div class="card-content flex-row-content">
+                        <div class="cta-text">
+                            <h3>Let's work together</h3>
+                            <p>Open for freelance & collab</p>
+                        </div>
+                        <div class="cta-arrow">
+                            <i data-lucide="arrow-right"></i>
+                        </div>
+                    </div>
+                    <a href="mailto:contact@marcvelasquez.dev" class="card-link-overlay"></a>
+                </div>
+
+                <!-- 11. Download Resume (Small - Functional) -->
+                <div class="card card-resume" data-col="1" data-row="1" onclick="alert('Downloading Resume... (Demo)')"
+                    style="cursor: pointer;">
+                    <div class="card-content centered-content">
+                        <div class="icon-box icon-green">
+                            <i data-lucide="file-down"></i>
+                        </div>
+                        <div class="action-text">
+                            <strong>My Resume</strong>
+                            <span>PDF Download</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. Copy Email (Small - Functional) -->
+                <div class="card card-email" data-col="1" data-row="1" id="copyEmailCard" style="cursor: pointer;">
+                    <div class="card-content centered-content">
+                        <div class="icon-box icon-blue">
+                            <i data-lucide="copy"></i>
+                        </div>
+                        <div class="action-text">
+                            <strong>Copy Email</strong>
+                            <span id="emailStatus">Click to Copy</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- PROJECTS MODAL -->
+    <div id="projectsModal" class="modal-overlay" onclick="closeProjectsModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeProjectsModal()">
+                <i data-lucide="x"></i>
+            </button>
+
+            <div class="modal-header">
+                <h2>Featured Projects</h2>
+                <p>A collection of my work in AI, Data Science, and Web Dev.</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="modal-project-card">
+                    <div class="mp-header">
+                        <div class="icon-box icon-blue">
+                            <i data-lucide="brain-circuit"></i>
+                        </div>
+                        <h3>AI Director System</h3>
+                    </div>
+                    <p class="mp-desc">Unreal Engine 5 AI Director using diffusion models & LLMs to create dynamic,
+                        adaptive gameplay experiences.</p>
+                    <div class="tech-stack">
+                        <span>UE5</span>
+                        <span>C++</span>
+                        <span>Python</span>
+                        <span>NumPy</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="modal-project-card"
+                    onclick="window.open('https://github.com/marccodesstuff/JointWise', '_blank')"
+                    style="cursor: pointer;">
+                    <div class="mp-header">
+                        <div class="icon-box icon-red">
+                            <i data-lucide="activity"></i>
+                        </div>
+                        <h3>MRI Knee Detection</h3>
+                    </div>
+                    <p class="mp-desc">Automated detection of meniscus and ACL tears using a YOLOv11 ensemble model with
+                        high accuracy.</p>
+                    <div class="tech-stack">
+                        <span>Python</span>
+                        <span>YOLOv11</span>
+                        <span>PyTorch</span>
+                        <span>OpenCV</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="modal-project-card"
+                    onclick="window.open('https://github.com/Neioo/Water-Processing-and-Management-Interface', '_blank')"
+                    style="cursor: pointer;">
+                    <div class="mp-header">
+                        <div class="icon-box icon-cyan">
+                            <i data-lucide="droplets"></i>
+                        </div>
+                        <h3>Water Management System</h3>
+                    </div>
+                    <p class="mp-desc">A comprehensive water management application built with Next.js and PostgreSQL
+                        for real-time tracking.</p>
+                    <div class="tech-stack">
+                        <span>Next.js</span>
+                        <span>React</span>
+                        <span>PostgreSQL</span>
+                        <span>Tailwind</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
