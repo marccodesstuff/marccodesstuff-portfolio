@@ -103,34 +103,34 @@ const projects: Project[] = [
 
 const ProjectsPage = () => {
     return (
-        <div className="min-h-screen bg-[#0a0a0a] text-white font-sans selection:bg-[#e07a5f] selection:text-black">
+        <div className="min-h-screen bg-[#000000] text-white font-sans selection:bg-[#e07a5f] selection:text-black">
 
             {/* --- HEADER --- */}
-            <header className="px-6 md:px-8 py-6 flex justify-between items-center border-b border-white/10">
-                <Link to="/" className="flex items-center gap-3 text-gray-400 hover:text-white">
+            <header className="px-6 md:px-8 py-6 flex justify-between items-center border-b border-white/5">
+                <Link to="/" className="flex items-center gap-3 text-neutral-500 hover:text-white transition-colors">
                     <ArrowLeft size={20} />
                     <span className="font-bold text-xl tracking-tight text-white">MV</span>
                 </Link>
 
-                <nav className="hidden md:flex items-center gap-8 text-sm text-gray-400">
-                    <Link to="/" className="hover:text-white">Index</Link>
+                <nav className="hidden md:flex items-center gap-8 text-sm text-neutral-500">
+                    <Link to="/" className="hover:text-white transition-colors">Index</Link>
                     <Link to="/projects" className="text-white">Projects</Link>
                 </nav>
 
                 <a
                     href="mailto:velasquezmarcvictor@gmail.com"
-                    className="bg-[#e07a5f] hover:bg-[#d86a4f] text-black px-5 py-2.5 text-sm font-bold flex items-center gap-2"
+                    className="bg-[#e07a5f] hover:bg-[#d86a4f] text-black px-5 py-2.5 text-sm font-bold flex items-center gap-2 transition-colors"
                 >
                     Let's Talk <ArrowUpRight size={16} />
                 </a>
             </header>
 
             {/* --- PAGE HEADER --- */}
-            <section className="px-6 md:px-8 py-12 md:py-16 border-b border-white/10">
+            <section className="px-6 md:px-8 py-12 md:py-16 border-b border-white/5">
                 <div className="max-w-[1400px] mx-auto">
                     <span className="text-xs text-[#e07a5f] font-bold uppercase tracking-wider mb-4 block">Portfolio</span>
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">Projects</h1>
-                    <p className="text-xl text-gray-400 max-w-2xl">
+                    <p className="text-xl text-neutral-400 max-w-2xl">
                         A collection of systems I've built — from AI-powered diagnostics to disaster response beacons.
                     </p>
                 </div>
@@ -144,7 +144,7 @@ const ProjectsPage = () => {
                     {projects.filter(p => p.featured).map((project) => (
                         <article
                             key={project.id}
-                            className="bg-[#1a1a1a] border border-white/10 rounded-2xl p-8 md:p-10 hover:border-[#e07a5f]/30 group"
+                            className="bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 md:p-10 hover:border-[#e07a5f]/30 group transition-colors"
                         >
                             <div className="grid md:grid-cols-12 gap-8">
                                 {/* Left: Meta */}
@@ -154,20 +154,20 @@ const ProjectsPage = () => {
                                     </div>
 
                                     <div>
-                                        <span className={`text-xs font-bold uppercase tracking-wider ${project.status === 'in-progress' ? 'text-[#e07a5f]' : 'text-gray-500'}`}>
+                                        <span className={`text-xs font-bold uppercase tracking-wider ${project.status === 'in-progress' ? 'text-[#e07a5f]' : 'text-neutral-500'}`}>
                                             {project.status === 'in-progress' ? '● In Progress' : project.type}
                                         </span>
-                                        <h2 className="text-3xl font-bold mt-2">{project.title}</h2>
-                                        <p className="text-gray-400 mt-1">{project.tagline}</p>
+                                        <h2 className="text-3xl font-bold mt-2 group-hover:text-[#e07a5f] transition-colors">{project.title}</h2>
+                                        <p className="text-neutral-400 mt-1">{project.tagline}</p>
                                     </div>
 
-                                    <div className="space-y-2 text-sm text-gray-500">
+                                    <div className="space-y-2 text-sm text-neutral-500">
                                         <div className="flex items-center gap-2">
-                                            <Users size={14} />
+                                            <Users size={14} className="text-[#e07a5f]/60" />
                                             <span>{project.role}</span>
                                         </div>
                                         <div className="flex items-center gap-2">
-                                            <Calendar size={14} />
+                                            <Calendar size={14} className="text-[#e07a5f]/60" />
                                             <span>{project.date}</span>
                                         </div>
                                     </div>
@@ -175,7 +175,7 @@ const ProjectsPage = () => {
                                     {project.achievements && (
                                         <div className="flex flex-wrap gap-2">
                                             {project.achievements.map((ach, i) => (
-                                                <span key={i} className="inline-flex items-center gap-1 text-xs bg-[#2a9d8f]/20 text-[#2a9d8f] px-3 py-1.5 rounded-full">
+                                                <span key={i} className="inline-flex items-center gap-1 text-xs border border-[#2a9d8f]/30 text-[#2a9d8f] px-3 py-1.5 rounded-sm">
                                                     <Award size={12} /> {ach}
                                                 </span>
                                             ))}
@@ -185,11 +185,11 @@ const ProjectsPage = () => {
 
                                 {/* Right: Content */}
                                 <div className="md:col-span-8 flex flex-col justify-between">
-                                    <ul className="space-y-3 text-gray-300">
+                                    <ul className="space-y-3 text-neutral-300">
                                         {project.description.map((item, i) => (
                                             <li key={i} className="flex gap-3">
-                                                <span className="text-[#e07a5f] mt-1.5">•</span>
-                                                <span>{item}</span>
+                                                <span className="text-[#e07a5f] mt-1.5 opacity-60">•</span>
+                                                <span className="leading-relaxed">{item}</span>
                                             </li>
                                         ))}
                                     </ul>
@@ -198,7 +198,7 @@ const ProjectsPage = () => {
                                         {project.tech.map((tech) => (
                                             <span
                                                 key={tech}
-                                                className="text-xs bg-white/5 border border-white/10 px-3 py-1.5 rounded-full"
+                                                className="text-xs bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-full text-neutral-400"
                                             >
                                                 {tech}
                                             </span>
@@ -214,23 +214,23 @@ const ProjectsPage = () => {
                         {projects.filter(p => !p.featured).map((project) => (
                             <article
                                 key={project.id}
-                                className="bg-[#1a1a1a] border border-white/10 rounded-2xl p-6 hover:border-[#e07a5f]/30 group"
+                                className="bg-[#0a0a0a] border border-white/5 rounded-2xl p-6 hover:border-[#e07a5f]/30 group transition-colors"
                             >
                                 <div className="flex justify-between items-start mb-4">
-                                    <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-gray-400">
+                                    <div className="w-10 h-10 bg-white/[0.03] rounded-lg flex items-center justify-center text-neutral-500 group-hover:text-[#e07a5f] transition-colors">
                                         {project.icon}
                                     </div>
-                                    <span className="text-xs text-gray-500 uppercase tracking-wider">{project.type}</span>
+                                    <span className="text-xs text-neutral-500 uppercase tracking-wider">{project.type}</span>
                                 </div>
 
-                                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                                <p className="text-gray-400 text-sm mb-4">{project.tagline}</p>
+                                <h3 className="text-xl font-bold mb-2 group-hover:text-[#e07a5f] transition-colors">{project.title}</h3>
+                                <p className="text-neutral-400 text-sm mb-4">{project.tagline}</p>
 
                                 <div className="flex flex-wrap gap-2">
                                     {project.tech.slice(0, 3).map((tech) => (
                                         <span
                                             key={tech}
-                                            className="text-xs bg-white/5 border border-white/10 px-2 py-1 rounded-full"
+                                            className="text-xs bg-white/[0.03] border border-white/10 px-2 py-1 rounded-full text-neutral-500"
                                         >
                                             {tech}
                                         </span>
@@ -244,13 +244,13 @@ const ProjectsPage = () => {
             </main>
 
             {/* --- CTA FOOTER --- */}
-            <footer className="bg-gradient-to-r from-[#e07a5f] via-[#d86a4f] to-[#c55a3f] mt-8 mx-4 md:mx-6 mb-4 md:mb-6 rounded-2xl p-8 md:p-10 text-black">
-                <div className="max-w-[1400px] mx-auto text-center">
+            <footer className="mt-8 mx-4 md:mx-6 mb-4 md:mb-6 rounded-2xl p-8 md:p-12 bg-[#0a0a0a] border border-white/5 text-center">
+                <div className="max-w-[1400px] mx-auto">
                     <h2 className="text-2xl md:text-3xl font-bold mb-2">Want to collaborate?</h2>
-                    <p className="opacity-70 mb-6">I'm always open to discussing new projects and opportunities.</p>
+                    <p className="text-neutral-500 mb-6">I'm always open to discussing new projects and opportunities.</p>
                     <a
                         href="mailto:velasquezmarcvictor@gmail.com"
-                        className="inline-flex items-center gap-2 bg-black text-white px-6 py-3 font-bold hover:bg-gray-900"
+                        className="inline-flex items-center gap-2 bg-[#e07a5f] hover:bg-[#d86a4f] text-black px-6 py-3 font-bold transition-colors rounded-sm"
                     >
                         Get in Touch <ArrowUpRight size={18} />
                     </a>
