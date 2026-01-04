@@ -20,17 +20,17 @@ const SwissPortfolio = () => {
         <div className="min-h-screen bg-[#000000] text-white font-sans selection:bg-[#e07a5f] selection:text-black">
 
             {/* --- HEADER --- */}
-            <header className="px-6 md:px-8 py-6 flex justify-between items-center border-b border-white/5">
+            <header className="sticky top-0 z-50 px-6 md:px-8 py-6 flex justify-between items-center border-b border-white/5 bg-black/80 backdrop-blur-md">
                 <Link to="/" className="font-bold text-xl tracking-tight hover:text-[#e07a5f] transition-colors">MV</Link>
 
-                <nav className="hidden md:flex items-center gap-8 text-sm text-neutral-500">
+                <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
                     <Link to="/" className="text-white">Index</Link>
-                    <Link to="/projects" className="hover:text-white transition-colors">Projects</Link>
+                    <Link to="/projects" className="text-neutral-500 hover:text-white transition-colors">Projects</Link>
                 </nav>
 
                 <a
                     href="mailto:velasquezmarcvictor@gmail.com"
-                    className="bg-[#e07a5f] hover:bg-[#d86a4f] text-black px-5 py-2.5 text-sm font-bold flex items-center gap-2 transition-colors"
+                    className="bg-[#e07a5f] hover:bg-[#d86a4f] text-black px-5 py-2.5 text-sm font-bold flex items-center gap-2 transition-colors rounded-sm"
                 >
                     Let's Talk <ArrowUpRight size={16} />
                 </a>
