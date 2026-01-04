@@ -24,7 +24,7 @@ const SwissPortfolio = () => {
                 <Link to="/" className="font-bold text-xl tracking-tight hover:text-[#e07a5f] transition-colors">MV</Link>
 
                 <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-                    <Link to="/" className="text-white">Index</Link>
+                    <Link to="/" className="text-white">Home</Link>
                     <Link to="/projects" className="text-neutral-500 hover:text-white transition-colors">Projects</Link>
                 </nav>
 
