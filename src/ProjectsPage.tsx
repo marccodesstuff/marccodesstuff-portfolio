@@ -2,17 +2,12 @@ import { Link } from 'react-router-dom';
 import {
     ArrowLeft,
     ArrowUpRight,
-    Github,
-    ExternalLink,
     Calendar,
     Users,
     Award,
     Zap,
     Brain,
-    Server,
-    Smartphone,
     Database,
-    Bot,
     Gamepad2
 } from 'lucide-react';
 
