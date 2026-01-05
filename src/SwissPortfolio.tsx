@@ -32,7 +32,7 @@ const SwissPortfolio = () => {
                     href="mailto:velasquezmarcvictor@gmail.com"
                     className="bg-[#e07a5f] hover:bg-[#d86a4f] text-black px-5 py-2.5 text-sm font-bold flex items-center gap-2 transition-colors rounded-sm"
                 >
-                    Let's Talk <ArrowUpRight size={16} />
+                    Let's Talk
                 </a>
             </header>
 
@@ -45,9 +45,10 @@ const SwissPortfolio = () => {
                         <div>
                             <span className="inline-block bg-[#e07a5f] text-black text-xs font-bold px-3 py-1 mb-6 rounded-sm">AVAILABLE FOR WORK</span>
                             <h1 className="text-5xl md:text-7xl font-bold leading-[0.95] tracking-tight">
-                                Digital<br />
-                                <span className="text-[#e07a5f]">Architect</span>
+                                Marc Victor<br />
+                                <span className="text-[#e07a5f]">Velasquez</span>
                             </h1>
+                            <p className="text-2xl md:text-3xl font-medium mt-4 text-neutral-300">Digital Architect</p>
                         </div>
                         <p className="text-xl text-neutral-400 max-w-lg mt-8">
                             Building robust backend systems, AI pipelines, and interfaces that don't get in the way.
