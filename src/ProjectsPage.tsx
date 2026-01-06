@@ -3,11 +3,11 @@ import {
     ArrowUpRight,
     Calendar,
     Users,
-    Award,
     Zap,
     Brain,
     Database,
-    Gamepad2
+    Gamepad2,
+    ArrowLeft
 } from 'lucide-react';
 
 interface Project {
@@ -102,77 +102,79 @@ const projects: Project[] = [
 
 const ProjectsPage = () => {
     return (
-        <div className="min-h-screen bg-[#000000] text-white font-sans selection:bg-[#e07a5f] selection:text-black">
+        <div className="min-h-screen bg-te-bg text-te-fg font-sans selection:bg-te-accent selection:text-white">
 
             {/* --- HEADER --- */}
-            <header className="sticky top-0 z-50 px-6 md:px-8 py-6 flex justify-between items-center border-b border-white/5 bg-black/80 backdrop-blur-md">
-                <Link to="/" className="font-bold text-xl tracking-tight hover:text-[#e07a5f] transition-colors">MV</Link>
+            <header className="sticky top-0 z-50 px-6 md:px-8 py-4 flex justify-between items-center bg-te-bg/90 backdrop-blur-md border-b border-te-border">
+                <Link to="/" className="flex items-center gap-3 group">
+                    <ArrowLeft size={16} className="text-te-muted group-hover:text-te-accent transition-colors" />
+                    <span className="te-label font-bold text-te-fg tracking-[0.2em]">BACK: INDEX</span>
+                </Link>
 
-                <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-                    <Link to="/" className="text-neutral-500 hover:text-white transition-colors">Home</Link>
-                    <Link to="/projects" className="text-white">Projects</Link>
+                <nav className="hidden md:flex items-center gap-12 text-[10px] te-label font-bold">
+                    <Link to="/" className="text-te-muted hover:text-te-fg transition-colors">01. INDEX</Link>
+                    <Link to="/projects" className="text-te-accent border-b border-te-accent pb-1">02. PROJECTS</Link>
+                    <Link to="/about" className="text-te-muted hover:text-te-fg transition-colors">03. ABOUT</Link>
                 </nav>
 
-                <a
-                    href="mailto:velasquezmarcvictor@gmail.com"
-                    className="bg-[#e07a5f] hover:bg-[#d86a4f] text-black px-5 py-2.5 text-sm font-bold flex items-center gap-2 transition-colors rounded-sm"
-                >
-                    Let's Talk <ArrowUpRight size={16} />
-                </a>
+                <div className="te-label opacity-40">CAT: PROJECTS_LIST</div>
             </header>
 
             {/* --- PAGE HEADER --- */}
-            <section className="px-6 md:px-8 py-12 md:py-16 border-b border-white/5">
+            <section className="px-6 md:px-8 py-16 border-b border-te-border bg-te-surface">
                 <div className="max-w-[1400px] mx-auto">
-                    <span className="text-xs text-[#e07a5f] font-bold uppercase tracking-wider mb-4 block">Portfolio</span>
-                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-4">Projects</h1>
-                    <p className="text-xl text-neutral-400 max-w-2xl">
-                        A collection of systems I've built — from AI-powered diagnostics to disaster response beacons.
+                    <span className="te-label border-l-2 border-te-accent pl-2 text-te-accent mb-4 block">PORTFOLIO_CORE</span>
+                    <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6">Built Systems</h1>
+                    <p className="text-xl font-medium max-w-2xl leading-tight">
+                        A catalog of digital architecture — from AI-powered diagnostics to disaster response beacons.
                     </p>
                 </div>
             </section>
 
             {/* --- PROJECTS GRID --- */}
-            <main className="p-6 md:p-8">
-                <div className="max-w-[1400px] mx-auto space-y-6">
+            <main className="p-4 md:p-6 lg:p-8">
+                <div className="max-w-[1400px] mx-auto grid grid-cols-1 gap-1 border border-te-border bg-te-border">
 
-                    {/* Featured Projects */}
-                    {projects.filter(p => p.featured).map((project) => (
+                    {projects.map((project) => (
                         <article
                             key={project.id}
-                            className="bg-[#0a0a0a] border border-white/5 rounded-2xl p-8 md:p-10 hover:border-[#e07a5f]/30 group transition-colors"
+                            className="bg-te-surface p-8 md:p-12 hover:bg-white transition-colors group relative overflow-hidden"
                         >
-                            <div className="grid md:grid-cols-12 gap-8">
+                            <div className="absolute top-4 right-8 te-label opacity-20 group-hover:opacity-40 select-none">
+                                REF_ID: {project.id.toUpperCase()}
+                            </div>
+
+                            <div className="grid md:grid-cols-12 gap-12">
                                 {/* Left: Meta */}
-                                <div className="md:col-span-4 flex flex-col gap-6">
-                                    <div className="w-12 h-12 bg-[#e07a5f]/10 text-[#e07a5f] rounded-xl flex items-center justify-center">
+                                <div className="md:col-span-4 flex flex-col gap-8">
+                                    <div className="w-16 h-16 te-module flex items-center justify-center text-te-accent shadow-sm">
                                         {project.icon}
                                     </div>
 
                                     <div>
-                                        <span className={`text-xs font-bold uppercase tracking-wider ${project.status === 'in-progress' ? 'text-[#e07a5f]' : 'text-neutral-500'}`}>
-                                            {project.status === 'in-progress' ? '● In Progress' : project.type}
+                                        <span className={`te-label px-2 py-0.5 border ${project.status === 'in-progress' ? 'border-te-accent text-te-accent' : 'border-te-border text-te-muted'}`}>
+                                            {project.status === 'in-progress' ? 'STATUS_ACTIVE' : project.type.toUpperCase()}
                                         </span>
-                                        <h2 className="text-3xl font-bold mt-2 group-hover:text-[#e07a5f] transition-colors">{project.title}</h2>
-                                        <p className="text-neutral-400 mt-1">{project.tagline}</p>
+                                        <h2 className="text-4xl font-black uppercase tracking-tighter mt-4 group-hover:text-te-accent transition-colors">{project.title}</h2>
+                                        <p className="te-label font-bold tracking-normal mt-2 text-te-muted">{project.tagline}</p>
                                     </div>
 
-                                    <div className="space-y-2 text-sm text-neutral-500">
-                                        <div className="flex items-center gap-2">
-                                            <Users size={14} className="text-[#e07a5f]/60" />
-                                            <span>{project.role}</span>
+                                    <div className="space-y-3 te-label text-[11px] leading-tight">
+                                        <div className="flex items-center gap-3">
+                                            <Users size={12} className="text-te-muted" />
+                                            <span className="text-te-fg">{project.role}</span>
                                         </div>
-                                        <div className="flex items-center gap-2">
-                                            <Calendar size={14} className="text-[#e07a5f]/60" />
-                                            <span>{project.date}</span>
+                                        <div className="flex items-center gap-3">
+                                            <Calendar size={12} className="text-te-muted" />
+                                            <span className="text-te-fg">{project.date}</span>
                                         </div>
                                     </div>
 
                                     {project.achievements && (
                                         <div className="flex flex-wrap gap-2">
                                             {project.achievements.map((ach, i) => (
-                                                <span key={i} className="inline-flex items-center gap-1 text-xs border border-[#2a9d8f]/30 text-[#2a9d8f] px-3 py-1.5 rounded-sm">
-                                                    <Award size={12} /> {ach}
+                                                <span key={i} className="te-label px-3 py-1.5 border border-te-accent/30 text-te-accent font-bold">
+                                                    {ach}
                                                 </span>
                                             ))}
                                         </div>
@@ -181,74 +183,46 @@ const ProjectsPage = () => {
 
                                 {/* Right: Content */}
                                 <div className="md:col-span-8 flex flex-col justify-between">
-                                    <ul className="space-y-3 text-neutral-300">
+                                    <ul className="space-y-4">
                                         {project.description.map((item, i) => (
-                                            <li key={i} className="flex gap-3">
-                                                <span className="text-[#e07a5f] mt-1.5 opacity-60">•</span>
-                                                <span className="leading-relaxed">{item}</span>
+                                            <li key={i} className="flex gap-4">
+                                                <div className="w-1.5 h-1.5 bg-te-accent shrink-0 mt-2" />
+                                                <p className="text-lg font-medium leading-snug">{item}</p>
                                             </li>
                                         ))}
                                     </ul>
 
-                                    <div className="flex flex-wrap gap-2 mt-8">
-                                        {project.tech.map((tech) => (
-                                            <span
-                                                key={tech}
-                                                className="text-xs bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-full text-neutral-400"
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
+                                    <div className="mt-12">
+                                        <div className="te-label mb-4 opacity-40">TECHNICAL_DEPENDENCIES</div>
+                                        <div className="flex flex-wrap gap-2">
+                                            {project.tech.map((tech) => (
+                                                <span
+                                                    key={tech}
+                                                    className="te-label px-3 py-1 bg-te-bg border border-te-border text-te-fg font-bold"
+                                                >
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </article>
                     ))}
-
-                    {/* Other Projects Grid */}
-                    <div className="grid md:grid-cols-2 gap-6 pt-8">
-                        {projects.filter(p => !p.featured).map((project) => (
-                            <article
-                                key={project.id}
-                                className="bg-[#0a0a0a] border border-white/5 rounded-2xl p-6 hover:border-[#e07a5f]/30 group transition-colors"
-                            >
-                                <div className="flex justify-between items-start mb-4">
-                                    <div className="w-10 h-10 bg-white/[0.03] rounded-lg flex items-center justify-center text-neutral-500 group-hover:text-[#e07a5f] transition-colors">
-                                        {project.icon}
-                                    </div>
-                                    <span className="text-xs text-neutral-500 uppercase tracking-wider">{project.type}</span>
-                                </div>
-
-                                <h3 className="text-xl font-bold mb-2 group-hover:text-[#e07a5f] transition-colors">{project.title}</h3>
-                                <p className="text-neutral-400 text-sm mb-4">{project.tagline}</p>
-
-                                <div className="flex flex-wrap gap-2">
-                                    {project.tech.slice(0, 3).map((tech) => (
-                                        <span
-                                            key={tech}
-                                            className="text-xs bg-white/[0.03] border border-white/10 px-2 py-1 rounded-full text-neutral-500"
-                                        >
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            </article>
-                        ))}
-                    </div>
-
                 </div>
             </main>
 
             {/* --- CTA FOOTER --- */}
-            <footer className="mt-8 mx-4 md:mx-6 mb-4 md:mb-6 rounded-2xl p-8 md:p-12 bg-[#0a0a0a] border border-white/5 text-center">
-                <div className="max-w-[1400px] mx-auto">
-                    <h2 className="text-2xl md:text-3xl font-bold mb-2">Want to collaborate?</h2>
-                    <p className="text-neutral-500 mb-6">I'm always open to discussing new projects and opportunities.</p>
+            <footer className="mt-8 p-12 md:p-24 bg-te-surface border-t border-te-border text-center">
+                <div className="max-w-2xl mx-auto flex flex-col items-center gap-8">
+                    <div className="te-label">END_OF_CATALOG</div>
+                    <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Request_Access</h2>
+                    <p className="text-xl font-medium">I'm always open to discussing new systems and digital architecture.</p>
                     <a
                         href="mailto:velasquezmarcvictor@gmail.com"
-                        className="inline-flex items-center gap-2 bg-[#e07a5f] hover:bg-[#d86a4f] text-black px-6 py-3 font-bold transition-colors rounded-sm"
+                        className="te-button bg-te-accent border-te-accent text-white px-8 py-4 te-label font-bold text-lg hover:brightness-110 active:scale-95 transition-all flex items-center gap-3"
                     >
-                        Get in Touch <ArrowUpRight size={18} />
+                        INITIALIZE_CONTACT <ArrowUpRight size={20} />
                     </a>
                 </div>
             </footer>
@@ -257,3 +231,4 @@ const ProjectsPage = () => {
 };
 
 export default ProjectsPage;
+

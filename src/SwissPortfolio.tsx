@@ -7,270 +7,194 @@ import {
     Linkedin,
     FileText,
     Mail,
-    Zap,
-    Cloud,
-    Brain,
-    GraduationCap,
-    Trophy,
-    Award
+    Brain
 } from 'lucide-react';
 
 const SwissPortfolio = () => {
     return (
-        <div className="min-h-screen bg-[#000000] text-white font-sans selection:bg-[#e07a5f] selection:text-black">
+        <div className="min-h-screen bg-te-bg text-te-fg font-sans selection:bg-te-accent selection:text-white">
 
             {/* --- HEADER --- */}
-            <header className="sticky top-0 z-50 px-6 md:px-8 py-6 flex justify-between items-center border-b border-white/5 bg-black/80 backdrop-blur-md">
-                {/* Logo removed as per request */}
-                <div />
+            <header className="sticky top-0 z-50 px-6 md:px-8 py-4 flex justify-between items-center bg-te-bg/90 backdrop-blur-md border-b border-te-border">
+                <div className="te-label font-bold text-te-fg tracking-[0.2em]">SYSTEM: 04.2</div>
 
-                <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-                    <Link to="/" className="text-white">Home</Link>
-                    <Link to="/projects" className="text-neutral-500 hover:text-white transition-colors">Projects</Link>
+                <nav className="hidden md:flex items-center gap-12 text-[10px] te-label font-bold">
+                    <Link to="/" className="text-te-accent border-b border-te-accent pb-1">01. INDEX</Link>
+                    <Link to="/projects" className="text-te-muted hover:text-te-fg transition-colors">02. PROJECTS</Link>
+                    <Link to="/about" className="text-te-muted hover:text-te-fg transition-colors">03. ABOUT</Link>
                 </nav>
 
                 <a
                     href="mailto:velasquezmarcvictor@gmail.com"
-                    className="bg-[#e07a5f] hover:bg-[#d86a4f] text-black px-5 py-2.5 text-sm font-bold flex items-center gap-2 transition-colors rounded-sm"
+                    className="te-button bg-te-accent border-te-accent text-white px-4 py-2 text-[10px] te-label font-bold flex items-center gap-2 hover:brightness-110 active:scale-95 transition-all"
                 >
-                    Let's Talk <ArrowUpRight size={16} />
+                    CONTACT <ArrowUpRight size={12} />
                 </a>
             </header>
 
-            {/* --- BENTO GRID --- */}
-            <main className="p-4 md:p-6">
-                <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-4">
+            {/* --- MAIN GRID --- */}
+            <main className="p-4 md:p-6 lg:p-8">
+                <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-1 border-t border-l border-te-border bg-te-border">
 
-                    {/* --- HERO BLOCK (Large) --- */}
-                    <div className="md:col-span-8 bg-[#0a0a0a] border border-white/5 p-8 md:p-12 min-h-[400px] flex flex-col justify-between rounded-2xl">
-                        <div>
-                            <span className="inline-block bg-[#e07a5f] text-black text-xs font-bold px-3 py-1 mb-6 rounded-sm">AVAILABLE FOR WORK</span>
-                            <h1 className="text-5xl md:text-7xl font-bold leading-[0.95] tracking-tight">
-                                Marc Victor<br />
-                                <span className="text-[#e07a5f]">Velasquez</span>
-                            </h1>
-                            <p className="text-2xl md:text-3xl font-medium mt-4 text-neutral-300">Digital Architect</p>
+                    {/* --- HERO BLOCK --- */}
+                    <div className="md:col-span-8 bg-te-surface p-8 md:p-12 min-h-[450px] flex flex-col justify-between border-r border-b border-te-border relative overflow-hidden">
+                        <div className="absolute top-4 right-4 te-label opacity-30 select-none">
+                            MOD_REF: 8891-TR
                         </div>
-                        <p className="text-xl text-neutral-400 max-w-lg mt-8">
-                            Building robust backend systems, AI pipelines, and interfaces that don't get in the way.
-                        </p>
+                        <div>
+                            <div className="flex items-center gap-3 mb-8">
+                                <span className="te-label px-2 py-0.5 border border-te-accent text-te-accent">ACTIVE</span>
+                                <span className="te-label">OP_READY: 100%</span>
+                            </div>
+                            <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85]">
+                                Marc Victor<br />
+                                <span className="text-te-accent">Velasquez</span>
+                            </h1>
+                            <p className="te-label text-base font-bold mt-6 tracking-normal">Digital Architect / Backend Engineer</p>
+                        </div>
+                        <div className="flex flex-col md:flex-row justify-between items-end gap-6">
+                            <p className="text-xl font-medium max-w-md leading-tight">
+                                Building high-density backend systems and AI research pipelines.
+                            </p>
+                            <div className="te-label text-[9px] leading-tight text-right opacity-40">
+                                44.5895° N, 15.9486° E<br />
+                                BUILD_REV: 2026.01.06
+                            </div>
+                        </div>
                     </div>
 
-                    {/* --- STATUS WIDGETS (Right column) --- */}
-                    <div className="md:col-span-4 flex flex-col gap-4">
+                    {/* --- STATUS MODULES --- */}
+                    <div className="md:col-span-4 grid grid-cols-1 gap-1">
                         {/* Location */}
-                        <div className="bg-[#0a0a0a] border border-white/5 p-6 rounded-2xl flex-1 flex flex-col justify-between">
+                        <div className="bg-te-surface p-6 border-r border-b border-te-border flex flex-col justify-between group">
                             <div className="flex justify-between items-start">
-                                <span className="text-xs text-neutral-500 uppercase tracking-wider">Location</span>
-                                <MapPin size={18} className="text-[#e07a5f]" />
+                                <span className="te-label">Location</span>
+                                <MapPin size={14} className="text-te-accent" />
                             </div>
-                            <div className="mt-4">
-                                <p className="text-2xl font-bold">Angeles, PH</p>
-                                <p className="text-neutral-500 text-sm mt-1">UTC+8 • Open to Remote</p>
+                            <div className="mt-8">
+                                <p className="text-2xl font-black tracking-tight uppercase">Angeles, PH</p>
+                                <p className="te-label mt-1">UTC +08:00 • REMOTE_SECURED</p>
                             </div>
                         </div>
 
                         {/* Current Focus */}
-                        <div className="bg-[#0a0a0a] border border-[#e07a5f]/20 p-6 rounded-2xl flex-1 flex flex-col justify-between group">
+                        <div className="bg-te-surface p-6 border-r border-b border-te-border flex flex-col justify-between group">
                             <div className="flex justify-between items-start">
-                                <span className="text-xs uppercase tracking-wider font-medium text-neutral-500">Current Focus</span>
-                                <Brain size={18} className="text-[#e07a5f]" />
+                                <span className="te-label">Research_Focus</span>
+                                <Brain size={14} className="text-te-accent" />
                             </div>
-                            <div className="mt-4">
-                                <p className="text-lg font-bold leading-tight group-hover:text-[#e07a5f] transition-colors">Transformer & Diffusion Architectures</p>
-                                <p className="text-sm mt-2 text-neutral-500">Spring Boot Security</p>
+                            <div className="mt-8">
+                                <p className="text-lg font-black tracking-tight leading-tight uppercase group-hover:text-te-accent transition-colors">
+                                    Transformer & Diffusion Architectures
+                                </p>
+                                <p className="te-label mt-2">Spring_Security_v6.x</p>
                             </div>
                         </div>
                     </div>
 
-                    {/* --- PROJECTS ROW --- */}
-                    <div className="md:col-span-6 bg-[#0a0a0a] border border-white/5 p-8 rounded-2xl group hover:border-[#e07a5f]/30 cursor-pointer transition-colors">
-                        <div className="flex justify-between items-start mb-8">
-                            <span className="text-xs text-[#e07a5f] font-bold uppercase tracking-wider">Hackathon Winner</span>
-                            <ArrowUpRight size={24} className="text-neutral-600 group-hover:text-[#e07a5f] transition-colors" />
+                    {/* --- FEATURED PROJECTS --- */}
+                    <div className="md:col-span-6 bg-te-surface p-8 border-r border-b border-te-border group cursor-pointer transition-colors hover:bg-white">
+                        <div className="flex justify-between items-start mb-12">
+                            <span className="te-label border-l-2 border-te-accent pl-2">MODULE_01: HACKATHON_WIN</span>
+                            <ArrowUpRight size={20} className="text-te-muted group-hover:text-te-fg transition-all" />
                         </div>
-                        <h3 className="text-3xl font-bold mb-3">BantayBayan</h3>
-                        <p className="text-neutral-400 mb-6">Offline disaster response beacon with 97.8% accuracy predictive neural network.</p>
-                        <div className="flex gap-2 flex-wrap">
-                            <span className="text-xs bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-full text-neutral-300">Gemini</span>
-                            <span className="text-xs bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-full text-neutral-300">TensorFlow</span>
-                            <span className="text-xs bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-full text-neutral-300">Flutter</span>
-                        </div>
-                    </div>
-
-                    <div className="md:col-span-6 bg-[#0a0a0a] border border-white/5 p-8 rounded-2xl group hover:border-[#e07a5f]/30 cursor-pointer transition-colors">
-                        <div className="flex justify-between items-start mb-8">
-                            <span className="text-xs text-neutral-500 font-bold uppercase tracking-wider">Side Project</span>
-                            <ArrowUpRight size={24} className="text-neutral-600 group-hover:text-[#e07a5f] transition-colors" />
-                        </div>
-                        <h3 className="text-3xl font-bold mb-3">GraphRAG System</h3>
-                        <p className="text-neutral-400 mb-6">Knowledge base with Obsidian + LlamaIndex for personal data retrieval.</p>
-                        <div className="flex gap-2 flex-wrap">
-                            <span className="text-xs bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-full text-neutral-300">LlamaIndex</span>
-                            <span className="text-xs bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-full text-neutral-300">RAG</span>
-                            <span className="text-xs bg-white/[0.03] border border-white/10 px-3 py-1.5 rounded-full text-neutral-300">Python</span>
+                        <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">BantayBayan</h3>
+                        <p className="text-sm font-medium mb-8 leading-relaxed text-te-muted max-w-sm">
+                            Offline disaster response beacon with predictive neural network integration.
+                        </p>
+                        <div className="flex gap-2 te-label">
+                            <span className="px-2 py-0.5 bg-te-bg border border-te-border">GEMINI.AI</span>
+                            <span className="px-2 py-0.5 bg-te-bg border border-te-border">TENSORFLOW</span>
+                            <span className="px-2 py-0.5 bg-te-bg border border-te-border">FLUTTER</span>
                         </div>
                     </div>
 
-                    {/* --- MORE PROJECTS --- */}
-                    <div className="md:col-span-4 bg-[#0a0a0a] border border-white/5 p-6 rounded-2xl group hover:border-[#e07a5f]/30 cursor-pointer transition-colors">
-                        <div className="flex justify-between items-start mb-6">
-                            <span className="text-xs text-neutral-500 font-bold uppercase tracking-wider">Thesis</span>
-                            <ArrowUpRight size={20} className="text-neutral-600 group-hover:text-[#e07a5f] transition-colors" />
+                    <div className="md:col-span-6 bg-te-surface p-8 border-r border-b border-te-border group cursor-pointer transition-colors hover:bg-white">
+                        <div className="flex justify-between items-start mb-12">
+                            <span className="te-label border-l-2 border-te-accent pl-2">MODULE_02: RESEARCH</span>
+                            <ArrowUpRight size={20} className="text-te-muted group-hover:text-te-fg transition-all" />
                         </div>
-                        <h3 className="text-xl font-bold mb-2">Knee Tear Detection</h3>
-                        <p className="text-neutral-500 text-sm">Clinically validated MRI diagnostic platform. 0.88 Sensitivity.</p>
+                        <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">GraphRAG</h3>
+                        <p className="text-sm font-medium mb-8 leading-relaxed text-te-muted max-w-sm">
+                            Knowledge retrieval system utilizing Obsidian and semantic graph embeddings.
+                        </p>
+                        <div className="flex gap-2 te-label">
+                            <span className="px-2 py-0.5 bg-te-bg border border-te-border">LLAMA_INDEX</span>
+                            <span className="px-2 py-0.5 bg-te-bg border border-te-border">PYTHON</span>
+                            <span className="px-2 py-0.5 bg-te-bg border border-te-border">VECTOR_DB</span>
+                        </div>
                     </div>
 
-                    <div className="md:col-span-4 bg-[#0a0a0a] border border-white/5 p-6 rounded-2xl group hover:border-[#e07a5f]/30 cursor-pointer transition-colors">
-                        <div className="flex justify-between items-start mb-6">
-                            <span className="text-xs text-[#e07a5f] font-bold uppercase tracking-wider">In Progress</span>
-                            <ArrowUpRight size={20} className="text-neutral-600 group-hover:text-[#e07a5f] transition-colors" />
-                        </div>
-                        <h3 className="text-xl font-bold mb-2">AI Director System</h3>
-                        <p className="text-neutral-500 text-sm">Text-to-logic for UE5 simulation actor behaviors.</p>
-                    </div>
-
-                    <div className="md:col-span-4 bg-[#0a0a0a] border border-[#e07a5f]/10 p-6 rounded-2xl flex flex-col justify-center">
-                        <Zap size={24} className="text-[#e07a5f] mb-4" />
-                        <h3 className="text-xl font-bold mb-2">3x Hackathon Winner</h3>
-                        <p className="text-neutral-500 text-sm">JPCS 3rd • HexCore CTF 1st • GDG AI Hack 2nd + Best Technical</p>
-                    </div>
-
-                    {/* --- TECH STACK BLOCK --- */}
-                    <div className="md:col-span-12 bg-[#0a0a0a] border border-white/5 p-8 md:p-10 rounded-2xl">
-                        <div className="flex items-center gap-3 mb-8">
-                            <Terminal size={24} className="text-[#e07a5f]" />
-                            <h3 className="text-2xl font-bold">Stack</h3>
+                    {/* --- TECH STACK MODULE --- */}
+                    <div className="md:col-span-12 bg-te-surface p-8 md:p-12 border-r border-b border-te-border grid grid-cols-1 md:grid-cols-4 gap-8">
+                        <div className="md:col-span-4 mb-4 flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                                <Terminal size={18} className="text-te-accent" />
+                                <h3 className="te-label text-base font-bold tracking-normal text-te-fg">CORE_STACK.EXE</h3>
+                            </div>
+                            <div className="te-label text-[9px] opacity-30">HEX_DUMP 0x3A2</div>
                         </div>
 
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                            <div>
-                                <h4 className="text-xs text-neutral-500 uppercase tracking-wider mb-4">Languages</h4>
-                                <ul className="space-y-2 text-sm">
-                                    <li className="text-white">Java</li>
-                                    <li className="text-white">TypeScript</li>
-                                    <li className="text-white">Python</li>
-                                    <li className="text-neutral-600">C++</li>
+                        {[
+                            { label: "Languages", items: ["Java", "TypeScript", "Python", "C++"] },
+                            { label: "Backend", items: ["Spring Boot", "Node.js", "Next.js", "Express"] },
+                            { label: "Infra", items: ["Docker", "Podman", "Oracle Cloud", "Azure"] },
+                            { label: "AI_ML", items: ["Gemini", "PyTorch", "LangChain", "HuggingFace"] }
+                        ].map((group) => (
+                            <div key={group.label} className="border-t border-te-border pt-4">
+                                <h4 className="te-label mb-4 text-te-muted">{group.label}</h4>
+                                <ul className="space-y-1">
+                                    {group.items.map(item => (
+                                        <li key={item} className="text-xs font-bold font-mono uppercase tracking-tight flex items-center gap-2">
+                                            <div className="w-1 h-1 bg-te-accent" />
+                                            {item}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
-                            <div>
-                                <h4 className="text-xs text-neutral-500 uppercase tracking-wider mb-4">Backend</h4>
-                                <ul className="space-y-2 text-sm">
-                                    <li className="text-white">Spring Boot</li>
-                                    <li className="text-white">Node.js</li>
-                                    <li className="text-white">Next.js</li>
-                                    <li className="text-neutral-600">Express</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 className="text-xs text-neutral-500 uppercase tracking-wider mb-4">Infra</h4>
-                                <ul className="space-y-2 text-sm">
-                                    <li className="text-white">Docker / Podman</li>
-                                    <li className="text-white">Oracle Cloud</li>
-                                    <li className="text-white">Azure</li>
-                                    <li className="text-neutral-600">AWS</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 className="text-xs text-neutral-500 uppercase tracking-wider mb-4">AI / ML</h4>
-                                <ul className="space-y-2 text-sm">
-                                    <li className="text-white">Gemini</li>
-                                    <li className="text-white">PyTorch</li>
-                                    <li className="text-white">LangChain</li>
-                                    <li className="text-neutral-600">TensorFlow</li>
-                                </ul>
-                            </div>
-                        </div>
+                        ))}
                     </div>
 
-                    {/* --- EDUCATION --- */}
-                    <div className="md:col-span-6 bg-[#0a0a0a] border border-white/5 p-6 rounded-2xl">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="w-8 h-8 bg-white/[0.03] text-white rounded-lg flex items-center justify-center">
-                                <GraduationCap size={16} />
-                            </div>
-                            <h3 className="font-bold">Education</h3>
+                    {/* --- FOOTER MODULE --- */}
+                    <footer className="md:col-span-12 bg-te-bg p-8 md:p-16 flex flex-col md:flex-row justify-between items-center gap-12 border-r border-b border-te-border">
+                        <div className="text-center md:text-left">
+                            <div className="te-label mb-4">SESSION_END</div>
+                            <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">
+                                Initialize<br />Collaboration
+                            </h2>
+                            <p className="te-label text-te-accent font-bold text-lg tracking-[0.1em]">velasquezmarcvictor@gmail.com</p>
                         </div>
-                        <div className="border-l-2 border-[#e07a5f]/20 pl-4">
-                            <h4 className="font-bold">Angeles University Foundation</h4>
-                            <p className="text-neutral-400 text-sm">BS Computer Science • 2022 - Present</p>
-                            <span className="inline-block mt-2 text-xs border border-[#2a9d8f]/30 text-[#2a9d8f] px-2 py-1 rounded-sm">
-                                College Scholar (2023–2024)
-                            </span>
-                        </div>
-                    </div>
 
-                    {/* --- ACHIEVEMENTS --- */}
-                    <div className="md:col-span-6 bg-[#0a0a0a] border border-white/5 p-6 rounded-2xl">
-                        <div className="flex items-center gap-3 mb-4">
-                            <div className="w-8 h-8 bg-white/[0.03] text-white rounded-lg flex items-center justify-center">
-                                <Trophy size={16} />
-                            </div>
-                            <h3 className="font-bold">Achievements</h3>
+                        <div className="grid grid-cols-2 gap-2">
+                            {[
+                                { icon: <Github size={20} />, label: "GITHUB" },
+                                { icon: <Linkedin size={20} />, label: "LINKEDIN" },
+                                { icon: <FileText size={20} />, label: "RESUME" },
+                                { icon: <Mail size={20} />, label: "EMAIL" }
+                            ].map((social) => (
+                                <a
+                                    key={social.label}
+                                    href="#"
+                                    className="te-button p-6 flex flex-col items-center justify-center gap-3 group hover:bg-white transition-colors"
+                                >
+                                    <div className="text-te-muted group-hover:text-te-accent transition-colors">
+                                        {social.icon}
+                                    </div>
+                                    <span className="te-label">{social.label}</span>
+                                </a>
+                            ))}
                         </div>
-                        <div className="space-y-2">
-                            <div className="flex items-center gap-2 text-sm text-neutral-400">
-                                <Award size={14} className="text-[#e07a5f]" />
-                                <span>JPCS Hackathon 2025 — 3rd Place</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-sm text-neutral-400">
-                                <Award size={14} className="text-[#e07a5f]" />
-                                <span>HexCore CTF — 1st Place</span>
-                            </div>
-                            <div className="flex items-center gap-2 text-sm text-neutral-400">
-                                <Award size={14} className="text-[#e07a5f]" />
-                                <span>GDG AI Hack — 2nd + Best Technical</span>
-                            </div>
-                        </div>
-                    </div>
+                    </footer>
+                </div>
 
-                    {/* --- CERTIFICATIONS BAR --- */}
-                    <div className="md:col-span-12 bg-white/[0.02] border border-white/5 p-6 rounded-2xl">
-                        <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-neutral-500 uppercase tracking-wider">
-                            <span className="flex items-center gap-2"><Cloud size={14} className="text-[#e07a5f]/60" /> Azure Fundamentals</span>
-                            <span className="text-white/5">•</span>
-                            <span className="flex items-center gap-2"><Cloud size={14} className="text-[#e07a5f]/60" /> Azure AI Fundamentals</span>
-                            <span className="text-white/5">•</span>
-                            <span className="flex items-center gap-2"><Cloud size={14} className="text-[#e07a5f]/60" /> OCI AI Foundations</span>
-                            <span className="text-white/5">•</span>
-                            <span className="flex items-center gap-2"><Cloud size={14} className="text-[#e07a5f]/60" /> OCI GenAI Professional</span>
-                        </div>
-                    </div>
-
+                <div className="max-w-[1400px] mx-auto mt-8 flex justify-between items-center px-2">
+                    <div className="te-label opacity-40">DESIGN_SYSTEM: TE_01-SWISS</div>
+                    <div className="te-label opacity-40">© 2026 MARC VICTOR VELASQUEZ</div>
                 </div>
             </main>
-
-            {/* --- FOOTER --- */}
-            <footer className="mt-4 mx-4 md:mx-6 mb-4 md:mb-6 rounded-2xl p-8 md:p-12 bg-[#0a0a0a] border border-white/5">
-                <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-2">Let's build something.</h2>
-                        <p className="text-[#e07a5f] font-mono">velasquezmarcvictor@gmail.com</p>
-                    </div>
-
-                    <div className="flex gap-4">
-                        <a href="https://github.com/marccodesstuff" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/[0.03] hover:bg-white/[0.08] rounded-xl text-white transition-colors">
-                            <Github size={24} />
-                        </a>
-                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" className="p-4 bg-white/[0.03] hover:bg-white/[0.08] rounded-xl text-white transition-colors">
-                            <Linkedin size={24} />
-                        </a>
-                        <a href="#" className="p-4 bg-white/[0.03] hover:bg-white/[0.08] rounded-xl text-white transition-colors">
-                            <FileText size={24} />
-                        </a>
-                        <a href="mailto:velasquezmarcvictor@gmail.com" className="p-4 bg-white/[0.03] hover:bg-white/[0.08] rounded-xl text-white transition-colors">
-                            <Mail size={24} />
-                        </a>
-                    </div>
-                </div>
-
-                <div className="max-w-[1400px] mx-auto mt-12 pt-6 border-t border-white/5 text-center text-sm text-neutral-600">
-                    © 2026 Marc Victor Velasquez • Angeles University Foundation
-                </div>
-            </footer>
         </div>
     );
 };
 
 export default SwissPortfolio;
+
