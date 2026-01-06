@@ -12,6 +12,7 @@ import {
     Briefcase,
     ArrowUpRight
 } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const certifications = [
     { provider: 'Microsoft', name: 'Azure Fundamentals', color: '#0078d4' },
@@ -50,12 +51,15 @@ const AboutPage = () => {
                     <Link to="/about" className="text-te-accent border-b border-te-accent pb-1">03. ABOUT</Link>
                 </nav>
 
-                <a
-                    href="mailto:velasquezmarcvictor@gmail.com"
-                    className="te-button bg-te-accent border-te-accent text-white px-4 py-2 text-[10px] te-label font-bold flex items-center gap-2 hover:brightness-110 active:scale-95 transition-all"
-                >
-                    CONTACT <ArrowUpRight size={12} />
-                </a>
+                <div className="flex items-center gap-3">
+                    <ThemeToggle />
+                    <a
+                        href="mailto:velasquezmarcvictor@gmail.com"
+                        className="te-button bg-te-accent border-te-accent text-white px-4 py-2 text-[10px] te-label font-bold flex items-center gap-2 hover:brightness-110 active:scale-95 transition-all"
+                    >
+                        CONTACT <ArrowUpRight size={12} />
+                    </a>
+                </div>
             </header>
 
             {/* --- MAIN CONTENT --- */}

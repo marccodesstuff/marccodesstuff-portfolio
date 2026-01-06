@@ -8,6 +8,7 @@ import {
     Database,
     Gamepad2
 } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 interface Project {
     id: string;
@@ -146,12 +147,15 @@ const ProjectsPage = () => {
                     <Link to="/about" className="text-te-muted hover:text-te-fg transition-colors">03. ABOUT</Link>
                 </nav>
 
-                <a
-                    href="mailto:velasquezmarcvictor@gmail.com"
-                    className="te-button bg-te-accent border-te-accent text-white px-4 py-2 text-[10px] te-label font-bold flex items-center gap-2 hover:brightness-110 active:scale-95 transition-all"
-                >
-                    CONTACT <ArrowUpRight size={12} />
-                </a>
+                <div className="flex items-center gap-3">
+                    <ThemeToggle />
+                    <a
+                        href="mailto:velasquezmarcvictor@gmail.com"
+                        className="te-button bg-te-accent border-te-accent text-white px-4 py-2 text-[10px] te-label font-bold flex items-center gap-2 hover:brightness-110 active:scale-95 transition-all"
+                    >
+                        CONTACT <ArrowUpRight size={12} />
+                    </a>
+                </div>
             </header>
 
             {/* --- PAGE HEADER --- */}
