@@ -27,21 +27,21 @@ interface Project {
 
 const projects: Project[] = [
     {
-        id: 'bantaybayan',
-        title: 'BantayBayan',
-        tagline: 'Philippine Storm Survival Beacon',
+        id: 'typhoon-beacon',
+        title: 'Philippine Typhoon Survival Beacon',
+        tagline: 'AI-Powered Disaster Response System',
         description: [
-            'Led a cross-functional team of 4 developers to develop a predictive neural network utilizing TensorFlow and Google Earth Engine.',
-            'Achieved 97.8% validation accuracy (0.022 MSE) and 6.9% Mean Absolute Error.',
-            'Coordinated architecture design across model development, Flutter mobile app, and data pipelines.',
-            'Integrated OpenMeteo live telemetry and Google Gemini API for hyper-localized, context-aware safety advisories.'
+            'Spearheaded a cross-functional team of 4 developers to develop a predictive neural network utilizing TensorFlow and Google Earth Engine.',
+            'Achieved 97.8% validation accuracy (0.022 MSE) and 6.9% Mean Absolute Error to detect flood probability.',
+            'Coordinated architecture design and code integration across model development, Flutter mobile app, and data pipeline components.',
+            'Integrated OpenMeteo live telemetry and Google Gemini API to generate hyper-localized, context-aware safety advisories.'
         ],
         role: 'Lead Developer, ML Engineer',
         type: 'Hackathon Entry',
-        date: 'December 2025',
+        date: 'Nov 2025 - Dec 2025',
         status: 'completed',
         featured: true,
-        achievements: ['3rd Place - JPCS Digital Solution Hackathon 2025'],
+        achievements: ['2nd Runner Up', 'Best Technical Execution', "People's Choice Award"],
         tech: ['TensorFlow', 'Google Earth Engine', 'Flutter', 'Gemini API', 'OpenMeteo'],
         icon: <Zap size={24} />
     },
@@ -65,36 +65,69 @@ const projects: Project[] = [
     },
     {
         id: 'ai-director',
-        title: 'AI Director System',
-        tagline: 'Text-to-Logic for Simulation Behaviors',
+        title: 'Text-to-Logic System for Simulation Actor Behaviors',
+        tagline: 'AI Director for Unreal Engine 5',
         description: [
-            'Architecting a proof-of-concept AI Director system utilizing transformer and diffusion model pipeline.',
-            'Translating natural language prompts into complex actor behavior, automating manual industrial simulation scripting.',
-            'Developing low-latency MCP server to bridge local LLM inference with Unreal Engine 5.',
+            'Architecting a proof-of-concept AI Director system utilizing a quantized Nvidia Cosmos Reason model.',
+            'Translating natural language prompts into complex actor behavior, automating manual industrial simulation scripting in Unreal Engine 5.',
+            'Developing a custom C++ Unreal Engine plugin to bridge local LLM inference pipelines with Unreal Engine 5.',
             'Enabling real-time simulation updates without cloud dependencies.'
         ],
-        role: 'Project Lead',
+        role: 'Full-Stack AI Engineer',
         type: 'Side Project',
-        date: 'January 2025 - Present',
+        date: 'Jan 2025 - Present',
         status: 'in-progress',
         featured: true,
-        tech: ['Transformers', 'Diffusion Models', 'MCP', 'Unreal Engine 5', 'Local LLM'],
+        tech: ['Nvidia Cosmos Reason', 'C++', 'Unreal Engine 5', 'Local LLM'],
         icon: <Gamepad2 size={24} />
     },
     {
-        id: 'graphrag',
-        title: 'GraphRAG System',
-        tagline: 'Personal Knowledge Base Integration',
+        id: 'monitored-quiz',
+        title: 'Monitored Quiz Application',
+        tagline: 'AI-Powered Student Behavior Monitoring',
         description: [
-            'Built a graph-based retrieval augmented generation system for personal knowledge management.',
-            'Integrated with Obsidian for seamless note-taking and knowledge retrieval.',
-            'Implemented LlamaIndex for efficient vector embeddings and semantic search.'
+            'Developed a web-based quiz application integrating Google\'s Teachable Machine AI for real-time student behavior monitoring.',
+            'Automatically halts quiz when violations exceed predefined thresholds (3-8 seconds depending on behavior type).',
+            'Implemented client-side computer vision using TensorFlow.js to detect 5 behavior categories.',
+            'Built responsive full-stack application using vanilla JavaScript, HTML5, and CSS3 with webcam integration.'
         ],
-        role: 'Solo Developer',
-        type: 'Side Project',
-        date: '2024',
+        role: 'Full-Stack Developer',
+        type: 'Course Final Requirement',
+        date: 'Nov 2025',
         status: 'completed',
-        tech: ['LlamaIndex', 'RAG', 'Obsidian', 'Python', 'Vector DB'],
+        tech: ['TensorFlow.js', 'Teachable Machine', 'JavaScript', 'HTML5', 'CSS3'],
+        icon: <Brain size={24} />
+    },
+    {
+        id: 'body-microgames',
+        title: 'Interactive Body-Controlled Web Microgames',
+        tagline: 'Pose Detection Gaming Platform',
+        description: [
+            'Built an interactive web game with 5 body-movement-controlled microgames using MediaPipe.js for real-time pose detection at 20 FPS.',
+            'Developed game engine with state management, dynamic scoring, particle effects system, and custom Web Audio API sound generation.',
+            'Implemented full accessibility support including keyboard navigation and responsive design for cross-device compatibility.'
+        ],
+        role: 'Full-Stack Developer',
+        type: 'Course Midterm Requirement',
+        date: 'Sept 2025',
+        status: 'completed',
+        tech: ['MediaPipe.js', 'JavaScript', 'Web Audio API', 'HTML5 Canvas'],
+        icon: <Gamepad2 size={24} />
+    },
+    {
+        id: 'water-management',
+        title: 'Water Management and Processing Web Application',
+        tagline: 'Environmental Data Platform',
+        description: [
+            'Developed a full-stack web application using Next.js for client and server operations and Express.js to handle MongoDB database connectivity.',
+            'Implemented RESTful API endpoints with Express.js to perform CRUD operations on water management records.',
+            'Designed and deployed a responsive user interface that streamlined water resource tracking workflows.'
+        ],
+        role: 'Full Stack Web Developer',
+        type: 'Course Final/Freelance',
+        date: 'May 2024',
+        status: 'completed',
+        tech: ['Next.js', 'Express.js', 'MongoDB', 'RESTful API'],
         icon: <Database size={24} />
     }
 ];

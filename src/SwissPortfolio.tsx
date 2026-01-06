@@ -98,9 +98,9 @@ const SwissPortfolio = () => {
                             <span className="te-label border-l-2 border-te-accent pl-2">MODULE_01: HACKATHON_WIN</span>
                             <ArrowUpRight size={20} className="text-te-muted group-hover:text-te-fg transition-all" />
                         </div>
-                        <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">BantayBayan</h3>
+                        <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Typhoon Survival Beacon</h3>
                         <p className="text-sm font-medium mb-8 leading-relaxed text-te-muted max-w-sm">
-                            Offline disaster response beacon with predictive neural network integration.
+                            AI-powered disaster response with 97.8% flood prediction accuracy using TensorFlow.
                         </p>
                         <div className="flex gap-2 te-label">
                             <span className="px-2 py-0.5 bg-te-bg border border-te-border">GEMINI.AI</span>
@@ -114,14 +114,14 @@ const SwissPortfolio = () => {
                             <span className="te-label border-l-2 border-te-accent pl-2">MODULE_02: RESEARCH</span>
                             <ArrowUpRight size={20} className="text-te-muted group-hover:text-te-fg transition-all" />
                         </div>
-                        <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">GraphRAG</h3>
+                        <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Knee Tear Detection</h3>
                         <p className="text-sm font-medium mb-8 leading-relaxed text-te-muted max-w-sm">
-                            Knowledge retrieval system utilizing Obsidian and semantic graph embeddings.
+                            Clinically validated MRI diagnostic platform with 0.88 Sensitivity using ensemble learning.
                         </p>
                         <div className="flex gap-2 te-label">
-                            <span className="px-2 py-0.5 bg-te-bg border border-te-border">LLAMA_INDEX</span>
-                            <span className="px-2 py-0.5 bg-te-bg border border-te-border">PYTHON</span>
-                            <span className="px-2 py-0.5 bg-te-bg border border-te-border">VECTOR_DB</span>
+                            <span className="px-2 py-0.5 bg-te-bg border border-te-border">PYTORCH</span>
+                            <span className="px-2 py-0.5 bg-te-bg border border-te-border">MICROSERVICES</span>
+                            <span className="px-2 py-0.5 bg-te-bg border border-te-border">DICOM</span>
                         </div>
                     </div>
 
@@ -136,10 +136,10 @@ const SwissPortfolio = () => {
                         </div>
 
                         {[
-                            { label: "Languages", items: ["Java", "TypeScript", "Python", "C++"] },
-                            { label: "Backend", items: ["Spring Boot", "Node.js", "Next.js", "Express"] },
-                            { label: "Infra", items: ["Docker", "Podman", "Oracle Cloud", "Azure"] },
-                            { label: "AI_ML", items: ["Gemini", "PyTorch", "LangChain", "HuggingFace"] }
+                            { label: "Languages", items: ["Python", "C++", "Java", "Dart"] },
+                            { label: "Backend", items: ["Spring Boot", "Next.js", "Flutter", "Express"] },
+                            { label: "Infra", items: ["Azure", "Oracle Cloud", "AppWrite", "Docker"] },
+                            { label: "AI_ML", items: ["PyTorch", "TensorFlow", "HuggingFace", "Pandas"] }
                         ].map((group) => (
                             <div key={group.label} className="border-t border-te-border pt-4">
                                 <h4 className="te-label mb-4 text-te-muted">{group.label}</h4>

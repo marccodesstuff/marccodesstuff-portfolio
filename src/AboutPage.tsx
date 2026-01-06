@@ -24,9 +24,9 @@ const certifications = [
 const achievements = [
     { title: 'JPCS Digital Solution Hackathon 2025', place: '3rd Place', icon: <Trophy size={18} /> },
     { title: 'HexCore Capture the Flag', place: '1st Place', icon: <Trophy size={18} /> },
-    { title: "GDG-HAU's The AI Hack 2025", place: '2nd Runner Up', icon: <Trophy size={18} /> },
-    { title: "GDG-HAU's The AI Hack 2025", place: 'Best Technical Execution', icon: <Award size={18} /> },
-    { title: "GDG-HAU's The AI Hack 2025", place: "People's Choice Award", icon: <Award size={18} /> },
+    { title: 'Philippine Typhoon Survival Beacon (Hackathon)', place: '2nd Runner Up', icon: <Trophy size={18} /> },
+    { title: 'Philippine Typhoon Survival Beacon (Hackathon)', place: 'Best Technical Execution', icon: <Award size={18} /> },
+    { title: 'Philippine Typhoon Survival Beacon (Hackathon)', place: "People's Choice Award", icon: <Award size={18} /> },
 ];
 
 const skills = {
