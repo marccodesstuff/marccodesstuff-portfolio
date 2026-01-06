@@ -16,7 +16,7 @@ const SwissPortfolio = () => {
 
             {/* --- HEADER --- */}
             <header className="sticky top-0 z-50 px-6 md:px-8 py-4 flex justify-between items-center bg-te-bg/90 backdrop-blur-md border-b border-te-border">
-                <div className="te-label font-bold text-te-fg tracking-[0.2em]">SYSTEM: 04.2</div>
+                <Link to="/" className="te-label font-bold text-te-fg tracking-[0.2em] hover:text-te-accent transition-colors">SYSTEM: 04.2</Link>
 
                 <nav className="hidden md:flex items-center gap-12 text-[10px] te-label font-bold">
                     <Link to="/" className="text-te-accent border-b border-te-accent pb-1">01. INDEX</Link>

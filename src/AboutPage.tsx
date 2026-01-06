@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import {
-    ArrowLeft,
     GraduationCap,
     Award,
     Cloud,
@@ -10,7 +9,8 @@ import {
     Download,
     Trophy,
     BookOpen,
-    Briefcase
+    Briefcase,
+    ArrowUpRight
 } from 'lucide-react';
 
 const certifications = [
@@ -42,10 +42,7 @@ const AboutPage = () => {
 
             {/* --- HEADER --- */}
             <header className="sticky top-0 z-50 px-6 md:px-8 py-4 flex justify-between items-center bg-te-bg/90 backdrop-blur-md border-b border-te-border">
-                <Link to="/" className="flex items-center gap-3 group">
-                    <ArrowLeft size={16} className="text-te-muted group-hover:text-te-accent transition-colors" />
-                    <span className="te-label font-bold text-te-fg tracking-[0.2em]">BACK: INDEX</span>
-                </Link>
+                <Link to="/" className="te-label font-bold text-te-fg tracking-[0.2em] hover:text-te-accent transition-colors">SYSTEM: 04.2</Link>
 
                 <nav className="hidden md:flex items-center gap-12 text-[10px] te-label font-bold">
                     <Link to="/" className="text-te-muted hover:text-te-fg transition-colors">01. INDEX</Link>
@@ -53,7 +50,12 @@ const AboutPage = () => {
                     <Link to="/about" className="text-te-accent border-b border-te-accent pb-1">03. ABOUT</Link>
                 </nav>
 
-                <div className="te-label opacity-40">USER_PROFILE: VELASQUEZ_MV</div>
+                <a
+                    href="mailto:velasquezmarcvictor@gmail.com"
+                    className="te-button bg-te-accent border-te-accent text-white px-4 py-2 text-[10px] te-label font-bold flex items-center gap-2 hover:brightness-110 active:scale-95 transition-all"
+                >
+                    CONTACT <ArrowUpRight size={12} />
+                </a>
             </header>
 
             {/* --- MAIN CONTENT --- */}
