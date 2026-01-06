@@ -119,7 +119,7 @@ const projects: Project[] = [
         title: 'Water Management and Processing Web Application',
         tagline: 'Environmental Data Platform',
         description: [
-            'Developed a full-stack web application using Next.js for client and server operations and Express.js to handle MongoDB database connectivity.',
+            'Developed a full-stack web application using Next.js for client and server operations and Express.js to handle mySQL database connectivity.',
             'Implemented RESTful API endpoints with Express.js to perform CRUD operations on water management records.',
             'Designed and deployed a responsive user interface that streamlined water resource tracking workflows.'
         ],
@@ -127,7 +127,7 @@ const projects: Project[] = [
         type: 'Course Final/Freelance',
         date: 'May 2024',
         status: 'completed',
-        tech: ['Next.js', 'Express.js', 'MongoDB', 'RESTful API'],
+        tech: ['Next.js', 'Express.js', 'mySQL', 'RESTful API'],
         icon: <Database size={24} />
     }
 ];
