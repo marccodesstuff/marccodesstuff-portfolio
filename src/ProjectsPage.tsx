@@ -6,7 +6,8 @@ import {
     Zap,
     Brain,
     Database,
-    Gamepad2
+    Gamepad2,
+    Scissors
 } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
@@ -27,6 +28,24 @@ interface Project {
 }
 
 const projects: Project[] = [
+    {
+        id: 'sgp-clipper',
+        title: 'SGP-Clipper',
+        tagline: 'SGP Business Data Extraction Tool',
+        description: [
+            'Developed a cross-browser extension (Chrome/Firefox) to streamline data extraction from sgpbusiness.com.',
+            'Implemented one-click copying of Entity Name, UEN, and page URL for seamless workflow integration.',
+            'Features customizable system prompts for generating formatted descriptions/research notes.',
+            'Built using Manifest V3 architecture with pure JavaScript, adhering to modern extension security standards.'
+        ],
+        role: 'Extension Developer',
+        type: 'Open Source Tool',
+        date: 'Feb 2026',
+        status: 'completed',
+        featured: true,
+        tech: ['JavaScript', 'HTML5', 'CSS3', 'Manifest V3', 'Chrome API'],
+        icon: <Scissors size={24} />
+    },
     {
         id: 'typhoon-beacon',
         title: 'Philippine Typhoon Survival Beacon',
