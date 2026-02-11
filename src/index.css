@@ -7,6 +7,7 @@
   --te-surface: #e5e5e5;
   --te-border: #d1d1d1;
   --te-muted: #8c8c8c;
+  --te-surface-hover: #ffffff;
 }
 
 [data-theme="dark"] {
@@ -16,6 +17,7 @@
   --te-surface: #232323;
   --te-border: #383838;
   --te-muted: #a0a0a0;
+  --te-surface-hover: #2a2a2a;
 }
 
 @theme {
@@ -24,6 +26,7 @@
   --color-te-accent: var(--te-accent);
   --color-te-surface: var(--te-surface);
   --color-te-border: var(--te-border);
+  --color-te-surface-hover: var(--te-surface-hover);
   --font-mono: "Roboto Mono", "Fira Code", monospace;
   --font-sans: "Inter", system-ui, sans-serif;
 }

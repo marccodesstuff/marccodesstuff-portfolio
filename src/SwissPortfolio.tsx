@@ -97,7 +97,7 @@ const SwissPortfolio = () => {
                     </div>
 
                     {/* --- FEATURED PROJECTS --- */}
-                    <div className="md:col-span-6 bg-te-surface p-8 border-r border-b border-te-border group cursor-pointer transition-colors hover:bg-white">
+                    <div className="md:col-span-6 bg-te-surface p-8 border-r border-b border-te-border group cursor-pointer transition-colors hover:bg-te-surface-hover">
                         <div className="flex justify-between items-start mb-12">
                             <span className="te-label border-l-2 border-te-accent pl-2">MODULE_01: HACKATHON_WIN</span>
                             <ArrowUpRight size={20} className="text-te-muted group-hover:text-te-fg transition-all" />
@@ -113,7 +113,7 @@ const SwissPortfolio = () => {
                         </div>
                     </div>
 
-                    <div className="md:col-span-6 bg-te-surface p-8 border-r border-b border-te-border group cursor-pointer transition-colors hover:bg-white">
+                    <div className="md:col-span-6 bg-te-surface p-8 border-r border-b border-te-border group cursor-pointer transition-colors hover:bg-te-surface-hover">
                         <div className="flex justify-between items-start mb-12">
                             <span className="te-label border-l-2 border-te-accent pl-2">MODULE_02: RESEARCH</span>
                             <ArrowUpRight size={20} className="text-te-muted group-hover:text-te-fg transition-all" />
@@ -179,7 +179,7 @@ const SwissPortfolio = () => {
                                 <a
                                     key={social.label}
                                     href="#"
-                                    className="te-button p-6 flex flex-col items-center justify-center gap-3 group hover:bg-white transition-colors"
+                                    className="te-button p-6 flex flex-col items-center justify-center gap-3 group hover:bg-te-surface-hover transition-colors"
                                 >
                                     <div className="text-te-muted group-hover:text-te-accent transition-colors">
                                         {social.icon}

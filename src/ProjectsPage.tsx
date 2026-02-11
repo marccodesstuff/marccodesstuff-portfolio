@@ -195,7 +195,7 @@ const ProjectsPage = () => {
                     {projects.map((project) => (
                         <article
                             key={project.id}
-                            className="bg-te-surface p-8 md:p-12 hover:bg-white transition-colors group relative overflow-hidden"
+                            className="bg-te-surface p-8 md:p-12 hover:bg-te-surface-hover transition-colors group relative overflow-hidden"
                         >
                             <div className="absolute top-4 right-8 te-label opacity-20 group-hover:opacity-40 select-none">
                                 REF_ID: {project.id.toUpperCase()}
