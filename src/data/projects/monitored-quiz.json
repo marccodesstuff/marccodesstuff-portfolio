@@ -1,0 +1,17 @@
+{
+  "id": "monitored-quiz",
+  "title": "Monitored Quiz Application",
+  "tagline": "AI-Powered Student Behavior Monitoring",
+  "description": [
+    "Developed a web-based quiz application integrating Google's Teachable Machine AI for real-time student behavior monitoring.",
+    "Automatically halts quiz when violations exceed predefined thresholds (3-8 seconds depending on behavior type).",
+    "Implemented client-side computer vision using TensorFlow.js to detect 5 behavior categories.",
+    "Built responsive full-stack application using vanilla JavaScript, HTML5, and CSS3 with webcam integration."
+  ],
+  "role": "Full-Stack Developer",
+  "type": "Course Final Requirement",
+  "date": "Nov 2025",
+  "status": "completed",
+  "tech": ["TensorFlow.js", "Teachable Machine", "JavaScript", "HTML5", "CSS3"],
+  "icon": "Brain"
+}

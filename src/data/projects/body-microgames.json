@@ -1,0 +1,16 @@
+{
+  "id": "body-microgames",
+  "title": "Interactive Body-Controlled Web Microgames",
+  "tagline": "Pose Detection Gaming Platform",
+  "description": [
+    "Built an interactive web game with 5 body-movement-controlled microgames using MediaPipe.js for real-time pose detection at 20 FPS.",
+    "Developed game engine with state management, dynamic scoring, particle effects system, and custom Web Audio API sound generation.",
+    "Implemented full accessibility support including keyboard navigation and responsive design for cross-device compatibility."
+  ],
+  "role": "Full-Stack Developer",
+  "type": "Course Midterm Requirement",
+  "date": "Sept 2025",
+  "status": "completed",
+  "tech": ["MediaPipe.js", "JavaScript", "Web Audio API", "HTML5 Canvas"],
+  "icon": "Gamepad2"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "ai-director",
+  "title": "Text-to-Logic System for Simulation Actor Behaviors",
+  "tagline": "AI Director for Unreal Engine 5",
+  "description": [
+    "Architecting a proof-of-concept AI Director system utilizing a quantized Nvidia Cosmos Reason model.",
+    "Translating natural language prompts into complex actor behavior, automating manual industrial simulation scripting in Unreal Engine 5.",
+    "Developing a custom C++ Unreal Engine plugin to bridge local LLM inference pipelines with Unreal Engine 5.",
+    "Enabling real-time simulation updates without cloud dependencies."
+  ],
+  "role": "Full-Stack AI Engineer",
+  "type": "Side Project",
+  "date": "Jan 2025 - Present",
+  "status": "in-progress",
+  "featured": true,
+  "tech": ["Nvidia Cosmos Reason", "C++", "Unreal Engine 5", "Local LLM"],
+  "icon": "Gamepad2"
+}
