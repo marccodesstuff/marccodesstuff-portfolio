@@ -1,7 +1,7 @@
 # Portfolio Project Assistant Instructions
 
 ## Project Overview
-This is a **Marc's Codes Stuff Portfolio** - a React + TypeScript portfolio website showcasing professional projects and technical work.
+This is a **Marc's Codes Stuff Portfolio** - a React + TypeScript portfolio website showcasing professional projects and technical work of Marc Victor L. Velasquez.
 
 ## Technology Stack
 - **Frontend**: React, TypeScript, Tailwind CSS, Vite
