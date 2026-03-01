@@ -172,6 +172,26 @@ const projects: Project[] = [
 ];
 
 const ProjectsPage = () => {
+    // Parse date string and return a sortable value
+    const getDateValue = (dateStr: string): number => {
+        const months: { [key: string]: number } = {
+            'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
+            'jul': 7, 'aug': 8, 'sept': 9, 'oct': 10, 'nov': 11, 'dec': 12
+        };
+
+        // Extract first date from strings like "Jan 2025" or "April - October 2025"
+        const monthMatch = dateStr.match(/(\w+)\s+(\d{4})/);
+        if (!monthMatch) return 0;
+
+        const month = months[monthMatch[1].toLowerCase()];
+        const year = parseInt(monthMatch[2]);
+
+        return year * 100 + month;
+    };
+
+    // Sort projects by date (newest to oldest)
+    const sortedProjects = [...projects].sort((a, b) => getDateValue(b.date) - getDateValue(a.date));
+
     return (
         <div className="min-h-screen bg-te-bg text-te-fg font-sans selection:bg-te-accent selection:text-white">
 
@@ -211,7 +231,7 @@ const ProjectsPage = () => {
             <main className="p-4 md:p-6 lg:p-8">
                 <div className="max-w-[1400px] mx-auto grid grid-cols-1 gap-1 border border-te-border bg-te-border">
 
-                    {projects.map((project) => (
+                    {sortedProjects.map((project) => (
                         <article
                             key={project.id}
                             className="bg-te-surface p-8 md:p-12 hover:bg-te-surface-hover transition-colors group relative overflow-hidden"
