@@ -7,7 +7,8 @@ import {
     Brain,
     Database,
     Gamepad2,
-    Scissors
+    Scissors,
+    Code
 } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
@@ -149,6 +150,24 @@ const projects: Project[] = [
         status: 'completed',
         tech: ['Next.js', 'Express.js', 'mySQL', 'RESTful API'],
         icon: <Database size={24} />
+    },
+    {
+        id: 'pageshutter',
+        title: 'PageShutter',
+        tagline: 'Notion Integration Worker',
+        description: [
+            'Created a TypeScript-based Notion Worker for seamless Notion API integrations and automation.',
+            'Designed to extend Notion\'s capabilities with custom worker functionality on serverless edge infrastructure.',
+            'Provides a foundation for building Notion-powered applications and data processing pipelines.',
+            'Published under MIT License for open-source use and community contributions.'
+        ],
+        role: 'Project Creator',
+        type: 'Notion Worker',
+        date: 'Feb 2026',
+        status: 'completed',
+        tech: ['TypeScript', 'Notion API', 'Cloudflare Workers', 'Serverless'],
+        links: [{ label: 'View Repository', url: 'https://github.com/marccodesstuff/pageshutter' }],
+        icon: <Code size={24} />
     }
 ];
 
