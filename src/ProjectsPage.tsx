@@ -12,7 +12,17 @@ import {
 } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
-interface Project {
+// Import all project JSON files
+import sgpClipperData from './data/projects/sgp-clipper.json';
+import typhoonBeaconData from './data/projects/typhoon-beacon.json';
+import kneeDetectionData from './data/projects/knee-detection.json';
+import aiDirectorData from './data/projects/ai-director.json';
+import monitoredQuizData from './data/projects/monitored-quiz.json';
+import bodyMicrogamesData from './data/projects/body-microgames.json';
+import waterManagementData from './data/projects/water-management.json';
+import pageShutterData from './data/projects/pageshutter.json';
+
+interface ProjectJSON {
     id: string;
     title: string;
     tagline: string;
@@ -25,151 +35,36 @@ interface Project {
     achievements?: string[];
     tech: string[];
     links?: { label: string; url: string }[];
+    icon: string;
+}
+
+interface Project extends ProjectJSON {
     icon: React.ReactNode;
 }
 
-const projects: Project[] = [
-    {
-        id: 'sgp-clipper',
-        title: 'SGP-Clipper',
-        tagline: 'SGP Business Data Extraction Tool',
-        description: [
-            'Developed a cross-browser extension (Chrome/Firefox) to streamline data extraction from sgpbusiness.com.',
-            'Implemented one-click copying of Entity Name, UEN, and page URL for seamless workflow integration.',
-            'Features customizable system prompts for generating formatted descriptions/research notes.',
-            'Built using Manifest V3 architecture with pure JavaScript, adhering to modern extension security standards.'
-        ],
-        role: 'Extension Developer',
-        type: 'Open Source Tool',
-        date: 'Feb 2026',
-        status: 'completed',
-        featured: true,
-        tech: ['JavaScript', 'HTML5', 'CSS3', 'Manifest V3', 'Chrome API'],
-        icon: <Scissors size={24} />
-    },
-    {
-        id: 'typhoon-beacon',
-        title: 'Philippine Typhoon Survival Beacon',
-        tagline: 'AI-Powered Disaster Response System',
-        description: [
-            'Spearheaded a cross-functional team of 4 developers to develop a predictive neural network utilizing TensorFlow and Google Earth Engine.',
-            'Achieved 97.8% validation accuracy (0.022 MSE) and 6.9% Mean Absolute Error to detect flood probability.',
-            'Coordinated architecture design and code integration across model development, Flutter mobile app, and data pipeline components.',
-            'Integrated OpenMeteo live telemetry and Google Gemini API to generate hyper-localized, context-aware safety advisories.'
-        ],
-        role: 'Lead Developer, ML Engineer',
-        type: 'Hackathon Entry',
-        date: 'Nov 2025 - Dec 2025',
-        status: 'completed',
-        featured: true,
-        achievements: ['2nd Runner Up', 'Best Technical Execution', "People's Choice Award"],
-        tech: ['TensorFlow', 'Google Earth Engine', 'Flutter', 'Gemini API', 'OpenMeteo'],
-        icon: <Zap size={24} />
-    },
-    {
-        id: 'knee-detection',
-        title: 'Knee Tear Detection Platform',
-        tagline: 'AI-Powered MRI Diagnostic System',
-        description: [
-            'Collaborated with a research team of 4 to conduct rigorous testing on 4 backbone architectures (Xception, ResNeXt, EfficientNet, DenseNet).',
-            'Utilized stacking ensemble meta-learner to boost Sensitivity to 0.88 and F1-Score of 0.735.',
-            'Developed clinically validated platform using microservices and event-driven architecture.',
-            'Validated by AUF Radiologic Technology: "The system can be used to aid the diagnostic process of radiologists."'
-        ],
-        role: 'Full-Stack AI Engineer',
-        type: 'Thesis',
-        date: 'April - October 2025',
-        status: 'completed',
-        featured: true,
-        tech: ['PyTorch', 'Microservices', 'Event-Driven Architecture', 'DICOM', 'FastMRI Dataset'],
-        icon: <Brain size={24} />
-    },
-    {
-        id: 'ai-director',
-        title: 'Text-to-Logic System for Simulation Actor Behaviors',
-        tagline: 'AI Director for Unreal Engine 5',
-        description: [
-            'Architecting a proof-of-concept AI Director system utilizing a quantized Nvidia Cosmos Reason model.',
-            'Translating natural language prompts into complex actor behavior, automating manual industrial simulation scripting in Unreal Engine 5.',
-            'Developing a custom C++ Unreal Engine plugin to bridge local LLM inference pipelines with Unreal Engine 5.',
-            'Enabling real-time simulation updates without cloud dependencies.'
-        ],
-        role: 'Full-Stack AI Engineer',
-        type: 'Side Project',
-        date: 'Jan 2025 - Present',
-        status: 'in-progress',
-        featured: true,
-        tech: ['Nvidia Cosmos Reason', 'C++', 'Unreal Engine 5', 'Local LLM'],
-        icon: <Gamepad2 size={24} />
-    },
-    {
-        id: 'monitored-quiz',
-        title: 'Monitored Quiz Application',
-        tagline: 'AI-Powered Student Behavior Monitoring',
-        description: [
-            'Developed a web-based quiz application integrating Google\'s Teachable Machine AI for real-time student behavior monitoring.',
-            'Automatically halts quiz when violations exceed predefined thresholds (3-8 seconds depending on behavior type).',
-            'Implemented client-side computer vision using TensorFlow.js to detect 5 behavior categories.',
-            'Built responsive full-stack application using vanilla JavaScript, HTML5, and CSS3 with webcam integration.'
-        ],
-        role: 'Full-Stack Developer',
-        type: 'Course Final Requirement',
-        date: 'Nov 2025',
-        status: 'completed',
-        tech: ['TensorFlow.js', 'Teachable Machine', 'JavaScript', 'HTML5', 'CSS3'],
-        icon: <Brain size={24} />
-    },
-    {
-        id: 'body-microgames',
-        title: 'Interactive Body-Controlled Web Microgames',
-        tagline: 'Pose Detection Gaming Platform',
-        description: [
-            'Built an interactive web game with 5 body-movement-controlled microgames using MediaPipe.js for real-time pose detection at 20 FPS.',
-            'Developed game engine with state management, dynamic scoring, particle effects system, and custom Web Audio API sound generation.',
-            'Implemented full accessibility support including keyboard navigation and responsive design for cross-device compatibility.'
-        ],
-        role: 'Full-Stack Developer',
-        type: 'Course Midterm Requirement',
-        date: 'Sept 2025',
-        status: 'completed',
-        tech: ['MediaPipe.js', 'JavaScript', 'Web Audio API', 'HTML5 Canvas'],
-        icon: <Gamepad2 size={24} />
-    },
-    {
-        id: 'water-management',
-        title: 'Water Management and Processing Web Application',
-        tagline: 'Environmental Data Platform',
-        description: [
-            'Developed a full-stack web application using Next.js for client and server operations and Express.js to handle mySQL database connectivity.',
-            'Implemented RESTful API endpoints with Express.js to perform CRUD operations on water management records.',
-            'Designed and deployed a responsive user interface that streamlined water resource tracking workflows.'
-        ],
-        role: 'Full Stack Web Developer',
-        type: 'Course Final/Freelance',
-        date: 'May 2024',
-        status: 'completed',
-        tech: ['Next.js', 'Express.js', 'mySQL', 'RESTful API'],
-        icon: <Database size={24} />
-    },
-    {
-        id: 'pageshutter',
-        title: 'PageShutter',
-        tagline: 'Notion Integration Worker',
-        description: [
-            'Created a TypeScript-based Notion Worker for seamless Notion API integrations and automation.',
-            'Designed to extend Notion\'s capabilities with custom worker functionality on serverless edge infrastructure.',
-            'Provides a foundation for building Notion-powered applications and data processing pipelines.',
-            'Published under MIT License for open-source use and community contributions.'
-        ],
-        role: 'Project Creator',
-        type: 'Notion Worker',
-        date: 'Feb 2026',
-        status: 'completed',
-        tech: ['TypeScript', 'Notion API', 'Cloudflare Workers', 'Serverless'],
-        links: [{ label: 'View Repository', url: 'https://github.com/marccodesstuff/pageshutter' }],
-        icon: <Code size={24} />
-    }
-];
+// Map icon names to components
+const iconMap: { [key: string]: React.ReactNode } = {
+    'Scissors': <Scissors size={24} />,
+    'Zap': <Zap size={24} />,
+    'Brain': <Brain size={24} />,
+    'Gamepad2': <Gamepad2 size={24} />,
+    'Database': <Database size={24} />,
+    'Code': <Code size={24} />
+};
+
+const projectsData: ProjectJSON[] = [
+    sgpClipperData,
+    typhoonBeaconData,
+    kneeDetectionData,
+    aiDirectorData,
+    monitoredQuizData,
+    bodyMicrogamesData,
+    waterManagementData,
+    pageShutterData
+].map((project) => ({
+    ...project,
+    icon: iconMap[project.icon] || <Code size={24} />
+})) as Project[];
 
 const ProjectsPage = () => {
     // Parse date string and return a sortable value
@@ -190,7 +85,7 @@ const ProjectsPage = () => {
     };
 
     // Sort projects by date (newest to oldest)
-    const sortedProjects = [...projects].sort((a, b) => getDateValue(b.date) - getDateValue(a.date));
+    const sortedProjects = [...projectsData].sort((a, b) => getDateValue(b.date) - getDateValue(a.date));
 
     return (
         <div className="min-h-screen bg-te-bg text-te-fg font-sans selection:bg-te-accent selection:text-white">
