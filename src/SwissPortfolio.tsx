@@ -179,7 +179,7 @@ const SwissPortfolio = () => {
                                 <a
                                     key={social.label}
                                     href="#"
-                                    className="te-button p-6 flex flex-col items-center justify-center gap-3 group hover:bg-te-surface-hover transition-colors"
+                                    className="te-button p-6 flex flex-col items-center justify-center gap-3 group hover:bg-te-surface-hover transition-colors opacity-50"
                                 >
                                     <div className="text-te-muted group-hover:text-te-accent transition-colors">
                                         {social.icon}
