@@ -2,9 +2,6 @@ import {
     GraduationCap,
     Award,
     Cloud,
-    MapPin,
-    Mail,
-    Phone,
     Trophy,
     BookOpen,
     Briefcase,
@@ -33,7 +30,7 @@ const AboutPage = () => {
                 <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-1 border border-te-border bg-te-border">
 
                     {/* --- INTRO BLOCK --- */}
-                    <div className="md:col-span-8 bg-te-surface p-8 md:p-12 min-h-[400px] flex flex-col justify-between border-r border-b border-te-border relative overflow-hidden">
+                    <div className="md:col-span-12 bg-te-surface p-8 md:p-12 min-h-[400px] flex flex-col justify-between border-b border-te-border relative overflow-hidden">
                         <div className="absolute top-4 right-8 te-label opacity-20 select-none">BIO_DATA.LOG</div>
                         <div>
                             <span className="te-label border-l-2 border-te-accent pl-2 text-te-accent mb-6 block">CORE_IDENTITY</span>
@@ -47,28 +44,6 @@ const AboutPage = () => {
                         <p className="te-label text-base font-bold tracking-normal text-te-muted uppercase mt-8 leading-relaxed max-w-lg">
                             Diving into transformer architectures while securing enterprise systems with Spring Boot.
                         </p>
-                    </div>
-
-                    {/* --- CONTACT CARD --- */}
-                    <div className="md:col-span-4 grid grid-cols-1 gap-1">
-                        <div className="bg-te-surface p-8 border-b border-te-border">
-                            <h3 className="te-label mb-8">Comms_Channels</h3>
-                            <div className="space-y-6">
-                                <div className="flex items-center gap-4 group">
-                                    <Mail size={16} className="text-te-muted" />
-                                    <span className="text-sm font-bold font-mono tracking-tight text-te-muted italic">EMAIL_ENCRYPTED</span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <Phone size={16} className="text-te-muted" />
-                                    <span className="text-sm font-bold font-mono tracking-tight text-te-muted italic">PHONE_RESTRICTED</span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <MapPin size={16} className="text-te-muted" />
-                                    <span className="text-sm font-bold font-mono tracking-tight">Angeles City, PH</span>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
                     {/* --- EDUCATION & ACHIEVEMENTS --- */}
