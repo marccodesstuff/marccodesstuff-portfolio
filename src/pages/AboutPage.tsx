@@ -5,7 +5,6 @@ import {
     MapPin,
     Mail,
     Phone,
-    Download,
     Trophy,
     BookOpen,
     Briefcase,
@@ -70,16 +69,6 @@ const AboutPage = () => {
                             </div>
                         </div>
 
-                        <a href="#" className="bg-te-accent text-white p-8 flex flex-col justify-between hover:brightness-110 active:scale-[0.98] transition-all group">
-                            <div className="flex justify-between items-start">
-                                <div className="te-label text-white/70">EXPORT_SYSTEM</div>
-                                <Download size={20} className="text-white/60 group-hover:text-white transition-colors" />
-                            </div>
-                            <div className="mt-8">
-                                <p className="text-2xl font-black tracking-tight uppercase">Download Resume</p>
-                                <p className="te-label text-white/60 mt-1">PDF_FORMAT • REV_2026.01</p>
-                            </div>
-                        </a>
                     </div>
 
                     {/* --- EDUCATION & ACHIEVEMENTS --- */}
@@ -189,8 +178,8 @@ const AboutPage = () => {
                 <div className="max-w-[1400px] mx-auto mt-8 flex justify-between items-center px-2">
                     <div className="te-label opacity-40">SYSTEM_RECOVERY: ACTIVE</div>
                     <div className="flex gap-4">
-                        <a href="#" className="te-label hover:text-te-accent transition-colors">GITHUB</a>
-                        <a href="#" className="te-label hover:text-te-accent transition-colors">LINKEDIN</a>
+                        <a href="https://github.com/marccodesstuff" target="_blank" rel="noopener noreferrer" className="te-label hover:text-te-accent transition-colors">GITHUB</a>
+                        <a href="https://www.linkedin.com/in/mrcvctr-vel/" target="_blank" rel="noopener noreferrer" className="te-label hover:text-te-accent transition-colors">LINKEDIN</a>
                     </div>
                 </div>
             </main>

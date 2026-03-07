@@ -5,7 +5,6 @@ import {
     Terminal,
     Github,
     Linkedin,
-    FileText,
     Mail,
     Brain
 } from 'lucide-react';
@@ -144,17 +143,18 @@ const HomePage = () => {
                         <p className="te-label text-te-accent font-bold text-lg tracking-[0.1em]">CONTACT SYSTEM FOR INQUIRIES</p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                         {[
-                            { icon: <Github size={20} />, label: "GITHUB" },
-                            { icon: <Linkedin size={20} />, label: "LINKEDIN" },
-                            { icon: <FileText size={20} />, label: "RESUME" },
-                            { icon: <Mail size={20} />, label: "EMAIL" }
+                            { icon: <Github size={20} />, label: "GITHUB", href: "https://github.com/marccodesstuff" },
+                            { icon: <Linkedin size={20} />, label: "LINKEDIN", href: "https://www.linkedin.com/in/mrcvctr-vel/" },
+                            { icon: <Mail size={20} />, label: "EMAIL", href: "#" }
                         ].map((social) => (
                             <a
                                 key={social.label}
-                                href="#"
-                                className="te-button p-6 flex flex-col items-center justify-center gap-3 group hover:bg-te-surface-hover transition-colors opacity-50"
+                                href={social.href}
+                                target={social.href.startsWith('http') ? "_blank" : undefined}
+                                rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined}
+                                className="te-button p-6 flex flex-col items-center justify-center gap-3 group hover:bg-te-surface-hover transition-colors opacity-80"
                             >
                                 <div className="text-te-muted group-hover:text-te-accent transition-colors">
                                     {social.icon}
