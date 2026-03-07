@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import {
     GraduationCap,
     Award,
@@ -10,58 +9,26 @@ import {
     Trophy,
     BookOpen,
     Briefcase,
-    ArrowUpRight
 } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
 
-const certifications = [
-    { provider: 'Microsoft', name: 'Azure Fundamentals', color: '#0078d4' },
-    { provider: 'Microsoft', name: 'Azure AI Fundamentals', color: '#0078d4' },
-    { provider: 'Microsoft', name: 'Azure Data Fundamentals', color: '#0078d4' },
-    { provider: 'Oracle', name: 'OCI 2025 AI Foundations Associate', color: '#f80000' },
-    { provider: 'Oracle', name: 'OCI 2025 Generative AI Professional', color: '#f80000' },
-];
+import certificationsData from '../data/certifications.json';
+import achievementsData from '../data/achievements.json';
+import skills from '../data/skills.json';
 
-const achievements = [
-    { title: 'JPCS Digital Solution Hackathon 2025', place: '3rd Place', icon: <Trophy size={18} /> },
-    { title: 'HexCore Capture the Flag', place: '1st Place', icon: <Trophy size={18} /> },
-    { title: 'Philippine Typhoon Survival Beacon (Hackathon)', place: '2nd Runner Up', icon: <Trophy size={18} /> },
-    { title: 'Philippine Typhoon Survival Beacon (Hackathon)', place: 'Best Technical Execution', icon: <Award size={18} /> },
-    { title: 'Philippine Typhoon Survival Beacon (Hackathon)', place: "People's Choice Award", icon: <Award size={18} /> },
-];
-
-const skills = {
-    languages: ['Python', 'Java', 'C++', 'Dart', 'SQL', 'JavaScript/TypeScript'],
-    appDev: ['Spring Boot', 'Next.js', 'Flutter', 'Express.js'],
-    aiData: ['PyTorch', 'TensorFlow/Lite', 'Google Earth Engine', 'Pandas', 'NumPy', 'HuggingFace', 'Power BI'],
-    cloudTools: ['Azure', 'Oracle Cloud', 'AppWrite', 'AWS (LocalStack)', 'Google Colab', 'Kaggle', 'Git/GitHub', 'Linux (WSL2)', 'Supabase', 'Docker'],
+// Map icon type strings from JSON to actual JSX components
+const achievementIconMap: { [key: string]: React.ReactNode } = {
+    'trophy': <Trophy size={18} />,
+    'award': <Award size={18} />,
 };
+
+const achievements = achievementsData.map((ach) => ({
+    ...ach,
+    icon: achievementIconMap[ach.iconType] || <Award size={18} />,
+}));
 
 const AboutPage = () => {
     return (
-        <div className="min-h-screen bg-te-bg text-te-fg font-sans selection:bg-te-accent selection:text-white">
-
-            {/* --- HEADER --- */}
-            <header className="sticky top-0 z-50 px-6 md:px-8 py-4 flex justify-between items-center bg-te-bg/90 backdrop-blur-md border-b border-te-border">
-                <Link to="/" className="te-label font-bold text-te-fg tracking-[0.2em] hover:text-te-accent transition-colors">SYSTEM: 04.2</Link>
-
-                <nav className="hidden md:flex items-center gap-12 text-[10px] te-label font-bold">
-                    <Link to="/" className="text-te-muted hover:text-te-fg transition-colors">01. INDEX</Link>
-                    <Link to="/projects" className="text-te-muted hover:text-te-fg transition-colors">02. PROJECTS</Link>
-                    <Link to="/about" className="text-te-accent border-b border-te-accent pb-1">03. ABOUT</Link>
-                </nav>
-
-                <div className="flex items-center gap-3">
-                    <ThemeToggle />
-                    <a
-                        href="mailto:velasquezmarcvictor@gmail.com"
-                        className="te-button bg-te-accent border-te-accent text-white px-4 py-2 text-[10px] te-label font-bold flex items-center gap-2 hover:brightness-110 active:scale-95 transition-all"
-                    >
-                        CONTACT <ArrowUpRight size={12} />
-                    </a>
-                </div>
-            </header>
-
+        <>
             {/* --- MAIN CONTENT --- */}
             <main className="p-4 md:p-6 lg:p-8">
                 <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-1 border border-te-border bg-te-border">
@@ -171,7 +138,7 @@ const AboutPage = () => {
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-                            {certifications.map((cert, i) => (
+                            {certificationsData.map((cert, i) => (
                                 <div key={i} className="flex items-center gap-6 p-6 border border-te-border group hover:bg-white transition-colors">
                                     <div
                                         className="w-10 h-10 te-module flex items-center justify-center text-white font-black text-sm"
@@ -227,7 +194,7 @@ const AboutPage = () => {
                     </div>
                 </div>
             </main>
-        </div>
+        </>
     );
 };
 

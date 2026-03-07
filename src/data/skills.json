@@ -1,0 +1,37 @@
+{
+    "languages": [
+        "Python",
+        "Java",
+        "C++",
+        "Dart",
+        "SQL",
+        "JavaScript/TypeScript"
+    ],
+    "appDev": [
+        "Spring Boot",
+        "Next.js",
+        "Flutter",
+        "Express.js"
+    ],
+    "aiData": [
+        "PyTorch",
+        "TensorFlow/Lite",
+        "Google Earth Engine",
+        "Pandas",
+        "NumPy",
+        "HuggingFace",
+        "Power BI"
+    ],
+    "cloudTools": [
+        "Azure",
+        "Oracle Cloud",
+        "AppWrite",
+        "AWS (LocalStack)",
+        "Google Colab",
+        "Kaggle",
+        "Git/GitHub",
+        "Linux (WSL2)",
+        "Supabase",
+        "Docker"
+    ]
+}

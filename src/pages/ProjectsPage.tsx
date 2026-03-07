@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import {
     ArrowUpRight,
     Calendar,
@@ -10,37 +9,18 @@ import {
     Scissors,
     Code
 } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
+
+import type { Project } from '../types/project';
 
 // Import all project JSON files
-import sgpClipperData from './data/projects/sgp-clipper.json';
-import typhoonBeaconData from './data/projects/typhoon-beacon.json';
-import kneeDetectionData from './data/projects/knee-detection.json';
-import aiDirectorData from './data/projects/ai-director.json';
-import monitoredQuizData from './data/projects/monitored-quiz.json';
-import bodyMicrogamesData from './data/projects/body-microgames.json';
-import waterManagementData from './data/projects/water-management.json';
-import pageShutterData from './data/projects/pageshutter.json';
-
-interface ProjectJSON {
-    id: string;
-    title: string;
-    tagline: string;
-    description: string[];
-    role: string;
-    type: string;
-    date: string;
-    status: 'completed' | 'in-progress';
-    featured?: boolean;
-    achievements?: string[];
-    tech: string[];
-    links?: { label: string; url: string }[];
-    icon: string;
-}
-
-interface Project extends ProjectJSON {
-    icon: React.ReactNode;
-}
+import sgpClipperData from '../data/projects/sgp-clipper.json';
+import typhoonBeaconData from '../data/projects/typhoon-beacon.json';
+import kneeDetectionData from '../data/projects/knee-detection.json';
+import aiDirectorData from '../data/projects/ai-director.json';
+import monitoredQuizData from '../data/projects/monitored-quiz.json';
+import bodyMicrogamesData from '../data/projects/body-microgames.json';
+import waterManagementData from '../data/projects/water-management.json';
+import pageShutterData from '../data/projects/pageshutter.json';
 
 // Map icon names to components
 const iconMap: { [key: string]: React.ReactNode } = {
@@ -52,7 +32,7 @@ const iconMap: { [key: string]: React.ReactNode } = {
     'Code': <Code size={24} />
 };
 
-const projectsData: ProjectJSON[] = [
+const projectsData: Project[] = [
     sgpClipperData,
     typhoonBeaconData,
     kneeDetectionData,
@@ -88,29 +68,7 @@ const ProjectsPage = () => {
     const sortedProjects = [...projectsData].sort((a, b) => getDateValue(b.date) - getDateValue(a.date));
 
     return (
-        <div className="min-h-screen bg-te-bg text-te-fg font-sans selection:bg-te-accent selection:text-white">
-
-            {/* --- HEADER --- */}
-            <header className="sticky top-0 z-50 px-6 md:px-8 py-4 flex justify-between items-center bg-te-bg/90 backdrop-blur-md border-b border-te-border">
-                <Link to="/" className="te-label font-bold text-te-fg tracking-[0.2em] hover:text-te-accent transition-colors">SYSTEM: 04.2</Link>
-
-                <nav className="hidden md:flex items-center gap-12 text-[10px] te-label font-bold">
-                    <Link to="/" className="text-te-muted hover:text-te-fg transition-colors">01. INDEX</Link>
-                    <Link to="/projects" className="text-te-accent border-b border-te-accent pb-1">02. PROJECTS</Link>
-                    <Link to="/about" className="text-te-muted hover:text-te-fg transition-colors">03. ABOUT</Link>
-                </nav>
-
-                <div className="flex items-center gap-3">
-                    <ThemeToggle />
-                    <a
-                        href="mailto:velasquezmarcvictor@gmail.com"
-                        className="te-button bg-te-accent border-te-accent text-white px-4 py-2 text-[10px] te-label font-bold flex items-center gap-2 hover:brightness-110 active:scale-95 transition-all"
-                    >
-                        CONTACT <ArrowUpRight size={12} />
-                    </a>
-                </div>
-            </header>
-
+        <>
             {/* --- PAGE HEADER --- */}
             <section className="px-6 md:px-8 py-16 border-b border-te-border bg-te-surface">
                 <div className="max-w-[1400px] mx-auto">
@@ -217,9 +175,8 @@ const ProjectsPage = () => {
                     </a>
                 </div>
             </footer>
-        </div>
+        </>
     );
 };
 
 export default ProjectsPage;
-

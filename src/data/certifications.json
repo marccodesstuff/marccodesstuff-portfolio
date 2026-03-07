@@ -1,0 +1,27 @@
+[
+    {
+        "provider": "Microsoft",
+        "name": "Azure Fundamentals",
+        "color": "#0078d4"
+    },
+    {
+        "provider": "Microsoft",
+        "name": "Azure AI Fundamentals",
+        "color": "#0078d4"
+    },
+    {
+        "provider": "Microsoft",
+        "name": "Azure Data Fundamentals",
+        "color": "#0078d4"
+    },
+    {
+        "provider": "Oracle",
+        "name": "OCI 2025 AI Foundations Associate",
+        "color": "#f80000"
+    },
+    {
+        "provider": "Oracle",
+        "name": "OCI 2025 Generative AI Professional",
+        "color": "#f80000"
+    }
+]
