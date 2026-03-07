@@ -55,13 +55,13 @@ const AboutPage = () => {
                         <div className="bg-te-surface p-8 border-b border-te-border">
                             <h3 className="te-label mb-8">Comms_Channels</h3>
                             <div className="space-y-6">
-                                <a href="mailto:velasquezmarcvictor@gmail.com" className="flex items-center gap-4 group">
-                                    <Mail size={16} className="text-te-muted group-hover:text-te-accent transition-colors" />
-                                    <span className="text-sm font-bold font-mono tracking-tight group-hover:text-te-accent transition-colors">velasquezmarcvictor@gmail.com</span>
-                                </a>
+                                <div className="flex items-center gap-4 group">
+                                    <Mail size={16} className="text-te-muted" />
+                                    <span className="text-sm font-bold font-mono tracking-tight text-te-muted italic">EMAIL_ENCRYPTED</span>
+                                </div>
                                 <div className="flex items-center gap-4">
                                     <Phone size={16} className="text-te-muted" />
-                                    <span className="text-sm font-bold font-mono tracking-tight">(+63) 960-824-9295</span>
+                                    <span className="text-sm font-bold font-mono tracking-tight text-te-muted italic">PHONE_RESTRICTED</span>
                                 </div>
                                 <div className="flex items-center gap-4">
                                     <MapPin size={16} className="text-te-muted" />

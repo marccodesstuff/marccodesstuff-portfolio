@@ -35,12 +35,11 @@ const Header = ({ activePage }: HeaderProps) => {
 
             <div className="flex items-center gap-3">
                 <ThemeToggle />
-                <a
-                    href="mailto:velasquezmarcvictor@gmail.com"
+                <button
                     className="te-button bg-te-accent border-te-accent text-white px-4 py-2 text-[10px] te-label font-bold flex items-center gap-2 hover:brightness-110 active:scale-95 transition-all"
                 >
                     CONTACT <ArrowUpRight size={12} />
-                </a>
+                </button>
             </div>
         </header>
     );

@@ -167,12 +167,11 @@ const ProjectsPage = () => {
                     <div className="te-label">END_OF_CATALOG</div>
                     <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">Request_Access</h2>
                     <p className="text-xl font-medium">I'm always open to discussing new systems and digital architecture.</p>
-                    <a
-                        href="mailto:velasquezmarcvictor@gmail.com"
+                    <button
                         className="te-button bg-te-accent border-te-accent text-white px-8 py-4 te-label font-bold text-lg hover:brightness-110 active:scale-95 transition-all flex items-center gap-3"
                     >
                         INITIALIZE_CONTACT <ArrowUpRight size={20} />
-                    </a>
+                    </button>
                 </div>
             </footer>
         </>

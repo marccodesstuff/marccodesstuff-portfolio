@@ -141,7 +141,7 @@ const HomePage = () => {
                         <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">
                             Initialize<br />Collaboration
                         </h2>
-                        <p className="te-label text-te-accent font-bold text-lg tracking-[0.1em]">velasquezmarcvictor@gmail.com</p>
+                        <p className="te-label text-te-accent font-bold text-lg tracking-[0.1em]">CONTACT SYSTEM FOR INQUIRIES</p>
                     </div>
 
                     <div className="grid grid-cols-2 gap-2">
