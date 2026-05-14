@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+/* eslint-disable react-refresh/only-export-components */
 
 type Theme = 'light' | 'dark';
 
@@ -31,10 +32,12 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     );
 };
 
-export const useTheme = () => {
+export function useTheme() {
     const context = useContext(ThemeContext);
     if (!context) {
         throw new Error('useTheme must be used within ThemeProvider');
     }
     return context;
-};
+}
+
+

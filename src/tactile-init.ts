@@ -7,7 +7,7 @@ declare global {
   interface Window {
     tactileFeedback: {
       playClickSound(): void;
-      animateTactile(target: HTMLElement, config?: any): void;
+      animateTactile(target: HTMLElement, config?: Record<string, unknown>): void;
     }
     tactileCanvasElement?: HTMLCanvasElement;
     tactileThree?: {
@@ -27,7 +27,9 @@ declare global {
 // ===========================================
 
 declare global {
-  const THREE: any; // Three.js is loaded globally for convenience
+  // Three.js is loaded globally for convenience
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const THREE: any
 }
 
 import * as THREE from 'three'
@@ -61,21 +63,23 @@ function initTactileThree() {
   renderer.setSize(window.innerWidth, window.innerHeight)
   
   // Store canvas element for React Three Fiber later
-  ;(window as any).tactileCanvasElement = canvas
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any,no-unexpected-multiline
+  (window as any).tactileCanvasElement = canvas
   
   // Animation loop with subtle float effect (Easter egg)
   function animate() {
     requestAnimationFrame(animate)
     const elapsedTime = performance.now() * 0.001
     
-    if ((window as any).tactileThree.camera) {
-      ;(window as any).tactileThree.camera.position.y = Math.sin(elapsedTime) * 0.05
-      ;(window as any).tactileThree.camera.lookAt(0, 0, 0)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const tactileThree = (window as any).tactileThree
+    if (tactileThree?.camera) {
+      tactileThree.camera.position.y = Math.sin(elapsedTime) * 0.05
+      tactileThree.camera.lookAt(0, 0, 0)
     }
     
-    renderer.render(threeScene, (window as any).tactileThree.camera)
+    renderer.render(threeScene, tactileThree?.camera)
   }
-  
   animate()
 }
 
@@ -111,7 +115,7 @@ const tactileFeedback = {
       
       oscillator.start(audioContext.currentTime)
       oscillator.stop(audioContext.currentTime + 0.15)
-    } catch (e) {
+    } catch {
       // Audio not available or blocked - that's fine
     }
   },
@@ -119,9 +123,8 @@ const tactileFeedback = {
   /**
    * GSAP animation for tactile hover effects
    */
-  animateTactile: function(target: HTMLElement, config: any = {}) {
-    const duration = config.duration || 0.15
-    const delay = config.delay || 0
+  animateTactile: function(target: HTMLElement, config: Record<string, unknown> = {}) {
+    const duration = (config.duration as number) || 0.15
     
     if (target) {
       gsap.fromTo(target, 
@@ -171,6 +174,7 @@ export const tactileInit = {
 }
 
 // Attach tactileFeedback to window globally for React components
-;(window as any).tactileFeedback = tactileFeedback
+// eslint-disable-next-line @typescript-eslint/no-explicit-any,no-unexpected-multiline
+(window as any).tactileFeedback = tactileFeedback
 
 export { tactileFeedback, entryTimeline, initTactileThree }

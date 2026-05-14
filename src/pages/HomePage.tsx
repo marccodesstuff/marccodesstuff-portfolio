@@ -17,7 +17,7 @@ const HomePage = () => {
           
           <TactileHero 
             productName="TE-2X PROTOTYPE"
-            onViewModeChange={(mode) => {
+            onViewModeChange={() => {
               // Change mode logic here when ready
             }}
           />

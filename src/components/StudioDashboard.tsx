@@ -2,7 +2,7 @@
    STUDIO DASHBOARD - VISUAL LOGIC PATCHER
    =========================================== */
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 /**
  * StudioDashboard - Modular synthesis-style workspace
@@ -21,23 +21,18 @@ interface ProductNode {
 }
 
 const StudioDashboard = () => {
-  const [nodes, setNodes] = useState<ProductNode[]>([])
+  const [nodes] = useState<ProductNode[]>([
+    { id: 1, name: 'VOX CORP', series: 'TE-2X PROTOTYPE', iconType: 'cpu', color: '#FF5C00', connectedTo: [] },
+    { id: 2, name: 'AUDIO ENGINE', series: 'DIFFUSION_MODEL_V3', iconType: 'waves', color: '#E2E2E2', connectedTo: [1] },
+    { id: 3, name: 'DATA PIPELINE', series: 'TENSORFLOW_HUB', iconType: 'database', color: '#FFA500', connectedTo: [1, 2] },
+  ])
+  const cables: Array<{ start: number; end: number }> = []
 
-  useEffect(() => {
-    // Create initial nodes (synth modules)
-    const initialNodes: ProductNode[] = [
-      { id: 1, name: 'VOX CORP', series: 'TE-2X PROTOTYPE', iconType: 'cpu', color: '#FF5C00', connectedTo: [] },
-      { id: 2, name: 'AUDIO ENGINE', series: 'DIFFUSION_MODEL_V3', iconType: 'waves', color: '#E2E2E2', connectedTo: [1] },
-      { id: 3, name: 'DATA PIPELINE', series: 'TENSORFLOW_HUB', iconType: 'database', color: '#FFA500', connectedTo: [1, 2] },
-    ]
-    
-    setNodes(initialNodes)
-  }, [])
-
-  // Create cable between two nodes (simplified - no Three.js dependencies)
+  // Log dashboard state
   useEffect(() => {
     console.log('🔌 Studio dashboard loaded with', nodes.length, 'nodes and', cables.length, 'connections')
-  }, [nodes, cables])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <section className="py-16 border-t border-white/5 overflow-hidden" id="studio-dashboard">

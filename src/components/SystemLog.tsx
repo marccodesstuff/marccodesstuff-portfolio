@@ -22,8 +22,29 @@ interface LogEvent {
   detail?: string
 }
 
+const initialEvent: LogEvent = {
+  id: Math.random().toString(36).substring(2, 8).toUpperCase(),
+  timestamp: new Date().toISOString(),
+  type: 'UI_STATE',
+  event: 'INITIALIZATION_COMPLETE',
+  detail: 'TACTILE_WEB.EXE is ready'
+}
+
 const SystemLog = () => {
-  const [events, setEvents] = useState<LogEvent[]>([])
+  const [events, setEvents] = useState<LogEvent[]>([initialEvent])
+  
+  // Get event details based on target element
+  const getEventDetails = (target: HTMLElement): string => {
+    if (target.closest('.te-module')) return 'MODULE_INTERACTION'
+    if (target.tagName === 'A') return 'LINK_NAVIGATION'
+    if (target.tagName === 'BUTTON') return 'ACTION_TRIGGERED'
+    return 'ELEMENT_INTERACTION'
+  }
+
+  // Generate consistent IDs for the same event
+  const generateId = (): string => {
+    return Math.random().toString(36).substring(2, 8).toUpperCase()
+  }
   
   useEffect(() => {
     // Track clicks globally
@@ -70,16 +91,8 @@ const SystemLog = () => {
       }
     }
 
-    // Initialize with current state
-    const initialEvent: LogEvent = {
-      id: generateId(),
-      timestamp: new Date().toISOString(),
-      type: 'UI_STATE',
-      event: 'INITIALIZATION_COMPLETE',
-      detail: 'TACTILE_WEB.EXE is ready'
-    }
-    
-    setEvents([initialEvent])
+    // Initialize with current state (moved outside for better performance)
+    // Already initialized in state
 
     // Add event listeners
     document.addEventListener('click', handleClick)
@@ -91,19 +104,6 @@ const SystemLog = () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
-
-  // Get event details based on target element
-  const getEventDetails = (target: HTMLElement): string => {
-    if (target.closest('.te-module')) return 'MODULE_INTERACTION'
-    if (target.tagName === 'A') return 'LINK_NAVIGATION'
-    if (target.tagName === 'BUTTON') return 'ACTION_TRIGGERED'
-    return 'ELEMENT_INTERACTION'
-  }
-
-  // Generate consistent IDs for the same event
-  const generateId = (): string => {
-    return Math.random().toString(36).substring(2, 8).toUpperCase()
-  }
 
   return (
     <footer className="fixed bottom-0 left-0 right-0 bg-black/95 border-t border-white/10 p-3 z-50" id="system-log">
