@@ -34,7 +34,7 @@ const HomePage = () => {
             <div className="flex items-center gap-3 mb-6">
               <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2">ACTIVE</span>
               <span className="te-label">OP_READY: 100%</span>
-              <span className="te-label text-te-muted ml-auto BUILD_VER_04.2</span>
+              <span className="te-label text-te-muted ml-auto">BUILD_VER_04.2</span>
             </div>
 
             {/* Main headline */}
@@ -60,7 +60,7 @@ const HomePage = () => {
                 <div className="text-right">
                   <span className="text-xs">44.5895° N</span>
                   <span className="text-xs">15.9486° E</span>
-                  <span className="mt-1 text-orange-500 font-bold">BUILD_REV: 2026.05.15</span>
+                  <span className="mt-1 text-orange-500 font-bold block">BUILD_REV: 2026.05.15</span>
                 </div>
               </div>
 
@@ -68,13 +68,13 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* ===========================================
-            STATUS MODULES - TACTILE INDICATORS
-            =========================================== */}
-        <div className="lg:col-span-4 grid grid-cols-1 gap-1">
-          
-          {/* Module 01: Location */}
-          <div className="te-module p-6 flex flex-col justify-between min-h-[120px] border-r-2 border-b-2 border-white/5">
+        {/* =========================================== */}
+      </div>
+    </main>
+  )
+}
+
+export default HomePage
             <div className="flex justify-between items-start mb-4">
               <span className="te-label border-l-2 border-orange-500 pl-2">LOCATION</span>
               <Terminal size={14} className="text-orange-500" />
