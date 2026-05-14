@@ -1,6 +1,4 @@
 import TactileHero from '../components/TactileHero'
-import HardwareModule from '../components/HardwareModule'
-import StudioDashboard from '../components/StudioDashboard'
 import SystemLog from '../components/SystemLog'
 import { ArrowUpRight, Terminal, Cpu } from 'lucide-react'
 
@@ -68,13 +66,13 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* =========================================== */}
-      </div>
-    </main>
-  )
-}
-
-export default HomePage
+        {/* ===========================================
+            STATUS MODULES - TACTILE INDICATORS
+            =========================================== */}
+        <div className="lg:col-span-4 grid grid-cols-1 gap-1">
+          
+          {/* Module 01: Location */}
+          <div className="te-module p-6 flex flex-col justify-between min-h-[120px] border-r-2 border-b-2 border-white/5">
             <div className="flex justify-between items-start mb-4">
               <span className="te-label border-l-2 border-orange-500 pl-2">LOCATION</span>
               <Terminal size={14} className="text-orange-500" />
