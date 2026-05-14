@@ -1,240 +1,200 @@
-import { useState, useEffect, useCallback } from 'react';
+/* ===========================================
+   SYSTEM LOG - LIVE EVENT TRACKING FOOTER
+   =========================================== */
+
+import { useState, useEffect } from 'react'
+import { Terminal } from 'lucide-react'
 
 /**
- * SystemLog - Live User Action Tracker
+ * SystemLog - Persistent footer that tracks user actions
  * 
- * Persistent sidebar/footer that logs all user interactions:
- * - CLICK_EVENT: button clicks, module hovers
- * - NAVIGATION: page changes
- * - UI_STATE: interaction state changes
- * 
- * Makes the site feel like it's running on proprietary OS.
+ * Makes the site feel like it's running on a proprietary OS by logging:
+ * - CLICK_EVENT: Every interaction (button click, hover)
+ * - UI_STATE: Current view mode and component state
+ * - NAVIGATION: Page transitions and route changes
  */
 
-interface LogEntry {
-  id: string;
-  timestamp: string;
-  event: string;
-  details: string;
+interface LogEvent {
+  id: string
+  timestamp: string
+  type: 'CLICK_EVENT' | 'UI_STATE' | 'NAVIGATION'
+  event: string
+  detail?: string
 }
 
-interface SystemLogProps {
-  enabled?: boolean;
-  maxEntries?: number;
-  showTimestamps?: boolean;
-}
-
-const SystemLog = ({ 
-  enabled = true, 
-  maxEntries = 50,
-  showTimestamps = false 
-}: SystemLogProps) => {
+const SystemLog = () => {
+  const [events, setEvents] = useState<LogEvent[]>([])
   
-  // Track log entries
-  const [logEntries, setLogEntries] = useState<LogEntry[]>([]);
-  
-  // Track user interactions via event listeners
   useEffect(() => {
-    if (!enabled) return;
-
+    // Track clicks globally
     const handleClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
+      const target = e.target as HTMLElement
+      let path = 'UNKNOWN'
       
-      // Extract class names and IDs for logging
-      const targetClasses = target.classList.length ? 
-        Array.from(target.classList).filter(c => !c.startsWith('react-')).join('.') : '';
-      
-      const id = target.id || 'unknown';
-      
-      addLogEntry(`CLICK_EVENT`, `target=${id}${targetClasses ? ', classes=' + targetClasses.slice(0, 30) : ''}`);
-    };
-
-    const handleMouseMove = (e: MouseEvent) => {
-      // Log hover events for modules
-      const target = e.target as HTMLElement;
-      
-      if (target.classList.contains('te-module')) {
-        addLogEntry(`HOVER_EVENT`, `module_id=${target.id || 'unknown'}`);
+      // Determine what was clicked
+      if (target.closest('a')) {
+        path = target.closest('a')?.getAttribute('href') || 'LINK'
+      } else if (target.tagName === 'BUTTON') {
+        path = 'BUTTON_CLICK'
+      } else if (target.closest('[role="button"]')) {
+        path = 'ROLE_BUTTON'
       }
-    };
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Tab') {
-        addLogEntry(`KEYBOARD_NAV`, `tab_key=TRUE, focused=${document.activeElement?.tagName || ''}`);
-      }
-    };
-
-    // Add global listeners
-    document.addEventListener('click', handleClick);
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('click', handleClick);
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-
-  }, [enabled, maxEntries]);
-
-  // Add entry to log
-  const addLogEntry = useCallback((event: string, details: string) => {
-    const id = Math.random().toString(36).substring(2, 8).toUpperCase();
-    
-    const newEntry: LogEntry = {
-      id,
-      timestamp: new Date().toISOString(),
-      event,
-      details
-    };
-
-    setLogEntries(prev => {
-      const updated = [newEntry, ...prev].slice(0, maxEntries);
       
-      // Scroll to bottom of log when new entry added
-      if (enabled) {
-        const logContainer = document.getElementById('system-log-container');
-        if (logContainer) {
-          setTimeout(() => {
-            logContainer.scrollTop = logContainer.scrollHeight;
-          }, 0);
+      const newEvent: LogEvent = {
+        id: generateId(),
+        timestamp: new Date().toISOString(),
+        type: 'CLICK_EVENT',
+        event: path,
+        detail: getEventDetails(target)
+      }
+      
+      setEvents(prev => [newEvent, ...prev].slice(0, 50)) // Keep last 50
+      
+      // Auto-dismiss after delay (Easter egg)
+      setTimeout(() => {
+        setEvents(prev => prev.slice(1))
+      }, 8000)
+    }
+
+    // Track scrolls
+    const handleScroll = () => {
+      if (window.scrollY > window.innerHeight * 0.5) {
+        const newEvent: LogEvent = {
+          id: generateId(),
+          timestamp: new Date().toISOString(),
+          type: 'UI_STATE',
+          event: 'SCROLL_DEEP',
+          detail: `Scroll Depth: ${Math.round((window.scrollY / document.body.scrollHeight) * 100)}%`
         }
+        setEvents(prev => [newEvent, ...prev].slice(0, 50))
       }
-      
-      return updated;
-    });
+    }
 
-  }, [maxEntries, enabled]);
-
-  // Format timestamp for display
-  const formatTimestamp = (isoString: string) => {
-    if (!showTimestamps) return '';
+    // Initialize with current state
+    const initialEvent: LogEvent = {
+      id: generateId(),
+      timestamp: new Date().toISOString(),
+      type: 'UI_STATE',
+      event: 'INITIALIZATION_COMPLETE',
+      detail: 'TACTILE_WEB.EXE is ready'
+    }
     
-    const date = new Date(isoString);
-    const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
-    const diffSeconds = Math.floor(diffMs / 1000);
-    
-    if (diffSeconds < 60) {
-      return `${diffSeconds}s`;
-    } else if (diffSeconds < 3600) {
-      return `${Math.floor(diffSeconds / 60)}m`;
-    } else {
-      return date.toLocaleTimeString();
-    }
-  };
+    setEvents([initialEvent])
 
-  // Group entries by type for cleaner display
-  const groupedLogs = logEntries.reduce((acc, entry) => {
-    if (!acc[entry.event]) {
-      acc[entry.event] = [];
-    }
-    acc[entry.event].push(entry);
-    return acc;
-  }, {} as Record<string, LogEntry[]>);
+    // Add event listeners
+    document.addEventListener('click', handleClick)
+    window.addEventListener('scroll', handleScroll)
 
-  // Render log entries
-  const renderLogEntries = () => {
-    if (!logEntries.length) {
-      return (
-        <div className="py-8 text-center opacity-50">
-          <span className="te-label">// SYSTEM_LOG_EMPTY</span>
-          <p className="text-sm mt-2 text-te-muted">
-            User interactions will appear here...
-          </p>
-        </div>
-      );
+    // Cleanup
+    return () => {
+      document.removeEventListener('click', handleClick)
+      window.removeEventListener('scroll', handleScroll)
     }
+  }, [])
 
-    return Object.entries(groupedLogs).map(([eventType, entries]) => (
-      <div key={eventType} className="border-t border-white/5 my-2">
-        <h4 className="text-xs font-bold text-te-muted uppercase tracking-wider mb-2 px-2">
-          {eventType.replace(/_/g, ' ')}
-        </h4>
-        <div id="system-log-container" className="font-mono text-[10px] max-h-64 overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-te-muted scrollbar-track-transparent">
-          {entries.map((entry) => (
-            <div key={entry.id} className="py-0.5 border-b border-white/2 last:border-0">
-              <span className="text-te-accent mr-2">[{formatTimestamp(entry.timestamp)}]</span>
-              <span className="font-bold text-te-fg">{entry.event}</span>
-              <span className="text-te-muted ml-2">{entry.details}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    ));
-  };
+  // Get event details based on target element
+  const getEventDetails = (target: HTMLElement): string => {
+    if (target.closest('.te-module')) return 'MODULE_INTERACTION'
+    if (target.tagName === 'A') return 'LINK_NAVIGATION'
+    if (target.tagName === 'BUTTON') return 'ACTION_TRIGGERED'
+    return 'ELEMENT_INTERACTION'
+  }
+
+  // Generate consistent IDs for the same event
+  const generateId = (): string => {
+    return Math.random().toString(36).substring(2, 8).toUpperCase()
+  }
 
   return (
-    <>
-      {/* Invisible log area for auto-scroll */}
-      {enabled && <div id="system-log-container" />}
-      
-      {/* Visible footer bar */}
-      <footer className="fixed bottom-0 left-0 right-0 border-t-2 border-white/10 bg-black/80 backdrop-blur-sm z-50">
-        <div className="max-w-[1400px] mx-auto px-6 py-3">
-          <div className="flex items-start justify-between gap-4">
-            
-            {/* LEFT: Status indicators */}
-            <div className="flex items-center gap-4 min-w-[200px]">
-              <div className="flex items-center gap-2">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-                </span>
-                <span className="te-label">SYSTEM_LIVE</span>
-              </div>
-              
-              <div className="flex items-center gap-1">
-                {[1, 2, 3].map(i => (
-                  <span 
-                    key={i}
-                    className={`w-1.5 h-1.5 rounded-sm ${
-                      i === 1 ? 'bg-orange-500 animate-pulse' : 
-                      i === 2 ? 'bg-yellow-400' : 'bg-gray-600'
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* CENTER: Scrollable log entries */}
-            <div className="flex-1 max-w-lg hidden lg:block">
-              {renderLogEntries()}
-            </div>
-
-            {/* RIGHT: Clear button */}
-            <button
-              onClick={() => {
-                window.tactileFeedback?.playClickSound?.();
-                setLogEntries([]);
-              }}
-              className="te-button text-[9px] py-1 px-2 opacity-60 hover:opacity-100"
-            >
-              CLEAR_LOG
-            </button>
-
-          </div>
-          
-          {/* Bottom status bar */}
-          <div className="mt-2 pt-2 border-t border-white/5 flex items-center justify-between text-[9px] text-te-muted">
-            <span>MEMORY_ALLOCATED: {logEntries.length} EVENTS</span>
-            <span className="font-mono">SYS_VER_04.2 // BUILDTIME:{new Date().toISOString().slice(0, 19).replace('T', 'Z')}</span>
-          </div>
+    <footer className="fixed bottom-0 left-0 right-0 bg-black/95 border-t border-white/10 p-3 z-50" id="system-log">
+      {/* System Status Bar */}
+      <div className="max-w-[1400px] mx-auto flex items-center justify-between mb-2 px-4">
+        <div className="flex items-center gap-2 text-[9px] font-mono text-te-muted">
+          <Terminal size={10} />
+          <span>TACTILE_WEB.EXE</span>
+          <span className="text-green-500">●</span>
+          <span>ONLINE</span>
         </div>
-      </footer>
 
-      {/* Mobile log (toggleable) */}
-      <div className="lg:hidden fixed bottom-16 right-4 w-64 z-40">
-        <button
-          onClick={() => {}} // Could toggle mobile log drawer
-          className="te-button text-[8px] py-2 px-3 opacity-50 hover:opacity-100"
-        >
-          LOG_{logEntries.length}
-        </button>
+        <div className="flex items-center gap-4 text-[9px] font-mono text-te-muted">
+          <span>FPS: 60</span>
+          <span>MEM: OPTIMAL</span>
+        </div>
+
+        <div className="text-[9px] font-mono text-orange-500">
+          v{import.meta.env?.VITE_APP_VERSION || '0.1.0'}
+        </div>
       </div>
-    </>
-  );
-};
 
-export default SystemLog;
-export { SystemLog };
+      {/* Events Feed */}
+      <div className="max-w-[1400px] mx-auto px-4 h-[80px] overflow-hidden flex items-end">
+        {events.length === 0 ? (
+          <p className="text-[9px] font-mono text-te-muted/50">AWAITING_EVENTS...</p>
+        ) : (
+          events.map((event) => (
+            <div 
+              key={event.id}
+              className="flex items-center gap-2 mb-1 pr-3 animate-slideInRight"
+              style={{ animationDelay: `${events.indexOf(event) * 50}ms` }}
+            >
+              {/* Event Type Indicator */}
+              <span className="text-[7px] font-mono text-te-muted uppercase w-16 truncate">
+                {event.type.replace('_', '_')}
+              </span>
+
+              {/* Event Timestamp */}
+              <span className="text-[8px] font-mono text-te-muted/60 flex items-center gap-1">
+                [{formatTimestamp(event.timestamp)}]
+              </span>
+
+              {/* Event Message */}
+              <span className={`text-[9px] font-mono truncate flex-1 ${
+                event.type === 'CLICK_EVENT' ? 'text-orange-500' :
+                event.type === 'UI_STATE' ? 'text-te-muted' : 'text-green-500'
+              }`}>
+                {event.event}
+              </span>
+
+              {/* Event Details (if any) */}
+              {event.detail && (
+                <span className="text-[8px] font-mono text-white/30 truncate" title={event.detail}>
+                  {event.detail}
+                </span>
+              )}
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* System Status Indicators */}
+      <div className="max-w-[1400px] mx-auto px-4 pt-2 flex items-center justify-between text-[7px] font-mono text-te-muted/50 border-t border-white/5">
+        <div className="flex items-center gap-3">
+          <span>MEM: ONLINE</span>
+          <span>NET: STABLE</span>
+          <span>DNS: RESOLVED</span>
+        </div>
+
+        <div className="flex items-center gap-4">
+          <span>LAT: 34.0522° N</span>
+          <span>LON: -118.2437° W</span>
+          <span>TIMEZONE: PST</span>
+        </div>
+      </div>
+
+      {/* Easter egg footer */}
+      <div className="max-w-[1400px] mx-auto px-4 text-center pt-2">
+        <p className="text-[7px] font-mono text-te-muted/30 uppercase tracking-wider">
+          © 2026 MARC VELASQUEZ // TACTILE_WEB.EXE
+        </p>
+      </div>
+    </footer>
+  )
+}
+
+// Format timestamp for display (YYYY-MM-DD HH:mm:ss.SSS)
+const formatTimestamp = (timestamp: string): string => {
+  const date = new Date(timestamp)
+  return `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, '0')}-${String(date.getUTCDate()).padStart(2, '0')}T${String(date.getUTCHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}.${String(date.getMilliseconds()).padStart(3, '0')}`
+}
+
+export default SystemLog

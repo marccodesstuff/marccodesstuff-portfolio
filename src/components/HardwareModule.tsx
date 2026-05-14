@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
 /**
  * HardwareModule - Physical product module card

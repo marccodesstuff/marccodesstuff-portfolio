@@ -18,10 +18,7 @@ const HomePage = () => {
           <TactileHero 
             productName="TE-2X PROTOTYPE"
             onViewModeChange={(mode) => {
-              window.tactileFeedback?.animateTactile?.(
-                document.activeElement as HTMLElement,
-                { duration: 0.15 }
-              )
+              // Change mode logic here when ready
             }}
           />
 

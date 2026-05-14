@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, Code2, Github, Linkedin, Mail, FolderOpen } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 
 const ProjectsPage = () => {
   // Sample project data matching our industrial aesthetic

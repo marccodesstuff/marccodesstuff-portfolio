@@ -1,6 +1,34 @@
-/* ===========================================
-   TACTILE WEB EXPERIENCE - THREE.JS & GSAP INITIALIZATION
-   =========================================== */
+// ===========================================
+// GLOBALLY AVAILABLE TACTILE WEB UTILITIES
+// ===========================================
+
+// Extend Window type to include tactile feedback API
+declare global {
+  interface Window {
+    tactileFeedback: {
+      playClickSound(): void;
+      animateTactile(target: HTMLElement, config?: any): void;
+    }
+    tactileCanvasElement?: HTMLCanvasElement;
+    tactileThree?: {
+      camera?: THREE.Camera;
+    };
+  }
+
+  // Extend Element for blueprint grid utilities
+  interface Element {
+    onBlueprintEvent(eventType: string, handler: (e: Event) => void): void;
+    offBlueprintEvent(eventType: string, handler?: (e: Event) => void): void;
+  }
+}
+
+// ===========================================
+// GLOBALLY AVAILABLE THREE.JS UTILITIES  
+// ===========================================
+
+declare global {
+  const THREE: any; // Three.js is loaded globally for convenience
+}
 
 import * as THREE from 'three'
 import gsap from 'gsap'
@@ -141,5 +169,8 @@ export const tactileInit = {
     })
   }
 }
+
+// Attach tactileFeedback to window globally for React components
+;(window as any).tactileFeedback = tactileFeedback
 
 export { tactileFeedback, entryTimeline, initTactileThree }
