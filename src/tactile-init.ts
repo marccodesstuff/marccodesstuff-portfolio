@@ -56,14 +56,18 @@ function initTactileThree() {
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight)
   camera.position.z = 5
 
-  const renderer = new THREE.WebGLRenderer({ 
+  const renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
     antialias: true,
     alpha: true
-  })
-  renderer.setSize(window.innerWidth, window.innerHeight)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } as any) as any
+  if (renderer && typeof renderer.setSize === 'function') {
+    renderer.setSize(window.innerWidth, window.innerHeight)
+  }
   
   // Store canvas element for React Three Fiber later
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any,no-unexpected-multiline
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (window as any).tactileCanvasElement = canvas
   
   // Animation loop with subtle float effect (Easter egg)
@@ -93,7 +97,9 @@ if (document.readyState === 'loading') {
 /**
  * Create tactile feedback handler for click sounds and haptics
  */
-const tactileFeedback = {
+// Attach tactileFeedback to window globally for React components
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+(window as any).tactileFeedback = {
   
   /**
    * Simulate click sound via Web Audio API (subtle mechanical thud)
@@ -140,41 +146,9 @@ const tactileFeedback = {
             delete config.onComplete
           }
         }
-      )
+      );
     }
   }
 }
 
-/**
- * Initialize GSAP timeline for smooth entry animations
- */
-const entryTimeline = gsap.timeline()
-
-export const tactileInit = {
-  init: function() {
-    console.log('TACTILE_WEB.EXE // INITIALIZED', new Date().toISOString())
-    
-    // Queue entry animations with staggered timing
-    entryTimeline.from('.te-module', {
-      y: 20,
-      opacity: 0,
-      duration: 0.4,
-      stagger: 0.05,
-      ease: 'power3.out'
-    })
-
-    entryTimeline.from('h1,h2,h3', {
-      x: -50,
-      opacity: 0,
-      duration: 0.6,
-      delay: 0.1,
-      ease: 'power3.out'
-    })
-  }
-}
-
-// Attach tactileFeedback to window globally for React components
-// eslint-disable-next-line @typescript-eslint/no-explicit-any,no-unexpected-multiline
-(window as any).tactileFeedback = tactileFeedback
-
-export { tactileFeedback, entryTimeline, initTactileThree }
+export { initTactileThree }

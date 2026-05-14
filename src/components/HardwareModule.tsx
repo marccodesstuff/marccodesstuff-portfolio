@@ -42,7 +42,7 @@ const HardwareModule = ({
   const [isHovered, setIsHovered] = useState(false);
 
   // Calculate visual position of IO ports based on hover state
-  const portPositions = ioPorts.map((port, index) => {
+  const portPositions = ioPorts.map((_port, index) => {
     const row = Math.floor(index / 4);
     const col = index % 4;
     
@@ -199,7 +199,7 @@ const HardwareModule = ({
 const ModuleCatalog = () => {
   
   // Sample product data (expandable)
-  const products = [
+  const products: HardwareModuleProps[] = [
     {
       id: '01',
       name: 'TACTILE_ENGINEER',
@@ -314,10 +314,13 @@ const ModuleCatalog = () => {
               key={product.id}
               {...product}
               onHover={() => {
-                window.tactileFeedback?.animateTactile?.(
-                  document.activeElement,
-                  { duration: 0.1 }
-                );
+                const activeEl = document.activeElement as HTMLElement | null;
+                if (activeEl) {
+                  window.tactileFeedback?.animateTactile?.(
+                    activeEl,
+                    { duration: 0.1 }
+                  );
+                }
               }}
             />
           ))}

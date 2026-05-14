@@ -235,11 +235,7 @@ const HomePage = () => {
             SYSTEM LOG INTEGRATION
             =========================================== */}
         <div className="lg:col-span-12 pt-4">
-          <SystemLog 
-            enabled={true}
-            maxEntries={50}
-            showTimestamps={false}
-          />
+          <SystemLog />
         </div>
 
       </div>

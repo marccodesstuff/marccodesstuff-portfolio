@@ -118,11 +118,11 @@ const AboutPage = () => {
               <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Skill_Matrix.EXE</h3>
               
               <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-[9px] font-mono text-te-muted">
-                {skillsData.map((group, index) => (
+                {Object.entries(skillsData).map(([key, items], index) => (
                   <div key={index} className="border-b border-dashed border-white/5 pb-2 last:border-0">
-                    <span className="text-orange-500 block mb-1">{group.label}</span>
+                    <span className="text-orange-500 block mb-1">{key.toUpperCase()}</span>
                     <ul className="space-y-0.5">
-                      {group.items.map((item, i) => (
+                      {(items as string[]).map((item: string, i: number) => (
                         <li key={i} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
                           <div className="w-1 h-1 bg-orange-500 rounded-full" />
                           {item}
@@ -138,10 +138,10 @@ const AboutPage = () => {
             <div className="te-module p-6 mb-4 min-h-[120px]">
               <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Certifications.EXE</h3>
               
-              {certificationsData.map((cert, index) => (
+              {certificationsData.map((cert: { provider: string; name: string; color: string }, index: number) => (
                 <div key={index} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0 text-[9px] font-mono text-te-muted">
                   <span>{cert.name}</span>
-                  <span className="text-orange-500">{cert.issuer}</span>
+                  <span className="text-orange-500">{cert.provider}</span>
                 </div>
               ))}
             </div>
@@ -151,10 +151,10 @@ const AboutPage = () => {
               <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Achievement_Log.EXE</h3>
               
               <ul className="space-y-2 text-sm font-medium leading-relaxed text-te-muted max-w-lg">
-                {achievementsData.slice(0, 6).map((achievement, index) => (
+                {achievementsData.slice(0, 6).map((achievement: { title: string; place: string; iconType: string }, index: number) => (
                   <li key={index} className="flex items-start gap-2 hover:text-white transition-colors cursor-default">
-                    <span className="text-orange-500 font-bold text-xs mt-0.5">{achievement.year}</span>
-                    <span>{achievement.desc}</span>
+                    <span className="text-orange-500 font-bold text-xs mt-0.5">{achievement.place}</span>
+                    <span>{achievement.title}</span>
                   </li>
                 ))}
               </ul>
