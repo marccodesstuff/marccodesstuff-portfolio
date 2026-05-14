@@ -1,172 +1,255 @@
-import { Link } from 'react-router-dom';
-import {
-    ArrowUpRight,
-    MapPin,
-    Terminal,
-    Github,
-    Linkedin,
-    Mail,
-    Brain
-} from 'lucide-react';
+import TactileHero from '../components/TactileHero'
+import HardwareModule from '../components/HardwareModule'
+import StudioDashboard from '../components/StudioDashboard'
+import SystemLog from '../components/SystemLog'
+import { ArrowUpRight, Terminal, Cpu } from 'lucide-react'
 
 const HomePage = () => {
-    return (
-        <main className="p-4 md:p-6 lg:p-8">
-            <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-1 border-t border-l border-te-border bg-te-border">
+  return (
+    <main className="p-4 lg:p-8">
+      {/* ===========================================
+          LANDING PAGE BLUEPRINT GRID
+          =========================================== */}
+      <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-1 border-t-2 border-l-2 border-white/10">
+        
+        {/* ===========================================
+            HERO BLOCK - PLAYABLE 3D SCHEMATIC
+            =========================================== */}
+        <div className="lg:col-span-8 min-h-[50vh] flex flex-col">
+          
+          <TactileHero 
+            productName="TE-2X PROTOTYPE"
+            onViewModeChange={(mode) => {
+              window.tactileFeedback?.animateTactile?.(
+                document.activeElement as HTMLElement,
+                { duration: 0.15 }
+              )
+            }}
+          />
 
-                {/* --- HERO BLOCK --- */}
-                <div className="md:col-span-8 bg-te-surface p-8 md:p-12 min-h-[450px] flex flex-col justify-between border-r border-b border-te-border relative overflow-hidden">
-                    <div className="absolute top-4 right-4 te-label opacity-30 select-none">
-                        MOD_REF: 8891-TR
-                    </div>
-                    <div>
-                        <div className="flex items-center gap-3 mb-8">
-                            <span className="te-label px-2 py-0.5 border border-te-accent text-te-accent">ACTIVE</span>
-                            <span className="te-label">OP_READY: 100%</span>
-                        </div>
-                        <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85]">
-                            Marc Victor<br />
-                            <span className="text-te-accent">Velasquez</span>
-                        </h1>
-                        <p className="te-label text-base font-bold mt-6 tracking-normal">Digital Architect / Backend Engineer</p>
-                    </div>
-                    <div className="flex flex-col md:flex-row justify-between items-end gap-6">
-                        <p className="text-xl font-medium max-w-md leading-tight">
-                            Building high-density backend systems and AI research pipelines.
-                        </p>
-                        <div className="te-label text-[9px] leading-tight text-right opacity-40">
-                            44.5895° N, 15.9486° E<br />
-                            BUILD_REV: 2026.01.06
-                        </div>
-                    </div>
-                </div>
-
-                {/* --- STATUS MODULES --- */}
-                <div className="md:col-span-4 grid grid-cols-1 gap-1">
-                    {/* Location */}
-                    <div className="bg-te-surface p-6 border-r border-b border-te-border flex flex-col justify-between group">
-                        <div className="flex justify-between items-start">
-                            <span className="te-label">Location</span>
-                            <MapPin size={14} className="text-te-accent" />
-                        </div>
-                        <div className="mt-8">
-                            <p className="text-2xl font-black tracking-tight uppercase">Angeles, PH</p>
-                            <p className="te-label mt-1">UTC +08:00 • REMOTE_SECURED</p>
-                        </div>
-                    </div>
-
-                    {/* Current Focus */}
-                    <div className="bg-te-surface p-6 border-r border-b border-te-border flex flex-col justify-between group">
-                        <div className="flex justify-between items-start">
-                            <span className="te-label">Research_Focus</span>
-                            <Brain size={14} className="text-te-accent" />
-                        </div>
-                        <div className="mt-8">
-                            <p className="text-lg font-black tracking-tight leading-tight uppercase group-hover:text-te-accent transition-colors">
-                                Transformer & Diffusion Architectures
-                            </p>
-                            <p className="te-label mt-2">Spring_Security_v6.x</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* --- FEATURED PROJECTS --- */}
-                <Link to="/projects" className="md:col-span-6 bg-te-surface p-8 border-r border-b border-te-border group cursor-pointer transition-colors hover:bg-te-surface-hover">
-                    <div className="flex justify-between items-start mb-12">
-                        <span className="te-label border-l-2 border-te-accent pl-2">MODULE_01: HACKATHON_WIN</span>
-                        <ArrowUpRight size={20} className="text-te-muted group-hover:text-te-fg transition-all" />
-                    </div>
-                    <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Typhoon Survival Beacon</h3>
-                    <p className="text-sm font-medium mb-8 leading-relaxed text-te-muted max-w-sm">
-                        AI-powered disaster response with 97.8% flood prediction accuracy using TensorFlow.
-                    </p>
-                    <div className="flex gap-2 te-label">
-                        <span className="px-2 py-0.5 bg-te-bg border border-te-border">GEMINI.AI</span>
-                        <span className="px-2 py-0.5 bg-te-bg border border-te-border">TENSORFLOW</span>
-                        <span className="px-2 py-0.5 bg-te-bg border border-te-border">FLUTTER</span>
-                    </div>
-                </Link>
-
-                <Link to="/projects" className="md:col-span-6 bg-te-surface p-8 border-r border-b border-te-border group cursor-pointer transition-colors hover:bg-te-surface-hover">
-                    <div className="flex justify-between items-start mb-12">
-                        <span className="te-label border-l-2 border-te-accent pl-2">MODULE_02: RESEARCH</span>
-                        <ArrowUpRight size={20} className="text-te-muted group-hover:text-te-fg transition-all" />
-                    </div>
-                    <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Knee Tear Detection</h3>
-                    <p className="text-sm font-medium mb-8 leading-relaxed text-te-muted max-w-sm">
-                        Clinically validated MRI diagnostic platform with 0.88 Sensitivity using ensemble learning.
-                    </p>
-                    <div className="flex gap-2 te-label">
-                        <span className="px-2 py-0.5 bg-te-bg border border-te-border">PYTORCH</span>
-                        <span className="px-2 py-0.5 bg-te-bg border border-te-border">MICROSERVICES</span>
-                        <span className="px-2 py-0.5 bg-te-bg border border-te-border">DICOM</span>
-                    </div>
-                </Link>
-
-                {/* --- TECH STACK MODULE --- */}
-                <div className="md:col-span-12 bg-te-surface p-8 md:p-12 border-r border-b border-te-border grid grid-cols-1 md:grid-cols-4 gap-8">
-                    <div className="md:col-span-4 mb-4 flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                            <Terminal size={18} className="text-te-accent" />
-                            <h3 className="te-label text-base font-bold tracking-normal text-te-fg">CORE_STACK.EXE</h3>
-                        </div>
-                        <div className="te-label text-[9px] opacity-30">HEX_DUMP 0x3A2</div>
-                    </div>
-
-                    {[
-                        { label: "Languages", items: ["Python", "C++", "Java", "Dart"] },
-                        { label: "Backend", items: ["Spring Boot", "Next.js", "Flutter", "Express"] },
-                        { label: "Infra", items: ["Azure", "Oracle Cloud", "AppWrite", "Docker"] },
-                        { label: "AI_ML", items: ["PyTorch", "TensorFlow", "HuggingFace", "Pandas"] }
-                    ].map((group) => (
-                        <div key={group.label} className="border-t border-te-border pt-4">
-                            <h4 className="te-label mb-4 text-te-muted">{group.label}</h4>
-                            <ul className="space-y-1">
-                                {group.items.map(item => (
-                                    <li key={item} className="text-xs font-bold font-mono uppercase tracking-tight flex items-center gap-2">
-                                        <div className="w-1 h-1 bg-te-accent" />
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
-
-                {/* --- COLLABORATION CTA --- */}
-                <footer className="md:col-span-12 bg-te-bg p-8 md:p-16 flex flex-col md:flex-row justify-between items-center gap-12 border-r border-b border-te-border">
-                    <div className="text-center md:text-left">
-                        <div className="te-label mb-4">SESSION_END</div>
-                        <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">
-                            Initialize<br />Collaboration
-                        </h2>
-                        <p className="te-label text-te-accent font-bold text-lg tracking-[0.1em]">CONTACT SYSTEM FOR INQUIRIES</p>
-                    </div>
-
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                        {[
-                            { icon: <Github size={20} />, label: "GITHUB", href: "https://github.com/marccodesstuff" },
-                            { icon: <Linkedin size={20} />, label: "LINKEDIN", href: "https://www.linkedin.com/in/mrcvctr-vel/" },
-                            { icon: <Mail size={20} />, label: "EMAIL", href: "#" }
-                        ].map((social) => (
-                            <a
-                                key={social.label}
-                                href={social.href}
-                                target={social.href.startsWith('http') ? "_blank" : undefined}
-                                rel={social.href.startsWith('http') ? "noopener noreferrer" : undefined}
-                                className="te-button p-6 flex flex-col items-center justify-center gap-3 group hover:bg-te-surface-hover transition-colors opacity-80"
-                            >
-                                <div className="text-te-muted group-hover:text-te-accent transition-colors">
-                                    {social.icon}
-                                </div>
-                                <span className="te-label">{social.label}</span>
-                            </a>
-                        ))}
-                    </div>
-                </footer>
+          {/* Hero content below 3D viewer */}
+          <div className="flex-1 border-t border-white/10 p-6 flex flex-col justify-between">
+            
+            {/* Active status indicators */}
+            <div className="flex items-center gap-3 mb-6">
+              <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2">ACTIVE</span>
+              <span className="te-label">OP_READY: 100%</span>
+              <span className="te-label text-te-muted ml-auto BUILD_VER_04.2</span>
             </div>
-        </main>
-    );
-};
 
-export default HomePage;
+            {/* Main headline */}
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-4">
+                Marc Victor<br />
+                <span className="text-orange-500">Velasquez</span>
+              </h1>
+              <p className="text-xl lg:text-2xl font-bold mt-6 tracking-normal text-te-muted max-w-3xl">
+                Digital Architect // Backend Engineer // Industrial Designer
+              </p>
+            </div>
+
+            {/* CTA section */}
+            <div className="mt-8 flex flex-col md:flex-row justify-between items-start gap-4 pt-4 border-t border-white/10">
+              
+              <p className="text-sm text-te-muted max-w-xl leading-relaxed">
+                Building high-density backend systems and AI research pipelines. 
+                Interact with the schematic above to explore view modes—wireframe, solid, or exploded.
+              </p>
+
+              <div className="flex items-center gap-4 text-[9px] font-mono text-te-muted opacity-60">
+                <div className="text-right">
+                  <span className="text-xs">44.5895° N</span>
+                  <span className="text-xs">15.9486° E</span>
+                  <span className="mt-1 text-orange-500 font-bold">BUILD_REV: 2026.05.15</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        {/* ===========================================
+            STATUS MODULES - TACTILE INDICATORS
+            =========================================== */}
+        <div className="lg:col-span-4 grid grid-cols-1 gap-1">
+          
+          {/* Module 01: Location */}
+          <div className="te-module p-6 flex flex-col justify-between min-h-[120px] border-r-2 border-b-2 border-white/5">
+            <div className="flex justify-between items-start mb-4">
+              <span className="te-label border-l-2 border-orange-500 pl-2">LOCATION</span>
+              <Terminal size={14} className="text-orange-500" />
+            </div>
+            <div>
+              <p className="text-xl font-black tracking-tight uppercase">Angeles, PH</p>
+              <p className="te-label mt-2">UTC +08:00 // REMOTE_SECURED</p>
+            </div>
+          </div>
+
+          {/* Module 02: Current Focus */}
+          <div className="te-module p-6 flex flex-col justify-between min-h-[120px] border-r-2 border-b-2 border-white/5">
+            <div className="flex justify-between items-start mb-4">
+              <span className="te-label border-l-2 border-orange-500 pl-2">RESEARCH_FOCUS</span>
+              <Cpu size={14} className="text-orange-500" />
+            </div>
+            <div>
+              <p className="text-lg font-black tracking-tight leading-tight uppercase hover:text-orange-500 transition-colors cursor-default">
+                Transformer & Diffusion Architectures
+              </p>
+              <p className="te-label mt-2 text-te-muted">Spring_Security_v6.x</p>
+            </div>
+          </div>
+
+          {/* Module 03: Contact CTA */}
+          <div className="flex-1 bg-orange-500/10 p-6 flex flex-col justify-between border-r-2 border-b-2 border-orange-500/30 hover:border-orange-500 transition-colors cursor-pointer group">
+            <div className="flex justify-between items-start mb-4">
+              <span className="te-label border-l-2 border-white/30 pl-2">CONTACT_SYSTEM</span>
+              <ArrowUpRight size={16} className="text-orange-500" />
+            </div>
+            <p className="text-lg font-black tracking-tight uppercase group-hover:text-white transition-colors">
+              Initialize Collaboration
+            </p>
+            <a 
+              href="https://github.com/marccodesstuff"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => window.tactileFeedback?.playClickSound()}
+              className="mt-4 te-label text-te-muted hover:text-orange-500 transition-colors flex items-center gap-1 group-hover:underline"
+            >
+              GITHUB REPOSITORY <ArrowUpRight size={12} />
+            </a>
+          </div>
+
+        </div>
+
+        {/* ===========================================
+            FEATURED PROJECTS MODULES
+            =========================================== */}
+        <div className="lg:col-span-6 grid grid-cols-1 gap-1">
+          
+          {/* Project 01: Typhoon Survival Beacon */}
+          <a 
+            href="/projects"
+            onClick={() => window.tactileFeedback?.playClickSound()}
+            className="te-module p-8 border-r-2 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
+          >
+            <div className="flex justify-between items-start mb-4">
+              <span className="te-label border-l-2 border-orange-500 pl-2">MODULE_01: HACKATHON_WIN</span>
+              <ArrowUpRight size={20} className="text-te-muted group-hover:text-white transition-all" />
+            </div>
+            <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Typhoon Survival Beacon</h3>
+            <p className="text-sm font-medium mb-6 leading-relaxed text-te-muted max-w-lg">
+              AI-powered disaster response with 97.8% flood prediction accuracy using TensorFlow and Gemini.AI.
+            </p>
+            <div className="flex gap-2 text-[7px] text-te-muted font-mono uppercase">
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">GEMINI.AI</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">TENSORFLOW</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">FLUTTER</span>
+            </div>
+          </a>
+
+          {/* Project 02: Knee Tear Detection */}
+          <a 
+            href="/projects"
+            onClick={() => window.tactileFeedback?.playClickSound()}
+            className="te-module p-8 border-r-2 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
+          >
+            <div className="flex justify-between items-start mb-4">
+              <span className="te-label border-l-2 border-orange-500 pl-2">MODULE_02: MEDICAL_AI</span>
+              <ArrowUpRight size={20} className="text-te-muted group-hover:text-white transition-all" />
+            </div>
+            <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Knee Tear Detection</h3>
+            <p className="text-sm font-medium mb-6 leading-relaxed text-te-muted max-w-lg">
+              Clinically validated MRI diagnostic platform with 0.88 Sensitivity using ensemble learning and PyTorch.
+            </p>
+            <div className="flex gap-2 text-[7px] text-te-muted font-mono uppercase">
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">PYTORCH</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">MICROSERVICES</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">DICOM</span>
+            </div>
+          </a>
+
+        </div>
+
+        {/* ===========================================
+            TECH STACK MODULE - CORE_STACK.EXE
+            =========================================== */}
+        <div className="lg:col-span-12 p-8 lg:p-12 border-r-2 border-b-2 border-white/5">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-3">
+              <Terminal size={20} className="text-orange-500" />
+              <h3 className="te-label text-lg font-bold tracking-normal">CORE_STACK.EXE</h3>
+            </div>
+            <span className="te-label text-[9px] text-te-muted">HEX_DUMP 0x3A2</span>
+          </div>
+
+          {/* Languages */}
+          <div className="border-t border-white/5 pt-6">
+            <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">Languages</h4>
+            <ul className="space-y-1 font-mono text-[10px] text-te-muted">
+              {['Python', 'C++', 'Java', 'Dart'].map(item => (
+                <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+                  <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Backend */}
+          <div className="border-t border-white/5 pt-6">
+            <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">Backend</h4>
+            <ul className="space-y-1 font-mono text-[10px] text-te-muted">
+              {['Spring Boot', 'Next.js', 'Flutter', 'Express'].map(item => (
+                <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+                  <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Infrastructure */}
+          <div className="border-t border-white/5 pt-6">
+            <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">Infra</h4>
+            <ul className="space-y-1 font-mono text-[10px] text-te-muted">
+              {['Azure', 'Oracle Cloud', 'AppWrite', 'Docker'].map(item => (
+                <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+                  <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* AI & ML */}
+          <div className="border-t border-white/5 pt-6">
+            <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">AI_ML</h4>
+            <ul className="space-y-1 font-mono text-[10px] text-te-muted">
+              {['PyTorch', 'TensorFlow', 'HuggingFace', 'Pandas'].map(item => (
+                <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+                  <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+
+        {/* ===========================================
+            SYSTEM LOG INTEGRATION
+            =========================================== */}
+        <div className="lg:col-span-12 pt-4">
+          <SystemLog 
+            enabled={true}
+            maxEntries={50}
+            showTimestamps={false}
+          />
+        </div>
+
+      </div>
+    </main>
+  )
+}
+
+export default HomePage

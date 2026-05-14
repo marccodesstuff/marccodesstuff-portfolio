@@ -1,165 +1,203 @@
-import {
-    GraduationCap,
-    Award,
-    Cloud,
-    Trophy,
-    BookOpen,
-    Briefcase,
-} from 'lucide-react';
-
-import certificationsData from '../data/certifications.json';
-import achievementsData from '../data/achievements.json';
-import skills from '../data/skills.json';
-
-// Map icon type strings from JSON to actual JSX components
-const achievementIconMap: { [key: string]: React.ReactNode } = {
-    'trophy': <Trophy size={18} />,
-    'award': <Award size={18} />,
-};
-
-const achievements = achievementsData.map((ach) => ({
-    ...ach,
-    icon: achievementIconMap[ach.iconType] || <Award size={18} />,
-}));
+import { Github, Linkedin, Mail, Terminal, Cpu, HardDrive } from 'lucide-react'
+import achievementsData from '../data/achievements.json'
+import certificationsData from '../data/certifications.json'
+import skillsData from '../data/skills.json'
 
 const AboutPage = () => {
-    return (
-        <>
-            {/* --- MAIN CONTENT --- */}
-            <main className="p-4 md:p-6 lg:p-8">
-                <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-1 border border-te-border bg-te-border">
+  return (
+    <main className="p-4 lg:p-8">
+      <div className="max-w-[1400px] mx-auto border-t-2 border-l-2 border-white/10 bg-black/30 min-h-screen">
+        
+        {/* Page header */}
+        <header className="border-b-2 border-white/10 pb-6 mb-6">
+          <div className="flex items-end justify-between gap-4">
+            
+            <div>
+              <h1 className="text-5xl font-black uppercase tracking-tighter mb-2">
+                About_Module.EXE
+              </h1>
+              <p className="te-label text-base mt-0">TECHNICAL_SPECIFICATIONS // PERSONAL_DATA_DUMP</p>
+            </div>
 
-                    {/* --- INTRO BLOCK --- */}
-                    <div className="md:col-span-12 bg-te-surface p-8 md:p-12 min-h-[400px] flex flex-col justify-between border-b border-te-border relative overflow-hidden">
-                        <div className="absolute top-4 right-8 te-label opacity-20 select-none">BIO_DATA.LOG</div>
-                        <div>
-                            <span className="te-label border-l-2 border-te-accent pl-2 text-te-accent mb-6 block">CORE_IDENTITY</span>
-                            <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-8 leading-[0.85]">
-                                Marc Victor<br />Velasquez
-                            </h1>
-                            <p className="text-xl font-medium max-w-xl leading-tight">
-                                Computer Science student synthesizing AI research and practical backend architecture.
-                            </p>
-                        </div>
-                        <p className="te-label text-base font-bold tracking-normal text-te-muted uppercase mt-8 leading-relaxed max-w-lg">
-                            Diving into transformer architectures while securing enterprise systems with Spring Boot.
-                        </p>
-                    </div>
+            <span className="te-label px-3 py-1 border-l-2 border-orange-500 pl-2">
+              STATUS: AVAILABLE_FOR_HIRE
+            </span>
+          </div>
+        </header>
 
-                    {/* --- EDUCATION & ACHIEVEMENTS --- */}
-                    <div className="md:col-span-6 bg-te-surface p-8 md:p-12 border-r border-b border-te-border">
-                        <div className="flex items-center gap-4 mb-12">
-                            <div className="w-12 h-12 te-module flex items-center justify-center text-te-accent">
-                                <GraduationCap size={20} />
-                            </div>
-                            <h2 className="text-3xl font-black uppercase tracking-tighter">Academic_Trace</h2>
-                        </div>
+        {/* Main content grid */}
+        <div className="p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-3 gap-1">
+          
+          {/* LEFT COLUMN: Identity Module */}
+          <section className="lg:col-span-1 border-r border-white/5 pr-1">
+            
+            {/* Bio module */}
+            <div className="te-module p-6 mb-4 min-h-[200px] flex flex-col justify-between">
+              <div>
+                <h3 className="text-2xl font-black uppercase tracking-tighter mb-2">Identity</h3>
+                <p className="te-label text-xs mt-0">PERSONAL_DATA_RECORD_04.2</p>
+              </div>
 
-                        <div className="border-l-2 border-te-border pl-8 relative">
-                            <div className="absolute top-0 -left-[5px] w-2 h-2 bg-te-accent" />
-                            <h3 className="text-xl font-black uppercase tracking-tight">Angeles University Foundation</h3>
-                            <p className="te-label font-bold text-te-muted mt-1">BS Computer Science</p>
-                            <p className="te-label text-[10px] mt-2 opacity-50">AUG 2022 - PRESENT</p>
-                            <div className="mt-8 space-y-4">
-                                <span className="inline-flex items-center gap-3 te-label px-3 py-1.5 border border-te-accent/30 text-te-accent font-bold bg-white/50">
-                                    <BookOpen size={12} /> COLLEGE SCHOLAR (23-24)
-                                </span>
-                                <p className="text-sm font-medium leading-relaxed max-w-sm text-te-muted">
-                                    Core Research: Machine Learning, Generative AI, Systems Architecture.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+              <div className="mt-4 space-y-2">
+                <p className="text-lg font-bold uppercase tracking-tight">
+                  Marc Victor Velasquez
+                </p>
+                <p className="te-label text-sm leading-relaxed">
+                  Digital Architect // Backend Engineer // AI Researcher
+                </p>
+              </div>
 
-                    <div className="md:col-span-6 bg-te-surface p-8 md:p-12 border-b border-te-border">
-                        <div className="flex items-center gap-4 mb-12">
-                            <div className="w-12 h-12 te-module flex items-center justify-center text-te-accent">
-                                <Trophy size={20} />
-                            </div>
-                            <h2 className="text-3xl font-black uppercase tracking-tighter">Event_History</h2>
-                        </div>
+              {/* Location & timezone */}
+              <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-2 gap-y-2 text-[9px] font-mono text-te-muted">
+                <div>
+                  <span className="text-te-muted">LOCATION:</span><br />
+                  Angeles, PH
+                </div>
+                <div>
+                  <span className="text-te-muted">TIMEZONE:</span><br />
+                  UTC +08:00
+                </div>
+              </div>
 
-                        <div className="space-y-4">
-                            {achievements.map((ach, i) => (
-                                <div key={i} className="flex items-start gap-4 p-4 border border-te-border group hover:bg-white transition-colors">
-                                    <div className="text-te-accent mt-0.5 group-hover:scale-110 transition-transform">{ach.icon}</div>
-                                    <div>
-                                        <p className="text-sm font-black uppercase tracking-tight">{ach.place}</p>
-                                        <p className="te-label text-[10px] text-te-muted mt-1">{ach.title}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+              {/* Social indicators */}
+              <div className="mt-4 flex gap-2">
+                {[Github, Linkedin, Mail].map((Icon, index) => (
+                  <a 
+                    key={index}
+                    href="#"
+                    onClick={() => window.tactileFeedback?.playClickSound()}
+                    className="p-2 bg-white/5 hover:bg-orange-500/20 border border-white/10 hover:border-orange-500 rounded-sm transition-colors"
+                    aria-label="Social link"
+                  >
+                    <Icon size={16} />
+                  </a>
+                ))}
+              </div>
 
-                    {/* --- CERTIFICATIONS --- */}
-                    <div className="md:col-span-12 bg-te-surface p-8 md:p-12 border-b border-te-border">
-                        <div className="flex items-center gap-4 mb-12">
-                            <div className="w-12 h-12 te-module flex items-center justify-center text-te-muted">
-                                <Cloud size={20} />
-                            </div>
-                            <h2 className="text-3xl font-black uppercase tracking-tighter">Validated_Auths</h2>
-                        </div>
+            </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-                            {certificationsData.map((cert, i) => (
-                                <div key={i} className="flex items-center gap-6 p-6 border border-te-border group hover:bg-white transition-colors">
-                                    <div
-                                        className="w-10 h-10 te-module flex items-center justify-center text-white font-black text-sm"
-                                        style={{ backgroundColor: cert.color }}
-                                    >
-                                        {cert.provider.charAt(0)}
-                                    </div>
-                                    <div>
-                                        <p className="text-sm font-black uppercase tracking-tight">{cert.name}</p>
-                                        <p className="te-label text-[10px] text-te-muted mt-1">{cert.provider}</p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* --- SKILLS MODULES --- */}
-                    <div className="md:col-span-12 bg-te-surface p-8 md:p-12">
-                        <div className="flex items-center gap-4 mb-16">
-                            <div className="w-12 h-12 te-module flex items-center justify-center text-te-accent">
-                                <Briefcase size={20} />
-                            </div>
-                            <h2 className="text-3xl font-black uppercase tracking-tighter">Technical_Specs</h2>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-                            {[
-                                { label: "LANGUAGES.EXE", data: skills.languages },
-                                { label: "APP_ENV.SYS", data: skills.appDev },
-                                { label: "AI_MATH.ML", data: skills.aiData },
-                                { label: "CLOUD_INFRA.OPS", data: skills.cloudTools }
-                            ].map((group) => (
-                                <div key={group.label} className="border-t border-te-border pt-6">
-                                    <h4 className="te-label mb-6 text-te-muted">{group.label}</h4>
-                                    <div className="flex flex-wrap gap-2">
-                                        {group.data.map(skill => (
-                                            <span key={skill} className="te-label px-2 py-1 bg-te-bg border border-te-border font-bold">
-                                                {skill}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+            {/* Core competencies module */}
+            <div className="te-module p-6 min-h-[200px]">
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Core_Capabilities.EXE</h3>
+              
+              <div className="space-y-4">
+                {/* Architecture */}
+                <div>
+                  <span className="te-label text-xs">SYSTEM_ARCHITECTURE</span>
+                  <p className="text-sm font-medium mt-1 leading-relaxed text-te-muted max-w-sm">
+                    High-density backend systems, microservices architecture, and scalable infrastructure design.
+                  </p>
                 </div>
 
-                <div className="max-w-[1400px] mx-auto mt-8 flex justify-between items-center px-2">
-                    <div className="te-label opacity-40">SYSTEM_RECOVERY: ACTIVE</div>
-                    <div className="flex gap-4">
-                        <a href="https://github.com/marccodesstuff" target="_blank" rel="noopener noreferrer" className="te-label hover:text-te-accent transition-colors">GITHUB</a>
-                        <a href="https://www.linkedin.com/in/mrcvctr-vel/" target="_blank" rel="noopener noreferrer" className="te-label hover:text-te-accent transition-colors">LINKEDIN</a>
-                    </div>
+                {/* AI/ML */}
+                <div>
+                  <span className="te-label text-xs">AI_ML_ENGINEERING</span>
+                  <p className="text-sm font-medium mt-1 leading-relaxed text-te-muted max-w-sm">
+                    Transformer and diffusion model architectures, research pipelines, and production deployment.
+                  </p>
                 </div>
-            </main>
-        </>
-    );
-};
 
-export default AboutPage;
+                {/* Infrastructure */}
+                <div>
+                  <span className="te-label text-xs">INFRASTRUCTURE</span>
+                  <p className="text-sm font-medium mt-1 leading-relaxed text-te-muted max-w-sm">
+                    Cloud-native deployments, container orchestration, and CI/CD pipeline automation.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+          </section>
+
+          {/* CENTER COLUMN: Skills & Certifications */}
+          <section className="lg:col-span-2">
+            
+            {/* Skills module */}
+            <div className="te-module p-6 mb-4 min-h-[180px]">
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Skill_Matrix.EXE</h3>
+              
+              <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-[9px] font-mono text-te-muted">
+                {skillsData.map((group, index) => (
+                  <div key={index} className="border-b border-dashed border-white/5 pb-2 last:border-0">
+                    <span className="text-orange-500 block mb-1">{group.label}</span>
+                    <ul className="space-y-0.5">
+                      {group.items.map((item, i) => (
+                        <li key={i} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+                          <div className="w-1 h-1 bg-orange-500 rounded-full" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Certifications module */}
+            <div className="te-module p-6 mb-4 min-h-[120px]">
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Certifications.EXE</h3>
+              
+              {certificationsData.map((cert, index) => (
+                <div key={index} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0 text-[9px] font-mono text-te-muted">
+                  <span>{cert.name}</span>
+                  <span className="text-orange-500">{cert.issuer}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Achievements module */}
+            <div className="te-module p-6 min-h-[200px]">
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Achievement_Log.EXE</h3>
+              
+              <ul className="space-y-2 text-sm font-medium leading-relaxed text-te-muted max-w-lg">
+                {achievementsData.slice(0, 6).map((achievement, index) => (
+                  <li key={index} className="flex items-start gap-2 hover:text-white transition-colors cursor-default">
+                    <span className="text-orange-500 font-bold text-xs mt-0.5">{achievement.year}</span>
+                    <span>{achievement.desc}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button 
+                onClick={() => window.tactileFeedback?.playClickSound()}
+                className="mt-4 te-button text-[8px] py-1 px-3 opacity-60 hover:opacity-100"
+              >
+                VIEW_ALL_RECORDS
+              </button>
+            </div>
+
+          </section>
+
+        </div>
+
+        {/* Bottom system info bar */}
+        <footer className="pt-4 border-t border-white/10 flex items-center justify-between text-[9px] font-mono text-te-muted">
+          
+          {/* System metrics */}
+          <div className="flex gap-4">
+            <div className="flex items-center gap-2">
+              <Terminal size={12} />
+              <span>SYS_VER_04.2</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Cpu size={12} />
+              <span>CPU: 8%</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <HardDrive size={12} />
+              <span>MEM: 12MB</span>
+            </div>
+          </div>
+
+          {/* Build timestamp */}
+          <span>BUILDTIME:{new Date().toISOString().slice(0, 19).replace('T', 'Z')}</span>
+
+        </footer>
+
+      </div>
+    </main>
+  )
+}
+
+export default AboutPage
