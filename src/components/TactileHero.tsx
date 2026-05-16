@@ -61,25 +61,32 @@ const TactileHero = ({
   }, []);
 
   const setupLighting = useCallback((scene: THREE.Scene) => {
-    const mainLight = new THREE.SpotLight(0xffffff, 2);
-    mainLight.position.set(5, 10, 5);
-    mainLight.angle = Math.PI / 6;
+    // Ambient light for base illumination
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
+    scene.add(ambientLight);
+
+    const mainLight = new THREE.SpotLight(0xffffff, 3);
+    mainLight.position.set(8, 12, 8);
+    mainLight.angle = Math.PI / 5;
     mainLight.penumbra = 0.3;
+    mainLight.castShadow = true;
+    mainLight.shadow.mapSize.width = 2048;
+    mainLight.shadow.mapSize.height = 2048;
     scene.add(mainLight);
 
-    const rimLight = new THREE.DirectionalLight(0x4d9eff, 1.5);
-    rimLight.position.set(-5, 2, -5);
+    const rimLight = new THREE.DirectionalLight(0x4d9eff, 2);
+    rimLight.position.set(-8, 3, -8);
     scene.add(rimLight);
 
-    const accentLight = new THREE.PointLight(0xff6b1a, 0.8, 10);
-    accentLight.position.set(3, 2, 3);
+    const accentLight = new THREE.PointLight(0xff6b1a, 1.2, 15);
+    accentLight.position.set(5, 3, 5);
     scene.add(accentLight);
 
-    const fillLight = new THREE.DirectionalLight(0x2a4d9e, 0.5);
-    fillLight.position.set(0, -5, 2);
+    const fillLight = new THREE.DirectionalLight(0x2a4d9e, 0.8);
+    fillLight.position.set(0, -8, 3);
     scene.add(fillLight);
 
-    const gridHelper = new THREE.GridHelper(10, 10, 0x333333, 0x1a1a1a);
+    const gridHelper = new THREE.GridHelper(10, 10, 0x555555, 0x333333);
     gridHelper.position.y = -1.25;
     scene.add(gridHelper);
   }, []);
@@ -89,9 +96,9 @@ const TactileHero = ({
     
     const bodyGeometry = new THREE.BoxGeometry(3, 2.5, 1.2);
     const bodyMaterial = new THREE.MeshStandardMaterial({
-      color: 0x1a1a1a,
-      roughness: 0.4,
-      metalness: 0.8,
+      color: 0x4a4a4a,
+      roughness: 0.3,
+      metalness: 0.85,
     });
     
     const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
@@ -99,9 +106,9 @@ const TactileHero = ({
 
     const panelGeometry = new THREE.BoxGeometry(2.9, 1.8, 0.15);
     const panelMaterial = new THREE.MeshStandardMaterial({
-      color: 0x2a2a2a,
-      roughness: 0.3,
-      metalness: 0.6,
+      color: 0x5a5a5a,
+      roughness: 0.2,
+      metalness: 0.8,
     });
     
     const panel = new THREE.Mesh(panelGeometry, panelMaterial);
@@ -117,8 +124,8 @@ const TactileHero = ({
       
       const knobGeometry = new THREE.CylinderGeometry(0.2, 0.25, 0.15, 32);
       const knobMaterial = new THREE.MeshStandardMaterial({
-        color: 0x4d4d4d,
-        roughness: 0.2,
+        color: 0x6a6a6a,
+        roughness: 0.15,
         metalness: 0.9,
       });
       
@@ -128,7 +135,7 @@ const TactileHero = ({
       
       const grooveGeometry = new THREE.TorusGeometry(0.18, 0.01, 16, 64);
       const grooveMaterial = new THREE.MeshBasicMaterial({
-        color: 0x393939,
+        color: 0x555555,
       });
       
       const groove = new THREE.Mesh(grooveGeometry, grooveMaterial);
@@ -157,9 +164,9 @@ const TactileHero = ({
     for (let i = 0; i < 8; i++) {
       const jackGeometry = new THREE.CylinderGeometry(0.06, 0.07, 0.3, 12);
       const jackMaterial = new THREE.MeshStandardMaterial({
-        color: 0x4d4d4d,
-        roughness: 0.5,
-        metalness: 0.7,
+        color: 0x707070,
+        roughness: 0.4,
+        metalness: 0.8,
       });
       
       const jack = new THREE.Mesh(jackGeometry, jackMaterial);
@@ -185,9 +192,9 @@ const TactileHero = ({
     group.add(ioPortsGroup);
 
     const indicatorMaterials = [
-      new THREE.MeshBasicMaterial({ color: 0x393939 }),
+      new THREE.MeshBasicMaterial({ color: 0x555555 }),
       new THREE.MeshBasicMaterial({ color: 0xff6b1a }),
-      new THREE.MeshBasicMaterial({ color: 0x393939 }),
+      new THREE.MeshBasicMaterial({ color: 0x666666 }),
       new THREE.MeshBasicMaterial({ color: 0xffff3c }),
     ];
 
@@ -218,14 +225,14 @@ const TactileHero = ({
     const mount = mountRef.current;
     mount.innerHTML = '';
     
-    const container = document.createElement('div');
-    container.style.position = 'absolute';
-    container.style.top = '0';
-    container.style.left = '0';
-    container.style.width = '100%';
-    container.style.height = '100%';
-    container.style.pointerEvents = 'none';
-    mount.appendChild(container);
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
+    canvas.style.display = 'block';
+    mount.appendChild(canvas);
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0e0e0e);
@@ -237,11 +244,11 @@ const TactileHero = ({
       0.1, 
       1000
     );
-    camera.position.set(0, 0, 8);
+    camera.position.set(0, 1, 5);
     camera.lookAt(0, 0, 0);
 
     const renderer = new THREE.WebGLRenderer({ 
-      canvas: container,
+      canvas: canvas,
       antialias: true,
       alpha: true
     });
@@ -296,8 +303,8 @@ const TactileHero = ({
         rendererRef.current.dispose();
       }
       
-      if (container.parentNode) {
-        container.parentNode.removeChild(container);
+      if (canvas.parentNode) {
+        canvas.parentNode.removeChild(canvas);
       }
     };
 
@@ -344,17 +351,6 @@ const TactileHero = ({
         </button>
       </div>
 
-      <canvas 
-        ref={(node) => {
-          if (node && node.tagName === 'CANVAS') {
-            node.addEventListener('click', () => {
-              window.tactileFeedback?.playClickSound?.();
-              console.log('[TACTILE_EASTER_EGG] Hidden control triggered!');
-            });
-          }
-        }}
-        style={{ pointerEvents: 'auto' }}
-      />
     </div>
   );
 };

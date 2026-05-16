@@ -42,49 +42,8 @@ gsap.registerPlugin()
  * Initialize Three.js canvas with industrial material setup
  */
 function initTactileThree() {
-  const canvas = document.createElement('canvas')
-  canvas.id = 'tactile-canvas'
-  canvas.style.position = 'absolute'
-  canvas.style.top = '-100%'
-  canvas.style.opacity = '0'
-  document.body.appendChild(canvas)
-
-  // Create scene, camera, renderer
-  const threeScene = new THREE.Scene()
-  threeScene.background = new THREE.Color(0x0e0e0e)
-
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight)
-  camera.position.z = 5
-
-  const renderer = new THREE.WebGLRenderer({
-    canvas: canvas,
-    antialias: true,
-    alpha: true
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  } as any) as any
-  if (renderer && typeof renderer.setSize === 'function') {
-    renderer.setSize(window.innerWidth, window.innerHeight)
-  }
-  
-  // Store canvas element for React Three Fiber later
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  (window as any).tactileCanvasElement = canvas
-  
-  // Animation loop with subtle float effect (Easter egg)
-  function animate() {
-    requestAnimationFrame(animate)
-    const elapsedTime = performance.now() * 0.001
-    
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const tactileThree = (window as any).tactileThree
-    if (tactileThree?.camera) {
-      tactileThree.camera.position.y = Math.sin(elapsedTime) * 0.05
-      tactileThree.camera.lookAt(0, 0, 0)
-    }
-    
-    renderer.render(threeScene, tactileThree?.camera)
-  }
-  animate()
+  // Tactile utilities setup - global API only
+  // (Scene rendering handled by TactileHero component)
 }
 
 // Initialize on load

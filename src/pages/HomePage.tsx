@@ -1,4 +1,3 @@
-import TactileHero from '../components/TactileHero'
 import SystemLog from '../components/SystemLog'
 import { ArrowUpRight, Terminal, Cpu } from 'lucide-react'
 
@@ -11,55 +10,43 @@ const HomePage = () => {
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-1 border-t-2 border-l-2 border-white/10">
         
         {/* ===========================================
-            HERO BLOCK - PLAYABLE 3D SCHEMATIC
+            HERO BLOCK - MAIN INTRO
             =========================================== */}
-        <div className="lg:col-span-8 min-h-[50vh] flex flex-col">
+        <div className="lg:col-span-8 border-r-2 border-white/10 p-8 flex flex-col justify-between min-h-[320px]">
           
-          <TactileHero 
-            productName="TE-2X PROTOTYPE"
-            onViewModeChange={() => {
-              // Change mode logic here when ready
-            }}
-          />
+          {/* Active status indicators */}
+          <div className="flex items-center gap-3 mb-6">
+            <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2">ACTIVE</span>
+            <span className="te-label">OP_READY: 100%</span>
+            <span className="te-label text-te-muted ml-auto">BUILD_VER_04.2</span>
+          </div>
 
-          {/* Hero content below 3D viewer */}
-          <div className="flex-1 border-t border-white/10 p-6 flex flex-col justify-between">
+          {/* Main headline */}
+          <div>
+            <h1 className="text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] mb-4">
+              Marc Victor<br />
+              <span className="text-orange-500">Velasquez</span>
+            </h1>
+            <p className="text-lg lg:text-xl font-bold mt-6 tracking-normal text-te-muted max-w-3xl">
+              Digital Architect // Backend Engineer // Industrial Designer
+            </p>
+          </div>
+
+          {/* CTA section */}
+          <div className="mt-8 flex flex-col gap-4 pt-4 border-t border-white/10">
             
-            {/* Active status indicators */}
-            <div className="flex items-center gap-3 mb-6">
-              <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2">ACTIVE</span>
-              <span className="te-label">OP_READY: 100%</span>
-              <span className="te-label text-te-muted ml-auto">BUILD_VER_04.2</span>
-            </div>
+            <p className="text-sm text-te-muted leading-relaxed max-w-2xl">
+              Building high-density backend systems and AI research pipelines. Specialized in transformer architectures, microservices design, and cloud infrastructure.
+            </p>
 
-            {/* Main headline */}
-            <div>
-              <h1 className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-[0.9] mb-4">
-                Marc Victor<br />
-                <span className="text-orange-500">Velasquez</span>
-              </h1>
-              <p className="text-xl lg:text-2xl font-bold mt-6 tracking-normal text-te-muted max-w-3xl">
-                Digital Architect // Backend Engineer // Industrial Designer
-              </p>
-            </div>
-
-            {/* CTA section */}
-            <div className="mt-8 flex flex-col md:flex-row justify-between items-start gap-4 pt-4 border-t border-white/10">
-              
-              <p className="text-sm text-te-muted max-w-xl leading-relaxed">
-                Building high-density backend systems and AI research pipelines. 
-                Interact with the schematic above to explore view modes—wireframe, solid, or exploded.
-              </p>
-
-              <div className="flex items-center gap-4 text-[9px] font-mono text-te-muted opacity-60">
-                <div className="text-right">
-                  <span className="text-xs">44.5895° N</span>
-                  <span className="text-xs">15.9486° E</span>
-                  <span className="mt-1 text-orange-500 font-bold block">BUILD_REV: 2026.05.15</span>
-                </div>
+            <div className="flex items-center gap-4 text-[9px] font-mono text-te-muted opacity-60">
+              <div className="text-right">
+                <span className="text-xs">44.5895° N</span>
+                <span className="text-xs">15.9486° E</span>
+                <span className="mt-1 text-orange-500 font-bold block">BUILD_REV: 2026.05.15</span>
               </div>
-
             </div>
+
           </div>
         </div>
 
@@ -119,7 +106,7 @@ const HomePage = () => {
         {/* ===========================================
             FEATURED PROJECTS MODULES
             =========================================== */}
-        <div className="lg:col-span-6 grid grid-cols-1 gap-1">
+        <div className="lg:col-span-12 grid grid-cols-1 lg:grid-cols-2 gap-1">
           
           {/* Project 01: Typhoon Survival Beacon */}
           <a 
@@ -169,7 +156,7 @@ const HomePage = () => {
             TECH STACK MODULE - CORE_STACK.EXE
             =========================================== */}
         <div className="lg:col-span-12 p-8 lg:p-12 border-r-2 border-b-2 border-white/5">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
               <Terminal size={20} className="text-orange-500" />
               <h3 className="te-label text-lg font-bold tracking-normal">CORE_STACK.EXE</h3>
@@ -177,58 +164,62 @@ const HomePage = () => {
             <span className="te-label text-[9px] text-te-muted">HEX_DUMP 0x3A2</span>
           </div>
 
-          {/* Languages */}
-          <div className="border-t border-white/5 pt-6">
-            <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">Languages</h4>
-            <ul className="space-y-1 font-mono text-[10px] text-te-muted">
-              {['Python', 'C++', 'Java', 'Dart'].map(item => (
-                <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
-                  <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Grid for all categories */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            {/* Languages */}
+            <div className="border-t border-white/5 pt-6">
+              <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">Languages</h4>
+              <ul className="space-y-1 font-mono text-[10px] text-te-muted">
+                {['Python', 'C++', 'Java', 'Dart'].map(item => (
+                  <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Backend */}
-          <div className="border-t border-white/5 pt-6">
-            <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">Backend</h4>
-            <ul className="space-y-1 font-mono text-[10px] text-te-muted">
-              {['Spring Boot', 'Next.js', 'Flutter', 'Express'].map(item => (
-                <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
-                  <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* Backend */}
+            <div className="border-t border-white/5 pt-6">
+              <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">Backend</h4>
+              <ul className="space-y-1 font-mono text-[10px] text-te-muted">
+                {['Spring Boot', 'Next.js', 'Flutter', 'Express'].map(item => (
+                  <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Infrastructure */}
-          <div className="border-t border-white/5 pt-6">
-            <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">Infra</h4>
-            <ul className="space-y-1 font-mono text-[10px] text-te-muted">
-              {['Azure', 'Oracle Cloud', 'AppWrite', 'Docker'].map(item => (
-                <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
-                  <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* Infrastructure */}
+            <div className="border-t border-white/5 pt-6">
+              <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">Infra</h4>
+              <ul className="space-y-1 font-mono text-[10px] text-te-muted">
+                {['Azure', 'Oracle Cloud', 'AppWrite', 'Docker'].map(item => (
+                  <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* AI & ML */}
-          <div className="border-t border-white/5 pt-6">
-            <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">AI_ML</h4>
-            <ul className="space-y-1 font-mono text-[10px] text-te-muted">
-              {['PyTorch', 'TensorFlow', 'HuggingFace', 'Pandas'].map(item => (
-                <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
-                  <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* AI & ML */}
+            <div className="border-t border-white/5 pt-6">
+              <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">AI_ML</h4>
+              <ul className="space-y-1 font-mono text-[10px] text-te-muted">
+                {['PyTorch', 'TensorFlow', 'HuggingFace', 'Pandas'].map(item => (
+                  <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+                    <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
+          </div>
         </div>
 
         {/* ===========================================
