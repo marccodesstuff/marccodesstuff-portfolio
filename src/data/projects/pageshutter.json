@@ -1,7 +1,7 @@
 {
   "id": "pageshutter",
   "title": "PageShutter",
-  "tagline": "Notion Integration Worker",
+  "tagline": "Notion Integration Worker with Performance Optimization",
   "description": [
     "Created a TypeScript-based Notion Worker for seamless Notion API integrations and automation.",
     "Designed to extend Notion's capabilities with custom worker functionality on serverless edge infrastructure.",
@@ -12,7 +12,14 @@
   "type": "Notion Worker",
   "date": "Feb 2026",
   "status": "completed",
+  "impact": [
+    "Optimized article generation workflow from **30 minutes to 10 minutes overall** (67% faster)",
+    "Streamlined research-to-publish pipeline for SEO-compliant content at scale"
+  ],
   "tech": ["TypeScript", "Notion API", "Cloudflare Workers", "Serverless"],
-  "links": [{ "label": "View Repository", "url": "https://github.com/marccodesstuff/pageshutter" }],
+  "links": [
+    { "label": "View Repository", "url": "https://github.com/marccodesstuff/pageshutter" },
+    { "label": "Chrome Extension (SGP-Clipper)", "url": "https://github.com/marccodesstuff/SGP-Clipper" }
+  ],
   "icon": "Code"
 }
