@@ -1,17 +1,30 @@
 import { Link } from 'react-router-dom'
+import { ArrowUpRight } from 'lucide-react'
+
+// Import all project JSON files
+import sgpClipperData from '../data/projects/sgp-clipper.json'
+import typhoonBeaconData from '../data/projects/typhoon-beacon.json'
+import kneeDetectionData from '../data/projects/knee-detection.json'
+import aiDirectorData from '../data/projects/ai-director.json'
+import monitoredQuizData from '../data/projects/monitored-quiz.json'
+import bodyMicrogamesData from '../data/projects/body-microgames.json'
+import waterManagementData from '../data/projects/water-management.json'
+import pageShutterData from '../data/projects/pageshutter.json'
 
 const ProjectsPage = () => {
-  // Define project mapping for consistent ID-based lookup
+  // Compile all projects into array
   const projects: any[] = [
-    { id: 'typhoon-beacon', title: 'Philippine Typhoon Survival Beacon', tagline: 'AI-Powered Disaster Response System', description: 'Spearheaded a cross-functional team of 4 developers to develop a predictive neural network utilizing TensorFlow and Google Earth Engine. Achieved 97.8% validation accuracy (0.022 MSE) and 6.9% Mean Absolute Error to detect flood probability.', tech: ['TensorFlow', 'Google Earth Engine', 'Flutter', 'Gemini API', 'OpenMeteo'], date: 'Nov 2025 - Dec 2025', status: 'completed', icon: 'Zap' },
-    { id: 'knee-detection', title: 'Knee Tear Detection Platform', tagline: 'AI-Powered MRI Diagnostic System', description: 'Collaborated with a research team of 4 to conduct rigorous testing on 4 backbone architectures (Xception, ResNeXt, EfficientNet, DenseNet). Utilized stacking ensemble meta-learner to boost Sensitivity to 0.88 and F1-Score of 0.735.', tech: ['PyTorch', 'Microservices', 'Event-Driven Architecture', 'DICOM', 'FastMRI Dataset'], date: 'April - October 2025', status: 'completed', icon: 'Brain' },
-    { id: 'pageshutter', title: 'PageShutter', tagline: 'Notion Integration Worker with Performance Optimization', description: 'Created a TypeScript-based Notion Worker for seamless Notion API integrations and automation. Provides a foundation for building Notion-powered applications and data processing pipelines.', tech: ['TypeScript', 'Notion API', 'Cloudflare Workers', 'Serverless'], date: 'Feb 2026', status: 'completed', icon: 'Code' },
-    { id: 'sgp-clipper', title: 'SGP-Clipper: SEO Content Browser Extension', tagline: 'Chrome Extension for Streamlined Article Publishing', description: 'Bridged public business-registry data into production prompt flow, reducing per-task processing time from ~15 minutes to ~7-8 minutes (≈50% faster) when used with PageShutter.', tech: ['Chrome Extension API', 'Content Scripts', 'Data Enrichment'], date: 'Jan-Mar 2026', status: 'completed', icon: 'Extension' },
-    { id: 'water-management', title: 'Water Management and Processing Interface', tagline: 'PostgreSQL Data Platform', description: 'Full-stack web application for managing water records with Express.js backend. Replaced traditional paper-based record keeping systems.', tech: ['Next.js', 'Express.js', 'PostgreSQL'], date: 'Feb 2024 - Jun 2024', status: 'completed', icon: 'Database' },
-    { id: 'water-management-v1', title: 'Water Management and Processing Web Application', tagline: 'Environmental Data Platform', description: 'Developed a full-stack web application using Next.js for client and server operations and Express.js to handle mySQL database connectivity.', tech: ['Next.js', 'Express.js', 'mySQL', 'RESTful API'], date: 'May 2024', status: 'completed', icon: 'Database' },
-    { id: 'trestle', title: 'Trestle', tagline: 'Block-Based Word Processor', description: 'A block-based word processor that auto-arranges content to avoid whitespace and optimize layout.', tech: ['Flutter', 'Dart', 'Database Management'], date: 'Sep 2024 - Dec 2024', status: 'completed', icon: 'TextAlignJustify' },
-    { id: 'ai-director', title: 'AI Director for Unreal Engine 5', tagline: 'Text-to-Logic System for Simulation Actor Behaviors', description: 'Architecting a proof-of-concept AI Director system utilizing quantized Nvidia Cosmos Reason model. Translating natural language prompts into complex actor behavior.', tech: ['Nvidia Cosmos Reason', 'C++', 'Unreal Engine 5', 'Local LLM'], date: 'Jan 2025 - Present', status: 'in-progress', icon: 'Gamepad' },
-    { id: 'typhoon-beacon-v1', title: 'BantayBayan: Survival Beacon', tagline: 'Offline-First Philippine Storm Tool', description: 'Offline-first disaster survival beacon using Risk-Weighted Pathfinding to prioritize responder safety over speed.', tech: ['TensorFlow', 'Flutter', 'Risk Modeling'], date: 'Nov 2025 - Dec 2025', status: 'completed', icon: 'Zap' }
+    sgpClipperData,
+    typhoonBeaconData,
+    kneeDetectionData,
+    aiDirectorData,
+    monitoredQuizData,
+    bodyMicrogamesData,
+    waterManagementData,
+    pageShutterData,
+    // Add the restored projects
+    { id: 'trestle', title: 'Trestle', tagline: 'Block-Based Word Processor', description: 'A block-based word processor that auto-arranges your content to avoid whitespace and optimize layout.', tech: ['Flutter', 'Dart', 'Database Management', 'AWS Deployment'], date: 'Sep 2024 - Dec 2024', status: 'completed', icon: 'TextAlignJustify' },
+    { id: 'water-management-v1', title: 'Water Management and Processing Web Application', tagline: 'Environmental Data Platform', description: 'Developed a full-stack web application using Next.js for client and server operations and Express.js to handle mySQL database connectivity.', tech: ['Next.js', 'Express.js', 'mySQL', 'RESTful API'], date: 'May 2024', status: 'completed', icon: 'Database' }
   ]
 
   return (
@@ -26,7 +39,7 @@ const ProjectsPage = () => {
               <h1 className="text-5xl font-black uppercase tracking-tighter mb-2">
                 Projects_Archive.EXE
               </h1>
-              <p className="te-label text-base mt-0">HARDWARE_MODULES_01_THRU_09</p>
+              <p className="te-label text-base mt-0">HARDWARE_MODULES_01_THRU_19</p>
             </div>
 
             <Link 
@@ -85,59 +98,17 @@ const ProjectsPage = () => {
                     ))}
                   </div>
 
-                  {/* Status badge */}
-                  <div className="mt-4 flex items-center gap-2 text-[7px] font-mono">
-                    {project.status === 'completed' ? (
-                      <span className="text-green-500">●</span>
-                    ) : project.status === 'in-progress' ? (
-                      <span className="text-orange-500 animate-pulse">●</span>
-                    ) : (
-                      <span className="text-te-muted">○</span>
-                    )}
-                    {project.date && <span>{project.date}</span>}
-                  </div>
-
                 </div>
 
                 {/* Arrow indicator */}
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24" 
-                  height="24" 
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className={`text-te-muted self-start mt-2 lg:mt-0 group-hover:text-white transition-all transform group-hover:translate-x-1 ${
-                    project.icon 
-                      ? `opacity-60 group-hover:opacity-100 ${project.icon}` 
-                      : 'stroke-current'
-                  }`}
-                >
-                  <path d="M9 18l6-6-6-6" />
-                </svg>
+                <ArrowUpRight 
+                  size={24} 
+                  className="text-te-muted self-start mt-2 lg:mt-0 group-hover:text-white transition-all transform group-hover:translate-x-1"
+                />
 
               </Link>
             ))}
 
-          </div>
-
-          {/* Easter egg module - Hidden experimental project */}
-          <div className="mt-8 border-2 border-dashed border-orange-500/30 p-8">
-            <div className="flex items-start gap-4">
-              <span className="text-4xl text-orange-500 opacity-20 select-none">?</span>
-              <div>
-                <h3 className="text-xl font-black uppercase tracking-tighter mb-2 text-orange-500/80">
-                  MODULE_EXPERIMENTAL_0X
-                </h3>
-                <p className="te-label text-sm leading-relaxed max-w-lg">
-                  // UNCLASSIFIED_PROJECTS_AVAILABLE_AT_CLEARANCE_LEVEL_4<br />
-                  CLICK_TO_ACCESS_RESTRICTED_MODULE_DIRECTORY
-                </p>
-              </div>
-            </div>
           </div>
 
         </div>

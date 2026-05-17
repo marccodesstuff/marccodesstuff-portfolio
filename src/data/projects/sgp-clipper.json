@@ -1,25 +1,10 @@
 {
   "id": "sgp-clipper",
   "title": "SGP-Clipper: SEO Content Browser Extension",
-  "tagline": "Chrome Extension for Streamlined Article Publishing Pipeline",
-  "description": [
-    "Built a Chrome extension that bridges public business-registry data into the production prompt and spreadsheet flow.",
-    "Integrated directly with PageShutter workflow to automate data enrichment before generation.",
-    "Reduced per-task processing time from **~15 minutes to ~7-8 minutes** (≈50% faster) by bridging data sources."
-  ],
-  "role": "Browser Extension Developer",
-  "type": "Chrome Extension",
-  "date": "Jan-Mar 2026 (Kaizenaire Internship)",
+  "tagline": "Chrome Extension for Streamlined Article Publishing",
+  "description": "Bridged public business-registry data into production prompt flow, reducing per-task processing time from ~15 minutes to ~7-8 minutes (≈50% faster) when used with PageShutter.",
+  "tech": ["Chrome Extension API", "Content Scripts", "Data Enrichment"],
+  "date": "Jan-Mar 2026",
   "status": "completed",
-  "impact": [
-    "Optimized article generation from **30 minutes to 10 minutes overall** when used with PageShutter",
-    "Bridged public business-registry data into production prompt flow automatically",
-    "Reduced image-resize step from ~45s to ~15s (3× faster) in pipeline"
-  ],
-  "tech": ["Chrome Extension API", "Content Scripts", "Notion API", "Data Enrichment"],
-  "links": [
-    { "label": "View on GitHub", "url": "https://github.com/marccodesstuff/SGP-Clipper" },
-    { "label": "Demo Site", "url": "https://kaizenaire.com" }
-  ],
   "icon": "Extension"
 }

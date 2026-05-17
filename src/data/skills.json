@@ -1,60 +1,83 @@
 {
-    "languages": [
-        "Python",
-        "Java",
-        "C++",
-        "Rust",
-        "TypeScript",
-        "JavaScript",
-        "C#",
-        "Dart",
-        "SQL"
-    ],
-    "appDev": [
-        "Spring Boot",
-        "Next.js",
-        "ASP.NET/Blazor",
-        "Flutter",
-        "Express.js",
-        "Godot",
-        "Electron.js"
-    ],
-    "aiData": [
-        "PyTorch",
-        "TensorFlow/Lite",
-        "YOLO (v5-v11)",
-        "Google Earth Engine",
-        "Pandas",
-        "NumPy",
-        "HuggingFace",
-        "Power BI",
-        "ensemble learning",
-        "computer vision",
-        "LLM orchestration",
-        "multi-agent systems",
-        "model evaluation",
-        "synthetic data generation"
-    ],
-    "cloudTools": [
-        "Azure",
-        "Oracle Cloud Infrastructure (OCI)",
-        "AppWrite",
-        "AWS (LocalStack)",
-        "Google Colab",
-        "Kaggle",
-        "Git/GitHub",
-        "Linux/WSL2",
-        "Supabase",
-        "Docker",
-        "CI/CD fundamentals"
-    ],
-    "specializations": [
-        "Digital twins",
-        "Robotics simulation",
-        "Medical imaging ML",
-        "Edge AI deployment",
-        "Spatial computing",
-        "IoT sensor systems",
-        "Data engineering pipelines"
-    ]
+  "languages": [
+    "Python",
+    "C++",
+    "Rust",
+    "TypeScript",
+    "JavaScript",
+    "C#"
+  ],
+  "aiML": [
+    "PyTorch",
+    "TensorFlow",
+    "TensorFlow Lite",
+    "YOLO (v5–v11)",
+    "ensemble learning",
+    "computer vision",
+    "LLM orchestration",
+    "multi-agent systems",
+    "model evaluation",
+    "synthetic data generation"
+  ],
+  "frameworks": [
+    "FastAPI",
+    "Next.js",
+    "ASP.NET",
+    "Blazor",
+    "Flutter",
+    "Electron.js",
+    "D3.js"
+  ],
+  "cloudDevOps": [
+    "Azure",
+    "Oracle Cloud Infrastructure",
+    "Docker",
+    "AppWrite",
+    "CI/CD fundamentals"
+  ],
+  "dataEng": [
+    "Google Earth Engine",
+    "OpenMeteo API",
+    "preprocessing pipelines",
+    "dataset slicing",
+    "augmentation",
+    "ETL workflows"
+  ],
+  "webFullStack": [
+    "React/Next.js",
+    "ASP.NET/Blazor",
+    "Express.js",
+    "Tailwind CSS",
+    "REST APIs",
+    "WebAssembly"
+  ],
+  "databases": [
+    "PostgreSQL",
+    "FAISS concepts",
+    "Pinecone concepts",
+    "Weaviate concepts",
+    "AppWrite DB"
+  ],
+  "agenticAutomation": [
+    "Prompt engineering",
+    "multi-stage workflow automation",
+    "Notion Worker SDK",
+    "browser automation",
+    "scraping pipelines"
+  ],
+  "toolsPlatforms": [
+    "Git/GitHub",
+    "Notion AI Custom Agents",
+    "Godot (synthetic data)",
+    "VS Code",
+    "Zed",
+    "Linux/Ubuntu"
+  ],
+  "specializations": [
+    "Digital twins",
+    "robotics simulation",
+    "medical imaging ML",
+    "edge AI deployment",
+    "spatial computing"
+  ]
 }

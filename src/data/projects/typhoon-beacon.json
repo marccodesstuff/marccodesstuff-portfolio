@@ -2,18 +2,9 @@
   "id": "typhoon-beacon",
   "title": "Philippine Typhoon Survival Beacon",
   "tagline": "AI-Powered Disaster Response System",
-  "description": [
-    "Spearheaded a cross-functional team of 4 developers to develop a predictive neural network utilizing TensorFlow and Google Earth Engine.",
-    "Achieved 97.8% validation accuracy (0.022 MSE) and 6.9% Mean Absolute Error to detect flood probability.",
-    "Coordinated architecture design and code integration across model development, Flutter mobile app, and data pipeline components.",
-    "Integrated OpenMeteo live telemetry and Google Gemini API to generate hyper-localized, context-aware safety advisories."
-  ],
-  "role": "Lead Developer, ML Engineer",
-  "type": "Hackathon Entry",
+  "description": "Spearheaded a cross-functional team of 4 developers to develop a predictive neural network utilizing TensorFlow and Google Earth Engine. Achieved 97.8% validation accuracy (0.022 MSE) and 6.9 Mean Absolute Error to detect flood probability.",
+  "tech": ["TensorFlow", "Google Earth Engine", "Flutter", "Gemini API", "OpenMeteo"],
   "date": "Nov 2025 - Dec 2025",
   "status": "completed",
-  "featured": true,
-  "achievements": ["2nd Runner Up", "Best Technical Execution", "People's Choice Award"],
-  "tech": ["TensorFlow", "Google Earth Engine", "Flutter", "Gemini API", "OpenMeteo"],
   "icon": "Zap"
 }

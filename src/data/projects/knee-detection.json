@@ -2,17 +2,9 @@
   "id": "knee-detection",
   "title": "Knee Tear Detection Platform",
   "tagline": "AI-Powered MRI Diagnostic System",
-  "description": [
-    "Collaborated with a research team of 4 to conduct rigorous testing on 4 backbone architectures (Xception, ResNeXt, EfficientNet, DenseNet).",
-    "Utilized stacking ensemble meta-learner to boost Sensitivity to 0.88 and F1-Score of 0.735.",
-    "Developed clinically validated platform using microservices and event-driven architecture.",
-    "Validated by AUF Radiologic Technology: \"The system can be used to aid the diagnostic process of radiologists.\""
-  ],
-  "role": "Full-Stack AI Engineer",
-  "type": "Thesis",
+  "description": "Collaborated with a research team of 4 to conduct rigorous testing on 4 backbone architectures (Xception, ResNeXt, EfficientNet, DenseNet). Utilized stacking ensemble meta-learner to boost Sensitivity to 0.88 and F1-Score of 0.735.",
+  "tech": ["PyTorch", "Microservices", "Event-Driven Architecture", "DICOM", "FastMRI Dataset"],
   "date": "April - October 2025",
   "status": "completed",
-  "featured": true,
-  "tech": ["PyTorch", "Microservices", "Event-Driven Architecture", "DICOM", "FastMRI Dataset"],
   "icon": "Brain"
 }

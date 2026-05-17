@@ -1,16 +1,10 @@
 {
   "id": "water-management",
-  "title": "Water Management and Processing Web Application",
-  "tagline": "Environmental Data Platform",
-  "description": [
-    "Developed a full-stack web application using Next.js for client and server operations and Express.js to handle mySQL database connectivity.",
-    "Implemented RESTful API endpoints with Express.js to perform CRUD operations on water management records.",
-    "Designed and deployed a responsive user interface that streamlined water resource tracking workflows."
-  ],
-  "role": "Full Stack Web Developer",
-  "type": "Course Final/Freelance",
-  "date": "May 2024",
+  "title": "Water Management and Processing Interface",
+  "tagline": "PostgreSQL Data Platform",
+  "description": "Full-stack web application for managing water records with Express.js backend. Replaced traditional paper-based record keeping systems.",
+  "tech": ["Next.js", "Express.js", "PostgreSQL"],
+  "date": "Feb 2024 - Jun 2024",
   "status": "completed",
-  "tech": ["Next.js", "Express.js", "mySQL", "RESTful API"],
   "icon": "Database"
 }

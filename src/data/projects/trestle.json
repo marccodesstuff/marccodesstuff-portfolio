@@ -1,16 +1,10 @@
 {
   "id": "trestle",
   "title": "Trestle",
-  "tagline": "Block-Based Word Processor with Auto-Whitespace Arrangement",
-  "description": [
-    "A block-based word processor that auto-arranges content to avoid whitespace and optimize layout.",
-    "Built from scratch as a desktop application for efficient document editing and formatting."
-  ],
-  "role": "Full-Stack Mobile Developer",
-  "type": "Personal Project",
+  "tagline": "Block-Based Word Processor",
+  "description": "A block-based word processor that auto-arranges your content to avoid whitespace and optimize layout.",
+  "tech": ["Flutter", "Dart", "Database Management", "AWS Deployment"],
   "date": "Sep 2024 - Dec 2024",
   "status": "completed",
-  "tech": ["Flutter", "Dart", "Mobile Development", "Database Management"],
-  "links": [{ "label": "View Repository", "url": "https://github.com/marccodesstuff/trestle" }],
   "icon": "TextAlignJustify"
 }

@@ -1,9 +1,9 @@
 import { Github, Linkedin, Mail, Terminal, Cpu, HardDrive } from 'lucide-react'
-import internshipsData from '../data/internships.json'
-import certificationsData from '../data/certifications.json'
 import achievementsData from '../data/achievements.json'
+import internshipsData from '../data/internships.json'
 import researchData from '../data/research.json'
 import skillsData from '../data/skills.json'
+import certificationsData from '../data/certifications.json'
 
 const AboutPage = () => {
   return (
@@ -18,7 +18,7 @@ const AboutPage = () => {
               <h1 className="text-5xl font-black uppercase tracking-tighter mb-2">
                 About_Module.EXE
               </h1>
-              <p className="te-label text-base mt-0">TECHNICAL_SPECIFICATIONS // PERSONAL_DATA_DUMP</p>
+              <p className="te-label text-base mt-0">TECHNICAL_SPECIFICATIONS // PROFESSIONAL_HISTORY</p>
             </div>
 
             <span className="te-label px-3 py-1 border-l-2 border-orange-500 pl-2">
@@ -78,93 +78,72 @@ const AboutPage = () => {
 
             </div>
 
-            {/* Core competencies module */}
+            {/* Professional Experience module */}
             <div className="te-module p-6 min-h-[200px]">
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Core_Capabilities.EXE</h3>
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Professional_Journey.EXE</h3>
               
               <div className="space-y-4">
-                {/* Architecture */}
-                <div>
-                  <span className="te-label text-xs">SYSTEM_ARCHITECTURE</span>
-                  <p className="text-sm font-medium mt-1 leading-relaxed text-te-muted max-w-sm">
-                    High-density backend systems, microservices architecture, and scalable infrastructure design.
-                  </p>
-                </div>
+                {/* Internships */}
+                {internshipsData.map((exp, idx) => (
+                  <div key={idx} className="border-b border-dashed border-white/5 pb-3 last:border-0 last:pb-0">
+                    <div className="flex justify-between items-center text-sm font-bold uppercase tracking-wide mb-1">
+                      <span>{exp.role}</span>
+                      <span className="text-orange-500">{exp.period}</span>
+                    </div>
+                    <p className="text-xs text-te-muted mb-2">{exp.company}</p>
+                    <p className="text-sm font-medium leading-relaxed text-te-muted max-w-3xl mb-2">
+                      {exp.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1 text-[9px] font-mono uppercase text-te-muted">
+                      {exp.achievements.map((ach, aIdx) => (
+                        <span key={aIdx} className="px-1 py-0.5 bg-white/5">{ach}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
 
-                {/* AI/ML */}
-                <div>
-                  <span className="te-label text-xs">AI_ML_ENGINEERING</span>
-                  <p className="text-sm font-medium mt-1 leading-relaxed text-te-muted max-w-sm">
-                    Transformer and diffusion model architectures, research pipelines, and production deployment.
-                  </p>
-                </div>
-
-                {/* Infrastructure */}
-                <div>
-                  <span className="te-label text-xs">INFRASTRUCTURE</span>
-                  <p className="text-sm font-medium mt-1 leading-relaxed text-te-muted max-w-sm">
-                    Cloud-native deployments, container orchestration, and CI/CD pipeline automation.
-                  </p>
-                </div>
-
+                {/* Research */}
+                {researchData.map((proj, idx) => (
+                  <div key={idx} className="border-b border-dashed border-white/5 pb-3 last:border-0 last:pb-0">
+                    <div className="flex justify-between items-center text-sm font-bold uppercase tracking-wide mb-1">
+                      <span>{proj.role}</span>
+                      <span className="text-orange-500">{proj.period}</span>
+                    </div>
+                    <p className="text-xs text-te-muted mb-2">{proj.organization}</p>
+                    <p className="text-sm font-medium leading-relaxed text-te-muted max-w-3xl mb-2">
+                      {proj.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1 text-[9px] font-mono uppercase text-te-muted">
+                      {proj.achievements.map((ach, aIdx) => (
+                        <span key={aIdx} className="px-1 py-0.5 bg-white/5">{ach}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
           </section>
 
-          {/* CENTER COLUMN: Skills, Experience & Certifications */}
+          {/* CENTER COLUMN: Skills, Certifications, Achievements */}
           <section className="lg:col-span-2">
             
-            {/* PROFESSIONAL EXPERIENCE module - NEW */}
-            <div className="te-module p-6 mb-4 min-h-[180px]">
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Professional_Experience.EXE</h3>
-              
-              <ul className="space-y-3 text-sm font-medium leading-relaxed text-te-muted max-w-lg">
-                {internshipsData.slice(0, 2).map((exp: any, index: number) => (
-                  <li key={index} className="flex items-start gap-2 hover:text-white transition-colors cursor-default">
-                    <span className={`text-orange-500 font-bold text-xs mt-0.5 ${index === 0 ? 'border-r-2 border-orange-500 pr-1' : ''}`}>
-                      {exp.period}
-                    </span>
-                    <div>
-                      <div className="font-bold">{exp.role}</div>
-                      <div className="text-xs opacity-70">{exp.company}</div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-
-            </div>
-
             {/* Skills module */}
             <div className="te-module p-6 mb-4 min-h-[180px]">
               <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Skill_Matrix.EXE</h3>
               
               <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-[9px] font-mono text-te-muted">
-                {Object.entries(skillsData).slice(0, 6).map(([key, items], index) => (
+                {Object.entries(skillsData).map(([key, items], index) => (
                   <div key={index} className="border-b border-dashed border-white/5 pb-2 last:border-0">
                     <span className="text-orange-500 block mb-1">{key.toUpperCase()}</span>
                     <ul className="space-y-0.5">
-                      {(items as string[]).slice(0, 3).map((item: string, i: number) => (
+                      {(items as string[]).map((item: string, i: number) => (
                         <li key={i} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
                           <div className="w-1 h-1 bg-orange-500 rounded-full" />
                           {item}
                         </li>
                       ))}
                     </ul>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Specializations module - NEW */}
-            <div className="te-module p-6 mb-4 min-h-[120px]">
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Specializations.EXE</h3>
-              
-              <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[9px] font-mono text-te-muted">
-                {skillsData.specializations?.slice(0, 6).map((spec: string, index: number) => (
-                  <div key={index} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
-                    <div className="w-1 h-1 bg-orange-500 rounded-full" />
-                    {spec}
                   </div>
                 ))}
               </div>
@@ -182,36 +161,14 @@ const AboutPage = () => {
               ))}
             </div>
 
-            {/* ACADEMIC RESEARCH module - NEW */}
-            <div className="te-module p-6 mb-4 min-h-[180px]">
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Academic_Research.EXE</h3>
-              
-              <ul className="space-y-2 text-xs font-medium leading-relaxed text-te-muted max-w-lg">
-                {researchData.slice(0, 4).map((research: any, index: number) => (
-                  <li key={index} className="flex items-start gap-1 hover:text-white transition-colors cursor-default">
-                    <span className="text-orange-500 font-bold text-[8px] mt-0.5">
-                      {research.iconType === 'trophy' ? '🏆' : research.iconType === 'medal' ? '🥈' : '📜'}
-                    </span>
-                    <div>
-                      <div className="font-bold">{research.title}</div>
-                      <div className="text-[9px] opacity-70">{research.placement}</div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-
-            </div>
-
             {/* Achievements module */}
-            <div className="te-module p-6 min-h-[180px]">
+            <div className="te-module p-6 min-h-[200px]">
               <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Achievement_Log.EXE</h3>
               
               <ul className="space-y-2 text-sm font-medium leading-relaxed text-te-muted max-w-lg">
-                {achievementsData.slice(0, 6).map((achievement: { title: string; place: string; iconType: string }, index: number) => (
+                {achievementsData.map((achievement: { title: string; place: string; iconType: string }, index: number) => (
                   <li key={index} className="flex items-start gap-2 hover:text-white transition-colors cursor-default">
-                    <span className={`text-orange-500 font-bold text-xs mt-0.5 ${index === 0 ? 'border-r-2 border-orange-500 pr-1' : ''}`}>
-                      {achievement.place}
-                    </span>
+                    <span className="text-orange-500 font-bold text-xs mt-0.5">{achievement.place}</span>
                     <span>{achievement.title}</span>
                   </li>
                 ))}
