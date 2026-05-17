@@ -4,6 +4,14 @@
 
 ---
 
+## 👤 Contact Information
+
+- **Email:** `marc.vel@haus.edu.ph` (replace with actual email from LinkedIn)
+- **LinkedIn:** [Marc Victor Velasquez](https://www.linkedin.com/in/mrcvctr-vel/)
+- **GitHub:** [@marccodesstuff](https://github.com/marccodesstuff)
+
+---
+
 ## 🚀 Quick Start
 
 ```bash
@@ -16,7 +24,79 @@ Visit `http://localhost:5173` to experience the full tactile interface.
 
 ---
 
-## ✨ What You Have Now
+## 📚 About Me
+
+> *"I'm a graduating Computer Science student at Angeles University Foundation (Class of 2026) specializing in Data Science, multi-modal AI, and edge-deployed machine learning systems."*
+
+### Current Role
+**Tech Lead @ As Foretold Research Labs**  
+Jan 2026 - Present  
+- Developing large-scale digital twins and autonomous robotic simulations
+- Creating bespoke generative AI frameworks for practical applications
+- Orchestrating spatial computing integration with advanced AI models
+
+### Recent Experience
+**AI Automation Intern & Content QA Intern @ Kaizenaire**  
+Jan 2025 - May 2026  
+- Published 772+ SEO-compliant articles using optimized LLM pipelines
+- Scraped and validated 15,500+ company leads for marketing campaigns
+- Security evaluations and phishing-risk detection from source databases
+
+### Academic Achievement
+**Google Developer Group - Holy Angel University**  
+Lead AI Engineer (The AI Hack 2025)  
+- Led a team of 4 to achieve **97.8% validation accuracy** in flood prediction ML model
+- 3rd Place, Best Technical Execution, and People's Choice Award winner
+
+---
+
+## 🎤 Speaking & Activities
+
+### Workshop Speaker (November 2025)
+**n8n Event-Driven Workflow Automation Seminar**  
+Angeles City Science High School (~40 students)  
+- Taught live production-grade backend integration with n8n  
+- Demonstrated real-time earthquake/volcanic data fetching from PHIVOLCS  
+- Adapted session on-the-fly when students hit technical roadblocks
+
+### Tool Creator (February 2026)
+**PageShutter - Notion AI Screenshot Tool**  
+Created custom tool giving Notion agents web vision capabilities  
+- Uses BrowserStack Screenshots API for real webpage captures  
+- Enables cloud-native agentic AI with visual capabilities
+
+### Conference Presenter (March 2026)
+**IRCITE 2026 Paper Presentation**  
+Bulacan State University  
+- Presented JointWise research on knee tear detection from MRI data  
+- Regional Computer Science track presentation
+
+---
+
+## 🏛️ College Organizations & Leadership
+
+### Editor-in-Chief
+**Datalink (AUF College of Computer Studies)**  
+Oct 2023 - Aug 2024  
+- Led a 12-member team for activity coverage and event documentation  
+- Developed annual newsletters covering computing events  
+- Organized editorial cartooning competition
+
+### Layout Artist
+**CCS SiKLAB Creative Design Committee**  
+Oct 2024 - Dec 2024  
+- Created publication materials for 4+ campus organizations  
+- Supported event communication needs across departments
+
+### Member
+**Junior Philippines Computer Society (JPCS) AUF Charter**  
+Jan 2023 - Present  
+- Active hackathon participant with algorithmic problem-solving expertise  
+- Competed in Digital Solution Hackathon 2025 (3rd Place)
+
+---
+
+## 🚀 Quick Start
 
 ### A Complete Interactive Portfolio System Featuring:
 

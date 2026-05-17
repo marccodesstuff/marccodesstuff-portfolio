@@ -1,0 +1,23 @@
+[
+    {
+        "organization": "Junior Philippines Computer Society AUF Charter",
+        "role": "Member",
+        "period": "Jan 2023 - Present",
+        "description": "Participated in two hackathons in 2024 and 2025 hosted by said organization with 20+ participants to solve algorithmic problems using a programming language of choice.",
+        "achievements": ["JPCS Digital Solution Hackathon 2025 - 3rd Place", "Active hackathon participant with algorithmic problem-solving expertise"]
+    },
+    {
+        "organization": "CCS College Student Council 'SiKLAB' Creative Design Committee",
+        "role": "Layout Artist",
+        "period": "Oct 2024 - Dec 2024",
+        "description": "Created various layouts and publication materials by collaborating with four college organizations to produce them for their own events which led to successfully supported their communication needs.",
+        "achievements": ["Created publication materials for multiple campus organizations", "Collaborative design across 4+ campus groups"]
+    },
+    {
+        "organization": "Datalink (AUF College of Computer Studies)",
+        "role": "Editor-in-Chief",
+        "period": "Oct 2023 - Aug 2024",
+        "description": "Oversaw a range of initiatives related to college media and events. This included leading a 12-member team for activity coverage, planning an editorial cartooning competition under the organization's advisor, and developing two annual newsletters covering computing/multimedia events.",
+        "achievements": ["Led 12-member editorial team", "Developed annual newsletter infrastructure", "Organized editorial cartooning competition"]
+    }
+]

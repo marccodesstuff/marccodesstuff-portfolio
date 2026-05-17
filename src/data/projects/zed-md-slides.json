@@ -1,0 +1,10 @@
+{
+  "id": "zed-md-slides",
+  "title": "Zed MD Slides",
+  "tagline": "Notion AI Presentation Assistant",
+  "description": "Built a custom Notion Worker that transforms chat commands into professional presentations. Enables Notion AI Custom Agents to create slideshows directly within your workspace - all from simple natural language prompts.",
+  "tech": ["TypeScript", "Node.js", "Notion Workers SDK", "BrowserStack Screenshots API"],
+  "date": "February 2026 - Present",
+  "status": "ongoing",
+  "icon": "Presentation"
+}

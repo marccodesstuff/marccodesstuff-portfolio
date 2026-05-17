@@ -23,5 +23,25 @@
         "title": "Philippine Typhoon Survival Beacon (Hackathon)",
         "place": "People's Choice Award",
         "iconType": "award"
+    },
+    {
+        "title": "Dean Lister Award (1st Year)",
+        "place": "Academic Excellence",
+        "iconType": "trophy"
+    },
+    {
+        "title": "Dean Lister Award (2nd Year)",
+        "place": "Academic Excellence",
+        "iconType": "trophy"
+    },
+    {
+        "title": "College Scholarship (1st Year)",
+        "place": "Academic Merit",
+        "iconType": "award"
+    },
+    {
+        "title": "College Scholarship (2nd Year)",
+        "place": "Academic Merit",
+        "iconType": "award"
     }
 ]

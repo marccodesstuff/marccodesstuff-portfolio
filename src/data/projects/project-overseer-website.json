@@ -1,0 +1,10 @@
+{
+  "id": "project-overseer-website",
+  "title": "Project Overseer Website",
+  "tagline": "Smart Farming Open-Source Platform",
+  "description": "Built a promotional website for an open-source smart farming application and toolkit. Showcased platform features, use cases, and community resources to encourage adoption among agricultural tech enthusiasts.",
+  "tech": ["HTML", "CSS", "JavaScript", "Notion Integration"],
+  "date": "October 2022",
+  "status": "completed",
+  "icon": "Globe"
+}

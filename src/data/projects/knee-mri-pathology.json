@@ -1,0 +1,10 @@
+{
+  "id": "knee-mri-pathology",
+  "title": "Knee MRI Pathology Identification Model",
+  "tagline": "Xception Neural Network for ACL/Meniscus Detection",
+  "description": "Developed a convolutional neural network using Xception for identifying ACL and meniscal tears from MRI images as final requirement in Professional Track 40 course. Utilized Stanford's MRNet dataset with comprehensive preprocessing and validation protocols.",
+  "tech": ["Xception", "TensorFlow", "Stanford MRNet Dataset", "Medical Imaging"],
+  "date": "April 2025",
+  "status": "completed",
+  "icon": "Brain"
+}
