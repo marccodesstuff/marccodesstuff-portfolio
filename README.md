@@ -6,7 +6,7 @@
 
 ## 👤 Contact Information
 
-- **Email:** `marc.vel@haus.edu.ph` (replace with actual email from LinkedIn)
+- **Email:** [`velasquezmarcvictor@gmail.com`](mailto:velasquezmarcvictor@gmail.com)
 - **LinkedIn:** [Marc Victor Velasquez](https://www.linkedin.com/in/mrcvctr-vel/)
 - **GitHub:** [@marccodesstuff](https://github.com/marccodesstuff)
 
