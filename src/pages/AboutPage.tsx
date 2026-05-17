@@ -90,13 +90,13 @@ const AboutPage = () => {
                       <span>{exp.role}</span>
                       <span className="text-orange-500">{exp.period}</span>
                     </div>
-                    <p className="text-xs text-te-muted mb-2">{exp.company}</p>
-                    <p className="text-sm font-medium leading-relaxed text-te-muted max-w-3xl mb-2">
+                    <p className="text-xs text-te-muted leading-tight mb-2">{exp.company}</p>
+                    <p className="text-sm font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-3">
                       {exp.description}
                     </p>
                     <div className="flex flex-wrap gap-1 text-[9px] font-mono uppercase text-te-muted">
                       {exp.achievements.map((ach, aIdx) => (
-                        <span key={aIdx} className="px-1 py-0.5 bg-white/5">{ach}</span>
+                        <span key={aIdx} className="px-1 py-0.5 bg-white/5 truncate">{ach}</span>
                       ))}
                     </div>
                   </div>
@@ -109,13 +109,13 @@ const AboutPage = () => {
                       <span>{proj.role}</span>
                       <span className="text-orange-500">{proj.period}</span>
                     </div>
-                    <p className="text-xs text-te-muted mb-2">{proj.organization}</p>
-                    <p className="text-sm font-medium leading-relaxed text-te-muted max-w-3xl mb-2">
+                    <p className="text-xs text-te-muted leading-tight mb-2">{proj.organization}</p>
+                    <p className="text-sm font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-3">
                       {proj.description}
                     </p>
                     <div className="flex flex-wrap gap-1 text-[9px] font-mono uppercase text-te-muted">
                       {proj.achievements.map((ach, aIdx) => (
-                        <span key={aIdx} className="px-1 py-0.5 bg-white/5">{ach}</span>
+                        <span key={aIdx} className="px-1 py-0.5 bg-white/5 truncate">{ach}</span>
                       ))}
                     </div>
                   </div>
@@ -134,11 +134,11 @@ const AboutPage = () => {
               
               <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-[9px] font-mono text-te-muted">
                 {Object.entries(skillsData).map(([key, items], index) => (
-                  <div key={index} className="border-b border-dashed border-white/5 pb-2 last:border-0">
-                    <span className="text-orange-500 block mb-1">{key.toUpperCase()}</span>
-                    <ul className="space-y-0.5">
+                  <div key={index} className="border-b border-dashed border-white/5 pb-2 last:border-0 last:pb-0">
+                    <span className="text-orange-500 block mb-1 font-bold">{key.toUpperCase()}</span>
+                    <ul className="space-y-0.5 text-[9px]">
                       {(items as string[]).map((item: string, i: number) => (
-                        <li key={i} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+                        <li key={i} className="flex items-center gap-2 hover:text-white transition-colors cursor-default truncate">
                           <div className="w-1 h-1 bg-orange-500 rounded-full" />
                           {item}
                         </li>
@@ -154,9 +154,9 @@ const AboutPage = () => {
               <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Certifications.EXE</h3>
               
               {certificationsData.map((cert: { provider: string; name: string; color: string }, index: number) => (
-                <div key={index} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0 text-[9px] font-mono text-te-muted">
-                  <span>{cert.name}</span>
-                  <span className="text-orange-500">{cert.provider}</span>
+                <div key={index} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0 text-[9px] font-mono text-te-muted leading-tight max-w-full">
+                  <span className="max-w-xs overflow-hidden">{cert.name}</span>
+                  <span className="text-orange-500 max-w-[10ch] overflow-hidden">{cert.provider}</span>
                 </div>
               ))}
             </div>
