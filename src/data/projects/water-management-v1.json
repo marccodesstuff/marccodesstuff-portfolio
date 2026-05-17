@@ -1,0 +1,17 @@
+{
+  "id": "water-management-v1",
+  "title": "Water Management Interface",
+  "tagline": "Digital Transformation Platform for Water Refilling Business",
+  "description": [
+    "Developed a full-stack web application using Next.js for client-side and server-side operations, supporting digital transformation of water-refilling business.",
+    "Implemented an Express.js backend to enable seamless integration with PostgreSQL database for efficient business record management.",
+    "Designed and maintained database schemas to securely store and retrieve operational data, replacing traditional paper and record book systems.",
+    "Facilitated the business's transition from manual record-keeping to a streamlined, digital workflow, improving data accessibility and reliability."
+  ],
+  "role": "Full Stack Web Developer",
+  "type": "Freelance/Client Project",
+  "date": "Feb 2024 - Jun 2024",
+  "status": "completed",
+  "tech": ["Next.js", "Express.js", "PostgreSQL", "Tailwind CSS"],
+  "icon": "Database"
+}

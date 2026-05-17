@@ -1,0 +1,41 @@
+[
+  {
+    "company": "Kaizenaire",
+    "role": "AI Content Quality Assurance Intern",
+    "period": "Jan 2026 - Mar 2026",
+    "description": [
+      "Published 772 SEO-compliant brand articles, all green across 3 on-page SEO categories (premium SEO, readability, inclusive language). Vetted and rejected 293 additional candidates for content, security, or compliance reasons.",
+      "Built a browser extension reducing per-task processing time by ~50% (from 15 min to 7-8 min).",
+      "Designed pre-research setup cutting LLM processing from 1m40s to 1m8s; reduced image-resize step from 45s to 15s (3× faster).",
+      "Scraped and consolidated contact information for ~15,500 regional companies into central lead database.",
+      "Hosted team workshop on agentic browser/computer-use frameworks and authored internal technical implementation guide for lead-database enrichment.",
+      "Used Notion's custom-agent framework to streamline project documentation and developed tooling extending its Worker SDK."
+    ],
+    "tech": ["Multi-Agent Systems", "Browser Automation", "Prompt Engineering", "Notion API"],
+    "icon": "Shield"
+  },
+  {
+    "company": "Kaizenaire",
+    "role": "AI Automation Intern",
+    "period": "Mar-May 2026",
+    "description": [
+      "Designed and implemented multi-stage automation workflows for data preparation and validation processes.",
+      "Architected multi-agent systems ensuring specialized agents handled scraping, research, and classification tasks efficiently.",
+      "Conducted thorough security evaluations of agent skills and dependencies, safeguarding the automation pipeline."
+    ],
+    "tech": ["Agent Orchestration", "Security Auditing", "Data Pipelines"],
+    "icon": "Robot"
+  },
+  {
+    "company": "As Foretold Research Labs",
+    "role": "Tech Lead",
+    "period": "Jan 2026 - Present",
+    "description": [
+      "Developing large-scale digital twins and autonomous robotic simulations to enhance operational efficiency.",
+      "Creating bespoke generative AI frameworks that merge theoretical research with practical applications.",
+      "Orchestrating integration of spatial computing and advanced AI models for high-fidelity simulations."
+    ],
+    "tech": ["Digital Twins", "Robotics Simulation", "Spatial Computing", "Generative AI"],
+    "icon": "Cube"
+  }
+]

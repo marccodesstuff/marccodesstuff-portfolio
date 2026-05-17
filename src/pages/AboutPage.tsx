@@ -1,6 +1,8 @@
 import { Github, Linkedin, Mail, Terminal, Cpu, HardDrive } from 'lucide-react'
-import achievementsData from '../data/achievements.json'
+import internshipsData from '../data/internships.json'
 import certificationsData from '../data/certifications.json'
+import achievementsData from '../data/achievements.json'
+import researchData from '../data/research.json'
 import skillsData from '../data/skills.json'
 
 const AboutPage = () => {
@@ -110,25 +112,59 @@ const AboutPage = () => {
 
           </section>
 
-          {/* CENTER COLUMN: Skills & Certifications */}
+          {/* CENTER COLUMN: Skills, Experience & Certifications */}
           <section className="lg:col-span-2">
             
+            {/* PROFESSIONAL EXPERIENCE module - NEW */}
+            <div className="te-module p-6 mb-4 min-h-[180px]">
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Professional_Experience.EXE</h3>
+              
+              <ul className="space-y-3 text-sm font-medium leading-relaxed text-te-muted max-w-lg">
+                {internshipsData.slice(0, 2).map((exp: any, index: number) => (
+                  <li key={index} className="flex items-start gap-2 hover:text-white transition-colors cursor-default">
+                    <span className={`text-orange-500 font-bold text-xs mt-0.5 ${index === 0 ? 'border-r-2 border-orange-500 pr-1' : ''}`}>
+                      {exp.period}
+                    </span>
+                    <div>
+                      <div className="font-bold">{exp.role}</div>
+                      <div className="text-xs opacity-70">{exp.company}</div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+            </div>
+
             {/* Skills module */}
             <div className="te-module p-6 mb-4 min-h-[180px]">
               <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Skill_Matrix.EXE</h3>
               
               <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-[9px] font-mono text-te-muted">
-                {Object.entries(skillsData).map(([key, items], index) => (
+                {Object.entries(skillsData).slice(0, 6).map(([key, items], index) => (
                   <div key={index} className="border-b border-dashed border-white/5 pb-2 last:border-0">
                     <span className="text-orange-500 block mb-1">{key.toUpperCase()}</span>
                     <ul className="space-y-0.5">
-                      {(items as string[]).map((item: string, i: number) => (
+                      {(items as string[]).slice(0, 3).map((item: string, i: number) => (
                         <li key={i} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
                           <div className="w-1 h-1 bg-orange-500 rounded-full" />
                           {item}
                         </li>
                       ))}
                     </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Specializations module - NEW */}
+            <div className="te-module p-6 mb-4 min-h-[120px]">
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Specializations.EXE</h3>
+              
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[9px] font-mono text-te-muted">
+                {skillsData.specializations?.slice(0, 6).map((spec: string, index: number) => (
+                  <div key={index} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
+                    <div className="w-1 h-1 bg-orange-500 rounded-full" />
+                    {spec}
                   </div>
                 ))}
               </div>
@@ -146,14 +182,36 @@ const AboutPage = () => {
               ))}
             </div>
 
+            {/* ACADEMIC RESEARCH module - NEW */}
+            <div className="te-module p-6 mb-4 min-h-[180px]">
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Academic_Research.EXE</h3>
+              
+              <ul className="space-y-2 text-xs font-medium leading-relaxed text-te-muted max-w-lg">
+                {researchData.slice(0, 4).map((research: any, index: number) => (
+                  <li key={index} className="flex items-start gap-1 hover:text-white transition-colors cursor-default">
+                    <span className="text-orange-500 font-bold text-[8px] mt-0.5">
+                      {research.iconType === 'trophy' ? '🏆' : research.iconType === 'medal' ? '🥈' : '📜'}
+                    </span>
+                    <div>
+                      <div className="font-bold">{research.title}</div>
+                      <div className="text-[9px] opacity-70">{research.placement}</div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+            </div>
+
             {/* Achievements module */}
-            <div className="te-module p-6 min-h-[200px]">
+            <div className="te-module p-6 min-h-[180px]">
               <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Achievement_Log.EXE</h3>
               
               <ul className="space-y-2 text-sm font-medium leading-relaxed text-te-muted max-w-lg">
                 {achievementsData.slice(0, 6).map((achievement: { title: string; place: string; iconType: string }, index: number) => (
                   <li key={index} className="flex items-start gap-2 hover:text-white transition-colors cursor-default">
-                    <span className="text-orange-500 font-bold text-xs mt-0.5">{achievement.place}</span>
+                    <span className={`text-orange-500 font-bold text-xs mt-0.5 ${index === 0 ? 'border-r-2 border-orange-500 pr-1' : ''}`}>
+                      {achievement.place}
+                    </span>
                     <span>{achievement.title}</span>
                   </li>
                 ))}

@@ -3,35 +3,58 @@
         "Python",
         "Java",
         "C++",
+        "Rust",
+        "TypeScript",
+        "JavaScript",
+        "C#",
         "Dart",
-        "SQL",
-        "JavaScript/TypeScript"
+        "SQL"
     ],
     "appDev": [
         "Spring Boot",
         "Next.js",
+        "ASP.NET/Blazor",
         "Flutter",
-        "Express.js"
+        "Express.js",
+        "Godot",
+        "Electron.js"
     ],
     "aiData": [
         "PyTorch",
         "TensorFlow/Lite",
+        "YOLO (v5-v11)",
         "Google Earth Engine",
         "Pandas",
         "NumPy",
         "HuggingFace",
-        "Power BI"
+        "Power BI",
+        "ensemble learning",
+        "computer vision",
+        "LLM orchestration",
+        "multi-agent systems",
+        "model evaluation",
+        "synthetic data generation"
     ],
     "cloudTools": [
         "Azure",
-        "Oracle Cloud",
+        "Oracle Cloud Infrastructure (OCI)",
         "AppWrite",
         "AWS (LocalStack)",
         "Google Colab",
         "Kaggle",
         "Git/GitHub",
-        "Linux (WSL2)",
+        "Linux/WSL2",
         "Supabase",
-        "Docker"
+        "Docker",
+        "CI/CD fundamentals"
+    ],
+    "specializations": [
+        "Digital twins",
+        "Robotics simulation",
+        "Medical imaging ML",
+        "Edge AI deployment",
+        "Spatial computing",
+        "IoT sensor systems",
+        "Data engineering pipelines"
     ]
 }
