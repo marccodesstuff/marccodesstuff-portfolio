@@ -8,7 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainLayout activePage="index"><HomePage /></MainLayout>} />
+        <Route path="/" element={<MainLayout activePage="index" showFooter={false}><HomePage /></MainLayout>} />
         <Route path="/projects" element={<MainLayout activePage="projects"><ProjectsPage /></MainLayout>} />
         <Route path="/about" element={<MainLayout activePage="about"><AboutPage /></MainLayout>} />
       </Routes>
