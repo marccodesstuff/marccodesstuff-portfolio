@@ -36,7 +36,7 @@ const AboutPage = () => {
             {/* Bio module */}
             <div className="te-module p-8 flex flex-col justify-between">
               <div>
-                <h3 className="text-2xl font-black uppercase tracking-tighter mb-2">Identity</h3>
+                <h3 className="text-base font-black uppercase tracking-tight mb-1 leading-snug">Identity</h3>
                 <p className="te-label text-xs mt-0">PERSONAL_DATA_RECORD_04.2</p>
               </div>
 
@@ -79,8 +79,11 @@ const AboutPage = () => {
             </div>
 
             {/* Professional Experience module */}
-            <div className="te-module p-8">
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-5">Professional_Journey.EXE</h3>
+            <div className="te-module p-8 overflow-hidden">
+              <h3 className="text-base font-black uppercase tracking-tight mb-1 leading-snug">
+                Professional_Journey
+              </h3>
+              <p className="te-label text-xs mb-5 text-orange-500">.EXE // CAREER_LOG</p>
               
               <div className="space-y-6">
                 {/* Internships */}
@@ -130,7 +133,8 @@ const AboutPage = () => {
             
             {/* Skills module */}
             <div className="te-module p-8">
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-6">Skill_Matrix.EXE</h3>
+              <h3 className="text-lg font-black uppercase tracking-tight mb-1 leading-snug">Skill_Matrix</h3>
+              <p className="te-label text-xs mb-6 text-orange-500">.EXE // COMPETENCY_DUMP</p>
               
               <div className="grid grid-cols-2 gap-x-8 gap-y-6 text-xs font-mono text-te-muted">
                 {Object.entries(skillsData).map(([key, items], index) => (
@@ -151,7 +155,8 @@ const AboutPage = () => {
 
             {/* Certifications module */}
             <div className="te-module p-8">
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-5">Certifications.EXE</h3>
+              <h3 className="text-lg font-black uppercase tracking-tight mb-1 leading-snug">Certifications</h3>
+              <p className="te-label text-xs mb-5 text-orange-500">.EXE // VERIFIED_CREDENTIALS</p>
               
               {certificationsData.map((cert: { provider: string; name: string; color: string }, index: number) => (
                 <div key={index} className="flex justify-between items-center py-3 border-b border-white/5 last:border-0 text-xs font-mono text-te-muted leading-tight max-w-full">
@@ -163,7 +168,8 @@ const AboutPage = () => {
 
             {/* Achievements module */}
             <div className="te-module p-8">
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-5">Achievement_Log.EXE</h3>
+              <h3 className="text-lg font-black uppercase tracking-tight mb-1 leading-snug">Achievement_Log</h3>
+              <p className="te-label text-xs mb-5 text-orange-500">.EXE // HONOR_REGISTRY</p>
               
               <ul className="space-y-3 text-base font-medium leading-relaxed text-te-muted max-w-lg">
                 {achievementsData.map((achievement: { title: string; place: string; iconType: string }, index: number) => (
