@@ -11,7 +11,7 @@ const AboutPage = () => {
       <div className="max-w-[1400px] mx-auto border-t-2 border-l-2 border-white/10 bg-black/30 min-h-screen">
         
         {/* Page header */}
-        <header className="border-b-2 border-white/10 pb-6 mb-6">
+        <header className="border-b-2 border-white/10 px-8 pt-8 pb-8 mb-0">
           <div className="flex items-end justify-between gap-4">
             
             <div>
@@ -28,13 +28,13 @@ const AboutPage = () => {
         </header>
 
         {/* Main content grid */}
-        <div className="p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-3 gap-1">
+        <div className="px-8 py-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* LEFT COLUMN: Identity Module */}
-          <section className="lg:col-span-1 border-r border-white/5 pr-1">
+          <section className="lg:col-span-1 flex flex-col gap-6">
             
             {/* Bio module */}
-            <div className="te-module p-6 mb-4 min-h-[200px] flex flex-col justify-between">
+            <div className="te-module p-8 flex flex-col justify-between">
               <div>
                 <h3 className="text-2xl font-black uppercase tracking-tighter mb-2">Identity</h3>
                 <p className="te-label text-xs mt-0">PERSONAL_DATA_RECORD_04.2</p>
@@ -79,24 +79,24 @@ const AboutPage = () => {
             </div>
 
             {/* Professional Experience module */}
-            <div className="te-module p-6 min-h-[200px]">
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Professional_Journey.EXE</h3>
+            <div className="te-module p-8">
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-5">Professional_Journey.EXE</h3>
               
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {/* Internships */}
                 {internshipsData.map((exp, idx) => (
-                  <div key={idx} className="border-b border-dashed border-white/5 pb-3 last:border-0 last:pb-0">
-                    <div className="flex justify-between items-center text-sm font-bold uppercase tracking-wide mb-1">
+                  <div key={idx} className="border-b border-dashed border-white/10 pb-6 last:border-0 last:pb-0">
+                    <div className="flex justify-between items-center text-sm font-bold uppercase tracking-wide mb-2">
                       <span>{exp.role}</span>
                       <span className="text-orange-500">{exp.period}</span>
                     </div>
-                    <p className="text-sm text-te-muted leading-tight mb-2">{exp.company}</p>
-                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-3">
+                    <p className="text-sm text-te-muted leading-tight mb-3">{exp.company}</p>
+                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-4">
                       {exp.description}
                     </p>
-                    <div className="flex flex-wrap gap-1 text-xs font-mono uppercase text-te-muted">
+                    <div className="flex flex-wrap gap-2 text-xs font-mono uppercase text-te-muted">
                       {exp.achievements.map((ach, aIdx) => (
-                        <span key={aIdx} className="px-1 py-0.5 bg-white/5 truncate">{ach}</span>
+                        <span key={aIdx} className="px-2 py-1 bg-white/5 border border-white/10">{ach}</span>
                       ))}
                     </div>
                   </div>
@@ -104,18 +104,18 @@ const AboutPage = () => {
 
                 {/* Research */}
                 {researchData.map((proj, idx) => (
-                  <div key={idx} className="border-b border-dashed border-white/5 pb-3 last:border-0 last:pb-0">
-                    <div className="flex justify-between items-center text-sm font-bold uppercase tracking-wide mb-1">
+                  <div key={idx} className="border-b border-dashed border-white/10 pb-6 last:border-0 last:pb-0">
+                    <div className="flex justify-between items-center text-sm font-bold uppercase tracking-wide mb-2">
                       <span>{proj.role}</span>
                       <span className="text-orange-500">{proj.period}</span>
                     </div>
-                    <p className="text-sm text-te-muted leading-tight mb-2">{proj.organization}</p>
-                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-3">
+                    <p className="text-sm text-te-muted leading-tight mb-3">{proj.organization}</p>
+                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-4">
                       {proj.description}
                     </p>
-                    <div className="flex flex-wrap gap-1 text-xs font-mono uppercase text-te-muted">
+                    <div className="flex flex-wrap gap-2 text-xs font-mono uppercase text-te-muted">
                       {proj.achievements.map((ach, aIdx) => (
-                        <span key={aIdx} className="px-1 py-0.5 bg-white/5 truncate">{ach}</span>
+                        <span key={aIdx} className="px-2 py-1 bg-white/5 border border-white/10">{ach}</span>
                       ))}
                     </div>
                   </div>
@@ -126,17 +126,17 @@ const AboutPage = () => {
           </section>
 
           {/* CENTER COLUMN: Skills, Certifications, Achievements */}
-          <section className="lg:col-span-2">
+          <section className="lg:col-span-2 flex flex-col gap-6">
             
             {/* Skills module */}
-            <div className="te-module p-6 mb-4 min-h-[180px]">
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Skill_Matrix.EXE</h3>
+            <div className="te-module p-8">
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-6">Skill_Matrix.EXE</h3>
               
-              <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-xs font-mono text-te-muted">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-6 text-xs font-mono text-te-muted">
                 {Object.entries(skillsData).map(([key, items], index) => (
-                  <div key={index} className="border-b border-dashed border-white/5 pb-2 last:border-0 last:pb-0">
-                    <span className="text-orange-500 block mb-1 font-bold">{key.toUpperCase()}</span>
-                    <ul className="space-y-0.5 text-xs">
+                  <div key={index} className="border-b border-dashed border-white/10 pb-4 last:border-0 last:pb-0">
+                    <span className="text-orange-500 block mb-2 font-bold">{key.toUpperCase()}</span>
+                    <ul className="space-y-1.5 text-xs">
                       {(items as string[]).map((item: string, i: number) => (
                         <li key={i} className="flex items-center gap-2 hover:text-white transition-colors cursor-default truncate">
                           <div className="w-1 h-1 bg-orange-500 rounded-full" />
@@ -150,11 +150,11 @@ const AboutPage = () => {
             </div>
 
             {/* Certifications module */}
-            <div className="te-module p-6 mb-4 min-h-[120px]">
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Certifications.EXE</h3>
+            <div className="te-module p-8">
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-5">Certifications.EXE</h3>
               
               {certificationsData.map((cert: { provider: string; name: string; color: string }, index: number) => (
-                <div key={index} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0 text-xs font-mono text-te-muted leading-tight max-w-full">
+                <div key={index} className="flex justify-between items-center py-3 border-b border-white/5 last:border-0 text-xs font-mono text-te-muted leading-tight max-w-full">
                   <span className="max-w-xs overflow-hidden">{cert.name}</span>
                   <span className="text-orange-500 max-w-[10ch] overflow-hidden">{cert.provider}</span>
                 </div>
@@ -162,13 +162,13 @@ const AboutPage = () => {
             </div>
 
             {/* Achievements module */}
-            <div className="te-module p-6 min-h-[200px]">
-              <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Achievement_Log.EXE</h3>
+            <div className="te-module p-8">
+              <h3 className="text-xl font-black uppercase tracking-tighter mb-5">Achievement_Log.EXE</h3>
               
-              <ul className="space-y-2 text-base font-medium leading-relaxed text-te-muted max-w-lg">
+              <ul className="space-y-3 text-base font-medium leading-relaxed text-te-muted max-w-lg">
                 {achievementsData.map((achievement: { title: string; place: string; iconType: string }, index: number) => (
-                  <li key={index} className="flex items-start gap-2 hover:text-white transition-colors cursor-default">
-                    <span className="text-orange-500 font-bold text-sm mt-0.5">{achievement.place}</span>
+                  <li key={index} className="flex items-start gap-3 hover:text-white transition-colors cursor-default">
+                    <span className="text-orange-500 font-bold text-sm mt-0.5 shrink-0">{achievement.place}</span>
                     <span>{achievement.title}</span>
                   </li>
                 ))}
@@ -176,7 +176,7 @@ const AboutPage = () => {
 
               <button 
                 onClick={() => window.tactileFeedback?.playClickSound()}
-                className="mt-4 te-button text-xs py-1 px-3 opacity-60 hover:opacity-100"
+                className="mt-6 te-button text-xs py-1 px-3 opacity-60 hover:opacity-100"
               >
                 VIEW_ALL_RECORDS
               </button>
@@ -187,7 +187,7 @@ const AboutPage = () => {
         </div>
 
         {/* Bottom system info bar */}
-        <footer className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-te-muted">
+        <footer className="px-8 py-6 border-t border-white/10 mt-2 flex items-center justify-between text-xs font-mono text-te-muted">
           
           {/* System metrics */}
           <div className="flex gap-4">

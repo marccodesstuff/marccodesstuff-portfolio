@@ -35,7 +35,7 @@ const ProjectsPage = () => {
       <div className="max-w-[1400px] mx-auto border-t-2 border-l-2 border-white/10 bg-black/30 min-h-screen">
         
         {/* Page header */}
-        <header className="border-b-2 border-white/10 pb-6 mb-6">
+        <header className="border-b-2 border-white/10 px-8 pt-8 pb-8 mb-0">
           <div className="flex items-end justify-between gap-4">
             
             <div>
@@ -56,8 +56,8 @@ const ProjectsPage = () => {
         </header>
 
         {/* Projects grid */}
-        <div className="p-6 lg:p-8">
-          <div className="grid grid-cols-1 gap-1">
+        <div className="px-8 py-6 lg:py-8">
+          <div className="grid grid-cols-1 gap-3">
             
             {projects.map((project) => (
               <div
@@ -74,21 +74,21 @@ const ProjectsPage = () => {
                     setSelectedProject(project);
                   }
                 }}
-                className="te-module p-8 flex flex-col lg:flex-row gap-6 items-start lg:items-center hover:bg-white/[0.03] transition-colors group cursor-pointer relative"
+                className="te-module px-8 py-7 flex flex-col lg:flex-row gap-6 items-start lg:items-center hover:bg-white/[0.03] transition-colors group cursor-pointer relative"
               >
                 
                 {/* Project ID badge */}
-                <div className="absolute top-4 left-4 z-10">
+                <div className="absolute top-5 left-6 z-10">
                   <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2">
                     MOD_{project.id.toUpperCase()}
                   </span>
                 </div>
 
                 {/* Main project info */}
-                <div className="flex-1">
+                <div className="flex-1 pt-7">
                   
                   {/* Project name and category */}
-                  <div className="mb-3">
+                  <div className="mb-4">
                     <h2 className="text-4xl font-black uppercase tracking-tighter mb-1 group-hover:text-white transition-colors">
                       {project.title}
                     </h2>
@@ -127,7 +127,7 @@ const ProjectsPage = () => {
         </div>
 
         {/* Footer */}
-        <footer className="pt-6 border-t border-white/10">
+        <footer className="px-8 py-6 border-t border-white/10 mt-4">
           <div className="flex items-center justify-between text-xs font-mono text-te-muted">
             <span>RECORDS_TOTAL: {projects.length}</span>
             <span className="text-orange-500">// INDUSTRIAL_MINIMALISM_V04</span>
@@ -147,7 +147,7 @@ const ProjectsPage = () => {
           />
 
           {/* Drawer container */}
-          <div className="relative w-full max-w-xl bg-te-bg border-l-2 border-orange-500 h-full p-8 flex flex-col justify-between overflow-y-auto z-10 te-module animate-slideInRight">
+          <div className="relative w-full max-w-xl bg-te-bg border-l-2 border-orange-500 h-full px-8 py-10 flex flex-col justify-between overflow-y-auto z-10 te-module animate-slideInRight">
             
             {/* Fine Grid overlay inside drawer */}
             <div 
@@ -158,7 +158,7 @@ const ProjectsPage = () => {
               }}
             />
 
-            <div className="relative z-10 space-y-6">
+            <div className="relative z-10 space-y-8">
               {/* Header */}
               <div className="flex justify-between items-start border-b-2 border-white/10 pb-4">
                 <div>
