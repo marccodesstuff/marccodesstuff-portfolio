@@ -225,7 +225,7 @@ const HomePage = () => {
         {/* ===========================================
             SYSTEM LOG INTEGRATION
             =========================================== */}
-        <div className="lg:col-span-12 pt-4">
+        <div className="lg:col-span-12">
           <SystemLog />
         </div>
 

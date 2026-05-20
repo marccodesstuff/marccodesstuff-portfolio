@@ -106,86 +106,71 @@ const SystemLog = () => {
   }, [])
 
   return (
-    <footer className="fixed bottom-0 left-0 right-0 bg-black/95 border-t border-white/10 p-3 z-50" id="system-log">
-      {/* System Status Bar */}
-      <div className="max-w-[1400px] mx-auto flex items-center justify-between mb-2 px-4">
+    <footer className="te-module p-6 border-r-2 border-b-2 border-white/5 w-full bg-te-bg/10" id="system-log">
+      {/* Module Title */}
+      <div className="flex justify-between items-center mb-6 border-b border-white/5 pb-3">
+        <div className="flex items-center gap-2">
+          <Terminal size={14} className="text-orange-500 animate-pulse" />
+          <span className="te-label text-xs font-bold text-white tracking-widest">SYSTEM_DIAGNOSTICS_MONITOR.SYS</span>
+        </div>
         <div className="flex items-center gap-2 text-[9px] font-mono text-te-muted">
-          <Terminal size={10} />
-          <span>TACTILE_WEB.EXE</span>
-          <span className="text-green-500">●</span>
-          <span>ONLINE</span>
-        </div>
-
-        <div className="flex items-center gap-4 text-[9px] font-mono text-te-muted">
-          <span>FPS: 60</span>
-          <span>MEM: OPTIMAL</span>
-        </div>
-
-        <div className="text-[9px] font-mono text-orange-500">
-          v{import.meta.env?.VITE_APP_VERSION || '0.1.0'}
+          <span>OP_MODE: REALTIME_TELEMETRY</span>
+          <span className="text-green-500 animate-pulse">●</span>
+          <span className="text-[7px]">ONLINE</span>
         </div>
       </div>
 
-      {/* Events Feed */}
-      <div className="max-w-[1400px] mx-auto px-4 h-[80px] overflow-y-auto flex flex-col gap-1 w-full">
-        {events.length === 0 ? (
-          <p className="text-[9px] font-mono text-te-muted/50">AWAITING_EVENTS...</p>
-        ) : (
-          events.map((event) => (
-            <div 
-              key={event.id}
-              className="flex items-center gap-2 w-full animate-slideInRight"
-              style={{ animationDelay: `${events.indexOf(event) * 50}ms` }}
-            >
-              {/* Event Type Indicator */}
-              <span className="text-[7px] font-mono text-te-muted uppercase w-16 truncate">
-                {event.type.replace('_', '_')}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        {/* Live Ticker Area */}
+        <div className="lg:col-span-8 space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="te-label text-[8px]">LIVE_EVENT_STREAM</span>
+            <span className="te-label text-[7px] text-te-muted/40">BUFFER: 50_REC</span>
+          </div>
+          <div className="flex items-center gap-3 bg-black/45 border border-white/5 px-3 py-2 rounded-sm font-mono text-[9px] min-h-[36px] w-full shadow-inner">
+            <span className="text-[6px] uppercase px-1.5 py-0.2 bg-orange-500/10 border border-orange-500/30 text-orange-500 font-bold shrink-0">
+              {events[0]?.type || 'SYSTEM'}
+            </span>
+            <span className="text-[8px] text-white/30 shrink-0">
+              [{events[0] ? formatTimestamp(events[0].timestamp).split('T')[1].slice(0, 8) : ''}]
+            </span>
+            <span className={`text-[9px] truncate flex-1 ${
+              events[0]?.type === 'CLICK_EVENT' ? 'text-orange-500 font-bold' :
+              events[0]?.type === 'NAVIGATION' ? 'text-green-500 font-bold' : 'text-white/80'
+            }`}>
+              {events[0]?.event || 'AWAITING_SYSTEM_EVENT'}
+            </span>
+            {events[0]?.detail && (
+              <span className="hidden sm:inline text-[8px] text-white/40 truncate">
+                // {events[0].detail}
               </span>
+            )}
+          </div>
+        </div>
 
-              {/* Event Timestamp */}
-              <span className="text-[8px] font-mono text-te-muted/60 flex items-center gap-1">
-                [{formatTimestamp(event.timestamp)}]
-              </span>
-
-              {/* Event Message */}
-              <span className={`text-[9px] font-mono truncate flex-1 ${
-                event.type === 'CLICK_EVENT' ? 'text-orange-500' :
-                event.type === 'UI_STATE' ? 'text-te-muted' : 'text-green-500'
-              }`}>
-                {event.event}
-              </span>
-
-              {/* Event Details (if any) */}
-              {event.detail && (
-                <span className="text-[8px] font-mono text-white/30 truncate" title={event.detail}>
-                  {event.detail}
-                </span>
-              )}
+        {/* Diagnostic Telemetry Panel */}
+        <div className="lg:col-span-4 grid grid-cols-2 gap-4 border-t lg:border-t-0 lg:border-l border-white/5 pt-4 lg:pt-0 lg:pl-6">
+          <div className="space-y-1">
+            <span className="te-label text-[7px] block">HARDWARE_STATUS</span>
+            <div className="flex gap-2 text-[8px] font-mono text-white/70">
+              <span>MEM: OPTIMAL</span>
+              <span>NET: STABLE</span>
             </div>
-          ))
-        )}
-      </div>
-
-      {/* System Status Indicators */}
-      <div className="max-w-[1400px] mx-auto px-4 pt-2 flex items-center justify-between text-[7px] font-mono text-te-muted/50 border-t border-white/5">
-        <div className="flex items-center gap-3">
-          <span>MEM: ONLINE</span>
-          <span>NET: STABLE</span>
-          <span>DNS: RESOLVED</span>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <span>LAT: 34.0522° N</span>
-          <span>LON: -118.2437° W</span>
-          <span>TIMEZONE: PST</span>
+          </div>
+          <div className="space-y-1">
+            <span className="te-label text-[7px] block">METRICS_LOG</span>
+            <div className="flex gap-2 text-[8px] font-mono text-white/70">
+              <span>DNS: OK</span>
+              <span className="text-orange-500">REV_04.2</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Easter egg footer */}
-      <div className="max-w-[1400px] mx-auto px-4 text-center pt-2">
-        <p className="text-[7px] font-mono text-te-muted/30 uppercase tracking-wider">
-          © 2026 MARC VELASQUEZ // TACTILE_WEB.EXE
-        </p>
+      {/* Copyright Line */}
+      <div className="mt-6 pt-4 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-2 text-[8px] font-mono text-te-muted/40">
+        <span>DEVICE_CLASS: PORTABLE_DIGITAL_WORKSPACE</span>
+        <span>© 2026 MARC VICTOR VELASQUEZ // ALL RIGHTS SECURED</span>
       </div>
     </footer>
   )
@@ -198,3 +183,4 @@ const formatTimestamp = (timestamp: string): string => {
 }
 
 export default SystemLog
+

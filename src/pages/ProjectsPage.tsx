@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, X, Cpu, HardDrive, Terminal } from 'lucide-react'
+import { ArrowUpRight, X, Cpu } from 'lucide-react'
 
 // Import all project JSON files
 import sgpClipperData from '../data/projects/sgp-clipper.json'
