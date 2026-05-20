@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { ArrowUpRight, X, Cpu } from 'lucide-react'
+import { usePageTransition } from '../components/PageTransition'
 
 // Import all project JSON files
 import sgpClipperData from '../data/projects/sgp-clipper.json'
@@ -14,6 +14,7 @@ import pageShutterData from '../data/projects/pageshutter.json'
 
 const ProjectsPage = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null)
+  const { navigateWithTransition } = usePageTransition()
   
   // Compile all projects into array
   const projects: any[] = [
@@ -45,13 +46,15 @@ const ProjectsPage = () => {
               <p className="te-label text-base mt-0">HARDWARE_MODULES_01_THRU_19</p>
             </div>
 
-            <Link 
-              to="/"
-              onClick={() => window.tactileFeedback?.playClickSound()}
+            <button 
+              onClick={() => {
+                window.tactileFeedback?.playClickSound();
+                navigateWithTransition('/');
+              }}
               className="te-button primary text-xs py-2 px-4 opacity-80 hover:opacity-100"
             >
               NAV_HOME
-            </Link>
+            </button>
           </div>
         </header>
 

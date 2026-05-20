@@ -1,7 +1,10 @@
 import SystemLog from '../components/SystemLog'
 import { ArrowUpRight, Terminal, Cpu } from 'lucide-react'
+import { usePageTransition } from '../components/PageTransition'
 
 const HomePage = () => {
+  const { navigateWithTransition } = usePageTransition()
+
   return (
     <main className="p-4 lg:p-8">
       {/* ===========================================
@@ -109,9 +112,14 @@ const HomePage = () => {
         <div className="lg:col-span-12 grid grid-cols-1 lg:grid-cols-2 gap-1">
           
           {/* Project 01: Typhoon Survival Beacon */}
-          <a 
-            href="/projects"
-            onClick={() => window.tactileFeedback?.playClickSound()}
+          <div 
+            role="button"
+            tabIndex={0}
+            onClick={() => {
+              window.tactileFeedback?.playClickSound();
+              navigateWithTransition('/projects');
+            }}
+            onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
             className="te-module p-8 border-r-2 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
           >
             <div className="flex justify-between items-start mb-4">
@@ -127,12 +135,17 @@ const HomePage = () => {
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">TENSORFLOW</span>
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">FLUTTER</span>
             </div>
-          </a>
+          </div>
 
           {/* Project 02: Knee Tear Detection */}
-          <a 
-            href="/projects"
-            onClick={() => window.tactileFeedback?.playClickSound()}
+          <div 
+            role="button"
+            tabIndex={0}
+            onClick={() => {
+              window.tactileFeedback?.playClickSound();
+              navigateWithTransition('/projects');
+            }}
+            onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
             className="te-module p-8 border-r-2 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
           >
             <div className="flex justify-between items-start mb-4">
@@ -148,7 +161,7 @@ const HomePage = () => {
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">MICROSERVICES</span>
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">DICOM</span>
             </div>
-          </a>
+          </div>
 
         </div>
 

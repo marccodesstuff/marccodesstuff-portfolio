@@ -1,17 +1,29 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import HomePage from './pages/HomePage'
 import ProjectsPage from './pages/ProjectsPage'
 import AboutPage from './pages/AboutPage'
+import PageTransition from './components/PageTransition'
 
-function App() {
+// Inner component that has access to router context
+const AppRoutes = () => {
+  const location = useLocation()
+
   return (
-    <BrowserRouter>
-      <Routes>
+    <PageTransition>
+      <Routes location={location} key={location.pathname}>
         <Route path="/" element={<MainLayout activePage="index" showFooter={false}><HomePage /></MainLayout>} />
         <Route path="/projects" element={<MainLayout activePage="projects"><ProjectsPage /></MainLayout>} />
         <Route path="/about" element={<MainLayout activePage="about"><AboutPage /></MainLayout>} />
       </Routes>
+    </PageTransition>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppRoutes />
     </BrowserRouter>
   )
 }

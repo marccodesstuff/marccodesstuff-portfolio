@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import { usePageTransition } from './PageTransition';
 
 interface HeaderProps {
     activePage: 'index' | 'projects' | 'about';
@@ -13,15 +14,33 @@ const navItems = [
 ];
 
 const Header = ({ activePage }: HeaderProps) => {
+    const { navigateWithTransition, isTransitioning } = usePageTransition();
+    const location = useLocation();
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, to: string) => {
+        e.preventDefault();
+        // Don't navigate to current page or during transition
+        if (to === location.pathname || isTransitioning) return;
+        window.tactileFeedback?.playClickSound();
+        navigateWithTransition(to);
+    };
+
     return (
         <header className="sticky top-0 z-50 px-6 md:px-8 py-4 flex justify-between items-center bg-te-bg/90 backdrop-blur-md border-b border-te-border">
-            <Link to="/" className="te-label font-bold text-te-fg tracking-[0.2em] hover:text-te-accent transition-colors">SYSTEM: 04.2</Link>
+            <a
+                href="/"
+                onClick={(e) => handleNavClick(e, '/')}
+                className="te-label font-bold text-te-fg tracking-[0.2em] hover:text-te-accent transition-colors"
+            >
+                SYSTEM: 04.2
+            </a>
 
             <nav className="hidden md:flex items-center gap-12 text-[10px] te-label font-bold">
                 {navItems.map((item) => (
-                    <Link
+                    <a
                         key={item.page}
-                        to={item.to}
+                        href={item.to}
+                        onClick={(e) => handleNavClick(e, item.to)}
                         className={
                             activePage === item.page
                                 ? 'text-te-accent border-b border-te-accent pb-1'
@@ -29,7 +48,7 @@ const Header = ({ activePage }: HeaderProps) => {
                         }
                     >
                         {item.label}
-                    </Link>
+                    </a>
                 ))}
             </nav>
 
