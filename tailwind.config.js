@@ -11,7 +11,7 @@ export default {
           'bg': '#0e0e0e',
           'fg': '#f0f0f0',
           'border': '#4a4a4a',
-          'muted': '#8c8c8c',
+          'muted': 'var(--text-muted)',
           'accent': '#ff6b1a',
         }
       },
@@ -21,7 +21,7 @@ export default {
       },
       textColor: {
         'te-fg': '#f0f0f0',
-        'te-muted': '#8c8c8c',
+        'te-muted': 'var(--text-muted)',
         'te-accent': '#ff6b1a',
       },
       borderColor: {

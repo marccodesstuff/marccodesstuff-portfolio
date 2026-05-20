@@ -27,7 +27,7 @@
   /* TEXT HIERARCHY */
   --text-white: #f0f0f0;        /* Primary text */
   --text-grey-light: #d0d0d0;   /* Secondary text */
-  --text-grey-medium: #a0a0a0;  /* Muted metadata */
+  --text-grey-medium: rgba(255, 255, 255, 0.42); /* Lowered opacity white for ultra-premium look */
   
   /* ACCENT COLORS - TACTILE INDICATORS */
   --accent-orange: #ff6b1a;     /* Safety Orange (primary actions) */
@@ -152,12 +152,20 @@ p {
 /* LABEL TAGS - Small monospace identifiers */
 .te-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 8px; /* Ultra-small like hardware labels */
+  font-size: 13px; /* Hardware-label size (scaled up for improved readability) */
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-grey-medium);
   font-weight: 500;
 }
+
+/* Micro-Typography Font Size Scale Overrides */
+.text-\[7px\], .text-\[7px\] * { font-size: 10px !important; }
+.text-\[9px\], .text-\[9px\] * { font-size: 11.5px !important; }
+.text-\[10px\], .text-\[10px\] * { font-size: 12.5px !important; }
+.text-\[11px\], .text-\[11px\] * { font-size: 13px !important; }
+.text-xs, .text-xs * { font-size: 13.5px !important; }
+
 
 /* BUTTON SYSTEM - Clicky tactile feedback */
 .te-button {

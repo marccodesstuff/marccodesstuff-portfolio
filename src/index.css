@@ -16,7 +16,7 @@
   /* TEXT HIERARCHY */
   --text-primary: #f0f0f0;        /* White text for primary content */
   --text-secondary: #d0d0d0;      /* Grey for secondary text */
-  --text-muted: #8c8c8c;          /* Muted metadata */
+  --text-muted: rgba(255, 255, 255, 0.42); /* Lowered opacity white for ultra-premium look */
   
   /* ACCENT COLORS - Safety Orange & LEGO Yellow */
   --accent-orange: #ff6b1a;       /* Safety Orange (primary actions) */
@@ -78,12 +78,20 @@ body {
 /* LABEL TAGS - Ultra-small monospace identifiers like hardware labels */
 .te-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 11px; /* Hardware-label size (scaled from 8px) */
+  font-size: 13px; /* Hardware-label size (scaled up for improved readability) */
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-muted);
   font-weight: 500;
 }
+
+/* Micro-Typography Font Size Scale Overrides */
+.text-\[7px\], .text-\[7px\] * { font-size: 10px !important; }
+.text-\[9px\], .text-\[9px\] * { font-size: 11.5px !important; }
+.text-\[10px\], .text-\[10px\] * { font-size: 12.5px !important; }
+.text-\[11px\], .text-\[11px\] * { font-size: 13px !important; }
+.text-xs, .text-xs * { font-size: 13.5px !important; }
+
 
 /* BUTTON SYSTEM - Clicky tactile feedback with depth */
 .te-button {
