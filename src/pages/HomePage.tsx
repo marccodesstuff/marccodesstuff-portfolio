@@ -35,11 +35,11 @@ const HomePage = () => {
           {/* CTA section */}
           <div className="mt-8 flex flex-col gap-4 pt-4 border-t border-white/10">
             
-            <p className="text-sm text-te-muted leading-relaxed max-w-2xl">
+            <p className="text-base text-te-muted leading-relaxed max-w-2xl">
               Building high-density backend systems and AI research pipelines. Specialized in transformer architectures, microservices design, and cloud infrastructure.
             </p>
 
-            <div className="flex items-center gap-4 text-[9px] font-mono text-te-muted opacity-60">
+            <div className="flex items-center gap-4 text-xs font-mono text-te-muted opacity-60">
               <div className="text-right">
                 <span className="text-xs">44.5895° N</span>
                 <span className="text-xs">15.9486° E</span>
@@ -119,10 +119,10 @@ const HomePage = () => {
               <ArrowUpRight size={20} className="text-te-muted group-hover:text-white transition-all" />
             </div>
             <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Typhoon Survival Beacon</h3>
-            <p className="text-sm font-medium mb-6 leading-relaxed text-te-muted max-w-lg">
+            <p className="text-base font-medium mb-6 leading-relaxed text-te-muted max-w-lg">
               AI-powered disaster response with 97.8% flood prediction accuracy using TensorFlow and Gemini.AI.
             </p>
-            <div className="flex gap-2 text-[7px] text-te-muted font-mono uppercase">
+            <div className="flex gap-2 text-[11px] text-te-muted font-mono uppercase">
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">GEMINI.AI</span>
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">TENSORFLOW</span>
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">FLUTTER</span>
@@ -140,10 +140,10 @@ const HomePage = () => {
               <ArrowUpRight size={20} className="text-te-muted group-hover:text-white transition-all" />
             </div>
             <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Knee Tear Detection</h3>
-            <p className="text-sm font-medium mb-6 leading-relaxed text-te-muted max-w-lg">
+            <p className="text-base font-medium mb-6 leading-relaxed text-te-muted max-w-lg">
               Clinically validated MRI diagnostic platform with 0.88 Sensitivity using ensemble learning and PyTorch.
             </p>
-            <div className="flex gap-2 text-[7px] text-te-muted font-mono uppercase">
+            <div className="flex gap-2 text-[11px] text-te-muted font-mono uppercase">
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">PYTORCH</span>
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">MICROSERVICES</span>
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">DICOM</span>
@@ -161,7 +161,7 @@ const HomePage = () => {
               <Terminal size={20} className="text-orange-500" />
               <h3 className="te-label text-lg font-bold tracking-normal">CORE_STACK.EXE</h3>
             </div>
-            <span className="te-label text-[9px] text-te-muted">HEX_DUMP 0x3A2</span>
+            <span className="te-label text-xs text-te-muted">HEX_DUMP 0x3A2</span>
           </div>
 
           {/* Grid for all categories */}
@@ -170,7 +170,7 @@ const HomePage = () => {
             {/* Languages */}
             <div className="border-t border-white/5 pt-6">
               <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">Languages</h4>
-              <ul className="space-y-1 font-mono text-[10px] text-te-muted">
+              <ul className="space-y-1 font-mono text-xs text-te-muted">
                 {['Python', 'C++', 'Java', 'Dart'].map(item => (
                   <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
                     <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
@@ -183,7 +183,7 @@ const HomePage = () => {
             {/* Backend */}
             <div className="border-t border-white/5 pt-6">
               <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">Backend</h4>
-              <ul className="space-y-1 font-mono text-[10px] text-te-muted">
+              <ul className="space-y-1 font-mono text-xs text-te-muted">
                 {['Spring Boot', 'Next.js', 'Flutter', 'Express'].map(item => (
                   <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
                     <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
@@ -196,7 +196,7 @@ const HomePage = () => {
             {/* Infrastructure */}
             <div className="border-t border-white/5 pt-6">
               <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">Infra</h4>
-              <ul className="space-y-1 font-mono text-[10px] text-te-muted">
+              <ul className="space-y-1 font-mono text-xs text-te-muted">
                 {['Azure', 'Oracle Cloud', 'AppWrite', 'Docker'].map(item => (
                   <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
                     <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />
@@ -209,7 +209,7 @@ const HomePage = () => {
             {/* AI & ML */}
             <div className="border-t border-white/5 pt-6">
               <h4 className="te-label mb-3 text-te-muted uppercase tracking-widest">AI_ML</h4>
-              <ul className="space-y-1 font-mono text-[10px] text-te-muted">
+              <ul className="space-y-1 font-mono text-xs text-te-muted">
                 {['PyTorch', 'TensorFlow', 'HuggingFace', 'Pandas'].map(item => (
                   <li key={item} className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
                     <div className="w-1.5 h-1.5 bg-orange-500 rounded-full" />

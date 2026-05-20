@@ -98,7 +98,7 @@ const ProjectsPage = () => {
                   </div>
 
                   {/* Description */}
-                  <p className="text-sm font-medium leading-relaxed text-te-muted max-w-3xl mb-4 group-hover:text-white/80 transition-colors">
+                  <p className="text-base font-medium leading-relaxed text-te-muted max-w-3xl mb-4 group-hover:text-white/80 transition-colors">
                     {project.description}
                   </p>
 
@@ -221,7 +221,7 @@ const ProjectsPage = () => {
                 <h3 className="te-label text-[10px] text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
                   /// DETAILED_DESCRIPTION
                 </h3>
-                <p className="text-sm text-te-muted leading-relaxed font-sans">
+                <p className="text-base text-te-muted leading-relaxed font-sans">
                   {selectedProject.description}
                 </p>
               </div>

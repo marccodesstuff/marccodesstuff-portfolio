@@ -44,7 +44,7 @@ const AboutPage = () => {
                 <p className="text-lg font-bold uppercase tracking-tight">
                   Marc Victor Velasquez
                 </p>
-                <p className="te-label text-sm leading-relaxed">
+                <p className="te-label text-base leading-relaxed">
                   Digital Architect // Backend Engineer // AI Researcher
                 </p>
               </div>
@@ -91,7 +91,7 @@ const AboutPage = () => {
                       <span className="text-orange-500">{exp.period}</span>
                     </div>
                     <p className="text-xs text-te-muted leading-tight mb-2">{exp.company}</p>
-                    <p className="text-sm font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-3">
+                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-3">
                       {exp.description}
                     </p>
                     <div className="flex flex-wrap gap-1 text-[9px] font-mono uppercase text-te-muted">
@@ -110,7 +110,7 @@ const AboutPage = () => {
                       <span className="text-orange-500">{proj.period}</span>
                     </div>
                     <p className="text-xs text-te-muted leading-tight mb-2">{proj.organization}</p>
-                    <p className="text-sm font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-3">
+                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-3">
                       {proj.description}
                     </p>
                     <div className="flex flex-wrap gap-1 text-[9px] font-mono uppercase text-te-muted">
@@ -165,7 +165,7 @@ const AboutPage = () => {
             <div className="te-module p-6 min-h-[200px]">
               <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Achievement_Log.EXE</h3>
               
-              <ul className="space-y-2 text-sm font-medium leading-relaxed text-te-muted max-w-lg">
+              <ul className="space-y-2 text-base font-medium leading-relaxed text-te-muted max-w-lg">
                 {achievementsData.map((achievement: { title: string; place: string; iconType: string }, index: number) => (
                   <li key={index} className="flex items-start gap-2 hover:text-white transition-colors cursor-default">
                     <span className="text-orange-500 font-bold text-xs mt-0.5">{achievement.place}</span>
