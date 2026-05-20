@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
-import ThemeToggle from './ThemeToggle';
 import { usePageTransition } from './PageTransition';
 
 interface HeaderProps {
@@ -57,8 +56,6 @@ const Header = ({ activePage }: HeaderProps) => {
                 </nav>
 
                 <div className="flex items-center gap-3">
-                    <ThemeToggle />
-                    
                     {/* Mobile Menu Toggle Button */}
                     <button
                         onClick={() => {
