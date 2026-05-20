@@ -12,12 +12,12 @@
     "TensorFlow",
     "TensorFlow Lite",
     "YOLO (v5–v11)",
-    "ensemble learning",
-    "computer vision",
-    "LLM orchestration",
-    "multi-agent systems",
-    "model evaluation",
-    "synthetic data generation"
+    "Ensemble Learning",
+    "Computer Vision",
+    "LLM Orchestration",
+    "Multi-Agent Systems",
+    "Model Evaluation",
+    "Synthetic Data Generation"
   ],
   "frameworks": [
     "FastAPI",
