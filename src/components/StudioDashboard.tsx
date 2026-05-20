@@ -77,8 +77,8 @@ const StudioDashboard = () => {
               key={node.id}
               className="absolute te-module p-4 border-2 transition-all cursor-pointer group"
               style={{
-                left: `${(30 + Math.sin(node.id * 0.5) * 10) * 4}%`,
-                top: `${(50 + Math.cos(node.id * 0.3) * 8) * 4}%`,
+                left: `${20 + (node.id - 1) * 30}%`,
+                top: `${40 + (node.id % 2 === 0 ? 15 : -15)}%`,
                 width: '240px',
                 borderColor: node.color,
                 transform: `translate(-50%, -50%)`,

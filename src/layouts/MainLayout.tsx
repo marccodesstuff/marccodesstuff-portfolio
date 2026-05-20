@@ -10,7 +10,8 @@ interface MainLayoutProps {
 
 const MainLayout = ({ activePage, children, showFooter = true }: MainLayoutProps) => {
     return (
-        <div className="min-h-screen bg-te-bg text-te-fg font-sans selection:bg-te-accent selection:text-white">
+        <div className="relative z-0 min-h-screen bg-te-bg text-te-fg font-sans selection:bg-te-accent selection:text-white">
+            <div className="tactile-grid-overlay" />
             <Header activePage={activePage} />
             {children}
             {showFooter && <Footer />}

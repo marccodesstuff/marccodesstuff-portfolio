@@ -127,14 +127,14 @@ const SystemLog = () => {
       </div>
 
       {/* Events Feed */}
-      <div className="max-w-[1400px] mx-auto px-4 h-[80px] overflow-hidden flex items-end">
+      <div className="max-w-[1400px] mx-auto px-4 h-[80px] overflow-y-auto flex flex-col gap-1 w-full">
         {events.length === 0 ? (
           <p className="text-[9px] font-mono text-te-muted/50">AWAITING_EVENTS...</p>
         ) : (
           events.map((event) => (
             <div 
               key={event.id}
-              className="flex items-center gap-2 mb-1 pr-3 animate-slideInRight"
+              className="flex items-center gap-2 w-full animate-slideInRight"
               style={{ animationDelay: `${events.indexOf(event) * 50}ms` }}
             >
               {/* Event Type Indicator */}

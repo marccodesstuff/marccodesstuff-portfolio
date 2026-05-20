@@ -35,8 +35,8 @@
   --accent-blue: #4d9eff;       /* System blue (links) */
   
   /* GRID SYSTEM - THE BLUEPRINT LINES */
-  --grid-line: rgba(255, 255, 255, 0.15); /* Subtle grid overlay */
-  --grid-major: rgba(255, 255, 255, 0.3); /* Major section dividers */
+  --grid-line: rgba(255, 255, 255, 0.03); /* Subtle grid overlay */
+  --grid-major: rgba(255, 255, 255, 0.06); /* Major section dividers */
   
   /* BORDERS & DIVIDERS */
   --border-subtle: #333333;     /* Faint borders */
@@ -85,7 +85,7 @@ body {
   right: 0;
   bottom: 0;
   pointer-events: none;
-  z-index: 9999;
+  z-index: -1;
   padding: 8px; /* Creates spacing from edges */
   
   /* Major section grid - every 4 columns (roughly 32px) */
@@ -98,8 +98,8 @@ body {
   background-image: 
     linear-gradient(var(--grid-line) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
   
   background-size: 
     32px 32px,        /* Minor grid */
