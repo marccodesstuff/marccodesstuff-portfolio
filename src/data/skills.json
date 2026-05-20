@@ -38,10 +38,10 @@
   "dataEng": [
     "Google Earth Engine",
     "OpenMeteo API",
-    "preprocessing pipelines",
-    "dataset slicing",
-    "augmentation",
-    "ETL workflows"
+    "Preprocessing Pipelines",
+    "Dataset Slicing",
+    "Augmentation",
+    "ETL Workflows"
   ],
   "webFullStack": [
     "React/Next.js",
