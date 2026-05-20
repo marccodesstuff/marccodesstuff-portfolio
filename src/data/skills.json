@@ -60,11 +60,11 @@
     "AppWrite DB"
   ],
   "agenticAutomation": [
-    "Prompt engineering",
-    "multi-stage workflow automation",
+    "Prompt Engineering",
+    "Multi-Stage Workflow Automation",
     "Notion Worker SDK",
-    "browser automation",
-    "scraping pipelines"
+    "Browser Automation",
+    "Scraping Pipelines"
   ],
   "toolsPlatforms": [
     "Git/GitHub",
