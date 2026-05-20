@@ -11,30 +11,30 @@ const AboutPage = () => {
       <div className="max-w-[1400px] mx-auto border-t-2 border-l-2 border-white/10 bg-black/30 min-h-screen">
         
         {/* Page header */}
-        <header className="border-b-2 border-white/10 px-8 pt-8 pb-8 mb-0">
-          <div className="flex items-end justify-between gap-4">
+        <header className="border-b-2 border-white/10 px-4 sm:px-8 py-6 sm:py-8 mb-0">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
             
             <div>
-              <h1 className="text-5xl font-black uppercase tracking-tighter mb-2">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tighter mb-2">
                 About_Module.EXE
               </h1>
-              <p className="te-label text-base mt-0">TECHNICAL_SPECIFICATIONS // PROFESSIONAL_HISTORY</p>
+              <p className="te-label text-sm sm:text-base mt-0">TECHNICAL_SPECIFICATIONS // PROFESSIONAL_HISTORY</p>
             </div>
 
-            <span className="te-label px-3 py-1 border-l-2 border-orange-500 pl-2">
+            <span className="te-label px-3 py-1 border-l-2 border-orange-500 pl-2 self-start sm:self-auto">
               STATUS: AVAILABLE_FOR_HIRE
             </span>
           </div>
         </header>
 
         {/* Main content grid */}
-        <div className="px-8 py-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="px-4 sm:px-8 py-6 sm:py-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* LEFT COLUMN: Identity Module */}
           <section className="lg:col-span-1 flex flex-col gap-6">
             
             {/* Bio module */}
-            <div className="te-module p-8 flex flex-col justify-between">
+            <div className="te-module p-5 sm:p-8 flex flex-col justify-between">
               <div>
                 <h3 className="text-base font-black uppercase tracking-tight mb-1 leading-snug">Identity</h3>
                 <p className="te-label text-xs mt-0">PERSONAL_DATA_RECORD_04.2</p>
@@ -79,7 +79,7 @@ const AboutPage = () => {
             </div>
 
             {/* Professional Experience module */}
-            <div className="te-module p-8 overflow-hidden">
+            <div className="te-module p-5 sm:p-8 overflow-hidden">
               <h3 className="text-base font-black uppercase tracking-tight mb-1 leading-snug">
                 Professional_Journey
               </h3>
@@ -94,7 +94,7 @@ const AboutPage = () => {
                       <span className="text-orange-500">{exp.period}</span>
                     </div>
                     <p className="text-sm text-te-muted leading-tight mb-3">{exp.company}</p>
-                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-4">
+                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-full lg:max-w-[85%] break-words mb-4">
                       {exp.description}
                     </p>
                     <div className="flex flex-wrap gap-2 text-xs font-mono uppercase text-te-muted">
@@ -113,7 +113,7 @@ const AboutPage = () => {
                       <span className="text-orange-500">{proj.period}</span>
                     </div>
                     <p className="text-sm text-te-muted leading-tight mb-3">{proj.organization}</p>
-                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-4">
+                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-full lg:max-w-[85%] break-words mb-4">
                       {proj.description}
                     </p>
                     <div className="flex flex-wrap gap-2 text-xs font-mono uppercase text-te-muted">
@@ -132,11 +132,11 @@ const AboutPage = () => {
           <section className="lg:col-span-2 flex flex-col gap-6">
             
             {/* Skills module */}
-            <div className="te-module p-8">
+            <div className="te-module p-5 sm:p-8">
               <h3 className="text-lg font-black uppercase tracking-tight mb-1 leading-snug">Skill_Matrix</h3>
               <p className="te-label text-xs mb-6 text-orange-500">.EXE // COMPETENCY_DUMP</p>
               
-              <div className="grid grid-cols-2 gap-x-8 gap-y-6 text-xs font-mono text-te-muted">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-xs font-mono text-te-muted">
                 {Object.entries(skillsData).map(([key, items], index) => (
                   <div key={index} className="border-b border-dashed border-white/10 pb-4 last:border-0 last:pb-0">
                     <span className="text-orange-500 block mb-2 font-bold">{key.toUpperCase()}</span>
@@ -154,20 +154,20 @@ const AboutPage = () => {
             </div>
 
             {/* Certifications module */}
-            <div className="te-module p-8">
+            <div className="te-module p-5 sm:p-8">
               <h3 className="text-lg font-black uppercase tracking-tight mb-1 leading-snug">Certifications</h3>
               <p className="te-label text-xs mb-5 text-orange-500">.EXE // VERIFIED_CREDENTIALS</p>
               
               {certificationsData.map((cert: { provider: string; name: string; color: string }, index: number) => (
-                <div key={index} className="flex justify-between items-center py-3 border-b border-white/5 last:border-0 text-xs font-mono text-te-muted leading-tight max-w-full">
-                  <span className="max-w-xs overflow-hidden">{cert.name}</span>
-                  <span className="text-orange-500 max-w-[10ch] overflow-hidden">{cert.provider}</span>
+                <div key={index} className="flex flex-col xs:flex-row xs:items-center justify-between py-3 border-b border-white/5 last:border-0 text-xs font-mono text-te-muted leading-tight gap-1 xs:gap-4 max-w-full">
+                  <span className="max-w-full xs:max-w-xs overflow-hidden break-words">{cert.name}</span>
+                  <span className="text-orange-500 max-w-full xs:max-w-[12ch] overflow-hidden break-words shrink-0">{cert.provider}</span>
                 </div>
               ))}
             </div>
 
             {/* Achievements module */}
-            <div className="te-module p-8">
+            <div className="te-module p-5 sm:p-8">
               <h3 className="text-lg font-black uppercase tracking-tight mb-1 leading-snug">Achievement_Log</h3>
               <p className="te-label text-xs mb-5 text-orange-500">.EXE // HONOR_REGISTRY</p>
               
@@ -193,10 +193,10 @@ const AboutPage = () => {
         </div>
 
         {/* Bottom system info bar */}
-        <footer className="px-8 py-6 border-t border-white/10 mt-2 flex items-center justify-between text-xs font-mono text-te-muted">
+        <footer className="px-4 sm:px-8 py-6 border-t border-white/10 mt-2 flex flex-col md:flex-row gap-4 items-center justify-between text-xs font-mono text-te-muted">
           
           {/* System metrics */}
-          <div className="flex gap-4">
+          <div className="flex flex-wrap justify-center md:justify-start gap-4">
             <div className="flex items-center gap-2">
               <Terminal size={12} />
               <span>SYS_VER_04.2</span>
@@ -212,7 +212,7 @@ const AboutPage = () => {
           </div>
 
           {/* Build timestamp */}
-          <span>BUILDTIME:{new Date().toISOString().slice(0, 19).replace('T', 'Z')}</span>
+          <span className="text-center md:text-right">BUILDTIME:{new Date().toISOString().slice(0, 19).replace('T', 'Z')}</span>
 
         </footer>
 

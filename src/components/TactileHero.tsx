@@ -313,7 +313,7 @@ const TactileHero = ({
   return (
     <div 
       ref={mountRef} 
-      className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh] overflow-hidden border-b-2 border-r-2 border-white/10"
+      className="relative w-full h-[60dvh] md:h-[70dvh] lg:h-[80dvh] overflow-hidden border-b-2 border-r-2 border-white/10"
     >
       <div className="absolute top-4 right-4 z-10">
         <span className="te-label px-3 py-1 border-l-2 border-orange-500 pl-4">

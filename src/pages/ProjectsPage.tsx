@@ -36,14 +36,14 @@ const ProjectsPage = () => {
       <div className="max-w-[1400px] mx-auto border-t-2 border-l-2 border-white/10 bg-black/30 min-h-screen">
         
         {/* Page header */}
-        <header className="border-b-2 border-white/10 px-8 pt-8 pb-8 mb-0">
-          <div className="flex items-end justify-between gap-4">
+        <header className="border-b-2 border-white/10 px-4 sm:px-8 py-6 sm:py-8 mb-0">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
             
             <div>
-              <h1 className="text-5xl font-black uppercase tracking-tighter mb-2">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tighter mb-2">
                 Projects_Archive.EXE
               </h1>
-              <p className="te-label text-base mt-0">HARDWARE_MODULES_01_THRU_19</p>
+              <p className="te-label text-sm sm:text-base mt-0">HARDWARE_MODULES_01_THRU_19</p>
             </div>
 
             <button 
@@ -51,7 +51,7 @@ const ProjectsPage = () => {
                 window.tactileFeedback?.playClickSound();
                 navigateWithTransition('/');
               }}
-              className="te-button primary text-xs py-2 px-4 opacity-80 hover:opacity-100"
+              className="te-button primary text-xs py-2 px-4 opacity-80 hover:opacity-100 self-start sm:self-auto"
             >
               NAV_HOME
             </button>
@@ -59,7 +59,7 @@ const ProjectsPage = () => {
         </header>
 
         {/* Projects grid */}
-        <div className="px-8 py-6 lg:py-8">
+        <div className="px-4 sm:px-8 py-6 lg:py-8">
           <div className="grid grid-cols-1 gap-3">
             
             {projects.map((project) => (
@@ -77,25 +77,25 @@ const ProjectsPage = () => {
                     setSelectedProject(project);
                   }
                 }}
-                className="te-module px-8 py-7 flex flex-col lg:flex-row gap-6 items-start lg:items-center hover:bg-white/[0.03] transition-colors group cursor-pointer relative"
+                className="te-module px-5 sm:px-8 py-6 sm:py-7 flex flex-col lg:flex-row gap-6 items-start lg:items-center hover:bg-white/[0.03] transition-colors group cursor-pointer relative"
               >
                 
                 {/* Project ID badge */}
-                <div className="absolute top-5 left-6 z-10">
+                <div className="absolute top-5 left-5 sm:left-6 z-10">
                   <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2">
                     MOD_{project.id.toUpperCase()}
                   </span>
                 </div>
 
                 {/* Main project info */}
-                <div className="flex-1 pt-7">
+                <div className="flex-1 pt-7 w-full">
                   
                   {/* Project name and category */}
                   <div className="mb-4">
-                    <h2 className="text-4xl font-black uppercase tracking-tighter mb-1 group-hover:text-white transition-colors">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-1 group-hover:text-white transition-colors">
                       {project.title}
                     </h2>
-                    <p className="te-label text-lg uppercase tracking-widest">
+                    <p className="te-label text-base sm:text-lg uppercase tracking-widest">
                       {project.tagline}
                     </p>
                   </div>
@@ -119,7 +119,7 @@ const ProjectsPage = () => {
                 {/* Arrow indicator */}
                 <ArrowUpRight 
                   size={24} 
-                  className="text-te-muted self-start mt-2 lg:mt-0 group-hover:text-white transition-all transform group-hover:translate-x-1"
+                  className="text-te-muted self-start mt-2 lg:mt-0 group-hover:text-white transition-all transform group-hover:translate-x-1 shrink-0"
                 />
 
               </div>
@@ -130,8 +130,8 @@ const ProjectsPage = () => {
         </div>
 
         {/* Footer */}
-        <footer className="px-8 py-6 border-t border-white/10 mt-4">
-          <div className="flex items-center justify-between text-xs font-mono text-te-muted">
+        <footer className="px-4 sm:px-8 py-6 border-t border-white/10 mt-4">
+          <div className="flex flex-col sm:flex-row gap-2 items-center justify-between text-xs font-mono text-te-muted">
             <span>RECORDS_TOTAL: {projects.length}</span>
             <span className="text-orange-500">// INDUSTRIAL_MINIMALISM_V04</span>
           </div>
@@ -150,7 +150,7 @@ const ProjectsPage = () => {
           />
 
           {/* Drawer container */}
-          <div className="relative w-full max-w-xl bg-te-bg border-l-2 border-orange-500 h-full px-8 py-10 flex flex-col justify-between overflow-y-auto z-10 te-module animate-slideInRight">
+          <div className="relative w-full max-w-xl bg-te-bg border-l-2 border-orange-500 h-full px-5 sm:px-8 py-6 sm:py-10 flex flex-col justify-between overflow-y-auto z-10 te-module animate-slideInRight">
             
             {/* Fine Grid overlay inside drawer */}
             <div 
@@ -164,11 +164,11 @@ const ProjectsPage = () => {
             <div className="relative z-10 space-y-8">
               {/* Header */}
               <div className="flex justify-between items-start border-b-2 border-white/10 pb-4">
-                <div>
+                <div className="pr-4">
                   <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2 text-xs">
                     MOD_{selectedProject.id.toUpperCase()} // SYS_DIAGNOSTIC
                   </span>
-                  <h2 className="text-4xl font-black uppercase tracking-tighter mt-2">
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tighter mt-2">
                     {selectedProject.title}
                   </h2>
                   <p className="te-label text-sm text-orange-500 mt-1">{selectedProject.tagline}</p>
@@ -179,22 +179,22 @@ const ProjectsPage = () => {
                     window.tactileFeedback?.playClickSound();
                     setSelectedProject(null);
                   }}
-                  className="p-2 border border-white/10 hover:border-orange-500 hover:text-orange-500 rounded-sm transition-colors cursor-pointer"
+                  className="p-2 border border-white/10 hover:border-orange-500 hover:text-orange-500 rounded-sm transition-colors cursor-pointer shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center"
                   aria-label="Close panel"
                 >
-                  <X size={16} />
+                  <X size={20} />
                 </button>
               </div>
 
               {/* Status block */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-white/5 border border-white/10 p-3 rounded-sm flex flex-col justify-between min-h-[70px]">
                   <span className="te-label text-xs">CORE_STATUS</span>
-                  <span className="text-base font-black uppercase text-green-500">SYSTEM_OPERATIONAL // 100%</span>
+                  <span className="text-sm sm:text-base font-black uppercase text-green-500">SYSTEM_OPERATIONAL // 100%</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 p-3 rounded-sm flex flex-col justify-between min-h-[70px]">
                   <span className="te-label text-xs">REVISION_DATE</span>
-                  <span className="text-base font-black uppercase">{selectedProject.date || 'MAY 2026'}</span>
+                  <span className="text-sm sm:text-base font-black uppercase">{selectedProject.date || 'MAY 2026'}</span>
                 </div>
               </div>
 
@@ -203,17 +203,17 @@ const ProjectsPage = () => {
                 <h3 className="te-label text-xs text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
                   /// CORE_ARCHITECTURE_DUMP
                 </h3>
-                <div className="grid grid-cols-3 gap-2 text-xs font-mono">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs font-mono">
                   <div className="bg-black/30 p-2 border border-white/5">
-                    <span className="text-te-muted block">CLOCK_SPEED</span>
+                    <span className="text-te-muted block text-[10px]">CLOCK_SPEED</span>
                     <span className="font-bold text-white">4.80 GHZ</span>
                   </div>
                   <div className="bg-black/30 p-2 border border-white/5">
-                    <span className="text-te-muted block">DENSITY_LOAD</span>
+                    <span className="text-te-muted block text-[10px]">DENSITY_LOAD</span>
                     <span className="font-bold text-orange-500">OPTIMAL</span>
                   </div>
                   <div className="bg-black/30 p-2 border border-white/5">
-                    <span className="text-te-muted block">STATUS_LOG</span>
+                    <span className="text-te-muted block text-[10px]">STATUS_LOG</span>
                     <span className="font-bold text-green-500">COMPILED_OK</span>
                   </div>
                 </div>
@@ -248,15 +248,15 @@ const ProjectsPage = () => {
                 <h3 className="te-label text-xs text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
                   /// VIRTUAL_SIGNAL_PATH
                 </h3>
-                <div className="bg-black/40 border border-white/5 p-4 rounded-sm font-mono text-[10px] text-te-muted space-y-2">
-                  <div className="flex justify-between items-center">
+                <div className="overflow-x-auto whitespace-nowrap bg-black/40 border border-white/5 p-4 rounded-sm font-mono text-[10px] text-te-muted space-y-2 scrollbar-thin">
+                  <div className="flex justify-between items-center min-w-[280px] gap-2">
                     <span className="px-1.5 py-0.5 bg-white/5 border border-white/10 rounded-sm">USER_INPUT</span>
-                    <span className="text-orange-500">════(CV_BUS)════&gt;</span>
+                    <span className="text-orange-500">══(CV_BUS)══&gt;</span>
                     <span className="px-1.5 py-0.5 bg-orange-500/20 border border-orange-500/40 text-orange-500 rounded-sm">LOGIC_GATE</span>
                   </div>
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center min-w-[280px] gap-2">
                     <span className="px-1.5 py-0.5 bg-orange-500/20 border border-orange-500/40 text-orange-500 rounded-sm">LOGIC_GATE</span>
-                    <span className="text-green-500">════(TX_STREAM)═══&gt;</span>
+                    <span className="text-green-500">══(TX_STREAM)═&gt;</span>
                     <span className="px-1.5 py-0.5 bg-white/5 border border-white/10 rounded-sm">SYS_RENDER</span>
                   </div>
                 </div>
@@ -265,7 +265,7 @@ const ProjectsPage = () => {
             </div>
 
             {/* Bottom action drawer footer */}
-            <div className="border-t border-white/10 pt-4 mt-6 flex items-center justify-between text-xs font-mono text-te-muted relative z-10">
+            <div className="border-t border-white/10 pt-4 mt-6 flex flex-col sm:flex-row gap-4 items-center justify-between text-xs font-mono text-te-muted relative z-10 pb-[env(safe-area-inset-bottom)]">
               <div className="flex items-center gap-2">
                 <Cpu size={12} className="text-orange-500" />
                 <span>DIAGNOSTIC: SUCCESS</span>
@@ -276,7 +276,7 @@ const ProjectsPage = () => {
                   window.tactileFeedback?.playClickSound();
                   setSelectedProject(null);
                 }}
-                className="te-button text-xs py-1.5 px-3 opacity-80 hover:opacity-100 hover:border-orange-500"
+                className="te-button text-xs py-1.5 px-3 opacity-80 hover:opacity-100 hover:border-orange-500 w-full sm:w-auto"
               >
                 DISMISS_DIAGNOSTICS
               </button>

@@ -106,7 +106,7 @@ const SystemLog = () => {
   }, [])
 
   return (
-    <footer className="te-module p-6 border-r-2 border-b-2 border-white/5 w-full bg-te-bg/10" id="system-log">
+    <footer className="te-module px-6 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] border-r-2 border-b-2 border-white/5 w-full bg-te-bg/10" id="system-log">
       {/* Module Title */}
       <div className="flex justify-between items-center mb-6 border-b border-white/5 pb-3">
         <div className="flex items-center gap-2">

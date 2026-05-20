@@ -15,7 +15,7 @@ const HomePage = () => {
         {/* ===========================================
             HERO BLOCK - MAIN INTRO
             =========================================== */}
-        <div className="lg:col-span-8 border-r-2 border-white/10 p-8 flex flex-col justify-between min-h-[320px]">
+        <div className="lg:col-span-8 border-r-0 lg:border-r-2 border-b-2 lg:border-b-0 border-white/10 p-5 sm:p-8 flex flex-col justify-between min-h-[320px]">
           
           {/* Active status indicators */}
           <div className="flex items-center gap-3 mb-6">
@@ -26,7 +26,7 @@ const HomePage = () => {
 
           {/* Main headline */}
           <div>
-            <h1 className="text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] mb-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] mb-4">
               Marc Victor<br />
               <span className="text-orange-500">Velasquez</span>
             </h1>
@@ -59,7 +59,7 @@ const HomePage = () => {
         <div className="lg:col-span-4 grid grid-cols-1 gap-1">
           
           {/* Module 01: Location */}
-          <div className="te-module p-6 flex flex-col justify-between min-h-[120px] border-r-2 border-b-2 border-white/5">
+          <div className="te-module p-5 sm:p-6 flex flex-col justify-between min-h-[120px] border-r-0 lg:border-r-2 border-b-2 border-white/5">
             <div className="flex justify-between items-start mb-4">
               <span className="te-label border-l-2 border-orange-500 pl-2">LOCATION</span>
               <Terminal size={14} className="text-orange-500" />
@@ -71,7 +71,7 @@ const HomePage = () => {
           </div>
 
           {/* Module 02: Current Focus */}
-          <div className="te-module p-6 flex flex-col justify-between min-h-[120px] border-r-2 border-b-2 border-white/5">
+          <div className="te-module p-5 sm:p-6 flex flex-col justify-between min-h-[120px] border-r-0 lg:border-r-2 border-b-2 border-white/5">
             <div className="flex justify-between items-start mb-4">
               <span className="te-label border-l-2 border-orange-500 pl-2">RESEARCH_FOCUS</span>
               <Cpu size={14} className="text-orange-500" />
@@ -85,7 +85,7 @@ const HomePage = () => {
           </div>
 
           {/* Module 03: Contact CTA */}
-          <div className="flex-1 bg-orange-500/10 p-6 flex flex-col justify-between border-r-2 border-b-2 border-orange-500/30 hover:border-orange-500 transition-colors cursor-pointer group">
+          <div className="flex-1 bg-orange-500/10 p-5 sm:p-6 flex flex-col justify-between border-r-0 lg:border-r-2 border-b-2 border-orange-500/30 hover:border-orange-500 transition-colors cursor-pointer group">
             <div className="flex justify-between items-start mb-4">
               <span className="te-label border-l-2 border-white/30 pl-2">CONTACT_SYSTEM</span>
               <ArrowUpRight size={16} className="text-orange-500" />
@@ -120,7 +120,7 @@ const HomePage = () => {
               navigateWithTransition('/projects');
             }}
             onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
-            className="te-module p-8 border-r-2 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
+            className="te-module p-5 sm:p-8 border-r-0 lg:border-r-2 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
           >
             <div className="flex justify-between items-start mb-4">
               <span className="te-label border-l-2 border-orange-500 pl-2">MODULE_01: HACKATHON_WIN</span>
@@ -146,7 +146,7 @@ const HomePage = () => {
               navigateWithTransition('/projects');
             }}
             onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
-            className="te-module p-8 border-r-2 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
+            className="te-module p-5 sm:p-8 border-r-0 lg:border-r-2 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
           >
             <div className="flex justify-between items-start mb-4">
               <span className="te-label border-l-2 border-orange-500 pl-2">MODULE_02: MEDICAL_AI</span>
@@ -168,7 +168,7 @@ const HomePage = () => {
         {/* ===========================================
             TECH STACK MODULE - CORE_STACK.EXE
             =========================================== */}
-        <div className="lg:col-span-12 p-8 lg:p-12 border-r-2 border-b-2 border-white/5">
+        <div className="lg:col-span-12 p-5 sm:p-8 lg:p-12 border-r-0 lg:border-r-2 border-b-2 border-white/5">
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
               <Terminal size={20} className="text-orange-500" />
