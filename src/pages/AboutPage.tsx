@@ -50,7 +50,7 @@ const AboutPage = () => {
               </div>
 
               {/* Location & timezone */}
-              <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-2 gap-y-2 text-[9px] font-mono text-te-muted">
+              <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-2 gap-y-2 text-xs font-mono text-te-muted">
                 <div>
                   <span className="text-te-muted">LOCATION:</span><br />
                   Angeles, PH
@@ -90,11 +90,11 @@ const AboutPage = () => {
                       <span>{exp.role}</span>
                       <span className="text-orange-500">{exp.period}</span>
                     </div>
-                    <p className="text-xs text-te-muted leading-tight mb-2">{exp.company}</p>
+                    <p className="text-sm text-te-muted leading-tight mb-2">{exp.company}</p>
                     <p className="text-base font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-3">
                       {exp.description}
                     </p>
-                    <div className="flex flex-wrap gap-1 text-[9px] font-mono uppercase text-te-muted">
+                    <div className="flex flex-wrap gap-1 text-xs font-mono uppercase text-te-muted">
                       {exp.achievements.map((ach, aIdx) => (
                         <span key={aIdx} className="px-1 py-0.5 bg-white/5 truncate">{ach}</span>
                       ))}
@@ -109,11 +109,11 @@ const AboutPage = () => {
                       <span>{proj.role}</span>
                       <span className="text-orange-500">{proj.period}</span>
                     </div>
-                    <p className="text-xs text-te-muted leading-tight mb-2">{proj.organization}</p>
+                    <p className="text-sm text-te-muted leading-tight mb-2">{proj.organization}</p>
                     <p className="text-base font-medium leading-relaxed text-te-muted max-w-[85%] break-words mb-3">
                       {proj.description}
                     </p>
-                    <div className="flex flex-wrap gap-1 text-[9px] font-mono uppercase text-te-muted">
+                    <div className="flex flex-wrap gap-1 text-xs font-mono uppercase text-te-muted">
                       {proj.achievements.map((ach, aIdx) => (
                         <span key={aIdx} className="px-1 py-0.5 bg-white/5 truncate">{ach}</span>
                       ))}
@@ -132,11 +132,11 @@ const AboutPage = () => {
             <div className="te-module p-6 mb-4 min-h-[180px]">
               <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Skill_Matrix.EXE</h3>
               
-              <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-[9px] font-mono text-te-muted">
+              <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-xs font-mono text-te-muted">
                 {Object.entries(skillsData).map(([key, items], index) => (
                   <div key={index} className="border-b border-dashed border-white/5 pb-2 last:border-0 last:pb-0">
                     <span className="text-orange-500 block mb-1 font-bold">{key.toUpperCase()}</span>
-                    <ul className="space-y-0.5 text-[9px]">
+                    <ul className="space-y-0.5 text-xs">
                       {(items as string[]).map((item: string, i: number) => (
                         <li key={i} className="flex items-center gap-2 hover:text-white transition-colors cursor-default truncate">
                           <div className="w-1 h-1 bg-orange-500 rounded-full" />
@@ -154,7 +154,7 @@ const AboutPage = () => {
               <h3 className="text-xl font-black uppercase tracking-tighter mb-3">Certifications.EXE</h3>
               
               {certificationsData.map((cert: { provider: string; name: string; color: string }, index: number) => (
-                <div key={index} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0 text-[9px] font-mono text-te-muted leading-tight max-w-full">
+                <div key={index} className="flex justify-between items-center py-2 border-b border-white/5 last:border-0 text-xs font-mono text-te-muted leading-tight max-w-full">
                   <span className="max-w-xs overflow-hidden">{cert.name}</span>
                   <span className="text-orange-500 max-w-[10ch] overflow-hidden">{cert.provider}</span>
                 </div>
@@ -168,7 +168,7 @@ const AboutPage = () => {
               <ul className="space-y-2 text-base font-medium leading-relaxed text-te-muted max-w-lg">
                 {achievementsData.map((achievement: { title: string; place: string; iconType: string }, index: number) => (
                   <li key={index} className="flex items-start gap-2 hover:text-white transition-colors cursor-default">
-                    <span className="text-orange-500 font-bold text-xs mt-0.5">{achievement.place}</span>
+                    <span className="text-orange-500 font-bold text-sm mt-0.5">{achievement.place}</span>
                     <span>{achievement.title}</span>
                   </li>
                 ))}
@@ -176,7 +176,7 @@ const AboutPage = () => {
 
               <button 
                 onClick={() => window.tactileFeedback?.playClickSound()}
-                className="mt-4 te-button text-[8px] py-1 px-3 opacity-60 hover:opacity-100"
+                className="mt-4 te-button text-xs py-1 px-3 opacity-60 hover:opacity-100"
               >
                 VIEW_ALL_RECORDS
               </button>
@@ -187,7 +187,7 @@ const AboutPage = () => {
         </div>
 
         {/* Bottom system info bar */}
-        <footer className="pt-4 border-t border-white/10 flex items-center justify-between text-[9px] font-mono text-te-muted">
+        <footer className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-te-muted">
           
           {/* System metrics */}
           <div className="flex gap-4">

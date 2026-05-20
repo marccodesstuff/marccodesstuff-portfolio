@@ -113,10 +113,10 @@ const SystemLog = () => {
           <Terminal size={14} className="text-orange-500 animate-pulse" />
           <span className="te-label text-xs font-bold text-white tracking-widest">SYSTEM_DIAGNOSTICS_MONITOR.SYS</span>
         </div>
-        <div className="flex items-center gap-2 text-[9px] font-mono text-te-muted">
+        <div className="flex items-center gap-2 text-xs font-mono text-te-muted">
           <span>OP_MODE: REALTIME_TELEMETRY</span>
           <span className="text-green-500 animate-pulse">●</span>
-          <span className="text-[7px]">ONLINE</span>
+          <span className="text-[10px]">ONLINE</span>
         </div>
       </div>
 
@@ -124,24 +124,24 @@ const SystemLog = () => {
         {/* Live Ticker Area */}
         <div className="lg:col-span-8 space-y-2">
           <div className="flex items-center justify-between">
-            <span className="te-label text-[8px]">LIVE_EVENT_STREAM</span>
-            <span className="te-label text-[7px] text-te-muted/40">BUFFER: 50_REC</span>
+            <span className="te-label text-[10px]">LIVE_EVENT_STREAM</span>
+            <span className="te-label text-[9px] text-te-muted/40">BUFFER: 50_REC</span>
           </div>
-          <div className="flex items-center gap-3 bg-black/45 border border-white/5 px-3 py-2 rounded-sm font-mono text-[9px] min-h-[36px] w-full shadow-inner">
-            <span className="text-[6px] uppercase px-1.5 py-0.2 bg-orange-500/10 border border-orange-500/30 text-orange-500 font-bold shrink-0">
+          <div className="flex items-center gap-3 bg-black/45 border border-white/5 px-3 py-2 rounded-sm font-mono text-xs min-h-[36px] w-full shadow-inner">
+            <span className="text-[10px] uppercase px-1.5 py-0.2 bg-orange-500/10 border border-orange-500/30 text-orange-500 font-bold shrink-0">
               {events[0]?.type || 'SYSTEM'}
             </span>
-            <span className="text-[8px] text-white/30 shrink-0">
+            <span className="text-[10px] text-white/30 shrink-0">
               [{events[0] ? formatTimestamp(events[0].timestamp).split('T')[1].slice(0, 8) : ''}]
             </span>
-            <span className={`text-[9px] truncate flex-1 ${
+            <span className={`text-xs truncate flex-1 ${
               events[0]?.type === 'CLICK_EVENT' ? 'text-orange-500 font-bold' :
               events[0]?.type === 'NAVIGATION' ? 'text-green-500 font-bold' : 'text-white/80'
             }`}>
               {events[0]?.event || 'AWAITING_SYSTEM_EVENT'}
             </span>
             {events[0]?.detail && (
-              <span className="hidden sm:inline text-[8px] text-white/40 truncate">
+              <span className="hidden sm:inline text-[10px] text-white/40 truncate">
                 // {events[0].detail}
               </span>
             )}
@@ -151,15 +151,15 @@ const SystemLog = () => {
         {/* Diagnostic Telemetry Panel */}
         <div className="lg:col-span-4 grid grid-cols-2 gap-4 border-t lg:border-t-0 lg:border-l border-white/5 pt-4 lg:pt-0 lg:pl-6">
           <div className="space-y-1">
-            <span className="te-label text-[7px] block">HARDWARE_STATUS</span>
-            <div className="flex gap-2 text-[8px] font-mono text-white/70">
+            <span className="te-label text-[10px] block">HARDWARE_STATUS</span>
+            <div className="flex gap-2 text-xs font-mono text-white/70">
               <span>MEM: OPTIMAL</span>
               <span>NET: STABLE</span>
             </div>
           </div>
           <div className="space-y-1">
-            <span className="te-label text-[7px] block">METRICS_LOG</span>
-            <div className="flex gap-2 text-[8px] font-mono text-white/70">
+            <span className="te-label text-[10px] block">METRICS_LOG</span>
+            <div className="flex gap-2 text-xs font-mono text-white/70">
               <span>DNS: OK</span>
               <span className="text-orange-500">REV_04.2</span>
             </div>
@@ -168,7 +168,7 @@ const SystemLog = () => {
       </div>
 
       {/* Copyright Line */}
-      <div className="mt-6 pt-4 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-2 text-[8px] font-mono text-te-muted/40">
+      <div className="mt-6 pt-4 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs font-mono text-te-muted/40">
         <span>DEVICE_CLASS: PORTABLE_DIGITAL_WORKSPACE</span>
         <span>© 2026 MARC VICTOR VELASQUEZ // ALL RIGHTS SECURED</span>
       </div>

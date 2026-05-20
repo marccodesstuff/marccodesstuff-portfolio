@@ -78,7 +78,7 @@ body {
 /* LABEL TAGS - Ultra-small monospace identifiers like hardware labels */
 .te-label {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 8px; /* Hardware-label size */
+  font-size: 11px; /* Hardware-label size (scaled from 8px) */
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--text-muted);
@@ -92,7 +92,7 @@ body {
   border: 2px solid var(--border-modern);
   padding: 12px 24px;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   cursor: pointer;

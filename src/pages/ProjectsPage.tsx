@@ -48,7 +48,7 @@ const ProjectsPage = () => {
             <Link 
               to="/"
               onClick={() => window.tactileFeedback?.playClickSound()}
-              className="te-button primary text-[9px] py-2 px-4 opacity-80 hover:opacity-100"
+              className="te-button primary text-xs py-2 px-4 opacity-80 hover:opacity-100"
             >
               NAV_HOME
             </Link>
@@ -103,7 +103,7 @@ const ProjectsPage = () => {
                   </p>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2 text-[7px] text-te-muted font-mono uppercase">
+                  <div className="flex flex-wrap gap-2 text-[11px] text-te-muted font-mono uppercase">
                     {project.tech.map((tag: string) => (
                       <span key={tag} className="px-2 py-0.5 bg-white/5 border border-white/10 group-hover:border-orange-500/30 transition-colors">
                         {tag}
@@ -128,7 +128,7 @@ const ProjectsPage = () => {
 
         {/* Footer */}
         <footer className="pt-6 border-t border-white/10">
-          <div className="flex items-center justify-between text-[9px] font-mono text-te-muted">
+          <div className="flex items-center justify-between text-xs font-mono text-te-muted">
             <span>RECORDS_TOTAL: {projects.length}</span>
             <span className="text-orange-500">// INDUSTRIAL_MINIMALISM_V04</span>
           </div>
@@ -162,7 +162,7 @@ const ProjectsPage = () => {
               {/* Header */}
               <div className="flex justify-between items-start border-b-2 border-white/10 pb-4">
                 <div>
-                  <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2 text-[9px]">
+                  <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2 text-xs">
                     MOD_{selectedProject.id.toUpperCase()} // SYS_DIAGNOSTIC
                   </span>
                   <h2 className="text-4xl font-black uppercase tracking-tighter mt-2">
@@ -186,21 +186,21 @@ const ProjectsPage = () => {
               {/* Status block */}
               <div className="grid grid-cols-2 gap-4">
                 <div className="bg-white/5 border border-white/10 p-3 rounded-sm flex flex-col justify-between min-h-[70px]">
-                  <span className="te-label text-[8px]">CORE_STATUS</span>
-                  <span className="text-sm font-black uppercase text-green-500">SYSTEM_OPERATIONAL // 100%</span>
+                  <span className="te-label text-xs">CORE_STATUS</span>
+                  <span className="text-base font-black uppercase text-green-500">SYSTEM_OPERATIONAL // 100%</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 p-3 rounded-sm flex flex-col justify-between min-h-[70px]">
-                  <span className="te-label text-[8px]">REVISION_DATE</span>
-                  <span className="text-sm font-black uppercase">{selectedProject.date || 'MAY 2026'}</span>
+                  <span className="te-label text-xs">REVISION_DATE</span>
+                  <span className="text-base font-black uppercase">{selectedProject.date || 'MAY 2026'}</span>
                 </div>
               </div>
 
               {/* Technical Specifications */}
               <div>
-                <h3 className="te-label text-[10px] text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
+                <h3 className="te-label text-xs text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
                   /// CORE_ARCHITECTURE_DUMP
                 </h3>
-                <div className="grid grid-cols-3 gap-2 text-[9px] font-mono">
+                <div className="grid grid-cols-3 gap-2 text-xs font-mono">
                   <div className="bg-black/30 p-2 border border-white/5">
                     <span className="text-te-muted block">CLOCK_SPEED</span>
                     <span className="font-bold text-white">4.80 GHZ</span>
@@ -228,10 +228,10 @@ const ProjectsPage = () => {
 
               {/* Tag matrix */}
               <div>
-                <h3 className="te-label text-[10px] text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
+                <h3 className="te-label text-xs text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
                   /// RESOURCE_ALLOCATION_TAGS
                 </h3>
-                <div className="flex flex-wrap gap-2 text-[8px] font-mono uppercase">
+                <div className="flex flex-wrap gap-2 text-[10px] font-mono uppercase">
                   {selectedProject.tech.map((tag: string) => (
                     <span key={tag} className="px-2 py-0.5 bg-orange-500/10 border border-orange-500/30 text-orange-500 rounded-sm">
                       {tag}
@@ -242,10 +242,10 @@ const ProjectsPage = () => {
 
               {/* Logic Flow diagram */}
               <div>
-                <h3 className="te-label text-[10px] text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
+                <h3 className="te-label text-xs text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
                   /// VIRTUAL_SIGNAL_PATH
                 </h3>
-                <div className="bg-black/40 border border-white/5 p-4 rounded-sm font-mono text-[8px] text-te-muted space-y-2">
+                <div className="bg-black/40 border border-white/5 p-4 rounded-sm font-mono text-[10px] text-te-muted space-y-2">
                   <div className="flex justify-between items-center">
                     <span className="px-1.5 py-0.5 bg-white/5 border border-white/10 rounded-sm">USER_INPUT</span>
                     <span className="text-orange-500">════(CV_BUS)════&gt;</span>
@@ -262,7 +262,7 @@ const ProjectsPage = () => {
             </div>
 
             {/* Bottom action drawer footer */}
-            <div className="border-t border-white/10 pt-4 mt-6 flex items-center justify-between text-[9px] font-mono text-te-muted relative z-10">
+            <div className="border-t border-white/10 pt-4 mt-6 flex items-center justify-between text-xs font-mono text-te-muted relative z-10">
               <div className="flex items-center gap-2">
                 <Cpu size={12} className="text-orange-500" />
                 <span>DIAGNOSTIC: SUCCESS</span>
@@ -273,7 +273,7 @@ const ProjectsPage = () => {
                   window.tactileFeedback?.playClickSound();
                   setSelectedProject(null);
                 }}
-                className="te-button text-[9px] py-1.5 px-3 opacity-80 hover:opacity-100 hover:border-orange-500"
+                className="te-button text-xs py-1.5 px-3 opacity-80 hover:opacity-100 hover:border-orange-500"
               >
                 DISMISS_DIAGNOSTICS
               </button>
