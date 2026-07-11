@@ -45,7 +45,7 @@ const AboutPage = () => {
                   Marc Victor Velasquez
                 </p>
                 <p className="te-label text-base leading-relaxed">
-                  Digital Architect // Backend Engineer // AI Researcher
+                  AI & Automation Engineer // Full-Stack Developer // Data & Machine Learning
                 </p>
               </div>
 
@@ -53,7 +53,7 @@ const AboutPage = () => {
               <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-2 gap-y-2 text-xs font-mono text-te-muted">
                 <div>
                   <span className="text-te-muted">LOCATION:</span><br />
-                  Angeles, PH
+                  Angeles City, PH
                 </div>
                 <div>
                   <span className="text-te-muted">TIMEZONE:</span><br />
@@ -63,15 +63,21 @@ const AboutPage = () => {
 
               {/* Social indicators */}
               <div className="mt-4 flex gap-2">
-                {[Github, Linkedin, Mail].map((Icon, index) => (
+                {[
+                  { href: "https://github.com/marccodesstuff", icon: Github, label: "GitHub" },
+                  { href: "https://linkedin.com/in/mrcvctr-vel", icon: Linkedin, label: "LinkedIn" },
+                  { href: "mailto:velasquezmarcvictor@gmail.com", icon: Mail, label: "Email" }
+                ].map((link, index) => (
                   <a 
                     key={index}
-                    href="#"
+                    href={link.href}
                     onClick={() => window.tactileFeedback?.playClickSound()}
                     className="p-2 bg-white/5 hover:bg-orange-500/20 border border-white/10 hover:border-orange-500 rounded-sm transition-colors"
-                    aria-label="Social link"
+                    aria-label={link.label}
+                    target={link.href.startsWith('mailto') ? undefined : "_blank"}
+                    rel={link.href.startsWith('mailto') ? undefined : "noopener noreferrer"}
                   >
-                    <Icon size={16} />
+                    <link.icon size={16} />
                   </a>
                 ))}
               </div>
@@ -158,10 +164,10 @@ const AboutPage = () => {
               <h3 className="text-lg font-black uppercase tracking-tight mb-1 leading-snug">Certifications</h3>
               <p className="te-label text-xs mb-5 text-orange-500">.EXE // VERIFIED_CREDENTIALS</p>
               
-              {certificationsData.map((cert: { provider: string; name: string; color: string }, index: number) => (
+              {certificationsData.map((cert: { provider: string; name: string; color: string; period?: string }, index: number) => (
                 <div key={index} className="flex flex-col xs:flex-row xs:items-center justify-between py-3 border-b border-white/5 last:border-0 text-xs font-mono text-te-muted leading-tight gap-1 xs:gap-4 max-w-full">
                   <span className="max-w-full xs:max-w-xs overflow-hidden break-words">{cert.name}</span>
-                  <span className="text-orange-500 max-w-full xs:max-w-[12ch] overflow-hidden break-words shrink-0">{cert.provider}</span>
+                  <span className="text-orange-500 max-w-full xs:max-w-[12ch] overflow-hidden break-words shrink-0">{cert.period || cert.provider}</span>
                 </div>
               ))}
             </div>
