@@ -1,42 +1,47 @@
 [
-    {
-        "provider": "Microsoft",
-        "name": "Azure Fundamentals",
-        "color": "#0078d4"
-    },
-    {
-        "provider": "Microsoft",
-        "name": "Azure AI Fundamentals",
-        "color": "#0078d4"
-    },
-    {
-        "provider": "Microsoft",
-        "name": "Azure Data Fundamentals",
-        "color": "#0078d4"
-    },
-    {
-        "provider": "Oracle",
-        "name": "OCI 2025 AI Foundations Associate",
-        "color": "#f80000"
-    },
-    {
-        "provider": "Oracle",
-        "name": "OCI 2025 Generative AI Professional",
-        "color": "#f80000"
-    },
-    {
-        "provider": "Cisco Networking Academy",
-        "name": "Introduction to Data Science",
-        "color": "#1e7ec9"
-    },
-    {
-        "provider": "Imperial College London",
-        "name": "Mathematics for Machine Learning: Linear Algebra",
-        "color": "#8C1515"
-    },
-    {
-        "provider": "Holy Angel University",
-        "name": "Certificate of Participation - 1st Regional AI Conference 2025",
-        "color": "#e30613"
-    }
+  {
+    "provider": "Oracle",
+    "name": "OCI 2025 Generative AI Professional",
+    "color": "#f80000",
+    "period": "November 2025 – November 2027"
+  },
+  {
+    "provider": "Oracle",
+    "name": "OCI 2025 AI Foundations Associate",
+    "color": "#f80000",
+    "period": "October 2025 – October 2027"
+  },
+  {
+    "provider": "Microsoft",
+    "name": "Azure Fundamentals (AZ-900)",
+    "color": "#0078d4",
+    "period": "May 2025"
+  },
+  {
+    "provider": "Microsoft",
+    "name": "Azure AI Fundamentals (AI-900)",
+    "color": "#0078d4",
+    "period": "May 2024"
+  },
+  {
+    "provider": "Microsoft",
+    "name": "Azure Data Fundamentals (DP-900)",
+    "color": "#0078d4",
+    "period": "July 2023"
+  },
+  {
+    "provider": "Cisco Networking Academy",
+    "name": "Introduction to Data Science",
+    "color": "#1e7ec9"
+  },
+  {
+    "provider": "Imperial College London",
+    "name": "Mathematics for Machine Learning: Linear Algebra",
+    "color": "#8C1515"
+  },
+  {
+    "provider": "Holy Angel University",
+    "name": "Certificate of Participation - 1st Regional AI Conference 2025",
+    "color": "#e30613"
+  }
 ]

@@ -1,11 +1,20 @@
 [
-    {
-        "institution": "Angeles University Foundation",
-        "degree": "Bachelor of Science in Computer Science (Expected June 2026)",
-        "period": "Aug 2022 - Present",
-        "location": "Angeles City, Philippines",
-        "gpa": "Honors student",
-        "activities": ["Junior Philippines Computer Society Member", "Dean Lister Awards (1st Year, 2nd Year, 4th Year)", "College Scholarship Recipient"],
-        "achievements": ["Cum Laude (Latin Honor) - GWA: 91.05", "Google Developer Group - Holy Angel University Lead AI Engineer", "Lead Team Member on The AI Hack 2025"]
-    }
+  {
+    "institution": "Angeles University Foundation",
+    "degree": "Bachelor of Science in Computer Science",
+    "period": "June 2026",
+    "location": "Angeles City, Philippines",
+    "gpa": "Cum Laude",
+    "activities": [
+      "Junior Philippines Computer Society Member",
+      "Dean’s Lister (1st Year, 2nd Year, 4th Year)",
+      "College Scholarship Recipient"
+    ],
+    "achievements": [
+      "Cum Laude (Latin Honor) - GWA: 91.05",
+      "Google Developer Group - Holy Angel University Lead AI Engineer",
+      "Lead Team Member on The AI Hack 2025",
+      "Research Paper Presenter - IRCITE 2026"
+    ]
+  }
 ]
