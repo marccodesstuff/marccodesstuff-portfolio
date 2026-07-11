@@ -1,0 +1,94 @@
+[
+  {
+    "id": "augur",
+    "title": "Augur",
+    "tagline": "Miniature Compliance Automation Platform",
+    "description": "An agentic system that tracks security controls and compliance evidence, with an LLM agent that ingests policy documents and security-tool exports and maps findings onto SOC 2 and ISO 27001 controls.",
+    "tech": [
+      ".NET 10",
+      "Blazor",
+      "EF Core",
+      "PostgreSQL",
+      "CQRS/MediatR",
+      "OpenAPI 3.1.1",
+      "LM Studio/Ollama/OpenAI",
+      "MCP JSON-RPC",
+      "Playwright"
+    ],
+    "date": "Jan 2026 – Present",
+    "status": "active",
+    "icon": "Shield"
+  },
+  {
+    "id": "fabtwin",
+    "title": "FabTwin",
+    "tagline": "Semiconductor SPC Analytics & Synthetic Fab Data",
+    "description": "Open-source Statistical Process Control (SPC) analytics tool built around a synthetic semiconductor fab-data generator. Simulates lot-level process data across process steps with injected drift, shift, and variance scenarios, then validates them with a full SPC suite.",
+    "tech": [
+      "Python",
+      "Streamlit",
+      "Plotly",
+      "pytest",
+      "SciPy",
+      "Docker"
+    ],
+    "date": "May 2026 – Present",
+    "status": "active",
+    "icon": "Cpu"
+  },
+  {
+    "id": "patient-simulator",
+    "title": "Patient Communication Simulator",
+    "tagline": "Clinical Communication Training with LangGraph",
+    "description": "A patient-conversation simulator built on LangGraph and LangChain for clinical-communication training, with personas and safety controls designed to prevent the system from emitting real medical advice.",
+    "tech": [
+      "Python",
+      "LangGraph",
+      "LangChain",
+      "FastAPI",
+      "Typer",
+      "ChromaDB",
+      "OpenAI/Anthropic/Azure AI Foundry"
+    ],
+    "date": "Apr 2026 – Present",
+    "status": "active",
+    "icon": "MessageSquare"
+  },
+  {
+    "id": "jointwise",
+    "title": "JointWise",
+    "tagline": "AI-Powered Knee MRI Detection Platform",
+    "description": "End-to-end medical-imaging platform combining a YOLOv11 stacking ensemble for ACL and meniscus tear detection from coronal knee MRI scans with a full-stack web application for uploading studies, running inference, and visualizing predictions.",
+    "tech": [
+      "PyTorch",
+      "YOLOv11",
+      "Next.js",
+      "TypeScript",
+      "Appwrite",
+      "Docker",
+      "Azure Kubernetes Service"
+    ],
+    "date": "Jan 2025 – Mar 2026",
+    "status": "completed",
+    "icon": "Brain"
+  },
+  {
+    "id": "bantaybayan",
+    "title": "BantayBayan",
+    "tagline": "Intelligent Survival Beacon",
+    "description": "Offline-first Philippine disaster-response platform combining a Flutter mobile application with geospatial machine learning for flood probability and depth prediction, risk-aware navigation, emergency reporting, and safety guidance.",
+    "tech": [
+      "Flutter",
+      "Dart",
+      "scikit-learn",
+      "ONNX",
+      "TensorFlow Lite",
+      "Google Earth Engine",
+      "OSRM",
+      "Appwrite"
+    ],
+    "date": "Nov 2025 – Dec 2025",
+    "status": "completed",
+    "icon": "Zap"
+  }
+]
