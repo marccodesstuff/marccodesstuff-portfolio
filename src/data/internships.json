@@ -1,25 +1,54 @@
 [
   {
-    "company": "Kaizenaire",
-    "role": "AI Automation Intern",
-    "period": "Mar 2026 - May 2026",
-    "description": "Designed and implemented multi-stage automation workflows, enhancing data preparation and validation processes. Architected multi-agent systems, ensuring specialized agents efficiently handled scraping, research, and classification tasks. Conducted thoroughly security evaluations of agent skills and dependencies, safeguarding the automation pipeline.",
+    "company": "Kaizenaire Pte. Ltd.",
+    "role": "AI Specialist Intern (Automation)",
+    "period": "March 2026 – May 2026",
+    "description": "Cut an n8n research automation's LLM cost ~99.98% (~$20/day to ~$0.004/day) by replacing OpenRouter per-query web search with self-managed Bright Data research piped into LangChain. Built multi-agent automation workflows with n8n, Firecrawl, and ScrapingBee, cutting a task from 10–12 minutes down to 15–17 seconds. Delivered end-to-end outreach automation with AI message drafting, reply classification, and HubSpot CRM integration, reducing manual work from ~18–20 minutes to ~1 minute per contact.",
     "achievements": [
-      "Architected multi-agent systems for intelligent task distribution",
-      "Designed multi-stage automation workflows for data pipelines"
+      "Reduced n8n research automation LLM cost ~99.98%",
+      "Built multi-agent workflows cutting task time ~97%",
+      "Outreach automation reduced manual work ~95%",
+      "Integrated HubSpot CRM with lead/company creation via APIs",
+      "Self-hosted n8n locally with load-testing before production promotion"
     ]
   },
   {
-    "company": "Kaizenaire",
-    "role": "AI Content Quality Assurance Intern",
-    "period": "Jan 2026 - Mar 2026",
-    "description": "Published 772 SEO-compliant brand articles, all green across 3 on-page SEO categories (premium SEO, readability, inclusive language). Vetted and rejected 293 additional candidates for content, security, or compliance reasons. Iteratively refined a single-shot system prompt that produces both the article and all SEO metadata in one generation.",
+    "company": "Kaizenaire Pte. Ltd.",
+    "role": "AI Specialist Intern (Content Quality Assurance)",
+    "period": "January 2026 – March 2026",
+    "description": "Engineered a single-shot Grok/SuperGrok prompt that outputs a complete article plus Yoast SEO metadata in one pass, powering 772 published brand articles with 293 rejected in QA. Built SGP-Clipper, a Chrome extension that pulls business-registry data into production prompts, cutting per-company processing from ~15 to ~7–8 minutes. Cut end-to-end generation time ~30% via pre-research prompt setup and multi-agent refinement.",
     "achievements": [
-      "Published 772+ SEO-compliant brand articles (green on 3 SEO metrics)",
-      "Built browser extension reducing per-task processing time by ~50%",
-      "Designed pre-research setup cutting LLM processing from ~104s to ~80s",
-      "Scraped and consolidated contact info for ~15,500 regional companies",
-      "Authored internal technical guide for lead-database enrichment"
+      "Single-shot prompt powering 772 published articles with Yoast SEO metadata",
+      "Built SGP-Clipper Chrome extension adopted across intern team",
+      "Cut end-to-end generation time ~30%",
+      "293 articles rejected in QA for content/compliance reasons",
+      "Scraped and consolidated contact info for ~15,500 regional companies"
+    ]
+  },
+  {
+    "company": "Angeles University Foundation",
+    "role": "Full-Stack AI Engineer / Researcher",
+    "period": "January 2025 – March 2026",
+    "description": "Developed a YOLOv11 stacking ensemble for MRI injury detection achieving 75.17% mAP, 88% FROC, and 73.50% F1 score. Engineered an end-to-end AI system with a Next.js web application, secure API middleware, Appwrite database and storage, and a containerized inference server running in Linux, analyzing MRI scans in ~3 seconds. Deployed to Azure Kubernetes Service with logging, monitoring, and alerting. Collaborated with three university medical faculty members and co-authored a paper selected as one of the Top 10 concept papers under the DOST-PCHRD-funded MAGNUS H-Hub, presented at IRCITE 2026.",
+    "achievements": [
+      "YOLOv11 ensemble: 75.17% mAP, 88% FROC, 73.50% F1 score",
+      "End-to-end Next.js + Appwrite + Linux inference in ~3 seconds",
+      "Deployed to Azure Kubernetes Service",
+      "Top 10 concept paper, DOST-PCHRD MAGNUS H-Hub",
+      "Presented at IRCITE 2026 (Computer Science category)"
+    ]
+  },
+  {
+    "company": "Angeles University Foundation",
+    "role": "AI/ML Engineer & Team Lead",
+    "period": "November 2025 – December 2025",
+    "description": "Built a dual Random Forest regression ensemble predicting flood probability and depth over a ~1 km grid across Pampanga, trained on Google Earth Engine flood-frequency data with a 6-feature geospatial dataset. Deployed Edge AI to Flutter app by converting models via ONNX to TensorFlow Lite for fully offline inference. Built multi-source data pipeline and Google Gemini-powered advisory generating hyper-localized storm-preparation checklists.",
+    "achievements": [
+      "Dual Random Forest ensemble for flood probability and depth prediction",
+      "ONNX to TensorFlow Lite for fully offline Flutter inference",
+      "Google Earth Engine geospatial pipeline with 6-feature dataset",
+      "Gemini-powered hyper-localized storm-preparation advisories",
+      "~1 km resolution grid across Pampanga"
     ]
   }
 ]

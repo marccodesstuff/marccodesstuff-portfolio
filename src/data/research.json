@@ -1,10 +1,38 @@
 [
   {
+    "title": "JointWise: A Knee Tear Detection Platform",
+    "organization": "Angeles University Foundation",
+    "role": "Full-Stack AI Engineer / Researcher",
+    "period": "Jan 2025 – Mar 2026",
+    "description": "Developed a YOLOv11 stacking ensemble for MRI injury detection that achieved 75.17% mAP, 88% FROC, and 73.50% F1 score. Engineered an end-to-end AI system comprising a Next.js web application, secure API middleware, Appwrite database and storage services, and a containerized inference server running in a Linux environment. Deployed to Azure Kubernetes Service with logging, monitoring, and alerting. Co-authored a paper selected as one of the Top 10 concept papers under the DOST-PCHRD-funded MAGNUS H-Hub and presented in the Computer Science category at IRCITE 2026.",
+    "achievements": [
+      "YOLOv11 ensemble: 75.17% mAP, 88% FROC, 73.50% F1 score",
+      "End-to-end Next.js + Appwrite + Linux inference in ~3 seconds",
+      "Deployed to Azure Kubernetes Service",
+      "Top 10 concept paper, DOST-PCHRD MAGNUS H-Hub",
+      "Presented at IRCITE 2026 (Computer Science category)"
+    ]
+  },
+  {
+    "title": "BantayBayan: An Intelligent Survival Beacon",
+    "organization": "Angeles University Foundation",
+    "role": "AI/ML Engineer & Team Lead",
+    "period": "Nov 2025 – Dec 2025",
+    "description": "Built a dual Random Forest regression ensemble predicting flood probability and depth over a ~1 km grid across Pampanga, trained on Google Earth Engine flood-frequency data with 6 geospatial features. Deployed Edge AI to Flutter by converting models through ONNX to TensorFlow Lite for fully offline inference. Built multi-source data pipeline and Google Gemini-powered advisory generating hyper-localized storm-preparation checklists.",
+    "achievements": [
+      "Dual Random Forest ensemble for flood probability and depth prediction",
+      "ONNX to TensorFlow Lite for fully offline Flutter inference",
+      "Google Earth Engine geospatial pipeline with 6-feature dataset",
+      "Gemini-powered hyper-localized storm-preparation advisories",
+      "~1 km resolution grid across Pampanga"
+    ]
+  },
+  {
     "title": "Large-Scale Digital Twins & Autonomous Robotic Simulations",
     "organization": "As Foretold Research Labs",
     "role": "Tech Lead",
-    "period": "Jan 2026 - Present",
-    "description": "Developed large-scale digital twins and autonomous robotic simulations to enhance operational efficiency. Created bespoke generative AI frameworks that merge theoretical research with practical applications. Orchestrated the integration of spatial computing and advanced AI models for high-fidelity simulations.",
+    "period": "Jan 2026 – Present",
+    "description": "Developing large-scale digital twins and autonomous robotic simulations to enhance operational efficiency. Creating bespoke generative AI frameworks that merge theoretical research with practical applications. Orchestrating the integration of spatial computing and advanced AI models for high-fidelity simulations.",
     "achievements": [
       "Developed production-grade digital twin systems",
       "Created custom generative AI frameworks combining theory with practice",
