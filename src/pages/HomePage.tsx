@@ -31,7 +31,7 @@ const HomePage = () => {
               <span className="text-orange-500">Velasquez</span>
             </h1>
             <p className="text-lg lg:text-xl font-bold mt-6 tracking-normal text-te-muted max-w-3xl">
-              Digital Architect // Backend Engineer // Industrial Designer
+              AI & Automation Engineer // Full-Stack Developer // Data & Machine Learning
             </p>
           </div>
 
@@ -39,13 +39,12 @@ const HomePage = () => {
           <div className="mt-8 flex flex-col gap-4 pt-4 border-t border-white/10">
             
             <p className="text-base text-te-muted leading-relaxed max-w-2xl">
-              Building high-density backend systems and AI research pipelines. Specialized in transformer architectures, microservices design, and cloud infrastructure.
+              Building agentic automation workflows, semiconductor SPC analytics, compliance platforms, and end-to-end AI systems.
             </p>
 
             <div className="flex items-center gap-4 text-xs font-mono text-te-muted opacity-60">
               <div className="text-right">
-                <span className="text-xs">44.5895° N</span>
-                <span className="text-xs">15.9486° E</span>
+                <span className="text-xs">Angeles City, PH</span>
                 <span className="mt-1 text-orange-500 font-bold block">BUILD_REV: 2026.05.15</span>
               </div>
             </div>
@@ -91,16 +90,16 @@ const HomePage = () => {
               <ArrowUpRight size={16} className="text-orange-500" />
             </div>
             <p className="text-lg font-black tracking-tight uppercase group-hover:text-white transition-colors">
-              Initialize Collaboration
+              Let's Collaborate
             </p>
             <a 
-              href="https://github.com/marccodesstuff"
+              href="mailto:velasquezmarcvictor@gmail.com"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => window.tactileFeedback?.playClickSound()}
               className="mt-4 te-label text-te-muted hover:text-orange-500 transition-colors flex items-center gap-1 group-hover:underline"
             >
-              GITHUB REPOSITORY <ArrowUpRight size={12} />
+              velasquezmarcvictor@gmail.com <ArrowUpRight size={12} />
             </a>
           </div>
 
@@ -154,12 +153,38 @@ const HomePage = () => {
             </div>
             <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Knee Tear Detection</h3>
             <p className="text-base font-medium mb-6 leading-relaxed text-te-muted max-w-lg">
-              Clinically validated MRI diagnostic platform with 0.88 Sensitivity using ensemble learning and PyTorch.
+              Clinically validated MRI diagnostic platform with 0.88 Sensitivity using ensemble learning and PyTorch, deployed with 75.17% mAP and 88% FROC.
             </p>
             <div className="flex gap-2 text-[11px] text-te-muted font-mono uppercase">
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">PYTORCH</span>
-              <span className="px-2 py-0.5 bg-white/5 border border-white/10">MICROSERVICES</span>
-              <span className="px-2 py-0.5 bg-white/5 border border-white/10">DICOM</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">YOLO</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">NEXT.JS</span>
+            </div>
+          </div>
+
+          {/* Project 03: FabTwin / SPC Analytics */}
+          <div 
+            role="button"
+            tabIndex={0}
+            onClick={() => {
+              window.tactileFeedback?.playClickSound();
+              navigateWithTransition('/projects');
+            }}
+            onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
+            className="te-module p-5 sm:p-8 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
+          >
+            <div className="flex justify-between items-start mb-4">
+              <span className="te-label border-l-2 border-orange-500 pl-2">MODULE_03: SPC_DIGITAL_TWIN</span>
+              <ArrowUpRight size={20} className="text-te-muted group-hover:text-white transition-all" />
+            </div>
+            <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">FabTwin</h3>
+            <p className="text-base font-medium mb-6 leading-relaxed text-te-muted max-w-lg">
+              Open-source semiconductor SPC analytics dashboard and synthetic fab-data generator with control charts, Western Electric/Nelson rules, and Cp/Cpk capability analysis.
+            </p>
+            <div className="flex gap-2 text-[11px] text-te-muted font-mono uppercase">
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">PYTHON</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">STREAMLIT</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">PYTEST</span>
             </div>
           </div>
 

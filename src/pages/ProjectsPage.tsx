@@ -3,6 +3,7 @@ import { ArrowUpRight, X, Cpu } from 'lucide-react'
 import { usePageTransition } from '../components/PageTransition'
 
 // Import all project JSON files
+import projectsData from '../data/projects.json'
 import sgpClipperData from '../data/projects/sgp-clipper.json'
 import typhoonBeaconData from '../data/projects/typhoon-beacon.json'
 import kneeDetectionData from '../data/projects/knee-detection.json'
@@ -18,6 +19,7 @@ const ProjectsPage = () => {
   
   // Compile all projects into array
   const projects: any[] = [
+    ...projectsData,
     sgpClipperData,
     typhoonBeaconData,
     kneeDetectionData,
@@ -26,7 +28,7 @@ const ProjectsPage = () => {
     bodyMicrogamesData,
     waterManagementData,
     pageShutterData,
-    // Add the restored projects
+    // Legacy projects
     { id: 'trestle', title: 'Trestle', tagline: 'Block-Based Word Processor', description: 'A block-based word processor that auto-arranges your content to avoid whitespace and optimize layout.', tech: ['Flutter', 'Dart', 'Database Management', 'AWS Deployment'], date: 'Sep 2024 - Dec 2024', status: 'completed', icon: 'TextAlignJustify' },
     { id: 'water-management-v1', title: 'Water Management and Processing Web Application', tagline: 'Environmental Data Platform', description: 'Developed a full-stack web application using Next.js for client and server operations and Express.js to handle mySQL database connectivity.', tech: ['Next.js', 'Express.js', 'mySQL', 'RESTful API'], date: 'May 2024', status: 'completed', icon: 'Database' }
   ]
