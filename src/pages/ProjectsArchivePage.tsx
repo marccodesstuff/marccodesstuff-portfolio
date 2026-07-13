@@ -2,8 +2,7 @@ import { useState } from 'react'
 import { ArrowUpRight, X, Cpu } from 'lucide-react'
 import { usePageTransition } from '../components/PageTransition'
 
-// Import all archive project data files
-import projectsData from '../data/projects.json'
+// Import archive project data files
 import sgpClipperData from '../data/projects/sgp-clipper.json'
 import typhoonBeaconData from '../data/projects/typhoon-beacon.json'
 import kneeDetectionData from '../data/projects/knee-detection.json'
@@ -29,7 +28,6 @@ const ProjectsArchivePage = () => {
   const { navigateWithTransition } = usePageTransition()
 
   const archiveProjects: Project[] = [
-    projectsData[5],
     sgpClipperData,
     typhoonBeaconData,
     kneeDetectionData,
