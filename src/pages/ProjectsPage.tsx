@@ -168,7 +168,7 @@ const ProjectsPage = () => {
               <div className="flex justify-between items-start border-b-2 border-white/10 pb-4">
                 <div className="pr-4">
                   <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2 text-xs">
-                    MOD_{selectedProject.id.toUpperCase()} // SYS_DIAGNOSTIC
+                    MOD_{selectedProject.id.toUpperCase()} // PROJECT_DIAGNOSTIC
                   </span>
                   <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tighter mt-2">
                     {selectedProject.title}
@@ -188,35 +188,35 @@ const ProjectsPage = () => {
                 </button>
               </div>
 
-              {/* Status block */}
+              {/* Status + period */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="bg-white/5 border border-white/10 p-3 rounded-sm flex flex-col justify-between min-h-[70px]">
-                  <span className="te-label text-xs">CORE_STATUS</span>
-                  <span className="text-sm sm:text-base font-black uppercase text-green-500">SYSTEM_OPERATIONAL // 100%</span>
+                  <span className="te-label text-xs">STATUS</span>
+                  <span className="text-sm sm:text-base font-black uppercase text-green-500">{selectedProject.status || 'ACTIVE'}</span>
                 </div>
                 <div className="bg-white/5 border border-white/10 p-3 rounded-sm flex flex-col justify-between min-h-[70px]">
-                  <span className="te-label text-xs">REVISION_DATE</span>
-                  <span className="text-sm sm:text-base font-black uppercase">{selectedProject.date || 'MAY 2026'}</span>
+                  <span className="te-label text-xs">TIMELINE</span>
+                  <span className="text-sm sm:text-base font-black uppercase">{selectedProject.date || 'CURRENT'}</span>
                 </div>
               </div>
 
-              {/* Technical Specifications */}
+              {/* Key highlights */}
               <div>
                 <h3 className="te-label text-xs text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
-                  /// CORE_ARCHITECTURE_DUMP
+                  /// PROJECT_HIGHLIGHTS
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs font-mono">
                   <div className="bg-black/30 p-2 border border-white/5">
-                    <span className="text-te-muted block text-[10px]">CLOCK_SPEED</span>
-                    <span className="font-bold text-white">4.80 GHZ</span>
+                    <span className="text-te-muted block text-[10px]">FOCUS</span>
+                    <span className="font-bold text-white">{selectedProject.tagline}</span>
                   </div>
                   <div className="bg-black/30 p-2 border border-white/5">
-                    <span className="text-te-muted block text-[10px]">DENSITY_LOAD</span>
-                    <span className="font-bold text-orange-500">OPTIMAL</span>
+                    <span className="text-te-muted block text-[10px]">STACK</span>
+                    <span className="font-bold text-orange-500">{selectedProject.tech?.[0] || 'MULTI'}</span>
                   </div>
                   <div className="bg-black/30 p-2 border border-white/5">
-                    <span className="text-te-muted block text-[10px]">STATUS_LOG</span>
-                    <span className="font-bold text-green-500">COMPILED_OK</span>
+                    <span className="text-te-muted block text-[10px]">STATE</span>
+                    <span className="font-bold text-green-500">{selectedProject.status === 'active' ? 'IN_PROGRESS' : 'COMPLETED'}</span>
                   </div>
                 </div>
               </div>
@@ -231,10 +231,10 @@ const ProjectsPage = () => {
                 </p>
               </div>
 
-              {/* Tag matrix */}
+              {/* Tech tags */}
               <div>
                 <h3 className="te-label text-xs text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
-                  /// RESOURCE_ALLOCATION_TAGS
+                  /// TECH_STACK
                 </h3>
                 <div className="flex flex-wrap gap-2 text-[10px] font-mono uppercase">
                   {selectedProject.tech.map((tag: string) => (
@@ -242,25 +242,6 @@ const ProjectsPage = () => {
                       {tag}
                     </span>
                   ))}
-                </div>
-              </div>
-
-              {/* Logic Flow diagram */}
-              <div>
-                <h3 className="te-label text-xs text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
-                  /// VIRTUAL_SIGNAL_PATH
-                </h3>
-                <div className="overflow-x-auto whitespace-nowrap bg-black/40 border border-white/5 p-4 rounded-sm font-mono text-[10px] text-te-muted space-y-2 scrollbar-thin">
-                  <div className="flex justify-between items-center min-w-[280px] gap-2">
-                    <span className="px-1.5 py-0.5 bg-white/5 border border-white/10 rounded-sm">USER_INPUT</span>
-                    <span className="text-orange-500">══(CV_BUS)══&gt;</span>
-                    <span className="px-1.5 py-0.5 bg-orange-500/20 border border-orange-500/40 text-orange-500 rounded-sm">LOGIC_GATE</span>
-                  </div>
-                  <div className="flex justify-between items-center min-w-[280px] gap-2">
-                    <span className="px-1.5 py-0.5 bg-orange-500/20 border border-orange-500/40 text-orange-500 rounded-sm">LOGIC_GATE</span>
-                    <span className="text-green-500">══(TX_STREAM)═&gt;</span>
-                    <span className="px-1.5 py-0.5 bg-white/5 border border-white/10 rounded-sm">SYS_RENDER</span>
-                  </div>
                 </div>
               </div>
 
