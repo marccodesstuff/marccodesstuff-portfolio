@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import HomePage from './pages/HomePage'
 import ProjectsPage from './pages/ProjectsPage'
+import ProjectsArchivePage from './pages/ProjectsArchivePage'
 import AboutPage from './pages/AboutPage'
 import PageTransition from './components/PageTransition'
 
@@ -14,6 +15,7 @@ const AppRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<MainLayout activePage="index" showFooter={false}><HomePage /></MainLayout>} />
         <Route path="/projects" element={<MainLayout activePage="projects"><ProjectsPage /></MainLayout>} />
+        <Route path="/projects/archive" element={<MainLayout activePage="projects"><ProjectsArchivePage /></MainLayout>} />
         <Route path="/about" element={<MainLayout activePage="about"><AboutPage /></MainLayout>} />
       </Routes>
     </PageTransition>

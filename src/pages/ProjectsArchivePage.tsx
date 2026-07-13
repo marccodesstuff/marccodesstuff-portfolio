@@ -1,0 +1,253 @@
+import { useState } from 'react'
+import { ArrowUpRight, X, Cpu } from 'lucide-react'
+import { usePageTransition } from '../components/PageTransition'
+
+// Import all archive project data files
+import projectsData from '../data/projects.json'
+import sgpClipperData from '../data/projects/sgp-clipper.json'
+import typhoonBeaconData from '../data/projects/typhoon-beacon.json'
+import kneeDetectionData from '../data/projects/knee-detection.json'
+import aiDirectorData from '../data/projects/ai-director.json'
+import monitoredQuizData from '../data/projects/monitored-quiz.json'
+import bodyMicrogamesData from '../data/projects/body-microgames.json'
+import waterManagementData from '../data/projects/water-management.json'
+import pageShutterData from '../data/projects/pageshutter.json'
+
+type Project = {
+  id: string
+  title: string
+  tagline: string
+  description: string
+  tech: string[]
+  date: string
+  status: string
+  icon: string
+}
+
+const ProjectsArchivePage = () => {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const { navigateWithTransition } = usePageTransition()
+
+  const archiveProjects: Project[] = [
+    projectsData[5],
+    sgpClipperData,
+    typhoonBeaconData,
+    kneeDetectionData,
+    aiDirectorData,
+    monitoredQuizData,
+    bodyMicrogamesData,
+    waterManagementData,
+    pageShutterData,
+    { id: 'trestle', title: 'Trestle', tagline: 'Block-Based Word Processor', description: 'A block-based word processor that auto-arranges your content to avoid whitespace and optimize layout.', tech: ['Flutter', 'Dart', 'Database Management', 'AWS Deployment'], date: 'Sep 2024 - Dec 2024', status: 'completed', icon: 'TextAlignJustify' },
+    { id: 'water-management-v1', title: 'Water Management and Processing Web Application', tagline: 'Environmental Data Platform', description: 'Developed a full-stack web application using Next.js for client and server operations and Express.js to handle mySQL database connectivity.', tech: ['Next.js', 'Express.js', 'mySQL', 'RESTful API'], date: 'May 2024', status: 'completed', icon: 'Database' },
+  ]
+
+  return (
+    <main className="p-4 lg:p-8">
+      <div className="max-w-[1400px] mx-auto border-t-2 border-l-2 border-white/10 bg-black/30 min-h-screen">
+        <header className="border-b-2 border-white/10 px-4 sm:px-8 py-6 sm:py-8 mb-0">
+          <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+            <div>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tighter mb-2">
+                Project_Archive.EXE
+              </h1>
+              <p className="te-label text-sm sm:text-base mt-0">OLDER_MODULES // BUILD_LOG</p>
+            </div>
+            <button
+              onClick={() => {
+                window.tactileFeedback?.playClickSound()
+                navigateWithTransition('/projects')
+              }}
+              className="te-button primary text-xs py-2 px-4 opacity-80 hover:opacity-100 self-start sm:self-auto"
+            >
+              BACK_TO_PROJECTS
+            </button>
+          </div>
+        </header>
+
+        <div className="px-4 sm:px-8 py-6 lg:py-8">
+          <div className="grid grid-cols-1 gap-3">
+            {archiveProjects.map((project) => (
+              <div
+                key={project.id}
+                role="button"
+                tabIndex={0}
+                onClick={() => {
+                  window.tactileFeedback?.playClickSound()
+                  setSelectedProject(project)
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    window.tactileFeedback?.playClickSound()
+                    setSelectedProject(project)
+                  }
+                }}
+                className="te-module px-5 sm:px-8 py-6 sm:py-7 flex flex-col lg:flex-row gap-6 items-start lg:items-center hover:bg-white/[0.03] transition-colors group cursor-pointer relative"
+              >
+                <div className="absolute top-5 left-5 sm:left-6 z-10">
+                  <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2">
+                    MOD_{project.id.toUpperCase()}
+                  </span>
+                </div>
+
+                <div className="flex-1 pt-7 w-full">
+                  <div className="mb-4">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-1 group-hover:text-white transition-colors">
+                      {project.title}
+                    </h2>
+                    <p className="te-label text-base sm:text-lg uppercase tracking-widest">
+                      {project.tagline}
+                    </p>
+                  </div>
+
+                  <p className="text-base font-medium leading-relaxed text-te-muted max-w-3xl mb-4 group-hover:text-white/80 transition-colors">
+                    {project.description}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 text-[11px] text-te-muted font-mono uppercase">
+                    {project.tech.map((tag: string) => (
+                      <span key={tag} className="px-2 py-0.5 bg-white/5 border border-white/10">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <ArrowUpRight
+                  size={24}
+                  className="text-te-muted self-start mt-2 lg:mt-0 group-hover:text-white transition-all transform group-hover:translate-x-1 shrink-0"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <footer className="px-4 sm:px-8 py-6 border-t border-white/10 mt-4">
+          <div className="flex flex-col sm:flex-row gap-2 items-center justify-between text-xs font-mono text-te-muted">
+            <span>RECORDS_TOTAL: {archiveProjects.length}</span>
+            <span className="text-orange-500">// ARCHIVE_BUILD_V01</span>
+          </div>
+        </footer>
+
+      {selectedProject && (
+        <div className="fixed inset-0 z-50 flex justify-end">
+          <div
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer"
+            onClick={() => {
+              window.tactileFeedback?.playClickSound()
+              setSelectedProject(null)
+            }}
+          />
+
+          <div className="relative w-full max-w-xl bg-te-bg border-l-2 border-orange-500 h-full px-5 sm:px-8 py-6 sm:py-10 flex flex-col justify-between overflow-y-auto z-10 te-module animate-slideInRight">
+            <div
+              className="absolute inset-0 opacity-[0.03] pointer-events-none"
+              style={{
+                backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
+                backgroundSize: '16px 16px',
+              }}
+            />
+
+            <div className="relative z-10 space-y-8">
+              <div className="flex justify-between items-start border-b-2 border-white/10 pb-4">
+                <div className="pr-4">
+                  <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2 text-xs">
+                    MOD_{selectedProject.id.toUpperCase()} // PROJECT_DIAGNOSTIC
+                  </span>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tighter mt-2">
+                    {selectedProject.title}
+                  </h2>
+                  <p className="te-label text-sm text-orange-500 mt-1">{selectedProject.tagline}</p>
+                </div>
+
+                <button
+                  onClick={() => {
+                    window.tactileFeedback?.playClickSound()
+                    setSelectedProject(null)
+                  }}
+                  className="p-2 border border-white/10 hover:border-orange-500 hover:text-orange-500 rounded-sm transition-colors cursor-pointer shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                  aria-label="Close panel"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-white/5 border border-white/10 p-3 rounded-sm flex flex-col justify-between min-h-[70px]">
+                  <span className="te-label text-xs">STATUS</span>
+                  <span className="text-sm sm:text-base font-black uppercase text-green-500">{selectedProject.status || 'ACTIVE'}</span>
+                </div>
+                <div className="bg-white/5 border border-white/10 p-3 rounded-sm flex flex-col justify-between min-h-[70px]">
+                  <span className="te-label text-xs">TIMELINE</span>
+                  <span className="text-sm sm:text-base font-black uppercase">{selectedProject.date || 'CURRENT'}</span>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="te-label text-xs text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
+                  /// PROJECT_HIGHLIGHTS
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs font-mono">
+                  <div className="bg-black/30 p-2 border border-white/5">
+                    <span className="text-te-muted block text-[10px]">FOCUS</span>
+                    <span className="font-bold text-white">{selectedProject.tagline}</span>
+                  </div>
+                  <div className="bg-black/30 p-2 border border-white/5">
+                    <span className="text-te-muted block text-[10px]">STACK</span>
+                    <span className="font-bold text-orange-500">{selectedProject.tech?.[0] || 'MULTI'}</span>
+                  </div>
+                  <div className="bg-black/30 p-2 border border-white/5">
+                    <span className="text-te-muted block text-[10px]">STATE</span>
+                    <span className="font-bold text-green-500">{selectedProject.status === 'active' ? 'IN_PROGRESS' : 'COMPLETED'}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="te-label text-[10px] text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
+                  /// DETAILED_DESCRIPTION
+                </h3>
+                <p className="text-base text-te-muted leading-relaxed font-sans">
+                  {selectedProject.description}
+                </p>
+              </div>
+
+              <div>
+                <h3 className="te-label text-xs text-te-muted uppercase mb-2 tracking-widest border-b border-white/5 pb-1">
+                  /// TECH_STACK
+                </h3>
+                <div className="flex flex-wrap gap-2 text-[10px] font-mono uppercase">
+                  {selectedProject.tech.map((tag: string) => (
+                    <span key={tag} className="px-2 py-0.5 bg-orange-500/10 border border-orange-500/30 text-orange-500 rounded-sm">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-white/10 pt-4 mt-6 flex flex-col sm:flex-row gap-4 items-center justify-between text-xs font-mono text-te-muted relative z-10 pb-[env(safe-area-inset-bottom)]">
+              <div className="flex items-center gap-2">
+                <Cpu size={12} className="text-orange-500" />
+                <span>DIAGNOSTIC: SUCCESS</span>
+              </div>
+
+              <button
+                onClick={() => {
+                  window.tactileFeedback?.playClickSound()
+                  setSelectedProject(null)
+                }}
+                className="te-button text-xs py-1.5 px-3 opacity-80 hover:opacity-100 hover:border-orange-500 w-full sm:w-auto"
+              >
+                DISMISS_DIAGNOSTICS
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      </div>
+    </main>
+  )
+}
+
+export default ProjectsArchivePage
