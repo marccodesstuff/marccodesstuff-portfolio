@@ -77,9 +77,9 @@ const HomePage = () => {
             </div>
             <div>
               <p className="text-lg font-black tracking-tight leading-tight uppercase hover:text-orange-500 transition-colors cursor-default">
-                Transformer & Diffusion Architectures
+                Agentic Systems & SPC Analytics
               </p>
-              <p className="te-label mt-2 text-te-muted">Spring_Security_v6.x</p>
+              <p className="te-label mt-2 text-te-muted">COMPLIANCE // MEDICAL_AI // DIGITAL_TWIN</p>
             </div>
           </div>
 
@@ -110,7 +110,7 @@ const HomePage = () => {
             =========================================== */}
         <div className="lg:col-span-12 grid grid-cols-1 lg:grid-cols-2 gap-1">
           
-          {/* Project 01: Typhoon Survival Beacon */}
+          {/* Project 01: Augur */}
           <div 
             role="button"
             tabIndex={0}
@@ -119,24 +119,24 @@ const HomePage = () => {
               navigateWithTransition('/projects');
             }}
             onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
-            className="te-module p-5 sm:p-8 border-r-0 lg:border-r-2 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
+            className="te-module p-5 sm:p-8 border-r-0 lg:border-r-2 border-b-2 lg:border-b-0 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
           >
             <div className="flex justify-between items-start mb-4">
-              <span className="te-label border-l-2 border-orange-500 pl-2">MODULE_01: HACKATHON_WIN</span>
+              <span className="te-label border-l-2 border-orange-500 pl-2">MODULE_01: COMPLIANCE</span>
               <ArrowUpRight size={20} className="text-te-muted group-hover:text-white transition-all" />
             </div>
-            <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Typhoon Survival Beacon</h3>
+            <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Augur</h3>
             <p className="text-base font-medium mb-6 leading-relaxed text-te-muted max-w-lg">
-              AI-powered disaster response with 97.8% flood prediction accuracy using TensorFlow and Gemini.AI.
+              Agentic compliance automation platform tracking security controls and mapping findings onto SOC 2 and ISO 27001 with an LLM agent.
             </p>
             <div className="flex gap-2 text-[11px] text-te-muted font-mono uppercase">
-              <span className="px-2 py-0.5 bg-white/5 border border-white/10">GEMINI.AI</span>
-              <span className="px-2 py-0.5 bg-white/5 border border-white/10">TENSORFLOW</span>
-              <span className="px-2 py-0.5 bg-white/5 border border-white/10">FLUTTER</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">.NET 10</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">BLAZOR</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">MCP</span>
             </div>
           </div>
 
-          {/* Project 02: Knee Tear Detection */}
+          {/* Project 02: FabTwin */}
           <div 
             role="button"
             tabIndex={0}
@@ -148,12 +148,38 @@ const HomePage = () => {
             className="te-module p-5 sm:p-8 border-r-0 lg:border-r-2 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
           >
             <div className="flex justify-between items-start mb-4">
-              <span className="te-label border-l-2 border-orange-500 pl-2">MODULE_02: MEDICAL_AI</span>
+              <span className="te-label border-l-2 border-orange-500 pl-2">MODULE_02: SPC_DIGITAL_TWIN</span>
               <ArrowUpRight size={20} className="text-te-muted group-hover:text-white transition-all" />
             </div>
-            <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Knee Tear Detection</h3>
+            <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">FabTwin</h3>
             <p className="text-base font-medium mb-6 leading-relaxed text-te-muted max-w-lg">
-              Clinically validated MRI diagnostic platform with 0.88 Sensitivity using ensemble learning and PyTorch, deployed with 75.17% mAP and 88% FROC.
+              Open-source semiconductor SPC analytics and synthetic fab-data generator with control charts, Western Electric/Nelson rules, and Cp/Cpk capability analysis.
+            </p>
+            <div className="flex gap-2 text-[11px] text-te-muted font-mono uppercase">
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">PYTHON</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">STREAMLIT</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">PYTEST</span>
+            </div>
+          </div>
+
+          {/* Project 03: JointWise */}
+          <div 
+            role="button"
+            tabIndex={0}
+            onClick={() => {
+              window.tactileFeedback?.playClickSound();
+              navigateWithTransition('/projects');
+            }}
+            onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
+            className="te-module p-5 sm:p-8 border-r-0 lg:border-r-2 border-b-2 lg:border-b-0 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
+          >
+            <div className="flex justify-between items-start mb-4">
+              <span className="te-label border-l-2 border-orange-500 pl-2">MODULE_03: MEDICAL_AI</span>
+              <ArrowUpRight size={20} className="text-te-muted group-hover:text-white transition-all" />
+            </div>
+            <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">JointWise</h3>
+            <p className="text-base font-medium mb-6 leading-relaxed text-te-muted max-w-lg">
+              End-to-end medical-imaging platform with a YOLOv11 stacking ensemble for ACL and meniscus tear detection from coronal knee MRI scans.
             </p>
             <div className="flex gap-2 text-[11px] text-te-muted font-mono uppercase">
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">PYTORCH</span>
@@ -162,7 +188,7 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Project 03: FabTwin / SPC Analytics */}
+          {/* Project 04: Patient Communication Simulator */}
           <div 
             role="button"
             tabIndex={0}
@@ -174,17 +200,17 @@ const HomePage = () => {
             className="te-module p-5 sm:p-8 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-colors"
           >
             <div className="flex justify-between items-start mb-4">
-              <span className="te-label border-l-2 border-orange-500 pl-2">MODULE_03: SPC_DIGITAL_TWIN</span>
+              <span className="te-label border-l-2 border-orange-500 pl-2">MODULE_04: CLINICAL_AI</span>
               <ArrowUpRight size={20} className="text-te-muted group-hover:text-white transition-all" />
             </div>
-            <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">FabTwin</h3>
+            <h3 className="text-4xl font-black uppercase tracking-tighter mb-4">Patient Communication Simulator</h3>
             <p className="text-base font-medium mb-6 leading-relaxed text-te-muted max-w-lg">
-              Open-source semiconductor SPC analytics dashboard and synthetic fab-data generator with control charts, Western Electric/Nelson rules, and Cp/Cpk capability analysis.
+              Patient-conversation simulator built on LangGraph and LangChain for clinical-communication training with personas, safety controls, and LLM-as-judge evaluation.
             </p>
             <div className="flex gap-2 text-[11px] text-te-muted font-mono uppercase">
               <span className="px-2 py-0.5 bg-white/5 border border-white/10">PYTHON</span>
-              <span className="px-2 py-0.5 bg-white/5 border border-white/10">STREAMLIT</span>
-              <span className="px-2 py-0.5 bg-white/5 border border-white/10">PYTEST</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">LANGGRAPH</span>
+              <span className="px-2 py-0.5 bg-white/5 border border-white/10">FASTAPI</span>
             </div>
           </div>
 
