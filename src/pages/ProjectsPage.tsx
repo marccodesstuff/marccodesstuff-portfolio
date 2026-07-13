@@ -13,13 +13,31 @@ import bodyMicrogamesData from '../data/projects/body-microgames.json'
 import waterManagementData from '../data/projects/water-management.json'
 import pageShutterData from '../data/projects/pageshutter.json'
 
+interface FeaturedProject {
+  id: string
+  title: string
+  tagline: string
+  description: string
+  tech: string[]
+  date: string
+  status: string
+  icon: string
+}
+
 const ProjectsPage = () => {
-  const [selectedProject, setSelectedProject] = useState<any>(null)
+  const [selectedProject, setSelectedProject] = useState<FeaturedProject | null>(null)
   const { navigateWithTransition } = usePageTransition()
-  
-  // Compile all projects into array
-  const projects: any[] = [
-    ...projectsData,
+
+  const featuredProjects: FeaturedProject[] = [
+    projectsData[0],
+    projectsData[1],
+    projectsData[2],
+    projectsData[3],
+    projectsData[4],
+  ]
+
+  const archiveProjects = [
+    projectsData[5],
     sgpClipperData,
     typhoonBeaconData,
     kneeDetectionData,
@@ -28,10 +46,11 @@ const ProjectsPage = () => {
     bodyMicrogamesData,
     waterManagementData,
     pageShutterData,
-    // Legacy projects
-    { id: 'trestle', title: 'Trestle', tagline: 'Block-Based Word Processor', description: 'A block-based word processor that auto-arranges your content to avoid whitespace and optimize layout.', tech: ['Flutter', 'Dart', 'Database Management', 'AWS Deployment'], date: 'Sep 2024 - Dec 2024', status: 'completed', icon: 'TextAlignJustify' },
-    { id: 'water-management-v1', title: 'Water Management and Processing Web Application', tagline: 'Environmental Data Platform', description: 'Developed a full-stack web application using Next.js for client and server operations and Express.js to handle mySQL database connectivity.', tech: ['Next.js', 'Express.js', 'mySQL', 'RESTful API'], date: 'May 2024', status: 'completed', icon: 'Database' }
+    { id: 'trestle', title: 'Trestle', tagline: 'Block-Based Word Processor', description: 'A block-based word processor that auto-arranges your content to avoid whitespace and optimize layout.', tech: ['Flutter', 'Dart', 'Database Management', 'AWS Deployment'], date: 'Sep 2024 - Dec 2024', status: 'completed', icon: 'TextAlignJustify' } as any,
+    { id: 'water-management-v1', title: 'Water Management and Processing Web Application', tagline: 'Environmental Data Platform', description: 'Developed a full-stack web application using Next.js for client and server operations and Express.js to handle mySQL database connectivity.', tech: ['Next.js', 'Express.js', 'mySQL', 'RESTful API'], date: 'May 2024', status: 'completed', icon: 'Database' } as any,
   ]
+
+  const projects = [...featuredProjects, ...archiveProjects]
 
   return (
     <main className="p-4 lg:p-8">
@@ -62,73 +81,98 @@ const ProjectsPage = () => {
 
         {/* Projects grid */}
         <div className="px-4 sm:px-8 py-6 lg:py-8">
-          <div className="grid grid-cols-1 gap-3">
-            
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                role="button"
-                tabIndex={0}
-                onClick={() => {
-                  window.tactileFeedback?.playClickSound();
-                  setSelectedProject(project);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
+          {/* Featured projects */}
+          <div className="mb-8">
+            <p className="te-label text-xs text-te-muted uppercase mb-4 tracking-widest">/// FEATURED_MODULES_01_THRU_05</p>
+            <div className="grid grid-cols-1 gap-3">
+              {featuredProjects.map((project) => (
+                <div
+                  key={project.id}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => {
                     window.tactileFeedback?.playClickSound();
                     setSelectedProject(project);
-                  }
-                }}
-                className="te-module px-5 sm:px-8 py-6 sm:py-7 flex flex-col lg:flex-row gap-6 items-start lg:items-center hover:bg-white/[0.03] transition-colors group cursor-pointer relative"
-              >
-                
-                {/* Project ID badge */}
-                <div className="absolute top-5 left-5 sm:left-6 z-10">
-                  <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2">
-                    MOD_{project.id.toUpperCase()}
-                  </span>
-                </div>
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      window.tactileFeedback?.playClickSound();
+                      setSelectedProject(project);
+                    }
+                  }}
+                  className="te-module px-5 sm:px-8 py-6 sm:py-7 flex flex-col lg:flex-row gap-6 items-start lg:items-center hover:bg-white/[0.03] transition-colors group cursor-pointer relative"
+                >
+                    
+                  {/* Project ID badge */}
+                  <div className="absolute top-5 left-5 sm:left-6 z-10">
+                    <span className="te-label px-2 py-0.5 border-l-2 border-orange-500 pl-2">
+                      MOD_{project.id.toUpperCase()}
+                    </span>
+                  </div>
 
-                {/* Main project info */}
-                <div className="flex-1 pt-7 w-full">
-                  
-                  {/* Project name and category */}
-                  <div className="mb-4">
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-1 group-hover:text-white transition-colors">
-                      {project.title}
-                    </h2>
-                    <p className="te-label text-base sm:text-lg uppercase tracking-widest">
-                      {project.tagline}
+                  {/* Main project info */}
+                  <div className="flex-1 pt-7 w-full">
+                      
+                    {/* Project name and category */}
+                    <div className="mb-4">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black uppercase tracking-tighter mb-1 group-hover:text-white transition-colors">
+                        {project.title}
+                      </h2>
+                      <p className="te-label text-base sm:text-lg uppercase tracking-widest">
+                        {project.tagline}
+                      </p>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-3xl mb-4 group-hover:text-white/80 transition-colors">
+                      {project.description}
                     </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 text-[11px] text-te-muted font-mono uppercase">
+                      {project.tech.map((tag: string) => (
+                        <span key={tag} className="px-2 py-0.5 bg-white/5 border border-white/10 group-hover:border-orange-500/30 transition-colors">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
                   </div>
 
-                  {/* Description */}
-                  <p className="text-base font-medium leading-relaxed text-te-muted max-w-3xl mb-4 group-hover:text-white/80 transition-colors">
-                    {project.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 text-[11px] text-te-muted font-mono uppercase">
-                    {project.tech.map((tag: string) => (
-                      <span key={tag} className="px-2 py-0.5 bg-white/5 border border-white/10 group-hover:border-orange-500/30 transition-colors">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  {/* Arrow indicator */}
+                  <ArrowUpRight 
+                    size={24} 
+                    className="text-te-muted self-start mt-2 lg:mt-0 group-hover:text-white transition-all transform group-hover:translate-x-1 shrink-0"
+                  />
 
                 </div>
-
-                {/* Arrow indicator */}
-                <ArrowUpRight 
-                  size={24} 
-                  className="text-te-muted self-start mt-2 lg:mt-0 group-hover:text-white transition-all transform group-hover:translate-x-1 shrink-0"
-                />
-
-              </div>
-            ))}
-
+              ))}
+            </div>
           </div>
 
+          {/* Archive section */}
+          <div>
+            <div className="border-t-2 border-white/10 pt-8">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-4">
+                <div>
+                  <p className="te-label text-xs text-te-muted uppercase mb-2 tracking-widest">/// PROJECT_ARCHIVE</p>
+                  <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tighter">OLDER_MODULES</h3>
+                </div>
+                <button
+                  onClick={() => {
+                    window.tactileFeedback?.playClickSound();
+                    navigateWithTransition('/projects/archive');
+                  }}
+                  className="te-button primary text-xs py-2 px-5 opacity-80 hover:opacity-100"
+                >
+                  OPEN_ARCHIVE
+                </button>
+              </div>
+              <p className="text-sm text-te-muted font-mono mb-4">
+                {archiveProjects.length} additional records are stored outside the main interface. Access the archive to inspect older modules, prototypes, and experimental builds.
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Footer */}
