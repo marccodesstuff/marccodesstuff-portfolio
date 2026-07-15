@@ -40,13 +40,22 @@ const AboutPage = () => {
                 <p className="te-label text-xs mt-0">PERSONAL_DATA_RECORD_04.2</p>
               </div>
 
-              <div className="mt-4 space-y-2">
-                <p className="text-lg font-bold uppercase tracking-tight">
-                  Marc Victor Velasquez
-                </p>
-                <p className="te-label text-base leading-relaxed">
-                  AI & Automation Engineer // Full-Stack Developer // Data & Machine Learning
-                </p>
+              <div className="mt-4 flex items-start gap-4">
+                <div className="shrink-0">
+                  <img 
+                    src="/profile-pic.jpg" 
+                    alt="Marc Victor Velasquez" 
+                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-sm border border-white/10 object-cover"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <p className="text-lg font-bold uppercase tracking-tight">
+                    Marc Victor Velasquez
+                  </p>
+                  <p className="te-label text-base leading-relaxed">
+                    AI & Automation Engineer // Full-Stack Developer // Data & Machine Learning
+                  </p>
+                </div>
               </div>
 
               {/* Location & timezone */}
