@@ -26,13 +26,24 @@ const HomePage = () => {
 
           {/* Main headline */}
           <div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] mb-4">
-              Marc Victor<br />
-              <span className="text-orange-500">Velasquez</span>
-            </h1>
-            <p className="text-lg lg:text-xl font-bold mt-6 tracking-normal text-te-muted max-w-3xl">
-              AI & Automation Engineer // Full-Stack Developer // Data & Machine Learning
-            </p>
+            <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-6">
+              <div className="flex-1">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter leading-[0.95] mb-4">
+                  Marc Victor<br />
+                  <span className="text-orange-500">Velasquez</span>
+                </h1>
+                <p className="text-lg lg:text-xl font-bold mt-2 sm:mt-6 tracking-normal text-te-muted max-w-3xl">
+                  AI & Automation Engineer // Full-Stack Developer // Data & Machine Learning
+                </p>
+              </div>
+              <div className="shrink-0 self-start sm:self-auto">
+                <img 
+                  src="/profile-pic.jpg" 
+                  alt="Marc Victor Velasquez" 
+                  className="w-20 h-20 sm:w-28 sm:h-28 rounded-sm border border-white/10 object-cover"
+                />
+              </div>
+            </div>
           </div>
 
           {/* CTA section */}
