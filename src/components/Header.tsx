@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Menu, X, Volume2, VolumeX } from 'lucide-react';
 import { usePageTransition } from './PageTransition';
+import { isSoundEnabled, setSoundEnabled, playClickSound, playHoverTick } from '../utils/sound';
 
 interface HeaderProps {
     activePage: 'index' | 'projects' | 'about';
@@ -15,14 +16,25 @@ const navItems = [
 
 const Header = ({ activePage }: HeaderProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [audioOn, setAudioOn] = useState(true);
     const { navigateWithTransition, isTransitioning } = usePageTransition();
     const location = useLocation();
+
+    useEffect(() => {
+        setAudioOn(isSoundEnabled());
+    }, []);
+
+    const toggleAudio = () => {
+        const next = !audioOn;
+        setAudioOn(next);
+        setSoundEnabled(next);
+    };
 
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, to: string) => {
         e.preventDefault();
         // Don't navigate to current page or during transition
         if (to === location.pathname || isTransitioning) return;
-        window.tactileFeedback?.playClickSound();
+        playClickSound();
         setIsMenuOpen(false);
         navigateWithTransition(to);
     };
@@ -33,6 +45,7 @@ const Header = ({ activePage }: HeaderProps) => {
                 <a
                     href="/"
                     onClick={(e) => handleNavClick(e, '/')}
+                    onMouseEnter={() => playHoverTick()}
                     className="flex items-center gap-2 text-sm font-semibold tracking-tight text-[#f0f0f0] hover:text-[#ff6b1a] transition-colors"
                 >
                     <span className="w-2 h-2 rounded-full bg-[#ff6b1a] inline-block animate-pulse" />
@@ -46,6 +59,7 @@ const Header = ({ activePage }: HeaderProps) => {
                             key={item.page}
                             href={item.to}
                             onClick={(e) => handleNavClick(e, item.to)}
+                            onMouseEnter={() => playHoverTick()}
                             className={`flex items-center gap-1.5 transition-colors py-1 ${
                                 activePage === item.page
                                     ? 'text-[#ff6b1a] border-b-2 border-[#ff6b1a] font-semibold'
@@ -59,10 +73,25 @@ const Header = ({ activePage }: HeaderProps) => {
                 </nav>
 
                 <div className="flex items-center gap-3">
+                    {/* Sound FX Toggle Button */}
+                    <button
+                        onClick={toggleAudio}
+                        className={`px-2.5 py-1.5 rounded text-[11px] font-mono border transition-all flex items-center gap-1.5 ${
+                            audioOn
+                                ? 'border-[#ff6b1a]/40 bg-[#ff6b1a]/10 text-[#ff6b1a]'
+                                : 'border-white/10 text-white/40 hover:text-white/70'
+                        }`}
+                        title={audioOn ? 'Tactile Sound: Enabled' : 'Tactile Sound: Muted'}
+                        aria-label="Toggle sound feedback"
+                    >
+                        {audioOn ? <Volume2 size={13} /> : <VolumeX size={13} />}
+                        <span className="hidden sm:inline text-[10px]">{audioOn ? 'FX ON' : 'MUTED'}</span>
+                    </button>
+
                     {/* Mobile Menu Toggle Button */}
                     <button
                         onClick={() => {
-                            window.tactileFeedback?.playClickSound();
+                            playClickSound();
                             setIsMenuOpen(!isMenuOpen);
                         }}
                         className="md:hidden p-2 text-xs font-mono font-bold border border-[#333333] hover:border-[#ff6b1a] rounded text-white flex items-center justify-center min-w-[40px] min-h-[40px] transition-colors"
@@ -73,7 +102,8 @@ const Header = ({ activePage }: HeaderProps) => {
 
                     <a
                         href="mailto:velasquezmarcvictor@gmail.com"
-                        onClick={() => window.tactileFeedback?.playClickSound()}
+                        onClick={() => playClickSound()}
+                        onMouseEnter={() => playHoverTick()}
                         className="hidden md:inline-flex items-center gap-1.5 bg-[#ff6b1a] hover:bg-[#ff7d36] text-white px-3.5 py-1.5 text-xs font-semibold rounded-sm shadow-sm transition-all active:scale-95"
                     >
                         <span>Get In Touch</span>

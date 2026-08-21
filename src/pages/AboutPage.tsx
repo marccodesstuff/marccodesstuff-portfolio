@@ -1,11 +1,15 @@
-import { Github, Linkedin, Mail, User, Briefcase, Award, CheckCircle2, MapPin, Globe } from 'lucide-react'
+import { useState } from 'react'
+import { Github, Linkedin, Mail, User, Briefcase, Award, CheckCircle2, MapPin, Globe, Sparkles } from 'lucide-react'
 import achievementsData from '../data/achievements.json'
 import internshipsData from '../data/internships.json'
 import researchData from '../data/research.json'
 import skillsData from '../data/skills.json'
 import certificationsData from '../data/certifications.json'
+import { playClickSound, playHoverTick } from '../utils/sound'
 
 const AboutPage = () => {
+  const [selectedRole, setSelectedRole] = useState<number | null>(null)
+
   return (
     <main className="p-4 sm:p-6 lg:p-8 max-w-[1400px] mx-auto">
       <div className="border-t-2 border-l-2 border-white/10 bg-[#141414]/90 min-h-screen">
@@ -40,7 +44,7 @@ const AboutPage = () => {
           <section className="lg:col-span-1 flex flex-col gap-6">
             
             {/* Bio module */}
-            <div className="te-module p-6 sm:p-8 flex flex-col justify-between border-b-2 border-white/5">
+            <div className="te-module p-6 sm:p-8 flex flex-col justify-between border-b-2 border-white/5" onMouseEnter={() => playHoverTick()}>
               <div>
                 <div className="flex items-center gap-2 text-xs font-mono text-white/50 uppercase tracking-wider mb-3">
                   <User size={13} className="text-[#ff6b1a]" />
@@ -94,7 +98,8 @@ const AboutPage = () => {
                   <a 
                     key={index}
                     href={link.href}
-                    onClick={() => window.tactileFeedback?.playClickSound()}
+                    onClick={() => playClickSound()}
+                    onMouseEnter={() => playHoverTick()}
                     className="flex items-center gap-1.5 px-3 py-2 bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/10 hover:border-[#ff6b1a] rounded text-white/80 hover:text-white transition-all text-xs font-mono"
                     aria-label={link.label}
                     target={link.href.startsWith('mailto') ? undefined : "_blank"}
@@ -121,9 +126,24 @@ const AboutPage = () => {
               <div className="space-y-6">
                 {/* Internships */}
                 {internshipsData.map((exp, idx) => (
-                  <div key={idx} className="border-b border-dashed border-white/10 pb-5 last:border-0 last:pb-0">
+                  <div 
+                    key={idx} 
+                    onClick={() => {
+                      playClickSound()
+                      setSelectedRole(selectedRole === idx ? null : idx)
+                    }}
+                    onMouseEnter={() => playHoverTick()}
+                    className={`p-3 rounded-sm transition-all border cursor-pointer ${
+                      selectedRole === idx
+                        ? 'border-[#ff6b1a] bg-[#ff6b1a]/10'
+                        : 'border-white/5 hover:border-white/20 bg-black/20'
+                    }`}
+                  >
                     <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1 mb-1">
-                      <span className="text-sm font-bold text-white">{exp.role}</span>
+                      <span className="text-sm font-bold text-white flex items-center gap-1.5">
+                        {selectedRole === idx && <Sparkles size={12} className="text-[#ff6b1a]" />}
+                        {exp.role}
+                      </span>
                       <span className="text-xs font-mono text-[#ff6b1a]">{exp.period}</span>
                     </div>
                     <p className="text-xs font-mono text-white/50 mb-2">{exp.company}</p>
@@ -139,23 +159,41 @@ const AboutPage = () => {
                 ))}
 
                 {/* Research */}
-                {researchData.map((proj, idx) => (
-                  <div key={idx} className="border-b border-dashed border-white/10 pb-5 last:border-0 last:pb-0">
-                    <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1 mb-1">
-                      <span className="text-sm font-bold text-white">{proj.role}</span>
-                      <span className="text-xs font-mono text-[#ff6b1a]">{proj.period}</span>
+                {researchData.map((proj, idx) => {
+                  const roleKey = idx + 100
+                  return (
+                    <div 
+                      key={idx}
+                      onClick={() => {
+                        playClickSound()
+                        setSelectedRole(selectedRole === roleKey ? null : roleKey)
+                      }}
+                      onMouseEnter={() => playHoverTick()}
+                      className={`p-3 rounded-sm transition-all border cursor-pointer ${
+                        selectedRole === roleKey
+                          ? 'border-[#ff6b1a] bg-[#ff6b1a]/10'
+                          : 'border-white/5 hover:border-white/20 bg-black/20'
+                      }`}
+                    >
+                      <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1 mb-1">
+                        <span className="text-sm font-bold text-white flex items-center gap-1.5">
+                          {selectedRole === roleKey && <Sparkles size={12} className="text-[#ff6b1a]" />}
+                          {proj.role}
+                        </span>
+                        <span className="text-xs font-mono text-[#ff6b1a]">{proj.period}</span>
+                      </div>
+                      <p className="text-xs font-mono text-white/50 mb-2">{proj.organization}</p>
+                      <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-3">
+                        {proj.description}
+                      </p>
+                      <div className="flex flex-wrap gap-1.5 text-[11px] font-mono text-white/60">
+                        {proj.achievements.map((ach, aIdx) => (
+                          <span key={aIdx} className="px-2 py-0.5 bg-white/5 border border-white/10 rounded">{ach}</span>
+                        ))}
+                      </div>
                     </div>
-                    <p className="text-xs font-mono text-white/50 mb-2">{proj.organization}</p>
-                    <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-3">
-                      {proj.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 text-[11px] font-mono text-white/60">
-                      {proj.achievements.map((ach, aIdx) => (
-                        <span key={aIdx} className="px-2 py-0.5 bg-white/5 border border-white/10 rounded">{ach}</span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             </div>
 
@@ -176,7 +214,7 @@ const AboutPage = () => {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-xs font-mono">
                 {Object.entries(skillsData).map(([key, items], index) => (
-                  <div key={index} className="bg-black/30 border border-white/5 p-4 rounded-sm">
+                  <div key={index} className="bg-black/30 border border-white/5 p-4 rounded-sm" onMouseEnter={() => playHoverTick()}>
                     <span className="text-[#ff6b1a] block mb-2 font-bold uppercase tracking-wider">{key}</span>
                     <ul className="space-y-1.5 text-white/70">
                       {(items as string[]).map((item: string, i: number) => (
@@ -203,7 +241,11 @@ const AboutPage = () => {
               
               <div className="space-y-2">
                 {certificationsData.map((cert: { provider: string; name: string; color: string; period?: string }, index: number) => (
-                  <div key={index} className="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-black/30 border border-white/5 rounded-sm text-xs font-mono text-white/80 gap-1 sm:gap-4">
+                  <div 
+                    key={index} 
+                    onMouseEnter={() => playHoverTick()}
+                    className="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-black/30 border border-white/5 hover:border-white/20 rounded-sm text-xs font-mono text-white/80 gap-1 sm:gap-4 transition-colors"
+                  >
                     <span className="font-medium text-white">{cert.name}</span>
                     <span className="text-[#ff6b1a] font-semibold shrink-0">{cert.period || cert.provider}</span>
                   </div>
@@ -223,7 +265,11 @@ const AboutPage = () => {
               
               <ul className="space-y-3">
                 {achievementsData.map((achievement: { title: string; place: string; iconType: string }, index: number) => (
-                  <li key={index} className="flex items-start gap-3 p-3 bg-black/30 border border-white/5 rounded-sm hover:border-[#ff6b1a]/30 transition-colors">
+                  <li 
+                    key={index} 
+                    onMouseEnter={() => playHoverTick()}
+                    className="flex items-start gap-3 p-3 bg-black/30 border border-white/5 rounded-sm hover:border-[#ff6b1a]/30 transition-colors"
+                  >
                     <span className="text-xs font-mono px-2 py-0.5 bg-[#ff6b1a]/10 border border-[#ff6b1a]/30 text-[#ff6b1a] font-bold rounded-sm shrink-0">
                       {achievement.place}
                     </span>

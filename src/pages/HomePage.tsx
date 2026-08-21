@@ -1,6 +1,9 @@
 import SystemLog from '../components/SystemLog'
+import MetricsCounter from '../components/MetricsCounter'
+import EngineeringSandbox from '../components/EngineeringSandbox'
 import { ArrowUpRight, Cpu, Sparkles, MapPin, Mail, Layers, Code, Database, Cloud } from 'lucide-react'
 import { usePageTransition } from '../components/PageTransition'
+import { playClickSound, playHoverTick } from '../utils/sound'
 
 const HomePage = () => {
   const { navigateWithTransition } = usePageTransition()
@@ -61,20 +64,22 @@ const HomePage = () => {
             <div className="flex items-center gap-3 shrink-0">
               <button
                 onClick={() => {
-                  window.tactileFeedback?.playClickSound()
+                  playClickSound()
                   navigateWithTransition('/projects')
                 }}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-[#ff6b1a] hover:bg-[#ff7d36] text-white text-xs font-semibold rounded-sm transition-all shadow-sm active:scale-95"
+                onMouseEnter={() => playHoverTick()}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#ff6b1a] hover:bg-[#ff7d36] text-white text-xs font-semibold rounded-sm transition-all shadow-sm active:scale-95 cursor-pointer"
               >
                 <span>View Projects</span>
                 <ArrowUpRight size={14} />
               </button>
               <button
                 onClick={() => {
-                  window.tactileFeedback?.playClickSound()
+                  playClickSound()
                   navigateWithTransition('/about')
                 }}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/15 text-white text-xs font-semibold rounded-sm transition-all active:scale-95"
+                onMouseEnter={() => playHoverTick()}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/15 text-white text-xs font-semibold rounded-sm transition-all active:scale-95 cursor-pointer"
               >
                 <span>About & Bio</span>
               </button>
@@ -88,7 +93,10 @@ const HomePage = () => {
         <div className="lg:col-span-4 grid grid-cols-1 gap-1">
           
           {/* Module 01: Location */}
-          <div className="te-module p-6 flex flex-col justify-between min-h-[120px] border-r-0 lg:border-r-2 border-b-2 border-white/5 bg-[#141414]/90">
+          <div 
+            onMouseEnter={() => playHoverTick()}
+            className="te-module p-6 flex flex-col justify-between min-h-[120px] border-r-0 lg:border-r-2 border-b-2 border-white/5 bg-[#141414]/90"
+          >
             <div className="flex justify-between items-start mb-3">
               <span className="text-xs font-mono font-bold text-white/50 flex items-center gap-1.5 uppercase tracking-wider">
                 <MapPin size={13} className="text-[#ff6b1a]" /> Location & Timezone
@@ -101,7 +109,10 @@ const HomePage = () => {
           </div>
 
           {/* Module 02: Current Focus */}
-          <div className="te-module p-6 flex flex-col justify-between min-h-[120px] border-r-0 lg:border-r-2 border-b-2 border-white/5 bg-[#141414]/90">
+          <div 
+            onMouseEnter={() => playHoverTick()}
+            className="te-module p-6 flex flex-col justify-between min-h-[120px] border-r-0 lg:border-r-2 border-b-2 border-white/5 bg-[#141414]/90"
+          >
             <div className="flex justify-between items-start mb-3">
               <span className="text-xs font-mono font-bold text-white/50 flex items-center gap-1.5 uppercase tracking-wider">
                 <Cpu size={13} className="text-[#ff6b1a]" /> Primary Engineering Focus
@@ -116,7 +127,10 @@ const HomePage = () => {
           </div>
 
           {/* Module 03: Contact CTA */}
-          <div className="bg-[#ff6b1a]/10 p-6 flex flex-col justify-between border-r-0 lg:border-r-2 border-b-2 border-[#ff6b1a]/30 hover:border-[#ff6b1a] transition-all group">
+          <div 
+            onMouseEnter={() => playHoverTick()}
+            className="bg-[#ff6b1a]/10 p-6 flex flex-col justify-between border-r-0 lg:border-r-2 border-b-2 border-[#ff6b1a]/30 hover:border-[#ff6b1a] transition-all group"
+          >
             <div className="flex justify-between items-start mb-3">
               <span className="text-xs font-mono font-bold text-[#ff6b1a] flex items-center gap-1.5 uppercase tracking-wider">
                 <Mail size={13} /> Collaboration
@@ -129,7 +143,7 @@ const HomePage = () => {
               </p>
               <a 
                 href="mailto:velasquezmarcvictor@gmail.com"
-                onClick={() => window.tactileFeedback?.playClickSound()}
+                onClick={() => playClickSound()}
                 className="mt-2 text-xs font-mono text-white/70 hover:text-[#ff6b1a] transition-colors flex items-center gap-1 group-hover:underline"
               >
                 velasquezmarcvictor@gmail.com
@@ -137,6 +151,20 @@ const HomePage = () => {
             </div>
           </div>
 
+        </div>
+
+        {/* ===========================================
+            KEY ENGINEERING METRICS COUNTERS
+            =========================================== */}
+        <div className="lg:col-span-12 border-r-0 lg:border-r-2">
+          <MetricsCounter />
+        </div>
+
+        {/* ===========================================
+            INTERACTIVE ENGINEERING SANDBOX (SPC / AGENTIC)
+            =========================================== */}
+        <div className="lg:col-span-12">
+          <EngineeringSandbox />
         </div>
 
         {/* ===========================================
@@ -155,10 +183,11 @@ const HomePage = () => {
             </div>
             <button
               onClick={() => {
-                window.tactileFeedback?.playClickSound()
+                playClickSound()
                 navigateWithTransition('/projects')
               }}
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-white/70 hover:text-[#ff6b1a] transition-colors self-start sm:self-auto"
+              onMouseEnter={() => playHoverTick()}
+              className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-white/70 hover:text-[#ff6b1a] transition-colors self-start sm:self-auto cursor-pointer"
             >
               <span>View all projects archive</span>
               <ArrowUpRight size={14} />
@@ -176,9 +205,10 @@ const HomePage = () => {
             role="button"
             tabIndex={0}
             onClick={() => {
-              window.tactileFeedback?.playClickSound();
+              playClickSound();
               navigateWithTransition('/projects');
             }}
+            onMouseEnter={() => playHoverTick()}
             onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
             className="te-module p-6 sm:p-8 border-r-0 lg:border-r-2 border-b-2 lg:border-b-0 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-all flex flex-col justify-between min-h-[280px]"
           >
@@ -209,9 +239,10 @@ const HomePage = () => {
             role="button"
             tabIndex={0}
             onClick={() => {
-              window.tactileFeedback?.playClickSound();
+              playClickSound();
               navigateWithTransition('/projects');
             }}
+            onMouseEnter={() => playHoverTick()}
             onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
             className="te-module p-6 sm:p-8 border-r-0 lg:border-r-2 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-all flex flex-col justify-between min-h-[280px]"
           >
@@ -241,9 +272,10 @@ const HomePage = () => {
             role="button"
             tabIndex={0}
             onClick={() => {
-              window.tactileFeedback?.playClickSound();
+              playClickSound();
               navigateWithTransition('/projects');
             }}
+            onMouseEnter={() => playHoverTick()}
             onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
             className="te-module p-6 sm:p-8 border-r-0 lg:border-r-2 border-b-2 lg:border-b-0 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-all flex flex-col justify-between min-h-[280px]"
           >
@@ -274,9 +306,10 @@ const HomePage = () => {
             role="button"
             tabIndex={0}
             onClick={() => {
-              window.tactileFeedback?.playClickSound();
+              playClickSound();
               navigateWithTransition('/projects');
             }}
+            onMouseEnter={() => playHoverTick()}
             onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
             className="te-module p-6 sm:p-8 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-all flex flex-col justify-between min-h-[280px]"
           >
@@ -323,7 +356,7 @@ const HomePage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             {/* Languages */}
-            <div className="bg-black/30 border border-white/5 p-4 rounded-sm">
+            <div className="bg-black/30 border border-white/5 p-4 rounded-sm" onMouseEnter={() => playHoverTick()}>
               <div className="flex items-center gap-2 mb-3 text-xs font-mono font-bold text-white uppercase tracking-wider">
                 <Code size={14} className="text-[#ff6b1a]" />
                 <span>Languages</span>
@@ -339,7 +372,7 @@ const HomePage = () => {
             </div>
 
             {/* Backend & Frameworks */}
-            <div className="bg-black/30 border border-white/5 p-4 rounded-sm">
+            <div className="bg-black/30 border border-white/5 p-4 rounded-sm" onMouseEnter={() => playHoverTick()}>
               <div className="flex items-center gap-2 mb-3 text-xs font-mono font-bold text-white uppercase tracking-wider">
                 <Database size={14} className="text-[#ff6b1a]" />
                 <span>Frameworks & APIs</span>
@@ -355,7 +388,7 @@ const HomePage = () => {
             </div>
 
             {/* AI & Data Science */}
-            <div className="bg-black/30 border border-white/5 p-4 rounded-sm">
+            <div className="bg-black/30 border border-white/5 p-4 rounded-sm" onMouseEnter={() => playHoverTick()}>
               <div className="flex items-center gap-2 mb-3 text-xs font-mono font-bold text-white uppercase tracking-wider">
                 <Cpu size={14} className="text-[#ff6b1a]" />
                 <span>AI & Machine Learning</span>
@@ -371,7 +404,7 @@ const HomePage = () => {
             </div>
 
             {/* Infrastructure & Tools */}
-            <div className="bg-black/30 border border-white/5 p-4 rounded-sm">
+            <div className="bg-black/30 border border-white/5 p-4 rounded-sm" onMouseEnter={() => playHoverTick()}>
               <div className="flex items-center gap-2 mb-3 text-xs font-mono font-bold text-white uppercase tracking-wider">
                 <Cloud size={14} className="text-[#ff6b1a]" />
                 <span>Cloud & DevOps</span>
