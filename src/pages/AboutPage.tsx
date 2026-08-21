@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Terminal, Cpu, HardDrive } from 'lucide-react'
+import { Github, Linkedin, Mail, User, Briefcase, Award, CheckCircle2, MapPin, Globe } from 'lucide-react'
 import achievementsData from '../data/achievements.json'
 import internshipsData from '../data/internships.json'
 import researchData from '../data/research.json'
@@ -7,71 +7,85 @@ import certificationsData from '../data/certifications.json'
 
 const AboutPage = () => {
   return (
-    <main className="p-4 lg:p-8">
-      <div className="max-w-[1400px] mx-auto border-t-2 border-l-2 border-white/10 bg-black/30 min-h-screen">
+    <main className="p-4 sm:p-6 lg:p-8 max-w-[1400px] mx-auto">
+      <div className="border-t-2 border-l-2 border-white/10 bg-[#141414]/90 min-h-screen">
         
         {/* Page header */}
-        <header className="border-b-2 border-white/10 px-4 sm:px-8 py-6 sm:py-8 mb-0">
+        <header className="border-b-2 border-white/10 px-6 sm:px-8 py-6 sm:py-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-            
             <div>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tighter mb-2">
-                About_Module.EXE
+              <div className="flex items-center gap-2 text-xs font-mono text-[#ff6b1a] font-bold uppercase tracking-wider mb-1">
+                <User size={14} />
+                <span>Biography & Qualifications</span>
+              </div>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+                About Marc Victor
               </h1>
-              <p className="te-label text-sm sm:text-base mt-0">TECHNICAL_SPECIFICATIONS // PROFESSIONAL_HISTORY</p>
+              <p className="text-sm sm:text-base text-white/60 mt-1">
+                AI & Automation Engineer, Full-Stack Developer, and Machine Learning Specialist.
+              </p>
             </div>
 
-            <span className="te-label px-3 py-1 border-l-2 border-orange-500 pl-2 self-start sm:self-auto">
-              STATUS: AVAILABLE_FOR_HIRE
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs font-semibold self-start sm:self-auto">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              AVAILABLE FOR HIRE
             </span>
           </div>
         </header>
 
         {/* Main content grid */}
-        <div className="px-4 sm:px-8 py-6 sm:py-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="p-4 sm:p-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
           
-          {/* LEFT COLUMN: Identity Module */}
+          {/* LEFT COLUMN: Identity Module & Experience */}
           <section className="lg:col-span-1 flex flex-col gap-6">
             
             {/* Bio module */}
-            <div className="te-module p-5 sm:p-8 flex flex-col justify-between">
+            <div className="te-module p-6 sm:p-8 flex flex-col justify-between border-b-2 border-white/5">
               <div>
-                <h3 className="text-base font-black uppercase tracking-tight mb-1 leading-snug">Identity</h3>
-                <p className="te-label text-xs mt-0">PERSONAL_DATA_RECORD_04.2</p>
+                <div className="flex items-center gap-2 text-xs font-mono text-white/50 uppercase tracking-wider mb-3">
+                  <User size={13} className="text-[#ff6b1a]" />
+                  <span>Profile Overview</span>
+                </div>
               </div>
 
-              <div className="mt-4 flex items-start gap-4">
+              <div className="flex items-start gap-4">
                 <div className="shrink-0">
                   <img 
                     src="/profile-pic.jpg" 
                     alt="Marc Victor Velasquez" 
-                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-sm border border-white/10 object-cover"
+                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-sm border border-white/10 object-cover shadow-lg"
                   />
                 </div>
-                <div className="space-y-2">
-                  <p className="text-lg font-bold uppercase tracking-tight">
+                <div className="space-y-1">
+                  <p className="text-lg font-bold text-white tracking-tight">
                     Marc Victor Velasquez
                   </p>
-                  <p className="te-label text-base leading-relaxed">
-                    AI & Automation Engineer // Full-Stack Developer // Data & Machine Learning
+                  <p className="text-xs sm:text-sm text-white/70 leading-snug">
+                    AI & Automation Engineer • Full-Stack Developer
                   </p>
                 </div>
               </div>
 
               {/* Location & timezone */}
-              <div className="mt-4 pt-3 border-t border-white/5 grid grid-cols-2 gap-y-2 text-xs font-mono text-te-muted">
-                <div>
-                  <span className="text-te-muted">LOCATION:</span><br />
-                  Angeles City, PH
+              <div className="mt-5 pt-4 border-t border-white/5 grid grid-cols-2 gap-y-2 text-xs font-mono text-white/60">
+                <div className="flex items-start gap-1.5">
+                  <MapPin size={12} className="text-[#ff6b1a] mt-0.5" />
+                  <div>
+                    <span className="text-white/40 block text-[10px]">LOCATION</span>
+                    Angeles City, PH
+                  </div>
                 </div>
-                <div>
-                  <span className="text-te-muted">TIMEZONE:</span><br />
-                  UTC +08:00
+                <div className="flex items-start gap-1.5">
+                  <Globe size={12} className="text-[#ff6b1a] mt-0.5" />
+                  <div>
+                    <span className="text-white/40 block text-[10px]">TIMEZONE</span>
+                    UTC +08:00 (PHT)
+                  </div>
                 </div>
               </div>
 
               {/* Social indicators */}
-              <div className="mt-4 flex gap-2">
+              <div className="mt-5 flex gap-2">
                 {[
                   { href: "https://github.com/marccodesstuff", icon: Github, label: "GitHub" },
                   { href: "https://linkedin.com/in/mrcvctr-vel", icon: Linkedin, label: "LinkedIn" },
@@ -81,12 +95,13 @@ const AboutPage = () => {
                     key={index}
                     href={link.href}
                     onClick={() => window.tactileFeedback?.playClickSound()}
-                    className="p-2 bg-white/5 hover:bg-orange-500/20 border border-white/10 hover:border-orange-500 rounded-sm transition-colors"
+                    className="flex items-center gap-1.5 px-3 py-2 bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/10 hover:border-[#ff6b1a] rounded text-white/80 hover:text-white transition-all text-xs font-mono"
                     aria-label={link.label}
                     target={link.href.startsWith('mailto') ? undefined : "_blank"}
                     rel={link.href.startsWith('mailto') ? undefined : "noopener noreferrer"}
                   >
-                    <link.icon size={16} />
+                    <link.icon size={14} />
+                    <span>{link.label}</span>
                   </a>
                 ))}
               </div>
@@ -94,27 +109,30 @@ const AboutPage = () => {
             </div>
 
             {/* Professional Experience module */}
-            <div className="te-module p-5 sm:p-8 overflow-hidden">
-              <h3 className="text-base font-black uppercase tracking-tight mb-1 leading-snug">
-                Professional_Journey
+            <div className="te-module p-6 sm:p-8 overflow-hidden border-b-2 border-white/5">
+              <div className="flex items-center gap-2 text-xs font-mono text-white/50 uppercase tracking-wider mb-2">
+                <Briefcase size={13} className="text-[#ff6b1a]" />
+                <span>Work Experience & Research</span>
+              </div>
+              <h3 className="text-xl font-bold text-white tracking-tight mb-5">
+                Career History
               </h3>
-              <p className="te-label text-xs mb-5 text-orange-500">.EXE // CAREER_LOG</p>
               
               <div className="space-y-6">
                 {/* Internships */}
                 {internshipsData.map((exp, idx) => (
-                  <div key={idx} className="border-b border-dashed border-white/10 pb-6 last:border-0 last:pb-0">
-                    <div className="flex justify-between items-center text-sm font-bold uppercase tracking-wide mb-2">
-                      <span>{exp.role}</span>
-                      <span className="text-orange-500">{exp.period}</span>
+                  <div key={idx} className="border-b border-dashed border-white/10 pb-5 last:border-0 last:pb-0">
+                    <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1 mb-1">
+                      <span className="text-sm font-bold text-white">{exp.role}</span>
+                      <span className="text-xs font-mono text-[#ff6b1a]">{exp.period}</span>
                     </div>
-                    <p className="text-sm text-te-muted leading-tight mb-3">{exp.company}</p>
-                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-full lg:max-w-[85%] break-words mb-4">
+                    <p className="text-xs font-mono text-white/50 mb-2">{exp.company}</p>
+                    <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-3">
                       {exp.description}
                     </p>
-                    <div className="flex flex-wrap gap-2 text-xs font-mono uppercase text-te-muted">
+                    <div className="flex flex-wrap gap-1.5 text-[11px] font-mono text-white/60">
                       {exp.achievements.map((ach, aIdx) => (
-                        <span key={aIdx} className="px-2 py-1 bg-white/5 border border-white/10">{ach}</span>
+                        <span key={aIdx} className="px-2 py-0.5 bg-white/5 border border-white/10 rounded">{ach}</span>
                       ))}
                     </div>
                   </div>
@@ -122,18 +140,18 @@ const AboutPage = () => {
 
                 {/* Research */}
                 {researchData.map((proj, idx) => (
-                  <div key={idx} className="border-b border-dashed border-white/10 pb-6 last:border-0 last:pb-0">
-                    <div className="flex justify-between items-center text-sm font-bold uppercase tracking-wide mb-2">
-                      <span>{proj.role}</span>
-                      <span className="text-orange-500">{proj.period}</span>
+                  <div key={idx} className="border-b border-dashed border-white/10 pb-5 last:border-0 last:pb-0">
+                    <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-1 mb-1">
+                      <span className="text-sm font-bold text-white">{proj.role}</span>
+                      <span className="text-xs font-mono text-[#ff6b1a]">{proj.period}</span>
                     </div>
-                    <p className="text-sm text-te-muted leading-tight mb-3">{proj.organization}</p>
-                    <p className="text-base font-medium leading-relaxed text-te-muted max-w-full lg:max-w-[85%] break-words mb-4">
+                    <p className="text-xs font-mono text-white/50 mb-2">{proj.organization}</p>
+                    <p className="text-xs sm:text-sm text-white/70 leading-relaxed mb-3">
                       {proj.description}
                     </p>
-                    <div className="flex flex-wrap gap-2 text-xs font-mono uppercase text-te-muted">
+                    <div className="flex flex-wrap gap-1.5 text-[11px] font-mono text-white/60">
                       {proj.achievements.map((ach, aIdx) => (
-                        <span key={aIdx} className="px-2 py-1 bg-white/5 border border-white/10">{ach}</span>
+                        <span key={aIdx} className="px-2 py-0.5 bg-white/5 border border-white/10 rounded">{ach}</span>
                       ))}
                     </div>
                   </div>
@@ -143,23 +161,28 @@ const AboutPage = () => {
 
           </section>
 
-          {/* CENTER COLUMN: Skills, Certifications, Achievements */}
+          {/* RIGHT COLUMN: Skills, Certifications, Achievements */}
           <section className="lg:col-span-2 flex flex-col gap-6">
             
             {/* Skills module */}
-            <div className="te-module p-5 sm:p-8">
-              <h3 className="text-lg font-black uppercase tracking-tight mb-1 leading-snug">Skill_Matrix</h3>
-              <p className="te-label text-xs mb-6 text-orange-500">.EXE // COMPETENCY_DUMP</p>
+            <div className="te-module p-6 sm:p-8 border-b-2 border-white/5">
+              <div className="flex items-center gap-2 text-xs font-mono text-white/50 uppercase tracking-wider mb-2">
+                <CheckCircle2 size={13} className="text-[#ff6b1a]" />
+                <span>Technical Capabilities</span>
+              </div>
+              <h3 className="text-xl font-bold text-white tracking-tight mb-6">
+                Skills & Technologies
+              </h3>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-xs font-mono text-te-muted">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-xs font-mono">
                 {Object.entries(skillsData).map(([key, items], index) => (
-                  <div key={index} className="border-b border-dashed border-white/10 pb-4 last:border-0 last:pb-0">
-                    <span className="text-orange-500 block mb-2 font-bold">{key.toUpperCase()}</span>
-                    <ul className="space-y-1.5 text-xs">
+                  <div key={index} className="bg-black/30 border border-white/5 p-4 rounded-sm">
+                    <span className="text-[#ff6b1a] block mb-2 font-bold uppercase tracking-wider">{key}</span>
+                    <ul className="space-y-1.5 text-white/70">
                       {(items as string[]).map((item: string, i: number) => (
-                        <li key={i} className="flex items-center gap-2 hover:text-white transition-colors cursor-default truncate">
-                          <div className="w-1 h-1 bg-orange-500 rounded-full" />
-                          {item}
+                        <li key={i} className="flex items-center gap-2 hover:text-white transition-colors">
+                          <span className="w-1 h-1 bg-[#ff6b1a] rounded-full inline-block" />
+                          <span>{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -169,38 +192,45 @@ const AboutPage = () => {
             </div>
 
             {/* Certifications module */}
-            <div className="te-module p-5 sm:p-8">
-              <h3 className="text-lg font-black uppercase tracking-tight mb-1 leading-snug">Certifications</h3>
-              <p className="te-label text-xs mb-5 text-orange-500">.EXE // VERIFIED_CREDENTIALS</p>
+            <div className="te-module p-6 sm:p-8 border-b-2 border-white/5">
+              <div className="flex items-center gap-2 text-xs font-mono text-white/50 uppercase tracking-wider mb-2">
+                <Award size={13} className="text-[#ff6b1a]" />
+                <span>Credentials & Validation</span>
+              </div>
+              <h3 className="text-xl font-bold text-white tracking-tight mb-5">
+                Verified Certifications
+              </h3>
               
-              {certificationsData.map((cert: { provider: string; name: string; color: string; period?: string }, index: number) => (
-                <div key={index} className="flex flex-col xs:flex-row xs:items-center justify-between py-3 border-b border-white/5 last:border-0 text-xs font-mono text-te-muted leading-tight gap-1 xs:gap-4 max-w-full">
-                  <span className="max-w-full xs:max-w-xs overflow-hidden break-words">{cert.name}</span>
-                  <span className="text-orange-500 max-w-full xs:max-w-[12ch] overflow-hidden break-words shrink-0">{cert.period || cert.provider}</span>
-                </div>
-              ))}
+              <div className="space-y-2">
+                {certificationsData.map((cert: { provider: string; name: string; color: string; period?: string }, index: number) => (
+                  <div key={index} className="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-black/30 border border-white/5 rounded-sm text-xs font-mono text-white/80 gap-1 sm:gap-4">
+                    <span className="font-medium text-white">{cert.name}</span>
+                    <span className="text-[#ff6b1a] font-semibold shrink-0">{cert.period || cert.provider}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             {/* Achievements module */}
-            <div className="te-module p-5 sm:p-8">
-              <h3 className="text-lg font-black uppercase tracking-tight mb-1 leading-snug">Achievement_Log</h3>
-              <p className="te-label text-xs mb-5 text-orange-500">.EXE // HONOR_REGISTRY</p>
+            <div className="te-module p-6 sm:p-8 border-b-2 border-white/5">
+              <div className="flex items-center gap-2 text-xs font-mono text-white/50 uppercase tracking-wider mb-2">
+                <Award size={13} className="text-[#ff6b1a]" />
+                <span>Honors & Recognitions</span>
+              </div>
+              <h3 className="text-xl font-bold text-white tracking-tight mb-5">
+                Competitions & Awards
+              </h3>
               
-              <ul className="space-y-3 text-base font-medium leading-relaxed text-te-muted max-w-lg">
+              <ul className="space-y-3">
                 {achievementsData.map((achievement: { title: string; place: string; iconType: string }, index: number) => (
-                  <li key={index} className="flex items-start gap-3 hover:text-white transition-colors cursor-default">
-                    <span className="text-orange-500 font-bold text-sm mt-0.5 shrink-0">{achievement.place}</span>
-                    <span>{achievement.title}</span>
+                  <li key={index} className="flex items-start gap-3 p-3 bg-black/30 border border-white/5 rounded-sm hover:border-[#ff6b1a]/30 transition-colors">
+                    <span className="text-xs font-mono px-2 py-0.5 bg-[#ff6b1a]/10 border border-[#ff6b1a]/30 text-[#ff6b1a] font-bold rounded-sm shrink-0">
+                      {achievement.place}
+                    </span>
+                    <span className="text-sm font-medium text-white/80">{achievement.title}</span>
                   </li>
                 ))}
               </ul>
-
-              <button 
-                onClick={() => window.tactileFeedback?.playClickSound()}
-                className="mt-6 te-button text-xs py-1 px-3 opacity-60 hover:opacity-100"
-              >
-                VIEW_ALL_RECORDS
-              </button>
             </div>
 
           </section>
@@ -208,27 +238,9 @@ const AboutPage = () => {
         </div>
 
         {/* Bottom system info bar */}
-        <footer className="px-4 sm:px-8 py-6 border-t border-white/10 mt-2 flex flex-col md:flex-row gap-4 items-center justify-between text-xs font-mono text-te-muted">
-          
-          {/* System metrics */}
-          <div className="flex flex-wrap justify-center md:justify-start gap-4">
-            <div className="flex items-center gap-2">
-              <Terminal size={12} />
-              <span>SYS_VER_04.2</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Cpu size={12} />
-              <span>CPU: 8%</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <HardDrive size={12} />
-              <span>MEM: 12MB</span>
-            </div>
-          </div>
-
-          {/* Build timestamp */}
-          <span className="text-center md:text-right">BUILDTIME:{new Date().toISOString().slice(0, 19).replace('T', 'Z')}</span>
-
+        <footer className="px-6 sm:px-8 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-2 items-center justify-between text-xs font-mono text-white/40">
+          <span>MARC VICTOR VELASQUEZ • PORTFOLIO</span>
+          <span>BUILD REV: 2026</span>
         </footer>
 
       </div>

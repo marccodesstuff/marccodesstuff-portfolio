@@ -16,115 +16,21 @@ const TransitionContext = createContext<TransitionContextValue>({
 export const usePageTransition = () => useContext(TransitionContext)
 
 // ─── Timing constants ──────────────────────────────────────
-const EXIT_DURATION  = 250  // ms — CRT shutdown with static onset
-const SCAN_DURATION  = 500  // ms — static noise + scanline sweep
-const ENTER_DURATION = 450  // ms — boot-up fade
+const EXIT_DURATION  = 120  // ms — fast smooth exit
+const ENTER_DURATION = 220  // ms — clean fade/slide in
 
 // ─── Transition phases ─────────────────────────────────────
-type Phase = 'idle' | 'exiting' | 'scanning' | 'entering'
+type Phase = 'idle' | 'exiting' | 'entering'
 
-// ─── CRT Static Noise Canvas ───────────────────────────────
-// Renders animated TV static at 1/4 resolution (scaled up to full screen)
-// for an authentic chunky CRT grain look with good performance.
-interface CRTStaticProps {
-  opacity: number
-}
-
-const CRTStatic = ({ opacity }: CRTStaticProps) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
-  const rafRef = useRef<number>(0)
-
-  useEffect(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    // Draw at 1/3 resolution for chunky pixel noise + good performance
-    const SCALE = 3
-
-    const resize = () => {
-      canvas.width  = Math.ceil(window.innerWidth  / SCALE)
-      canvas.height = Math.ceil(window.innerHeight / SCALE)
-    }
-    resize()
-    window.addEventListener('resize', resize)
-
-    const draw = () => {
-      const w = canvas.width
-      const h = canvas.height
-      const imageData = ctx.createImageData(w, h)
-      const data = imageData.data
-
-      for (let i = 0; i < data.length; i += 4) {
-        // Sparse noise: ~40% of pixels lit, rest stay dark
-        if (Math.random() > 0.60) {
-          // CRT phosphors glow slightly green/white
-          const luma = Math.floor(Math.random() * 160 + 40)
-          const tint = Math.random() > 0.85 ? 20 : 0 // rare orange tint
-          data[i]     = luma + tint         // R
-          data[i + 1] = luma                // G
-          data[i + 2] = Math.max(0, luma - tint * 2)  // B
-          data[i + 3] = Math.floor(Math.random() * 180 + 75) // A: 75-255
-        } else {
-          // Dark pixel — very dark grey, semi-transparent
-          const dark = Math.floor(Math.random() * 15)
-          data[i]     = dark
-          data[i + 1] = dark
-          data[i + 2] = dark
-          data[i + 3] = Math.floor(Math.random() * 120 + 80) // A: 80-200
-        }
-      }
-
-      ctx.putImageData(imageData, 0, 0)
-      rafRef.current = requestAnimationFrame(draw)
-    }
-
-    rafRef.current = requestAnimationFrame(draw)
-
-    return () => {
-      cancelAnimationFrame(rafRef.current)
-      window.removeEventListener('resize', resize)
-    }
-  }, [])
-
+// ─── Top Progress Indicator Line ────────────────────────────
+const TopAccentBar = ({ active }: { active: boolean }) => {
+  if (!active) return null
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: 'fixed',
-        inset: 0,
-        width: '100vw',
-        height: '100vh',
-        zIndex: 9998,
-        pointerEvents: 'none',
-        imageRendering: 'pixelated',
-        opacity,
-        transition: 'opacity 80ms linear',
-      }}
-    />
+    <div className="fixed top-0 left-0 right-0 h-[2px] z-[9999] pointer-events-none overflow-hidden bg-white/5">
+      <div className="h-full bg-gradient-to-r from-transparent via-[#ff6b1a] to-[#ff6b1a] animate-[pulse_0.4s_ease-in-out_infinite] w-full" />
+    </div>
   )
 }
-
-// ─── Scanline Line ─────────────────────────────────────────
-// A single orange sweep line rendered as a separate element
-// so it stays sharp on top of the noise canvas.
-const ScanlineSweep = () => (
-  <div
-    style={{
-      position: 'fixed',
-      inset: 0,
-      zIndex: 9999,
-      pointerEvents: 'none',
-      overflow: 'hidden',
-    }}
-  >
-    {/* Primary sweep line */}
-    <div className="crt-sweep-line" />
-    {/* Faint trailing echo */}
-    <div className="crt-sweep-line crt-sweep-echo" />
-  </div>
-)
 
 // ─── Component ─────────────────────────────────────────────
 interface PageTransitionProps {
@@ -143,9 +49,9 @@ const PageTransition = ({ children }: PageTransitionProps) => {
     if (phase === 'idle') setDisplayedChildren(children)
   }, [children, phase])
 
-  // Swap content during scan when screen is obscured
+  // Swap content during transition
   useEffect(() => {
-    if (phase === 'scanning' || phase === 'entering') {
+    if (phase === 'entering') {
       setDisplayedChildren(children)
     }
   }, [children, phase])
@@ -159,38 +65,26 @@ const PageTransition = ({ children }: PageTransitionProps) => {
     setPhase('exiting')
 
     setTimeout(() => {
-      setPhase('scanning')
       navigate(to)
       window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+      setPhase('entering')
 
       setTimeout(() => {
-        setPhase('entering')
-
-        setTimeout(() => {
-          setPhase('idle')
-          pendingPath.current = null
-        }, ENTER_DURATION)
-      }, SCAN_DURATION)
+        setPhase('idle')
+        pendingPath.current = null
+      }, ENTER_DURATION)
     }, EXIT_DURATION)
   }, [location.pathname, navigate, phase])
 
-  // CSS class for page content
-  const contentClass = (() => {
+  // CSS classes for smooth transition
+  const contentStyle = (() => {
     switch (phase) {
-      case 'exiting':  return 'page-exit-active'
-      case 'scanning': return 'page-hidden'
-      case 'entering': return 'page-enter-active'
-      default:         return ''
-    }
-  })()
-
-  // Static noise opacity: ramps up during exit, full during scan, fades during enter
-  const staticOpacity = (() => {
-    switch (phase) {
-      case 'exiting':  return 0.55
-      case 'scanning': return 0.85
-      case 'entering': return 0.20
-      default:         return 0
+      case 'exiting':
+        return 'opacity-0 translate-y-1 transition-all duration-100 ease-out'
+      case 'entering':
+        return 'opacity-100 translate-y-0 transition-all duration-200 ease-out'
+      default:
+        return 'opacity-100 translate-y-0'
     }
   })()
 
@@ -198,17 +92,10 @@ const PageTransition = ({ children }: PageTransitionProps) => {
 
   return (
     <TransitionContext.Provider value={{ navigateWithTransition, isTransitioning }}>
-      {/* CRT static noise canvas — visible during exiting/scanning/entering */}
-      {isTransitioning && <CRTStatic opacity={staticOpacity} />}
-
-      {/* Orange scanline sweep — only during the scan phase */}
-      {phase === 'scanning' && <ScanlineSweep />}
+      <TopAccentBar active={isTransitioning} />
 
       {/* Page content */}
-      <div
-        className={contentClass}
-        style={{ willChange: isTransitioning ? 'opacity, transform, filter' : 'auto' }}
-      >
+      <div className={contentStyle}>
         {displayedChildren}
       </div>
     </TransitionContext.Provider>
