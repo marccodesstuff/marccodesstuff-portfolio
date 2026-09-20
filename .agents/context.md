@@ -38,8 +38,12 @@ App.tsx (BrowserRouter)
   new page in (220ms). Pending timers are cleared on unmount.
 - **Project drawer:** `ProjectDrawer` is a modal dialog: focus moves in and is trapped, Escape closes it, page
   scroll is locked, and focus returns to the opener.
-- **Sound:** `src/utils/sound.ts` synthesizes clicks with the Web Audio API. The mute state is stored in
-  `localStorage` (`portfolio_sound_enabled`); the header has the toggle.
+- **Sound:** `src/utils/sound.ts` synthesizes clicks with the Web Audio API. It is off by default; the header
+  toggle turns it on and the choice is stored in `localStorage` (`portfolio_sound_enabled`).
+- **Navigation accessibility:** `MainLayout` renders a skip link and the `<main>` landmark. On each client-side
+  route change `App.tsx` updates `document.title` and focuses the page `h1`.
+- **Sandbox:** `EngineeringSandbox` uses the ARIA tabs pattern (arrow keys, Home/End) and announces results
+  through live regions; the control chart has a text alternative.
 - **SEO:** static tags live in `index.html`; `App.tsx` updates `canonical` and `og:url` per route.
 
 ## Performance Considerations
@@ -52,7 +56,7 @@ App.tsx (BrowserRouter)
 
 - `education.json` and `organizations.json` are not shown on the About page.
 - Speaking engagements are only in `docs/profile-notes.md`, not on the site.
-- Every route shares the same `<title>` and description (a per-route title would help search results).
+- Routes have their own `<title>` but share one meta description (set in `index.html`).
 - The `icon` field in project JSON is unused.
 - Pages are client-rendered; prerendering would help crawlers that do not run JavaScript.
 

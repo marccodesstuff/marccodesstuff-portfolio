@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ArrowUpRight, Menu, X, Volume2, VolumeX } from 'lucide-react';
 import { usePageTransition } from '../context/PageTransitionContext';
@@ -26,6 +26,15 @@ const Header = ({ activePage }: HeaderProps) => {
         setSoundEnabled(next);
     };
 
+    useEffect(() => {
+        if (!isMenuOpen) return;
+        const onKeyDown = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setIsMenuOpen(false);
+        };
+        document.addEventListener('keydown', onKeyDown);
+        return () => document.removeEventListener('keydown', onKeyDown);
+    }, [isMenuOpen]);
+
     const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, to: string) => {
         e.preventDefault();
         // Don't navigate to current page or during transition
@@ -42,27 +51,28 @@ const Header = ({ activePage }: HeaderProps) => {
                     href="/"
                     onClick={(e) => handleNavClick(e, '/')}
                     onMouseEnter={() => playHoverTick()}
-                    className="flex items-center gap-2 text-sm font-semibold tracking-tight text-[#f0f0f0] hover:text-[#ff6b1a] transition-colors"
+                    className="flex items-center gap-2 min-h-11 md:min-h-0 text-sm font-semibold tracking-tight text-[#f0f0f0] hover:text-[#ff6b1a] transition-colors"
                 >
                     <span className="w-2 h-2 rounded-full bg-[#ff6b1a] inline-block animate-pulse" />
                     <span className="font-mono text-xs text-white/50">MARC VICTOR</span>
                     <span className="text-xs px-1.5 py-0.5 rounded bg-white/5 border border-white/10 font-mono text-[10px] text-white/70">PORTFOLIO</span>
                 </a>
 
-                <nav className="hidden md:flex items-center gap-8 text-xs font-medium">
+                <nav aria-label="Primary" className="hidden md:flex items-center gap-8 text-xs font-medium">
                     {navItems.map((item) => (
                         <a
                             key={item.page}
                             href={item.to}
                             onClick={(e) => handleNavClick(e, item.to)}
                             onMouseEnter={() => playHoverTick()}
+                            aria-current={activePage === item.page ? 'page' : undefined}
                             className={`flex items-center gap-1.5 transition-colors py-1 ${
                                 activePage === item.page
                                     ? 'text-[#ff6b1a] border-b-2 border-[#ff6b1a] font-semibold'
                                     : 'text-white/60 hover:text-[#f0f0f0]'
                             }`}
                         >
-                            <span className="font-mono text-[10px] opacity-40">{item.number}.</span>
+                            <span aria-hidden="true" className="font-mono text-[10px] opacity-60">{item.number}.</span>
                             <span>{item.label}</span>
                         </a>
                     ))}
@@ -72,16 +82,17 @@ const Header = ({ activePage }: HeaderProps) => {
                     {/* Sound FX Toggle Button */}
                     <button
                         onClick={toggleAudio}
-                        className={`px-2.5 py-1.5 rounded text-[11px] font-mono border transition-all flex items-center gap-1.5 ${
+                        className={`px-2.5 py-1.5 min-h-11 min-w-11 md:min-h-0 md:min-w-0 justify-center rounded text-[11px] font-mono border transition-all flex items-center gap-1.5 ${
                             audioOn
                                 ? 'border-[#ff6b1a]/40 bg-[#ff6b1a]/10 text-[#ff6b1a]'
-                                : 'border-white/10 text-white/40 hover:text-white/70'
+                                : 'border-white/10 text-white/55 hover:text-white/70'
                         }`}
-                        title={audioOn ? 'Tactile Sound: Enabled' : 'Tactile Sound: Muted'}
-                        aria-label="Toggle sound feedback"
+                        title={audioOn ? 'Sound effects: on' : 'Sound effects: off'}
+                        aria-label="Sound effects"
+                        aria-pressed={audioOn}
                     >
                         {audioOn ? <Volume2 size={13} /> : <VolumeX size={13} />}
-                        <span className="hidden sm:inline text-[10px]">{audioOn ? 'FX ON' : 'MUTED'}</span>
+                        <span className="hidden sm:inline text-[10px]">{audioOn ? 'FX ON' : 'FX OFF'}</span>
                     </button>
 
                     {/* Mobile Menu Toggle Button */}
@@ -90,8 +101,10 @@ const Header = ({ activePage }: HeaderProps) => {
                             playClickSound();
                             setIsMenuOpen(!isMenuOpen);
                         }}
-                        className="md:hidden p-2 text-xs font-mono font-bold border border-[#333333] hover:border-[#ff6b1a] rounded text-white flex items-center justify-center min-w-[40px] min-h-[40px] transition-colors"
-                        aria-label="Toggle menu"
+                        className="md:hidden p-2 text-xs font-mono font-bold border border-[#333333] hover:border-[#ff6b1a] rounded text-white flex items-center justify-center min-w-11 min-h-11 transition-colors"
+                        aria-label="Menu"
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobile-menu"
                     >
                         {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
                     </button>
@@ -100,7 +113,7 @@ const Header = ({ activePage }: HeaderProps) => {
                         href="mailto:velasquezmarcvictor@gmail.com"
                         onClick={() => playClickSound()}
                         onMouseEnter={() => playHoverTick()}
-                        className="hidden md:inline-flex items-center gap-1.5 bg-[#ff6b1a] hover:bg-[#ff7d36] text-white px-3.5 py-1.5 text-xs font-semibold rounded-sm shadow-sm transition-all active:scale-95"
+                        className="hidden md:inline-flex items-center gap-1.5 bg-[#ff6b1a] hover:bg-[#ff7d36] text-[#0e0e0e] px-3.5 py-1.5 text-xs font-semibold rounded-sm shadow-sm transition-all active:scale-95"
                     >
                         <span>Get In Touch</span>
                         <ArrowUpRight size={13} />
@@ -110,8 +123,8 @@ const Header = ({ activePage }: HeaderProps) => {
 
             {/* Mobile Menu Dropdown Panel */}
             {isMenuOpen && (
-                <div className="md:hidden absolute top-full left-0 right-0 bg-[#0e0e0e] border-b border-[#333333] shadow-2xl flex flex-col p-6 gap-5 z-40 animate-[page-enter_200ms_ease-out] max-h-[calc(100dvh-73px)] overflow-y-auto pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
-                    <nav className="flex flex-col gap-1 text-sm font-medium">
+                <div id="mobile-menu" className="md:hidden absolute top-full left-0 right-0 bg-[#0e0e0e] border-b border-[#333333] shadow-2xl flex flex-col p-6 gap-5 z-40 animate-[page-enter_200ms_ease-out] max-h-[calc(100dvh-73px)] overflow-y-auto pb-[calc(1.5rem+env(safe-area-inset-bottom))]">
+                    <nav aria-label="Mobile" className="flex flex-col gap-1 text-sm font-medium">
                         {navItems.map((item) => (
                             <a
                                 key={item.page}
@@ -119,6 +132,7 @@ const Header = ({ activePage }: HeaderProps) => {
                                 onClick={(e) => {
                                     handleNavClick(e, item.to);
                                 }}
+                                aria-current={activePage === item.page ? 'page' : undefined}
                                 className={`py-3 px-3 rounded border-b border-white/5 flex justify-between items-center transition-colors min-h-[44px] ${
                                     activePage === item.page
                                         ? 'bg-white/5 text-[#ff6b1a] font-semibold'
@@ -126,7 +140,7 @@ const Header = ({ activePage }: HeaderProps) => {
                                 }`}
                             >
                                 <div className="flex items-center gap-2">
-                                    <span className="font-mono text-xs text-white/40">{item.number}.</span>
+                                    <span className="font-mono text-xs text-white/55">{item.number}.</span>
                                     <span>{item.label}</span>
                                 </div>
                                 {activePage === item.page && (
@@ -143,7 +157,7 @@ const Header = ({ activePage }: HeaderProps) => {
                             playClickSound();
                             setIsMenuOpen(false);
                         }}
-                        className="bg-[#ff6b1a] hover:bg-[#ff7d36] text-white px-4 py-3 text-xs font-semibold rounded-sm flex items-center justify-center gap-2 transition-all w-full min-h-[44px]"
+                        className="bg-[#ff6b1a] hover:bg-[#ff7d36] text-[#0e0e0e] px-4 py-3 text-xs font-semibold rounded-sm flex items-center justify-center gap-2 transition-all w-full min-h-[44px]"
                     >
                         <span>Get In Touch</span>
                         <ArrowUpRight size={14} />
