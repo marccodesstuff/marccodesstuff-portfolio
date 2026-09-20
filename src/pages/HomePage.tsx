@@ -38,7 +38,7 @@ const HomePage = () => {
   const { navigateWithTransition } = usePageTransition()
 
   return (
-    <main className="p-4 sm:p-6 lg:p-8 max-w-[1400px] mx-auto">
+    <div className="p-4 sm:p-6 lg:p-8 max-w-[1400px] mx-auto">
       {/* ===========================================
           LANDING PAGE BLUEPRINT GRID
           =========================================== */}
@@ -55,7 +55,7 @@ const HomePage = () => {
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               AVAILABLE FOR HIRE
             </span>
-            <span className="text-xs font-mono text-white/40 hidden sm:inline">•</span>
+            <span className="text-xs font-mono text-white/55 hidden sm:inline">•</span>
             <span className="text-xs font-mono text-white/60">OPEN TO ROLES & COLLABORATION</span>
           </div>
 
@@ -97,7 +97,7 @@ const HomePage = () => {
                   navigateWithTransition('/projects')
                 }}
                 onMouseEnter={() => playHoverTick()}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-[#ff6b1a] hover:bg-[#ff7d36] text-white text-xs font-semibold rounded-sm transition-all shadow-sm active:scale-95 cursor-pointer"
+                className="inline-flex items-center gap-2 max-md:min-h-11 px-4 py-2 bg-[#ff6b1a] hover:bg-[#ff7d36] text-[#0e0e0e] text-xs font-semibold rounded-sm transition-all shadow-sm active:scale-95 cursor-pointer"
               >
                 <span>View Projects</span>
                 <ArrowUpRight size={14} />
@@ -108,7 +108,7 @@ const HomePage = () => {
                   navigateWithTransition('/about')
                 }}
                 onMouseEnter={() => playHoverTick()}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/15 text-white text-xs font-semibold rounded-sm transition-all active:scale-95 cursor-pointer"
+                className="inline-flex items-center gap-2 max-md:min-h-11 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/15 text-white text-xs font-semibold rounded-sm transition-all active:scale-95 cursor-pointer"
               >
                 <span>About & Bio</span>
               </button>
@@ -173,27 +173,13 @@ const HomePage = () => {
               <a 
                 href="mailto:velasquezmarcvictor@gmail.com"
                 onClick={() => playClickSound()}
-                className="mt-2 text-xs font-mono text-white/70 hover:text-[#ff6b1a] transition-colors flex items-center gap-1 group-hover:underline"
+                className="mt-2 max-md:min-h-11 text-xs font-mono text-white/70 hover:text-[#ff6b1a] transition-colors flex items-center gap-1 group-hover:underline"
               >
                 velasquezmarcvictor@gmail.com
               </a>
             </div>
           </div>
 
-        </div>
-
-        {/* ===========================================
-            KEY ENGINEERING METRICS COUNTERS
-            =========================================== */}
-        <div className="lg:col-span-12 border-r-0 lg:border-r-2 border-white/5">
-          <MetricsCounter />
-        </div>
-
-        {/* ===========================================
-            INTERACTIVE ENGINEERING SANDBOX (SPC / AGENTIC)
-            =========================================== */}
-        <div className="lg:col-span-12">
-          <EngineeringSandbox />
         </div>
 
         {/* ===========================================
@@ -216,7 +202,7 @@ const HomePage = () => {
                 navigateWithTransition('/projects')
               }}
               onMouseEnter={() => playHoverTick()}
-              className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-white/70 hover:text-[#ff6b1a] transition-colors self-start sm:self-auto cursor-pointer"
+              className="inline-flex items-center gap-1.5 max-md:min-h-11 text-xs font-mono font-semibold text-white/70 hover:text-[#ff6b1a] transition-colors self-start sm:self-auto cursor-pointer"
             >
               <span>View all projects archive</span>
               <ArrowUpRight size={14} />
@@ -242,7 +228,7 @@ const HomePage = () => {
                     <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-[#ff6b1a]/10 border border-[#ff6b1a]/30 text-[#ff6b1a]">
                       {card.category}
                     </span>
-                    <ArrowUpRight size={18} className="text-white/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    <ArrowUpRight size={18} className="text-white/55 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 group-hover:text-[#ff6b1a] transition-colors">
                     {/* Stretched button: the whole card opens the projects page, while the links below stay independently clickable. */}
@@ -251,7 +237,7 @@ const HomePage = () => {
                         playClickSound()
                         navigateWithTransition('/projects')
                       }}
-                      className="text-left cursor-pointer after:absolute after:inset-0 after:content-['']"
+                      className="text-left cursor-pointer after:absolute after:inset-0 after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-[#ff6b1a] focus-visible:after:-outline-offset-2"
                     >
                       {project.title}
                     </button>
@@ -273,7 +259,7 @@ const HomePage = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={() => playClickSound()}
-                          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-semibold text-white/80 hover:text-white bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/15 hover:border-[#ff6b1a] rounded transition-colors"
+                          className="inline-flex items-center gap-1.5 max-md:min-h-11 px-2.5 py-1 text-xs font-mono font-semibold text-white/80 hover:text-white bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/15 hover:border-[#ff6b1a] rounded transition-colors"
                         >
                           <Github size={12} aria-hidden="true" />
                           <span>{link.label}</span>
@@ -289,6 +275,20 @@ const HomePage = () => {
         </div>
 
         {/* ===========================================
+            KEY ENGINEERING METRICS COUNTERS
+            =========================================== */}
+        <div className="lg:col-span-12 border-r-0 lg:border-r-2 border-white/5">
+          <MetricsCounter />
+        </div>
+
+        {/* ===========================================
+            INTERACTIVE ENGINEERING SANDBOX (SPC / AGENTIC)
+            =========================================== */}
+        <div className="lg:col-span-12">
+          <EngineeringSandbox />
+        </div>
+
+        {/* ===========================================
             TECH STACK MODULE - CORE TECHNOLOGIES
             =========================================== */}
         <div className="lg:col-span-12 p-6 sm:p-8 lg:p-10 border-r-0 lg:border-r-2 border-b-2 border-white/5 bg-[#141414]/90">
@@ -298,9 +298,9 @@ const HomePage = () => {
                 <Layers size={14} />
                 <span>Toolchains & Competencies</span>
               </div>
-              <h3 className="text-2xl font-extrabold text-white tracking-tight">Core Technologies</h3>
+              <h2 className="text-2xl font-extrabold text-white tracking-tight">Core Technologies</h2>
             </div>
-            <span className="text-xs font-mono text-white/40 hidden sm:inline">FULL-STACK • AI • INFRASTRUCTURE</span>
+            <span className="text-xs font-mono text-white/55 hidden sm:inline">FULL-STACK • AI • INFRASTRUCTURE</span>
           </div>
 
           {/* Grid for all categories */}
@@ -381,7 +381,7 @@ const HomePage = () => {
         </div>
 
       </div>
-    </main>
+    </div>
   )
 }
 

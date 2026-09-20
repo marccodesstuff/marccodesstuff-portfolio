@@ -131,7 +131,7 @@ const ProjectDrawer = ({ project, variant, onClose }: ProjectDrawerProps) => {
             <button
               ref={closeButtonRef}
               onClick={close}
-              className="p-2 border border-white/10 hover:border-[#ff6b1a] hover:text-[#ff6b1a] rounded text-white/60 transition-colors cursor-pointer shrink-0 min-w-[36px] min-h-[36px] flex items-center justify-center"
+              className="p-2 border border-white/10 hover:border-[#ff6b1a] hover:text-[#ff6b1a] rounded text-white/60 transition-colors cursor-pointer shrink-0 min-w-11 min-h-11 md:min-w-9 md:min-h-9 flex items-center justify-center"
               aria-label="Close panel"
             >
               <X size={18} />
@@ -141,13 +141,13 @@ const ProjectDrawer = ({ project, variant, onClose }: ProjectDrawerProps) => {
           {/* Status + period */}
           <div className="grid grid-cols-2 gap-3">
             <div className="bg-black/40 border border-white/5 p-3 rounded-sm">
-              <span className="text-[11px] font-mono text-white/40 block">STATUS</span>
+              <span className="text-[11px] font-mono text-white/55 block">STATUS</span>
               <span className="text-sm font-semibold uppercase text-emerald-400">
                 {project.status || copy.status}
               </span>
             </div>
             <div className="bg-black/40 border border-white/5 p-3 rounded-sm">
-              <span className="text-[11px] font-mono text-white/40 block">TIMELINE</span>
+              <span className="text-[11px] font-mono text-white/55 block">TIMELINE</span>
               <span className="text-sm font-semibold text-white">{project.date || copy.timeline}</span>
             </div>
           </div>
@@ -159,11 +159,11 @@ const ProjectDrawer = ({ project, variant, onClose }: ProjectDrawerProps) => {
             </h3>
             <div className="grid grid-cols-2 gap-2 text-xs font-mono">
               <div className="bg-black/30 p-2.5 border border-white/5 rounded-sm">
-                <span className="text-white/40 block text-[10px]">CATEGORY</span>
+                <span className="text-white/55 block text-[10px]">CATEGORY</span>
                 <span className="font-semibold text-white">{project.tagline}</span>
               </div>
               <div className="bg-black/30 p-2.5 border border-white/5 rounded-sm">
-                <span className="text-white/40 block text-[10px]">LEAD TECH</span>
+                <span className="text-white/55 block text-[10px]">LEAD TECH</span>
                 <span className="font-semibold text-[#ff6b1a]">{project.tech?.[0] || copy.leadTech}</span>
               </div>
             </div>
@@ -205,7 +205,7 @@ const ProjectDrawer = ({ project, variant, onClose }: ProjectDrawerProps) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => playClickSound()}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-[#ff6b1a] hover:bg-[#ff7d36] text-white text-xs font-semibold rounded-sm transition-colors"
+                    className="inline-flex items-center gap-1.5 max-md:min-h-11 px-3.5 py-2 bg-[#ff6b1a] hover:bg-[#ff7d36] text-[#0e0e0e] text-xs font-semibold rounded-sm transition-colors"
                   >
                     <span>{link.label}</span>
                     <ArrowUpRight size={14} aria-hidden="true" />
@@ -218,12 +218,12 @@ const ProjectDrawer = ({ project, variant, onClose }: ProjectDrawerProps) => {
         </div>
 
         {/* Bottom action footer */}
-        <div className="border-t border-white/10 pt-4 mt-6 flex justify-between items-center text-xs font-mono text-white/40 relative z-10 pb-[env(safe-area-inset-bottom)]">
+        <div className="border-t border-white/10 pt-4 mt-6 flex justify-between items-center text-xs font-mono text-white/55 relative z-10 pb-[env(safe-area-inset-bottom)]">
           <span>{copy.footer}</span>
 
           <button
             onClick={close}
-            className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[#ff6b1a] text-white text-xs font-semibold rounded-sm transition-all cursor-pointer"
+            className="px-4 py-2 max-md:min-h-11 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[#ff6b1a] text-white text-xs font-semibold rounded-sm transition-all cursor-pointer"
           >
             Close Specification
           </button>

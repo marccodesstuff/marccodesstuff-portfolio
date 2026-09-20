@@ -2,7 +2,8 @@
 // Pure procedural audio - zero external audio assets required
 
 let audioCtx: AudioContext | null = null;
-let soundEnabled = true;
+// Off by default: visitors opt in with the header toggle, and a saved choice is restored below.
+let soundEnabled = false;
 
 // Initialize sound setting from localStorage if available
 try {

@@ -77,7 +77,10 @@ The `icon` field is kept in the project JSON but no page reads it today. Use Luc
 
 ## Accessibility
 
-- Ensure all text has sufficient contrast in both themes
+See "Accessibility Conventions" in `instructions.md` for the project-specific rules (contrast, touch targets,
+clickable cards, focus, route changes). General checks:
+
+- Ensure all text meets WCAG AA contrast (4.5:1 for small text) on the dark surfaces
 - Use semantic HTML
 - Include alt text for images
 - Test keyboard navigation

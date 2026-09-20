@@ -48,7 +48,7 @@ const SystemLog = () => {
         
         {/* Card 1: Live Location & Time */}
         <div className="bg-black/30 border border-white/5 p-3.5 rounded-sm flex flex-col justify-between">
-          <div className="flex items-center justify-between text-[11px] font-mono text-white/40 mb-2">
+          <div className="flex items-center justify-between text-[11px] font-mono text-white/55 mb-2">
             <span>LOCAL TIME</span>
             <Clock size={12} className="text-[#ff6b1a]" />
           </div>
@@ -60,7 +60,7 @@ const SystemLog = () => {
 
         {/* Card 2: Current Focus */}
         <div className="bg-black/30 border border-white/5 p-3.5 rounded-sm flex flex-col justify-between">
-          <div className="flex items-center justify-between text-[11px] font-mono text-white/40 mb-2">
+          <div className="flex items-center justify-between text-[11px] font-mono text-white/55 mb-2">
             <span>CORE FOCUS</span>
             <ShieldCheck size={12} className="text-[#ff6b1a]" />
           </div>
@@ -72,7 +72,7 @@ const SystemLog = () => {
 
         {/* Card 3: Project Portfolio */}
         <div className="bg-black/30 border border-white/5 p-3.5 rounded-sm flex flex-col justify-between">
-          <div className="flex items-center justify-between text-[11px] font-mono text-white/40 mb-2">
+          <div className="flex items-center justify-between text-[11px] font-mono text-white/55 mb-2">
             <span>PORTFOLIO</span>
             <span className="text-[#ff6b1a] font-mono text-[10px]">10+ REPOS</span>
           </div>
@@ -84,7 +84,7 @@ const SystemLog = () => {
 
         {/* Card 4: Quick Contact */}
         <div className="bg-black/30 border border-white/5 p-3.5 rounded-sm flex flex-col justify-between">
-          <div className="flex items-center justify-between text-[11px] font-mono text-white/40 mb-2">
+          <div className="flex items-center justify-between text-[11px] font-mono text-white/55 mb-2">
             <span>GET IN TOUCH</span>
             <ArrowUpRight size={12} className="text-[#ff6b1a]" />
           </div>
@@ -93,8 +93,9 @@ const SystemLog = () => {
               href="https://github.com/marccodesstuff"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/10 hover:border-[#ff6b1a] rounded text-white/70 hover:text-white transition-colors"
+              className="p-1.5 max-md:p-4 bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/10 hover:border-[#ff6b1a] rounded text-white/70 hover:text-white transition-colors"
               title="GitHub"
+              aria-label="GitHub profile (opens in a new tab)"
             >
               <Github size={14} />
             </a>
@@ -102,15 +103,17 @@ const SystemLog = () => {
               href="https://linkedin.com/in/mrcvctr-vel"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/10 hover:border-[#ff6b1a] rounded text-white/70 hover:text-white transition-colors"
+              className="p-1.5 max-md:p-4 bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/10 hover:border-[#ff6b1a] rounded text-white/70 hover:text-white transition-colors"
               title="LinkedIn"
+              aria-label="LinkedIn profile (opens in a new tab)"
             >
               <Linkedin size={14} />
             </a>
             <a
               href="mailto:velasquezmarcvictor@gmail.com"
-              className="p-1.5 bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/10 hover:border-[#ff6b1a] rounded text-white/70 hover:text-white transition-colors"
+              className="p-1.5 max-md:p-4 bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/10 hover:border-[#ff6b1a] rounded text-white/70 hover:text-white transition-colors"
               title="Email"
+              aria-label="Email Marc"
             >
               <Mail size={14} />
             </a>
@@ -120,7 +123,7 @@ const SystemLog = () => {
       </div>
 
       {/* Copyright & Sub-bar */}
-      <div className="mt-5 pt-3.5 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs font-mono text-white/40">
+      <div className="mt-5 pt-3.5 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs font-mono text-white/55">
         <span>DESIGNED & ENGINEERED BY MARC VICTOR VELASQUEZ</span>
         <span>© 2026 • ALL RIGHTS RESERVED</span>
       </div>

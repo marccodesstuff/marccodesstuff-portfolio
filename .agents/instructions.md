@@ -91,8 +91,26 @@ Edit `metrics` in `src/components/MetricsCounter.tsx`. Every number must be trac
 - Reusable classes: `te-module` (module box), `te-label` (label typography); see `src/index.css`.
 - Blueprint grid look: 2px borders between modules. Tailwind v4 defaults border color to `currentColor`, so
   always pair a border width with a color such as `border-white/5`.
-- Sound goes through `src/utils/sound.ts` only (it respects the mute toggle). Do not create AudioContexts
-  elsewhere.
+- Sound goes through `src/utils/sound.ts` only (it respects the toggle). Do not create AudioContexts
+  elsewhere. Sound is **off by default**; the header toggle opts in and the choice is remembered.
+
+## Accessibility Conventions
+
+- **Landmarks and headings:** `MainLayout` owns the single `<main id="main-content">` and a skip link, so pages
+  must not render their own `<main>`. One `<h1>` per page, then `h2`, then `h3` without skipping levels.
+- **Contrast:** text on the orange fill uses `text-[#0e0e0e]` (white on `#ff6b1a` is only 2.85:1). Muted text
+  should be no dimmer than `text-white/55`.
+- **Touch targets:** interactive controls are at least 44px tall on phones. Use `max-md:min-h-11` (or `min-h-11
+  md:min-h-0` for controls that shrink on desktop).
+- **Clickable cards:** put a real `<button>` in the card heading and stretch it over the card with
+  `after:absolute after:inset-0` (see `STRETCH` usage in `ProjectsPage.tsx`); the card needs `relative`. Never
+  use `div role="button"`. Links inside the card need `relative z-10` so they stay independently clickable.
+- **Focus:** the global `:focus-visible` ring is in the base layer so utilities can override it. Modal dialogs use
+  `ProjectDrawer` (focus trap, Escape, focus restore); don't hand-roll another.
+- **Route changes:** `App.tsx` sets `document.title` from `PAGE_TITLES` and moves focus to the page `h1`. Add
+  new routes to `PAGE_TITLES`.
+- **Icon-only controls** need an `aria-label`. Interactive demos should announce changes (see the live regions
+  in `EngineeringSandbox.tsx`).
 
 ## Routing and Deployment Notes
 

@@ -11,7 +11,7 @@ const AboutPage = () => {
   const [selectedRole, setSelectedRole] = useState<number | null>(null)
 
   return (
-    <main className="p-4 sm:p-6 lg:p-8 max-w-[1400px] mx-auto">
+    <div className="p-4 sm:p-6 lg:p-8 max-w-[1400px] mx-auto">
       <div className="border-t-2 border-l-2 border-white/10 bg-[#141414]/90 min-h-screen">
         
         {/* Page header */}
@@ -75,14 +75,14 @@ const AboutPage = () => {
                 <div className="flex items-start gap-1.5">
                   <MapPin size={12} className="text-[#ff6b1a] mt-0.5" />
                   <div>
-                    <span className="text-white/40 block text-[10px]">LOCATION</span>
+                    <span className="text-white/55 block text-[10px]">LOCATION</span>
                     Angeles City, PH
                   </div>
                 </div>
                 <div className="flex items-start gap-1.5">
                   <Globe size={12} className="text-[#ff6b1a] mt-0.5" />
                   <div>
-                    <span className="text-white/40 block text-[10px]">TIMEZONE</span>
+                    <span className="text-white/55 block text-[10px]">TIMEZONE</span>
                     UTC +08:00 (PHT)
                   </div>
                 </div>
@@ -100,7 +100,7 @@ const AboutPage = () => {
                     href={link.href}
                     onClick={() => playClickSound()}
                     onMouseEnter={() => playHoverTick()}
-                    className="flex items-center gap-1.5 px-3 py-2 bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/10 hover:border-[#ff6b1a] rounded text-white/80 hover:text-white transition-all text-xs font-mono"
+                    className="flex items-center gap-1.5 max-md:min-h-11 px-3 py-2 bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/10 hover:border-[#ff6b1a] rounded text-white/80 hover:text-white transition-all text-xs font-mono"
                     aria-label={link.label}
                     target={link.href.startsWith('mailto') ? undefined : "_blank"}
                     rel={link.href.startsWith('mailto') ? undefined : "noopener noreferrer"}
@@ -119,9 +119,9 @@ const AboutPage = () => {
                 <Briefcase size={13} className="text-[#ff6b1a]" />
                 <span>Work Experience & Research</span>
               </div>
-              <h3 className="text-xl font-bold text-white tracking-tight mb-5">
+              <h2 className="text-xl font-bold text-white tracking-tight mb-5">
                 Career History
-              </h3>
+              </h2>
               
               <div className="space-y-6">
                 {/* Internships */}
@@ -208,9 +208,9 @@ const AboutPage = () => {
                 <CheckCircle2 size={13} className="text-[#ff6b1a]" />
                 <span>Technical Capabilities</span>
               </div>
-              <h3 className="text-xl font-bold text-white tracking-tight mb-6">
+              <h2 className="text-xl font-bold text-white tracking-tight mb-6">
                 Skills & Technologies
-              </h3>
+              </h2>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 text-xs font-mono">
                 {Object.entries(skillsData).map(([key, items], index) => (
@@ -235,9 +235,9 @@ const AboutPage = () => {
                 <Award size={13} className="text-[#ff6b1a]" />
                 <span>Credentials & Validation</span>
               </div>
-              <h3 className="text-xl font-bold text-white tracking-tight mb-5">
+              <h2 className="text-xl font-bold text-white tracking-tight mb-5">
                 Verified Certifications
-              </h3>
+              </h2>
               
               <div className="space-y-2">
                 {certificationsData.map((cert: { provider: string; name: string; color: string; period?: string }, index: number) => (
@@ -259,9 +259,9 @@ const AboutPage = () => {
                 <Award size={13} className="text-[#ff6b1a]" />
                 <span>Honors & Recognitions</span>
               </div>
-              <h3 className="text-xl font-bold text-white tracking-tight mb-5">
+              <h2 className="text-xl font-bold text-white tracking-tight mb-5">
                 Competitions & Awards
-              </h3>
+              </h2>
               
               <ul className="space-y-3">
                 {achievementsData.map((achievement: { title: string; place: string; iconType: string }, index: number) => (
@@ -284,13 +284,13 @@ const AboutPage = () => {
         </div>
 
         {/* Bottom system info bar */}
-        <footer className="px-6 sm:px-8 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-2 items-center justify-between text-xs font-mono text-white/40">
+        <footer className="px-6 sm:px-8 py-4 border-t border-white/10 flex flex-col sm:flex-row gap-2 items-center justify-between text-xs font-mono text-white/55">
           <span>MARC VICTOR VELASQUEZ • PORTFOLIO</span>
           <span>BUILD REV: 2026</span>
         </footer>
 
       </div>
-    </main>
+    </div>
   )
 }
 
