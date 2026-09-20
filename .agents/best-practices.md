@@ -17,14 +17,14 @@
 ### File Organization
 - One component per file (unless very small)
 - Co-locate related files (e.g., component + styles)
-- Keep JSON data files in `/src/data/projects/`
+- Keep JSON data files in `/src/data/` (archive projects in `/src/data/projects/`)
 - Group utility functions by feature
 
 ## Naming Conventions
 
 - **Components**: `PascalCase` (e.g., `ProjectsPage.tsx`)
-- **Functions**: `camelCase` (e.g., `getDateValue()`)
-- **Constants**: `UPPER_SNAKE_CASE` (e.g., `MONTHS_MAP`)
+- **Functions**: `camelCase` (e.g., `formatValue()`)
+- **Constants**: `UPPER_SNAKE_CASE` (e.g., `CATEGORY_FILTERS`)
 - **JSON files**: `kebab-case` (e.g., `sgp-clipper.json`)
 - **CSS classes**: `te-` prefix for theme elements
 
@@ -34,55 +34,43 @@
 - Custom CSS goes in corresponding `.css` files
 - Use CSS custom properties for theme values
 - Maintain mobile-first responsive design
-- Test dark/light mode compatibility
+- The site is dark-only; there is no theme switcher
 
 ## Project Data Guidelines
 
 ### Adding Projects
-1. Create JSON file following the exact schema
-2. Include all required fields
-3. Use supported Lucide icon names
-4. Use consistent date format (e.g., "Feb 2026")
-5. Add proper description points (2-4 items)
-6. Include relevant tech stack
+1. Featured: add an entry to `src/data/projects.json` with `categories` (and `links` if you have confirmed repo/demo URLs).
+2. Archive: create `src/data/projects/<id>.json`, then import it and add it to `archiveProjects` in `src/data/archive.ts`.
+3. Keep entries matching `ProjectEntry` in `src/types/project.ts`; `npm run build` will catch type mismatches.
+4. Write `description` as one paragraph and `tech` as a short list of real technologies used.
 
 ### Updating Projects
-1. Keep JSON structure unchanged (no new top-level fields without code changes)
-2. Update date field only if needed
-3. Ensure icon name is valid
-4. Test that URL links are working
+1. Keep the JSON structure unchanged; new fields need a matching change to `ProjectEntry` and the UI.
+2. Only link to repos or demos you have verified are the right project.
+3. Check that URLs open.
 
 ### Archiving/Removing Projects
-1. Remove JSON file
-2. Remove import from `ProjectsPage.tsx`
-3. Remove from `projectsData` array
-4. Test that page still renders
+- Featured: remove the entry from `src/data/projects.json` (and from `FEATURED_CARDS` in `HomePage.tsx` if it is one of the homepage cards).
+- Archive: remove it from `archiveProjects` in `src/data/archive.ts`, then delete the JSON file.
 
 ## Date Format Guidelines
 
-- **Single Month**: "Feb 2026"
-- **Date Range**: "April - October 2025"
-- **In Progress**: Include "Present" or current status (e.g., "Jan 2025 - Present")
-- **Future**: Use future dates if project is planned
+Dates are display strings and are **not parsed or sorted**; featured projects show in file order, so keep
+`projects.json` ordered the way you want it displayed.
 
-The parser extracts the **first date** from these strings, so the first date listed is what's used for sorting.
+- **Single month**: "Feb 2026"
+- **Range**: "Jan 2025 – Mar 2026"
+- **In progress**: "Jan 2026 – Present"
 
-## Icon Selection
+## Icons
 
-Choose icons that represent the project type:
-- `Scissors` - Tools, utilities, extractors
-- `Zap` - High-impact, AI/ML, competitive projects
-- `Brain` - ML, AI, intelligent systems
-- `Gamepad2` - Games, interactive experiences
-- `Database` - Data-centric, backend systems
-- `Code` - Programming tools, utilities
-- `Users` - Team projects, collaborative work
-- `Calendar` - Time-based or scheduling projects
+The `icon` field is kept in the project JSON but no page reads it today. Use Lucide component names
+(for example `Brain`, `Cpu`, `Shield`) so it stays usable if icons are rendered again.
 
 ## Performance Tips
 
 1. **Avoid large JSON files** - Keep individual project JSON under 2KB
-2. **Lazy load if needed** - Currently all projects load upfront
+2. **Lazy load if needed** - Currently all data is bundled upfront
 3. **Memoize components** - Use React.memo for expensive components
 4. **Optimize images** - Use optimized formats and sizes
 5. **Bundle size** - Monitor Lucide icon imports (tree-shake unused icons)
@@ -98,14 +86,15 @@ Choose icons that represent the project type:
 ## Testing Checklist
 
 Before deploying changes:
-- [ ] All projects render correctly
-- [ ] Projects sort newest to oldest
-- [ ] Theme toggle works (dark/light mode)
-- [ ] Icons display for all projects
-- [ ] Links work (if any project has links)
-- [ ] Responsive design tested (mobile, tablet, desktop)
+- [ ] `npm run build` passes (includes the TypeScript check)
+- [ ] `npm run lint` reports no errors
+- [ ] Featured projects render and every filter pill shows the expected projects
+- [ ] Archive lists all projects and the count on the Projects page matches
+- [ ] Project drawers open, close with Escape and the close buttons, and return focus to the card
+- [ ] Links open the right repositories
+- [ ] Direct load and refresh work on `/projects`, `/projects/archive`, and `/about` (via `npm run preview`)
+- [ ] Responsive layout checked at mobile (375px), tablet, and desktop widths with no horizontal scroll
 - [ ] No console errors or warnings
-- [ ] TypeScript compiles without errors
 
 ## Version Control
 

@@ -1,120 +1,104 @@
 # Portfolio Project Assistant Instructions
 
 ## Project Overview
-This is a **Marc's Codes Stuff Portfolio** - a React + TypeScript portfolio website showcasing professional projects and technical work of Marc Victor L. Velasquez.
+
+Personal portfolio for Marc Victor Velasquez: a React + TypeScript single-page app showing projects,
+experience, and skills. Live at https://marcvelasquez.appwrite.network. See `README.md` for setup and deployment.
 
 ## Technology Stack
-- **Frontend**: React, TypeScript, Tailwind CSS, Vite
-- **Routing**: React Router
-- **UI Components**: Lucide React (icons), custom theme system
-- **Build Tool**: Vite
-- **Package Manager**: npm
+
+- React 19, TypeScript (strict), Vite 7
+- Tailwind CSS 4 plus a few custom `te-*` classes in `src/index.css`
+- React Router 7 (client-side routing, `BrowserRouter`)
+- lucide-react for icons
+- Package manager: npm. Runtime dependencies are only `react`, `react-dom`, `react-router-dom`, `lucide-react`;
+  do not add heavy libraries without a clear need.
 
 ## Project Structure
 
 ```
-/src
-├── App.tsx              # Main app with routing
-├── ProjectsPage.tsx     # Projects listing page
-├── AboutPage.tsx        # About page
-├── SwissPortfolio.tsx   # Portfolio wrapper
-├── ThemeContext.tsx     # Theme management (dark/light mode)
-├── ThemeToggle.tsx      # Theme toggle component
-├── main.tsx             # Entry point
-├── index.css            # Global styles
-├── App.css              # App component styles
-└── data/
-    └── projects/        # Individual project JSON files
-        ├── sgp-clipper.json
-        ├── typhoon-beacon.json
-        ├── knee-detection.json
-        ├── ai-director.json
-        ├── monitored-quiz.json
-        ├── body-microgames.json
-        ├── water-management.json
-        └── pageshutter.json
+src/
+├── App.tsx                  # Routes; keeps canonical / og:url in sync with the route
+├── main.tsx                 # Entry point
+├── pages/
+│   ├── HomePage.tsx         # Hero, metrics, sandbox, featured cards, tech stack
+│   ├── ProjectsPage.tsx     # Featured projects with category filter
+│   ├── ProjectsArchivePage.tsx
+│   └── AboutPage.tsx
+├── components/
+│   ├── Header.tsx, Footer.tsx, CursorGlow.tsx, SystemLog.tsx
+│   ├── MetricsCounter.tsx   # Homepage metrics strip
+│   ├── EngineeringSandbox.tsx  # Interactive SPC / agentic demo
+│   ├── ProjectDrawer.tsx    # Shared accessible detail drawer (featured + archive)
+│   └── PageTransition.tsx   # Route fade transition provider
+├── context/PageTransitionContext.ts  # Context + usePageTransition hook
+├── layouts/MainLayout.tsx
+├── data/
+│   ├── projects.json        # Featured projects (array)
+│   ├── archive.ts           # Ordered list of archive projects
+│   ├── projects/*.json      # One file per archive project
+│   └── internships, research, skills, certifications, achievements, education, organizations (.json)
+├── types/project.ts         # ProjectEntry, ProjectLink, ProjectCategory
+└── utils/sound.ts           # Web Audio sounds; the single place for click/hover feedback
+public/                      # favicon.svg, og-image.png, robots.txt, sitemap.xml, profile-pic.jpg
 ```
 
-## Key Data Structure
+## Project Data Schema
 
-### Project JSON Schema
+Entries in `src/data/projects.json` and `src/data/projects/*.json` match `ProjectEntry` in `src/types/project.ts`:
+
 ```json
 {
-  "id": "string",
+  "id": "kebab-case-id",
   "title": "string",
   "tagline": "string",
-  "description": ["string"],
-  "role": "string",
-  "type": "string",
-  "date": "string (e.g., 'Feb 2026', 'April - October 2025')",
-  "status": "completed | in-progress",
-  "featured": "boolean (optional)",
-  "achievements": ["string"] (optional),
+  "description": "string (one paragraph)",
   "tech": ["string"],
-  "links": [{ "label": "string", "url": "string" }] (optional),
-  "icon": "string (Lucide React icon name)"
+  "date": "e.g. 'Feb 2026' or 'Jan 2026 – Present'",
+  "status": "active | completed",
+  "icon": "string (currently unused by the UI)",
+  "categories": ["ai-ml", "automation", "fullstack"],
+  "links": [{ "label": "GitHub", "url": "https://..." }]
 }
 ```
 
-### Icon Mapping
-Available icons (from Lucide React):
-- `Scissors` - SGP-Clipper
-- `Zap` - Typhoon Beacon
-- `Brain` - AI/ML projects
-- `Gamepad2` - Game/interactive projects
-- `Database` - Data-related projects
-- `Code` - Development/tool projects
-- `Users` - Team projects
-- `Calendar` - Dates
+`categories` (featured projects only) drives the filter pills; `links` are optional. Only add a link to a repo
+or demo you have confirmed is the right one.
 
 ## Common Tasks
 
-### Adding a New Project
-1. Create a new JSON file in `/src/data/projects/`
-2. Add to the import list in `ProjectsPage.tsx`
-3. Add to the `projectsData` array in `ProjectsPage.tsx`
+### Add a featured project
+1. Add an entry to `src/data/projects.json` (order in the file is display order).
+2. Give it `categories` so it appears under the right filters.
+3. If it should be one of the four homepage cards, add it to `FEATURED_CARDS` in `src/pages/HomePage.tsx`
+   (matched to the JSON entry by `id`).
 
-### Modifying Project Display
-- Edit `/src/ProjectsPage.tsx` for layout/styling changes
-- Projects are automatically sorted newest to oldest by date
+### Add an archive project
+1. Create `src/data/projects/<id>.json`.
+2. Import it and add it to `archiveProjects` in `src/data/archive.ts`.
 
-### Theme Customization
-- Theme variables are defined in CSS files
-- Use `bg-te-bg`, `text-te-fg`, `bg-te-accent` utility classes
-- Theme context handles dark/light mode switching
+### Change the homepage metrics
+Edit `metrics` in `src/components/MetricsCounter.tsx`. Every number must be traceable to real data
+(`internships.json`, `research.json`, or a project you can demonstrate).
 
-## CSS Custom Properties
-The project uses a custom theme system with properties like:
-- `bg-te-bg` - Background
-- `text-te-fg` - Foreground text
-- `bg-te-accent` - Accent color
-- `bg-te-surface` - Surface background
-- `border-te-border` - Border color
-- `te-label` - Typography class for labels
-- `te-module` - Module/box styling
-- `te-button` - Button styling
+### Add a page
+1. Add the route in `src/App.tsx` and a page component in `src/pages/`.
+2. Add it to `navItems` in `Header.tsx` and to `public/sitemap.xml`.
 
-## Development Guidelines
+## Design Conventions
 
-1. **Project Data**: Always store project information in JSON files, not in component code
-2. **Sorting**: Projects are sorted by date automatically (newest to oldest)
-3. **Icons**: Use Lucide React icons only; map icon names in the iconMap object
-4. **Routing**: Use React Router for navigation between pages
-5. **Styling**: Use Tailwind CSS with custom theme utility classes
-6. **Typography**: Use `te-label` for consistent labeling and `font-black/bold` for hierarchy
+- Accent color `#ff6b1a`; dark surfaces (`#0e0e0e`, `#141414`); Inter for text, JetBrains Mono for labels.
+- Reusable classes: `te-module` (module box), `te-label` (label typography); see `src/index.css`.
+- Blueprint grid look: 2px borders between modules. Tailwind v4 defaults border color to `currentColor`, so
+  always pair a border width with a color such as `border-white/5`.
+- Sound goes through `src/utils/sound.ts` only (it respects the mute toggle). Do not create AudioContexts
+  elsewhere.
 
-## File Naming Conventions
-- Component files: `PascalCase.tsx`
-- Data files: `kebab-case.json`
-- CSS files: `PascalCase.css`
-- Asset files: `lowercase-with-hyphens`
+## Routing and Deployment Notes
 
-## Pages
-- `/` - Home page (App.tsx)
-- `/projects` - Projects page (ProjectsPage.tsx)
-- `/about` - About page (AboutPage.tsx)
+- `vite.config.ts` uses `base: '/'` and the host must serve `index.html` for unknown paths.
+- Navigation between pages should use `navigateWithTransition` from `usePageTransition()`.
 
-## Important Notes
-- Project dates are parsed from strings like "Feb 2026" or "April - October 2025"
-- The `getDateValue()` function in ProjectsPage sorts based on year * 100 + month
-- All projects have an icon property that maps to Lucide React components
+## Verification
+
+Before finishing a change: `npm run build` and `npm run lint` should both pass with no errors.

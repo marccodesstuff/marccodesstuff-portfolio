@@ -1,38 +1,33 @@
 import { useState } from 'react'
 import { ArrowUpRight, Sparkles, FolderGit2, ArrowLeft, Filter } from 'lucide-react'
-import { usePageTransition } from '../components/PageTransition'
+import { usePageTransition } from '../context/PageTransitionContext'
 import ProjectDrawer from '../components/ProjectDrawer'
-import type { ProjectEntry } from '../types/project'
+import type { ProjectCategory, ProjectEntry } from '../types/project'
 import { playClickSound, playHoverTick } from '../utils/sound'
 
 // Import all project JSON files
 import projectsData from '../data/projects.json'
 import { archiveProjects } from '../data/archive'
 
-type FilterCategory = 'ALL' | 'AI_ML' | 'AUTOMATION' | 'FULLSTACK'
+type FilterId = 'all' | ProjectCategory
+
+const CATEGORY_FILTERS: { id: FilterId; label: string }[] = [
+  { id: 'all', label: 'All Domains' },
+  { id: 'ai-ml', label: 'AI & Machine Learning' },
+  { id: 'automation', label: 'Automation & SPC' },
+  { id: 'fullstack', label: 'Full-Stack & Systems' },
+]
 
 const ProjectsPage = () => {
   const [selectedProject, setSelectedProject] = useState<ProjectEntry | null>(null)
-  const [activeCategory, setActiveCategory] = useState<FilterCategory>('ALL')
+  const [activeCategory, setActiveCategory] = useState<FilterId>('all')
   const { navigateWithTransition } = usePageTransition()
 
   const allProjects: ProjectEntry[] = projectsData
 
-  const filteredProjects = allProjects.filter((p) => {
-    if (activeCategory === 'ALL') return true
-    if (activeCategory === 'AI_ML') {
-      return p.tech.some(t => ['PyTorch', 'YOLOv11', 'LangGraph', 'Agentic AI', 'LLM-as-Judge', 'Machine Learning'].includes(t)) ||
-        p.tagline.toLowerCase().includes('ai') || p.tagline.toLowerCase().includes('computer vision')
-    }
-    if (activeCategory === 'AUTOMATION') {
-      return p.tagline.toLowerCase().includes('automation') || p.tagline.toLowerCase().includes('spc') ||
-        p.tech.some(t => ['MCP', 'Statistical Process Control', 'Agentic AI'].includes(t))
-    }
-    if (activeCategory === 'FULLSTACK') {
-      return p.tech.some(t => ['.NET 10', 'Blazor', 'FastAPI', 'Next.js', 'Python', 'Streamlit'].includes(t))
-    }
-    return true
-  })
+  const filteredProjects = allProjects.filter(
+    (p) => activeCategory === 'all' || p.categories?.includes(activeCategory),
+  )
 
   return (
     <main className="p-4 sm:p-6 lg:p-8 max-w-[1400px] mx-auto">
@@ -73,12 +68,7 @@ const ProjectsPage = () => {
               <span className="text-xs font-mono text-white/40 flex items-center gap-1 mr-1">
                 <Filter size={12} className="text-[#ff6b1a]" /> FILTER:
               </span>
-              {[
-                { id: 'ALL' as const, label: 'All Domains' },
-                { id: 'AI_ML' as const, label: 'AI & Machine Learning' },
-                { id: 'AUTOMATION' as const, label: 'Automation & SPC' },
-                { id: 'FULLSTACK' as const, label: 'Full-Stack & Systems' },
-              ].map(cat => (
+              {CATEGORY_FILTERS.map(cat => (
                 <button
                   key={cat.id}
                   onClick={() => {

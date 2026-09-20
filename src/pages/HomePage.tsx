@@ -2,7 +2,7 @@ import SystemLog from '../components/SystemLog'
 import MetricsCounter from '../components/MetricsCounter'
 import EngineeringSandbox from '../components/EngineeringSandbox'
 import { ArrowUpRight, Cpu, Sparkles, MapPin, Mail, Layers, Code, Database, Cloud, Github } from 'lucide-react'
-import { usePageTransition } from '../components/PageTransition'
+import { usePageTransition } from '../context/PageTransitionContext'
 import { playClickSound, playHoverTick } from '../utils/sound'
 import projectsData from '../data/projects.json'
 

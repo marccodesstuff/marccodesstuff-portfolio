@@ -18,6 +18,9 @@ export interface Project extends Omit<ProjectJSON, 'icon'> {
     icon: React.ReactNode;
 }
 
+/** Filter buckets on the Projects page. Add a new id here, in the JSON, and in CATEGORY_FILTERS. */
+export type ProjectCategory = 'ai-ml' | 'automation' | 'fullstack';
+
 export interface ProjectLink {
     label: string;
     url: string;
@@ -33,5 +36,6 @@ export interface ProjectEntry {
     date: string;
     status: string;
     icon: string;
+    categories?: string[];
     links?: ProjectLink[];
 }

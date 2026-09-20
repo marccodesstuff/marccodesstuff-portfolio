@@ -2,14 +2,11 @@ import { useEffect, useState } from 'react'
 
 const CursorGlow = () => {
   const [position, setPosition] = useState({ x: -1000, y: -1000 })
-  const [isPointer, setIsPointer] = useState(false)
+  // Only enable on devices with hover capability (pointer: fine)
+  const [isPointer] = useState(() => window.matchMedia('(pointer: fine)').matches)
 
   useEffect(() => {
-    // Only enable on devices with hover capability (pointer: fine)
-    const matchMedia = window.matchMedia('(pointer: fine)')
-    setIsPointer(matchMedia.matches)
-
-    if (!matchMedia.matches) return
+    if (!isPointer) return
 
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY })
@@ -19,7 +16,7 @@ const CursorGlow = () => {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
     }
-  }, [])
+  }, [isPointer])
 
   if (!isPointer) return null
 
