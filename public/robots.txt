@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://marcvelasquez.appwrite.network/sitemap.xml

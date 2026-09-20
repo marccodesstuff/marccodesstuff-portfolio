@@ -1,36 +1,22 @@
 import { useState } from 'react'
-import { ArrowUpRight, X, Sparkles, FolderGit2, ArrowLeft, Filter } from 'lucide-react'
+import { ArrowUpRight, Sparkles, FolderGit2, ArrowLeft, Filter } from 'lucide-react'
 import { usePageTransition } from '../components/PageTransition'
+import ProjectDrawer from '../components/ProjectDrawer'
+import type { ProjectEntry } from '../types/project'
 import { playClickSound, playHoverTick } from '../utils/sound'
 
 // Import all project JSON files
 import projectsData from '../data/projects.json'
-
-interface FeaturedProject {
-  id: string
-  title: string
-  tagline: string
-  description: string
-  tech: string[]
-  date: string
-  status: string
-  icon: string
-}
+import { archiveProjects } from '../data/archive'
 
 type FilterCategory = 'ALL' | 'AI_ML' | 'AUTOMATION' | 'FULLSTACK'
 
 const ProjectsPage = () => {
-  const [selectedProject, setSelectedProject] = useState<FeaturedProject | null>(null)
+  const [selectedProject, setSelectedProject] = useState<ProjectEntry | null>(null)
   const [activeCategory, setActiveCategory] = useState<FilterCategory>('ALL')
   const { navigateWithTransition } = usePageTransition()
 
-  const allProjects: FeaturedProject[] = [
-    projectsData[0],
-    projectsData[1],
-    projectsData[2],
-    projectsData[3],
-    projectsData[4],
-  ]
+  const allProjects: ProjectEntry[] = projectsData
 
   const filteredProjects = allProjects.filter((p) => {
     if (activeCategory === 'ALL') return true
@@ -207,7 +193,7 @@ const ProjectsPage = () => {
               onMouseEnter={() => playHoverTick()}
               className="inline-flex items-center gap-2 px-4 py-2 bg-[#ff6b1a] hover:bg-[#ff7d36] text-white text-xs font-semibold rounded-sm transition-all shadow-sm self-start sm:self-auto cursor-pointer"
             >
-              <span>Explore Archive ({allProjects.length}+)</span>
+              <span>Explore Archive ({archiveProjects.length})</span>
               <ArrowUpRight size={14} />
             </button>
           </div>
@@ -219,122 +205,12 @@ const ProjectsPage = () => {
           <span>MARC VICTOR VELASQUEZ • PORTFOLIO</span>
         </footer>
 
-      {/* Slide-out Technical Spec Drawer */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex justify-end">
-          {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer animate-[fadeIn_0.15s_ease-out]"
-            onClick={() => {
-              playClickSound()
-              setSelectedProject(null)
-            }}
-          />
-
-          {/* Drawer container */}
-          <div className="relative w-full max-w-xl bg-[#141414] border-l-2 border-[#ff6b1a] h-full px-6 sm:px-8 py-6 sm:py-8 flex flex-col justify-between overflow-y-auto z-10 shadow-2xl animate-[slideInRight_0.2s_ease-out]">
-            
-            <div className="relative z-10 space-y-6">
-              {/* Header */}
-              <div className="flex justify-between items-start border-b border-white/10 pb-4">
-                <div className="pr-4">
-                  <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-[#ff6b1a]/10 border border-[#ff6b1a]/30 text-[#ff6b1a]">
-                    PROJECT SPECIFICATION
-                  </span>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mt-2">
-                    {selectedProject.title}
-                  </h2>
-                  <p className="text-sm font-medium text-white/60 mt-1">{selectedProject.tagline}</p>
-                </div>
-                
-                <button
-                  onClick={() => {
-                    playClickSound()
-                    setSelectedProject(null)
-                  }}
-                  className="p-2 border border-white/10 hover:border-[#ff6b1a] hover:text-[#ff6b1a] rounded text-white/60 transition-colors cursor-pointer shrink-0 min-w-[36px] min-h-[36px] flex items-center justify-center"
-                  aria-label="Close panel"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-
-              {/* Status + period */}
-              <div className="grid grid-cols-2 gap-3">
-                <div className="bg-black/40 border border-white/5 p-3 rounded-sm">
-                  <span className="text-[11px] font-mono text-white/40 block">STATUS</span>
-                  <span className="text-sm font-semibold uppercase text-emerald-400">
-                    {selectedProject.status || 'Active'}
-                  </span>
-                </div>
-                <div className="bg-black/40 border border-white/5 p-3 rounded-sm">
-                  <span className="text-[11px] font-mono text-white/40 block">TIMELINE</span>
-                  <span className="text-sm font-semibold text-white">
-                    {selectedProject.date || 'Recent'}
-                  </span>
-                </div>
-              </div>
-
-              {/* Highlights */}
-              <div>
-                <h3 className="text-xs font-mono font-bold text-white/50 uppercase tracking-wider mb-2">
-                  Project Highlights
-                </h3>
-                <div className="grid grid-cols-2 gap-2 text-xs font-mono">
-                  <div className="bg-black/30 p-2.5 border border-white/5 rounded-sm">
-                    <span className="text-white/40 block text-[10px]">CATEGORY</span>
-                    <span className="font-semibold text-white">{selectedProject.tagline}</span>
-                  </div>
-                  <div className="bg-black/30 p-2.5 border border-white/5 rounded-sm">
-                    <span className="text-white/40 block text-[10px]">LEAD TECH</span>
-                    <span className="font-semibold text-[#ff6b1a]">{selectedProject.tech?.[0] || 'Full-Stack'}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Detailed Description */}
-              <div>
-                <h3 className="text-xs font-mono font-bold text-white/50 uppercase tracking-wider mb-2">
-                  Overview & Impact
-                </h3>
-                <p className="text-sm sm:text-base text-white/75 leading-relaxed">
-                  {selectedProject.description}
-                </p>
-              </div>
-
-              {/* Tech tags */}
-              <div>
-                <h3 className="text-xs font-mono font-bold text-white/50 uppercase tracking-wider mb-2">
-                  Technology Stack
-                </h3>
-                <div className="flex flex-wrap gap-2 text-xs font-mono">
-                  {selectedProject.tech.map((tag: string) => (
-                    <span key={tag} className="px-2.5 py-1 bg-[#ff6b1a]/10 border border-[#ff6b1a]/30 text-[#ff6b1a] rounded-sm">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-            </div>
-
-            {/* Bottom action drawer footer */}
-            <div className="border-t border-white/10 pt-4 mt-6 flex justify-between items-center text-xs font-mono text-white/40 relative z-10 pb-[env(safe-area-inset-bottom)]">
-              <span>READY FOR REVIEW</span>
-              
-              <button 
-                onClick={() => {
-                  window.tactileFeedback?.playClickSound();
-                  setSelectedProject(null);
-                }}
-                className="px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-[#ff6b1a] text-white text-xs font-semibold rounded-sm transition-all"
-              >
-                Close Specification
-              </button>
-            </div>
-
-          </div>
-        </div>
+        <ProjectDrawer
+          project={selectedProject}
+          variant="featured"
+          onClose={() => setSelectedProject(null)}
+        />
       )}
       </div>
     </main>
