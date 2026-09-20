@@ -17,3 +17,21 @@ export interface ProjectJSON {
 export interface Project extends Omit<ProjectJSON, 'icon'> {
     icon: React.ReactNode;
 }
+
+export interface ProjectLink {
+    label: string;
+    url: string;
+}
+
+/** Shape of the entries in `src/data/projects.json` and `src/data/projects/*.json`. */
+export interface ProjectEntry {
+    id: string;
+    title: string;
+    tagline: string;
+    description: string;
+    tech: string[];
+    date: string;
+    status: string;
+    icon: string;
+    links?: ProjectLink[];
+}

@@ -6,5 +6,8 @@
   "tech": ["Flutter", "Dart", "Database Management", "AWS Deployment"],
   "date": "Sep 2024 - Dec 2024",
   "status": "completed",
-  "icon": "TextAlignJustify"
+  "icon": "TextAlignJustify",
+  "links": [
+    { "label": "GitHub", "url": "https://github.com/marccodesstuff/Trestle" }
+  ]
 }

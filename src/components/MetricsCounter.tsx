@@ -1,83 +1,80 @@
 import { useState, useEffect } from 'react'
-import { CheckCircle2, Cpu, FileCheck2, Code2 } from 'lucide-react'
+import { Cpu, Database, FileText, TrendingDown } from 'lucide-react'
 import { playHoverTick } from '../utils/sound'
 
 interface MetricItem {
   id: string
   label: string
   value: number
+  decimals?: number
   prefix?: string
   suffix?: string
   description: string
   icon: typeof Cpu
 }
 
+// Every figure here is sourced from src/data/internships.json or src/data/research.json.
+// Keep it that way: only add a metric you can back up in an interview.
 const metrics: MetricItem[] = [
   {
-    id: 'projects',
-    label: 'Systems & Repositories',
-    value: 10,
-    suffix: '+',
-    description: 'Production applications, AI platforms & open source tools',
-    icon: Code2,
+    id: 'llm-cost',
+    label: 'LLM Cost Reduction',
+    value: 99.98,
+    decimals: 2,
+    prefix: '~',
+    suffix: '%',
+    description: 'n8n research automation cut from ~$20/day to ~$0.004/day',
+    icon: TrendingDown,
   },
   {
-    id: 'mri',
-    label: 'Trained MRI Scans',
-    value: 3000,
-    suffix: '+',
-    description: 'Coronal knee MRIs annotated for YOLO ensemble tear detection',
+    id: 'articles',
+    label: 'Articles Published',
+    value: 772,
+    description: 'SEO-ready articles from a single-shot LLM prompt pipeline',
+    icon: FileText,
+  },
+  {
+    id: 'map',
+    label: 'Knee MRI Detection mAP',
+    value: 75.17,
+    decimals: 2,
+    suffix: '%',
+    description: 'YOLOv11 stacking ensemble for ACL & meniscus tears (88% FROC)',
     icon: Cpu,
   },
   {
-    id: 'precision',
-    label: 'Compliance Mapping',
-    value: 99.2,
-    suffix: '%',
-    description: 'Automated SOC 2 & ISO 27001 control verification precision',
-    icon: FileCheck2,
-  },
-  {
-    id: 'code-quality',
-    label: 'Test & Code Coverage',
-    value: 100,
-    suffix: '%',
-    description: 'Type-safe workflows with continuous integration tests',
-    icon: CheckCircle2,
+    id: 'leads',
+    label: 'Company Leads Scraped',
+    value: 15500,
+    prefix: '~',
+    description: 'Regional companies with contact info consolidated for outreach',
+    icon: Database,
   },
 ]
 
+const DURATION_MS = 1200
+const FRAME_RATE = 30
+
+const prefersReducedMotion = (): boolean =>
+  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+const formatValue = (value: number, decimals = 0): string =>
+  value.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })
+
 const MetricsCounter = () => {
-  const [counts, setCounts] = useState<{ [key: string]: number }>({
-    projects: 0,
-    mri: 0,
-    precision: 0,
-    'code-quality': 0,
-  })
+  // 0 → 1 animation progress shared by every counter
+  const [progress, setProgress] = useState(() => (prefersReducedMotion() ? 1 : 0))
 
   useEffect(() => {
-    const duration = 1200 // ms
-    const frameRate = 30
-    const totalFrames = Math.round((duration / 1000) * frameRate)
-    let frame = 0
+    if (prefersReducedMotion()) return
 
+    // Timer (not rAF) so the counters still land on their final values in throttled/background tabs.
+    const startTime = performance.now()
     const timer = setInterval(() => {
-      frame++
-      const progress = frame / totalFrames
-      // Ease out cubic
-      const easeProgress = 1 - Math.pow(1 - progress, 3)
-
-      setCounts({
-        projects: Math.min(10, Math.round(10 * easeProgress)),
-        mri: Math.min(3000, Math.round(3000 * easeProgress)),
-        precision: Math.min(99.2, Number((99.2 * easeProgress).toFixed(1))),
-        'code-quality': Math.min(100, Math.round(100 * easeProgress)),
-      })
-
-      if (frame >= totalFrames) {
-        clearInterval(timer)
-      }
-    }, 1000 / frameRate)
+      const t = Math.min((performance.now() - startTime) / DURATION_MS, 1)
+      setProgress(1 - Math.pow(1 - t, 3)) // ease-out cubic
+      if (t >= 1) clearInterval(timer)
+    }, 1000 / FRAME_RATE)
 
     return () => clearInterval(timer)
   }, [])
@@ -102,7 +99,7 @@ const MetricsCounter = () => {
             <div>
               <p className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight font-mono">
                 {item.prefix}
-                {counts[item.id] ?? item.value}
+                {formatValue(item.value * progress, item.decimals)}
                 <span className="text-[#ff6b1a]">{item.suffix}</span>
               </p>
               <p className="text-xs text-white/60 mt-1.5 leading-relaxed">
@@ -117,4 +114,3 @@ const MetricsCounter = () => {
 }
 
 export default MetricsCounter
-

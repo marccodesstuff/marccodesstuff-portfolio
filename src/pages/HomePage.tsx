@@ -1,9 +1,38 @@
 import SystemLog from '../components/SystemLog'
 import MetricsCounter from '../components/MetricsCounter'
 import EngineeringSandbox from '../components/EngineeringSandbox'
-import { ArrowUpRight, Cpu, Sparkles, MapPin, Mail, Layers, Code, Database, Cloud } from 'lucide-react'
+import { ArrowUpRight, Cpu, Sparkles, MapPin, Mail, Layers, Code, Database, Cloud, Github } from 'lucide-react'
 import { usePageTransition } from '../components/PageTransition'
 import { playClickSound, playHoverTick } from '../utils/sound'
+import projectsData from '../data/projects.json'
+
+// Homepage-specific copy for the featured cards. Titles and links come from projects.json (matched by id).
+const FEATURED_CARDS = [
+  {
+    id: 'augur',
+    category: 'COMPLIANCE AUTOMATION',
+    blurb: 'Agentic compliance automation platform tracking security controls and automatically mapping findings onto SOC 2 and ISO 27001 with an LLM agent.',
+    tags: ['.NET 10', 'Blazor', 'MCP', 'Agentic AI'],
+  },
+  {
+    id: 'fabtwin',
+    category: 'SPC ANALYTICS & SIMULATION',
+    blurb: 'Open-source semiconductor statistical process control (SPC) analytics and synthetic fab-data generator with control charts, Western Electric/Nelson rules, and Cp/Cpk analysis.',
+    tags: ['Python', 'Streamlit', 'Statistical Process Control'],
+  },
+  {
+    id: 'jointwise',
+    category: 'MEDICAL AI & COMPUTER VISION',
+    blurb: 'End-to-end medical-imaging platform with a YOLOv11 stacking ensemble for automated ACL and meniscus tear detection from coronal knee MRI scans.',
+    tags: ['PyTorch', 'YOLOv11', 'Next.js', 'FastAPI'],
+  },
+  {
+    id: 'patient-simulator',
+    category: 'CLINICAL AI & EVALUATION',
+    blurb: 'Clinical conversation simulator built on LangGraph for healthcare communication training featuring dynamic patient personas, safety guardrails, and LLM-as-judge evaluation.',
+    tags: ['Python', 'LangGraph', 'FastAPI', 'LLM-as-Judge'],
+  },
+]
 
 const HomePage = () => {
   const { navigateWithTransition } = usePageTransition()
@@ -43,7 +72,7 @@ const HomePage = () => {
                 </p>
               </div>
               <div className="shrink-0">
-                <div className="relative group">
+                <div className="relative group w-fit">
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-[#ff6b1a] to-amber-500 rounded-sm blur opacity-30 group-hover:opacity-60 transition duration-300" />
                   <img 
                     src="/profile-pic.jpg" 
@@ -156,7 +185,7 @@ const HomePage = () => {
         {/* ===========================================
             KEY ENGINEERING METRICS COUNTERS
             =========================================== */}
-        <div className="lg:col-span-12 border-r-0 lg:border-r-2">
+        <div className="lg:col-span-12 border-r-0 lg:border-r-2 border-white/5">
           <MetricsCounter />
         </div>
 
@@ -199,142 +228,64 @@ const HomePage = () => {
             FEATURED PROJECTS MODULES GRID
             =========================================== */}
         <div className="lg:col-span-12 grid grid-cols-1 lg:grid-cols-2 gap-1">
-          
-          {/* Project 01: Augur */}
-          <div 
-            role="button"
-            tabIndex={0}
-            onClick={() => {
-              playClickSound();
-              navigateWithTransition('/projects');
-            }}
-            onMouseEnter={() => playHoverTick()}
-            onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
-            className="te-module p-6 sm:p-8 border-r-0 lg:border-r-2 border-b-2 lg:border-b-0 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-all flex flex-col justify-between min-h-[280px]"
-          >
-            <div>
-              <div className="flex justify-between items-start mb-3">
-                <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-[#ff6b1a]/10 border border-[#ff6b1a]/30 text-[#ff6b1a]">
-                  COMPLIANCE AUTOMATION
-                </span>
-                <ArrowUpRight size={18} className="text-white/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+          {FEATURED_CARDS.map((card, i) => {
+            const project = projectsData.find((p) => p.id === card.id)
+            if (!project) return null
+            return (
+              <div
+                key={card.id}
+                onMouseEnter={() => playHoverTick()}
+                className={`te-module relative p-6 sm:p-8 border-b-2 border-white/5 ${i < 3 ? 'lg:border-r-2' : ''} ${i % 2 === 0 ? 'lg:border-b-0' : ''} group hover:bg-white/[0.03] transition-all flex flex-col justify-between min-h-[280px]`}
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-3">
+                    <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-[#ff6b1a]/10 border border-[#ff6b1a]/30 text-[#ff6b1a]">
+                      {card.category}
+                    </span>
+                    <ArrowUpRight size={18} className="text-white/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 group-hover:text-[#ff6b1a] transition-colors">
+                    {/* Stretched button: the whole card opens the projects page, while the links below stay independently clickable. */}
+                    <button
+                      onClick={() => {
+                        playClickSound()
+                        navigateWithTransition('/projects')
+                      }}
+                      className="text-left cursor-pointer after:absolute after:inset-0 after:content-['']"
+                    >
+                      {project.title}
+                    </button>
+                  </h3>
+                  <p className="text-sm text-white/70 leading-relaxed max-w-lg mb-6">{card.blurb}</p>
+                </div>
+                <div className="flex flex-wrap items-end justify-between gap-x-4 gap-y-3">
+                  <div className="flex flex-wrap gap-2 text-xs font-mono">
+                    {card.tags.map((tag) => (
+                      <span key={tag} className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">{tag}</span>
+                    ))}
+                  </div>
+                  {project.links && project.links.length > 0 && (
+                    <div className="relative z-10 flex flex-wrap gap-2">
+                      {project.links.map((link) => (
+                        <a
+                          key={link.url}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => playClickSound()}
+                          className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-semibold text-white/80 hover:text-white bg-white/5 hover:bg-[#ff6b1a]/20 border border-white/15 hover:border-[#ff6b1a] rounded transition-colors"
+                        >
+                          <Github size={12} aria-hidden="true" />
+                          <span>{link.label}</span>
+                          <span className="sr-only">for {project.title} (opens in a new tab)</span>
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 group-hover:text-[#ff6b1a] transition-colors">
-                Augur
-              </h3>
-              <p className="text-sm text-white/70 leading-relaxed max-w-lg mb-6">
-                Agentic compliance automation platform tracking security controls and automatically mapping findings onto SOC 2 and ISO 27001 with an LLM agent.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2 text-xs font-mono">
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">.NET 10</span>
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">Blazor</span>
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">MCP</span>
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">Agentic AI</span>
-            </div>
-          </div>
-
-          {/* Project 02: FabTwin */}
-          <div 
-            role="button"
-            tabIndex={0}
-            onClick={() => {
-              playClickSound();
-              navigateWithTransition('/projects');
-            }}
-            onMouseEnter={() => playHoverTick()}
-            onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
-            className="te-module p-6 sm:p-8 border-r-0 lg:border-r-2 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-all flex flex-col justify-between min-h-[280px]"
-          >
-            <div>
-              <div className="flex justify-between items-start mb-3">
-                <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-[#ff6b1a]/10 border border-[#ff6b1a]/30 text-[#ff6b1a]">
-                  SPC ANALYTICS & SIMULATION
-                </span>
-                <ArrowUpRight size={18} className="text-white/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 group-hover:text-[#ff6b1a] transition-colors">
-                FabTwin
-              </h3>
-              <p className="text-sm text-white/70 leading-relaxed max-w-lg mb-6">
-                Open-source semiconductor statistical process control (SPC) analytics and synthetic fab-data generator with control charts, Western Electric/Nelson rules, and Cp/Cpk analysis.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2 text-xs font-mono">
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">Python</span>
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">Streamlit</span>
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">Statistical Process Control</span>
-            </div>
-          </div>
-
-          {/* Project 03: JointWise */}
-          <div 
-            role="button"
-            tabIndex={0}
-            onClick={() => {
-              playClickSound();
-              navigateWithTransition('/projects');
-            }}
-            onMouseEnter={() => playHoverTick()}
-            onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
-            className="te-module p-6 sm:p-8 border-r-0 lg:border-r-2 border-b-2 lg:border-b-0 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-all flex flex-col justify-between min-h-[280px]"
-          >
-            <div>
-              <div className="flex justify-between items-start mb-3">
-                <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-[#ff6b1a]/10 border border-[#ff6b1a]/30 text-[#ff6b1a]">
-                  MEDICAL AI & COMPUTER VISION
-                </span>
-                <ArrowUpRight size={18} className="text-white/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 group-hover:text-[#ff6b1a] transition-colors">
-                JointWise
-              </h3>
-              <p className="text-sm text-white/70 leading-relaxed max-w-lg mb-6">
-                End-to-end medical-imaging platform with a YOLOv11 stacking ensemble for automated ACL and meniscus tear detection from coronal knee MRI scans.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2 text-xs font-mono">
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">PyTorch</span>
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">YOLOv11</span>
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">Next.js</span>
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">FastAPI</span>
-            </div>
-          </div>
-
-          {/* Project 04: Patient Communication Simulator */}
-          <div 
-            role="button"
-            tabIndex={0}
-            onClick={() => {
-              playClickSound();
-              navigateWithTransition('/projects');
-            }}
-            onMouseEnter={() => playHoverTick()}
-            onKeyDown={(e) => { if (e.key === 'Enter') { navigateWithTransition('/projects'); } }}
-            className="te-module p-6 sm:p-8 border-b-2 border-white/5 group cursor-pointer hover:bg-white/[0.03] transition-all flex flex-col justify-between min-h-[280px]"
-          >
-            <div>
-              <div className="flex justify-between items-start mb-3">
-                <span className="text-xs font-mono font-semibold px-2 py-0.5 rounded bg-[#ff6b1a]/10 border border-[#ff6b1a]/30 text-[#ff6b1a]">
-                  CLINICAL AI & EVALUATION
-                </span>
-                <ArrowUpRight size={18} className="text-white/40 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
-              </div>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-3 group-hover:text-[#ff6b1a] transition-colors">
-                Patient Communication Simulator
-              </h3>
-              <p className="text-sm text-white/70 leading-relaxed max-w-lg mb-6">
-                Clinical conversation simulator built on LangGraph for healthcare communication training featuring dynamic patient personas, safety guardrails, and LLM-as-judge evaluation.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2 text-xs font-mono">
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">Python</span>
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">LangGraph</span>
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">FastAPI</span>
-              <span className="px-2.5 py-1 bg-white/5 border border-white/10 rounded text-white/80">LLM-as-Judge</span>
-            </div>
-          </div>
-
+            )
+          })}
         </div>
 
         {/* ===========================================

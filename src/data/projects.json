@@ -17,7 +17,10 @@
     ],
     "date": "Jan 2026 – Present",
     "status": "active",
-    "icon": "Shield"
+    "icon": "Shield",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/marccodesstuff/augur" }
+    ]
   },
   {
     "id": "fabtwin",
@@ -34,7 +37,10 @@
     ],
     "date": "May 2026 – Present",
     "status": "active",
-    "icon": "Cpu"
+    "icon": "Cpu",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/marccodesstuff/spc-yield-analytics" }
+    ]
   },
   {
     "id": "patient-simulator",
@@ -52,7 +58,10 @@
     ],
     "date": "Apr 2026 – Present",
     "status": "active",
-    "icon": "MessageSquare"
+    "icon": "MessageSquare",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/marccodesstuff/patient-sim" }
+    ]
   },
   {
     "id": "jointwise",
@@ -70,7 +79,11 @@
     ],
     "date": "Jan 2025 – Mar 2026",
     "status": "completed",
-    "icon": "Brain"
+    "icon": "Brain",
+    "links": [
+      { "label": "Research Code", "url": "https://github.com/marccodesstuff/jointwise-research" },
+      { "label": "Web App", "url": "https://github.com/marccodesstuff/JointWise-Final-App" }
+    ]
   },
   {
     "id": "bantaybayan",
@@ -89,6 +102,9 @@
     ],
     "date": "Nov 2025 – Dec 2025",
     "status": "completed",
-    "icon": "Zap"
+    "icon": "Zap",
+    "links": [
+      { "label": "GitHub", "url": "https://github.com/marccodesstuff/BantayBayan" }
+    ]
   }
 ]

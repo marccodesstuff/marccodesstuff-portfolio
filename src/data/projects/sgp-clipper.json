@@ -6,5 +6,8 @@
   "tech": ["Chrome Extension API", "Content Scripts", "Data Enrichment"],
   "date": "Jan-Mar 2026",
   "status": "completed",
-  "icon": "Extension"
+  "icon": "Extension",
+  "links": [
+    { "label": "GitHub", "url": "https://github.com/marccodesstuff/SGP-Clipper" }
+  ]
 }
