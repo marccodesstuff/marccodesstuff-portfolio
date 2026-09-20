@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { ArrowUpRight, FolderGit2, ArrowLeft } from 'lucide-react'
-import { usePageTransition } from '../components/PageTransition'
+import { usePageTransition } from '../context/PageTransitionContext'
 import ProjectDrawer from '../components/ProjectDrawer'
 import { playClickSound } from '../utils/sound'
 import type { ProjectEntry } from '../types/project'

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ArrowUpRight, Menu, X, Volume2, VolumeX } from 'lucide-react';
-import { usePageTransition } from './PageTransition';
+import { usePageTransition } from '../context/PageTransitionContext';
 import { isSoundEnabled, setSoundEnabled, playClickSound, playHoverTick } from '../utils/sound';
 
 interface HeaderProps {
@@ -16,13 +16,9 @@ const navItems = [
 
 const Header = ({ activePage }: HeaderProps) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [audioOn, setAudioOn] = useState(true);
+    const [audioOn, setAudioOn] = useState(isSoundEnabled);
     const { navigateWithTransition, isTransitioning } = usePageTransition();
     const location = useLocation();
-
-    useEffect(() => {
-        setAudioOn(isSoundEnabled());
-    }, []);
 
     const toggleAudio = () => {
         const next = !audioOn;
@@ -144,7 +140,7 @@ const Header = ({ activePage }: HeaderProps) => {
                     <a
                         href="mailto:velasquezmarcvictor@gmail.com"
                         onClick={() => {
-                            window.tactileFeedback?.playClickSound();
+                            playClickSound();
                             setIsMenuOpen(false);
                         }}
                         className="bg-[#ff6b1a] hover:bg-[#ff7d36] text-white px-4 py-3 text-xs font-semibold rounded-sm flex items-center justify-center gap-2 transition-all w-full min-h-[44px]"

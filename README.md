@@ -1,390 +1,101 @@
-# 🎛️ TACTILE WEB EXPERIENCE
-## Industrial Minimalist Portfolio System
-### Inspired by Teenage Engineering // Built for Digital Hardware
+# Marc Victor Velasquez — Portfolio
 
----
+Personal portfolio for Marc Victor Velasquez, an AI & automation engineer based in Angeles City, Philippines.
+Live at **https://marcvelasquez.appwrite.network**.
 
-## 👤 Contact Information
+The design is an industrial, Teenage Engineering–inspired "hardware module" look: blueprint grid, monospace
+labels, a safety-orange accent (`#ff6b1a`), and synthesized click sounds (Web Audio, no audio files).
 
-- **Email:** [`velasquezmarcvictor@gmail.com`](mailto:velasquezmarcvictor@gmail.com)
-- **LinkedIn:** [Marc Victor Velasquez](https://www.linkedin.com/in/mrcvctr-vel/)
-- **GitHub:** [@marccodesstuff](https://github.com/marccodesstuff)
+## Stack
 
----
+- React 19 + TypeScript, built with Vite 7
+- Tailwind CSS 4
+- React Router 7 (client-side routing)
+- lucide-react icons
 
-## 🚀 Quick Start
+Those are the only four runtime dependencies. Fonts (Inter, JetBrains Mono) load from Google Fonts.
+
+## Getting started
 
 ```bash
-cd /home/marc/marccodesstuff-portfolio
 npm install
-npm run dev
+npm run dev      # http://localhost:5173
 ```
 
-Visit `http://localhost:5173` to experience the full tactile interface.
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Vite dev server with HMR |
+| `npm run build` | Typecheck (`tsc -b`) then production build into `dist/` |
+| `npm run preview` | Serve the production build locally (http://localhost:4173) |
+| `npm run lint` | ESLint |
 
----
-
-## 📚 About Me
-
-> *"I'm a graduating Computer Science student at Angeles University Foundation (Class of 2026) specializing in Data Science, multi-modal AI, and edge-deployed machine learning systems."*
-
-### Current Role
-**Tech Lead @ As Foretold Research Labs**  
-Jan 2026 - Present  
-- Developing large-scale digital twins and autonomous robotic simulations
-- Creating bespoke generative AI frameworks for practical applications
-- Orchestrating spatial computing integration with advanced AI models
-
-### Recent Experience
-**AI Automation Intern & Content QA Intern @ Kaizenaire**  
-Jan 2025 - May 2026  
-- Published 772+ SEO-compliant articles using optimized LLM pipelines
-- Scraped and validated 15,500+ company leads for marketing campaigns
-- Security evaluations and phishing-risk detection from source databases
-
-### Academic Achievement
-**Google Developer Group - Holy Angel University**  
-Lead AI Engineer (The AI Hack 2025)  
-- Led a team of 4 to achieve **97.8% validation accuracy** in flood prediction ML model
-- 3rd Place, Best Technical Execution, and People's Choice Award winner
-
----
-
-## 🎤 Speaking & Activities
-
-### Workshop Speaker (November 2025)
-**n8n Event-Driven Workflow Automation Seminar**  
-Angeles City Science High School (~40 students)  
-- Taught live production-grade backend integration with n8n  
-- Demonstrated real-time earthquake/volcanic data fetching from PHIVOLCS  
-- Adapted session on-the-fly when students hit technical roadblocks
-
-### Tool Creator (February 2026)
-**PageShutter - Notion AI Screenshot Tool**  
-Created custom tool giving Notion agents web vision capabilities  
-- Uses BrowserStack Screenshots API for real webpage captures  
-- Enables cloud-native agentic AI with visual capabilities
-
-### Conference Presenter (March 2026)
-**IRCITE 2026 Paper Presentation**  
-Bulacan State University  
-- Presented JointWise research on knee tear detection from MRI data  
-- Regional Computer Science track presentation
-
----
-
-## 🏛️ College Organizations & Leadership
-
-### Editor-in-Chief
-**Datalink (AUF College of Computer Studies)**  
-Oct 2023 - Aug 2024  
-- Led a 12-member team for activity coverage and event documentation  
-- Developed annual newsletters covering computing events  
-- Organized editorial cartooning competition
-
-### Layout Artist
-**CCS SiKLAB Creative Design Committee**  
-Oct 2024 - Dec 2024  
-- Created publication materials for 4+ campus organizations  
-- Supported event communication needs across departments
-
-### Member
-**Junior Philippines Computer Society (JPCS) AUF Charter**  
-Jan 2023 - Present  
-- Active hackathon participant with algorithmic problem-solving expertise  
-- Competed in Digital Solution Hackathon 2025 (3rd Place)
-
----
-
-## 🚀 Quick Start
-
-### A Complete Interactive Portfolio System Featuring:
-
-**🎮 Playable Landing Page**
-- Three.js 3D product schematic viewer
-- Virtual view mode switches (wireframe/solid/exploded)
-- Mechanical click sounds on every interaction
-- GSAP-powered smooth animations
-
-**📦 Hardware Catalog Modules**
-- Industrial "module" cards with tactile depth
-- I/O port visualization on hover
-- Raw technical data display
-- Safety Orange status indicators
-
-**🔍 Live System Log Footer**
-- Tracks every user action (clicks, hovers, navigation)
-- Timestamps and event details
-- Clear button to reset logs
-- Built like a proprietary OS terminal
-
-**🎹 Studio Dashboard Preview**
-- Modular synthesizer-inspired layout
-- Visual signal flow cables
-- Parameter tweaking controls
-- Preset loading system
-
-**⚡ Industrial Aesthetic**
-- Blueprint grid overlay (1px precision lines)
-- Safety Orange accent color (#ff6b1a)
-- Monospace typography (JetBrains Mono)
-- Tonal material depth (no shadows - layering)
-
----
-
-## 📁 Project Structure
+## Project structure
 
 ```
-marccodesstuff-portfolio/
-├── 🧱 CORE COMPONENTS (New tactile system)
-│   ├── tactile-init.ts          # Three.js + GSAP initialization
-│   ├── tactile-grid.css         # Blueprint grid CSS system
-│   ├── TactileHero.tsx          # 3D interactive hero viewer
-│   ├── SystemLog.tsx            # Live event tracker footer
-│   ├── HardwareModule.tsx       # Product module cards
-│   └── StudioDashboard.tsx      # Modular patching interface
-│
-├── 🌐 PAGES (Updated with tactile styling)
-│   ├── HomePage.tsx             # Landing page with 3D viewer
-│   ├── ProjectsPage.tsx         # Project catalog
-│   └── AboutPage.tsx            # Personal module info
-│
-├── 🎨 STYLING (Industrial palette)
-│   ├── index.css                # Material system + tactile utilities
-│   └── tactile-grid.css         # Grid alignment patterns
-│
-├── 🔧 CONTEXT & UTILITIES
-│   ├── ThemeContext.tsx         # Theme state management
-│   ├── Header.tsx               # Navigation header
-│   ├── Footer.tsx               # Site footer  
-│   └── MainLayout.tsx           # Layout wrapper
-│
-├── 📊 DATA (Your portfolio content)
-│   ├── achievements.json
-│   ├── certifications.json
-│   └── skills.json
-│
-└── 🌍 ENTRY POINTS
-    ├── index.html               # HTML entry with Three.js injection
-    └── main.tsx                 # React root mount
+src/
+├── App.tsx                  # Routes, plus per-route canonical / og:url updates
+├── main.tsx                 # Entry point
+├── pages/                   # HomePage, ProjectsPage, ProjectsArchivePage, AboutPage
+├── components/              # Header, Footer, MetricsCounter, EngineeringSandbox, ProjectDrawer, ...
+├── context/                 # PageTransitionContext (route fade transitions)
+├── layouts/MainLayout.tsx   # Header + page + footer shell
+├── data/                    # All site content as JSON (see below)
+├── types/project.ts         # ProjectEntry and related types
+├── utils/sound.ts           # Web Audio click / hover sounds, mute state in localStorage
+├── index.css                # Tailwind entry and te-* design classes
+└── tactile-grid.css         # Blueprint grid overlay
+public/                      # favicon, og-image.png, robots.txt, sitemap.xml, profile photo
+design/                      # Design references that are not shipped
+docs/profile-notes.md        # Profile content that is not on the site yet
 ```
 
----
-
-## 🎨 Design Philosophy
-
-### Teenage Engineering Inspired:
-- **Tactile Feedback:** Every click plays a mechanical sound, every hover provides visual depth
-- **The Blueprint Grid:** Thin 1px lines define precise alignment across the entire viewport
-- **Utilitarian Typography:** Heavy monospace fonts mimic technical schematics and industrial labeling
-- **Industrial Materials:** Grey, Charcoal, Bone White surfaces with Safety Orange action indicators
-
-### Key Principles:
-1. **Depth via Layering, Not Shadows** – Tonal shifts create hierarchy without visual clutter
-2. **1px Grid System** – Every element aligns to a precise blueprint grid (visible or subtle)
-3. **Monospace Everywhere** – Labels, buttons, metadata use JetBrains Mono for technical authenticity
-4. **Safety Orange Accents** – Primary actions use #ff6b1a (industrial hazard color)
-5. **Raw Data Displays** – Technical specs shown in monospaced text like hardware manuals
-
----
-
-## 🛠️ Technology Stack
-
-### Frontend Framework:
-- React 19 + TypeScript
-- Vite 7 (dev server, build tooling)
-
-### 3D Graphics:
-- Three.js 0.184
-- React Three Fiber
-- React Drei (helpers)
-
-### Animations:
-- GSAP 3.x (scroll-triggered animations)
-
-### Styling:
-- Tailwind CSS 4.x (utility-first)
-- Custom CSS modules (tactile utilities, grid patterns)
-
-### DevTools:
-- ESLint + TypeScript
-- Hot Module Replacement (HMR)
-
----
-
-## 🎮 Interactive Features to Test
-
-### Click Through These Elements:
-
-1. **3D Hero Viewer** (Homepage)
-   - Click the "WIREFRAME/SOLID/EXPLODED" buttons in bottom-right corner
-   - Observe the schematic rotate through different view modes
-   - Notice the subtle camera drift animation
-
-2. **Module Cards** (Hardware Catalog section)
-   - Hover over each product module
-   - Watch I/O ports animate and slide out
-   - Read raw technical data in lower panel
-
-3. **System Log Footer**
-   - Scroll up/down the page
-   - Observe click events logged in footer
-   - Click "CLEAR_LOG" button (plays click sound)
-
-4. **Virtual Knobs** (Studio Dashboard preview)
-   - Click module cards to select them
-   - Notice border color change and LED indicators
-
-5. **Navigation Buttons**
-   - Every button plays a mechanical thud sound
-   - Listen for the subtle audio feedback
-
-### Keyboard Navigation:
-- `Tab` + `Enter` navigates interactive elements
-- System log tracks keyboard navigation events
-
----
-
-## 🎯 Easter Egg Controls (Hidden Features)
-
-1. **Canvas Drift Animation:** Click anywhere on the 3D hero canvas during idle time - triggers subtle camera floating effect
-
-2. **Module Selection Highlighting:** Hover over any module in catalog - border glows orange with box-shadow pulse
-
-3. **Build Version Watermark:** Bottom-right footer always displays current `BUILD_REV: YYYY.MM.DD` timestamp
-
-4. **System Log Memory Counter:** Footer shows `MEMORY_ALLOCATED: X EVENTS` to track session length
-
----
-
-## 📊 Optimization Features
-
-### High-DPI Display Support:
-- Automatic pixel ratio clamping at 2x (prevents performance degradation on Retina displays)
-- Canvas rendering optimized for clarity vs. frame rate
-
-### Performance Budgets:
-- Three.js scene only renders hero component (not visible on Projects/About pages)
-- System log capped at 50 entries to prevent memory bloat
-- Click sounds generated via Web Audio API (no external assets = instant load)
-
-### Accessibility:
-- Reduced motion preference respected automatically
-- All interactive elements keyboard-accessible
-- Focus indicators visible and styled with accent color
-
----
-
-## 🚀 Building for Production
-
-```bash
-npm run build
-npm run preview  # Test production build locally
-```
-
-The production build will be optimized for deployment to your hosting platform.
-
----
-
-## 🔧 Customization Guide
-
-### Change the Accent Color:
-Edit `/src/tactile-grid.css` and `/src/index.css`:
-```css
---accent-orange: #ff6b1a;       /* Safety Orange (primary actions) */
---accent-yellow: #ffff3c;        /* LEGO Yellow (highlights/easter eggs) */
-```
-
-### Add More Product Modules:
-Expand the `projects` array in `/src/pages/ProjectsPage.tsx` with new module data matching the existing structure.
-
-### Adjust Grid Density:
-Edit grid line density in `/src/tactile-grid.css`:
-```css
-background-size: 32px 32px;  /* Minor grid */
-background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), ...
-```
-
----
-
-## 📝 Git Commit Convention
-
-All commits should use GitHub account `marccodesstuff` as per your preference.
-
-Example commit messages:
-```bash
-git add src/pages/HomePage.tsx
-git commit -m "feat: implement tactile hero component with Three.js viewer"
-git push --set-upstream origin main
-```
-
----
-
-## 🎨 Design Inspiration Credits
-
-- **Teenage Engineering** – Industrial minimalism and tactile UI philosophy
-- **Monotron/Hardware Synth Products** – Module aesthetic and layout inspiration
-- **GitHub Codespaces** – Blueprint grid system concept
-- **Linear.io** – Technical typography and monospace usage
-
----
-
-## 📖 Reading Order (First-Time Experience)
-
-1. Open `http://localhost:5173` in browser
-2. Observe the 3D hero schematic rotating slowly
-3. Click "WIREFRAME" button – notice view mode switch
-4. Hover over module cards in Hardware Catalog section
-5. Scroll down to see System Log entries appearing
-6. Try clicking buttons and listening for click sounds
-7. Navigate to Projects and About pages
-8. Open `TACTILE_EXPERIENCE.md` for detailed documentation
-
----
-
-## 🎯 Success Metrics to Track
-
-- **Engagement Time:** Check System Log event count per session (target: 20+ events)
-- **Brand Sentiment:** Subjective polish score from viewer testing
-- **Easter Egg Discovery Rate:** Percentage of users finding hidden controls
-- **Interaction Depth:** Number of module hovers and button clicks
-
----
-
-## 🔮 Future Enhancements (Optional)
-
-1. **Product Photography Integration**
-   - Import RAW photography with grain/noise overlays
-   - Use Three.js textures for photo-realistic rendering
-
-2. **WebSocket Logging**
-   - Production analytics integration
-   - Real-time event streaming to dashboard
-
-3. **Mobile Touch Controls**
-   - Touch-optimized virtual knobs
-   - Gesture-based navigation
-
-4. **Voice Feedback System**
-   - Audio prompts on navigation
-   - Screen reader compatibility
-
----
-
-## 🎓 Learning Resources
-
-- [Three.js Documentation](https://threejs.org/docs/)
-- [GSAP Animations](https://greensock.com/gsap/)
-- [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/)
-- [Teenage Engineering Design Case Studies](https://www.teengineering.se/en)
-
----
-
-## 📞 Need Help?
-
-**Git Account for Push Operations:** `marccodesstuff`  
-**Portfolio Repo:** https://github.com/marccodesstuff/marccodesstuff-portfolio
-
----
-
-**// BUILT WITH INDUSTRIAL PRECISION // SYSTEM 04.2 //**
+## Editing content
+
+Content lives in `src/data/`; the pages render it.
+
+- **Featured projects** (Projects page): `src/data/projects.json`, shown in file order. Each entry needs
+  `id`, `title`, `tagline`, `description`, `tech`, `date`, `status`, and `icon`. Optional: `categories`
+  (`ai-ml`, `automation`, `fullstack`, used by the filter pills) and `links` (`[{ "label", "url" }]`, shown in
+  the project drawer and on homepage cards).
+- **Homepage featured cards**: the four cards are listed in `FEATURED_CARDS` in `src/pages/HomePage.tsx`.
+  Their titles and links come from `projects.json`, matched by `id`; the short blurb and tags live in that list.
+- **Archive projects**: add a JSON file in `src/data/projects/`, then import it and add it to
+  `archiveProjects` in `src/data/archive.ts`.
+- **About page**: `internships.json`, `research.json`, `skills.json`, `certifications.json`,
+  `achievements.json`.
+- **Homepage metrics**: `metrics` in `src/components/MetricsCounter.tsx`. Only use figures you can back up;
+  the current ones come from `internships.json` and `research.json`.
+- **Not rendered yet**: `education.json` and `organizations.json` are not imported by any page. The `icon`
+  field on projects is also currently unused.
+
+## Deployment and SEO
+
+`npm run build` produces a static site in `dist/`. Two requirements for the host:
+
+1. **SPA fallback.** Unknown paths (`/projects`, `/about`, ...) must serve `index.html`.
+2. **Root-relative assets.** `vite.config.ts` sets `base: '/'`. Using `'./'` breaks direct loads and
+   refreshes on any route other than `/`.
+
+Other details:
+
+- `index.html` holds the title, description, Open Graph / Twitter tags, and JSON-LD. `App.tsx` keeps
+  `<link rel="canonical">` and `og:url` in step with the current route.
+- `public/sitemap.xml` lists the four routes; update it if you add a page.
+- `public/og-image.png` (1200×630) is a static screenshot of the homepage. Regenerate it after a visual
+  change:
+
+  ```bash
+  npm run build && npx vite preview --port 4173 &
+  google-chrome --headless=new --no-sandbox --hide-scrollbars --window-size=1200,630 \
+    --virtual-time-budget=8000 --screenshot=public/og-image.png http://localhost:4173/
+  ```
+
+## Conventions
+
+More detail for contributors and AI assistants is in [`.agents/`](.agents/).
+
+## Contact
+
+- Email: velasquezmarcvictor@gmail.com
+- GitHub: [@marccodesstuff](https://github.com/marccodesstuff)
+- LinkedIn: [Marc Victor Velasquez](https://www.linkedin.com/in/mrcvctr-vel/)

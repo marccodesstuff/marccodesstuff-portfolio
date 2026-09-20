@@ -1,19 +1,7 @@
-import { useState, useEffect, useCallback, createContext, useContext, useRef } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import type { ReactNode } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-
-// ─── Transition Context ────────────────────────────────────
-interface TransitionContextValue {
-  navigateWithTransition: (to: string) => void
-  isTransitioning: boolean
-}
-
-const TransitionContext = createContext<TransitionContextValue>({
-  navigateWithTransition: () => {},
-  isTransitioning: false,
-})
-
-export const usePageTransition = () => useContext(TransitionContext)
+import { TransitionContext } from '../context/PageTransitionContext'
 
 // ─── Timing constants ──────────────────────────────────────
 const EXIT_DURATION  = 120  // ms — fast smooth exit
@@ -41,39 +29,29 @@ const PageTransition = ({ children }: PageTransitionProps) => {
   const location  = useLocation()
   const navigate  = useNavigate()
   const [phase, setPhase] = useState<Phase>('idle')
-  const [displayedChildren, setDisplayedChildren] = useState<ReactNode>(children)
-  const pendingPath = useRef<string | null>(null)
+  // Pending timeouts, cleared on unmount so a late timer can't navigate or set state afterwards
+  const timers = useRef<number[]>([])
 
-  // Keep displayed children in sync during idle
   useEffect(() => {
-    if (phase === 'idle') setDisplayedChildren(children)
-  }, [children, phase])
+    const pending = timers.current
+    return () => pending.forEach((id) => window.clearTimeout(id))
+  }, [])
 
-  // Swap content during transition
-  useEffect(() => {
-    if (phase === 'entering') {
-      setDisplayedChildren(children)
-    }
-  }, [children, phase])
-
-  // Main transition orchestrator
+  // Main transition orchestrator: fade out the current page, navigate, then fade the new one in.
+  // The router only swaps `children` when navigate() runs, so the old page stays on screen while exiting.
   const navigateWithTransition = useCallback((to: string) => {
     if (to === location.pathname) return
     if (phase !== 'idle') return
 
-    pendingPath.current = to
     setPhase('exiting')
 
-    setTimeout(() => {
+    timers.current.push(window.setTimeout(() => {
       navigate(to)
       window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
       setPhase('entering')
 
-      setTimeout(() => {
-        setPhase('idle')
-        pendingPath.current = null
-      }, ENTER_DURATION)
-    }, EXIT_DURATION)
+      timers.current.push(window.setTimeout(() => setPhase('idle'), ENTER_DURATION))
+    }, EXIT_DURATION))
   }, [location.pathname, navigate, phase])
 
   // CSS classes for smooth transition
@@ -96,7 +74,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
 
       {/* Page content */}
       <div className={contentStyle}>
-        {displayedChildren}
+        {children}
       </div>
     </TransitionContext.Provider>
   )
